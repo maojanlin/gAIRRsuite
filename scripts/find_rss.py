@@ -11,7 +11,7 @@ def parse_args():
         help='output file (names)'
     )
     parser.add_argument(
-        '-r', '--tol_range', type=int, default=1,
+        '-r', '--tol_range', type=int, default=0,
         help='tolerance of distance between hep and non [1]'
     )
     args = parser.parse_args()
