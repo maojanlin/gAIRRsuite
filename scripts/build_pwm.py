@@ -4,6 +4,7 @@ position weight matrix (PWM) of the read set.
 '''
 import argparse
 import numpy as np
+from utils import read_from_file
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -18,31 +19,6 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-def read_from_file(fn_input, ext):
-    list_seqs = []
-    assert ext in ['txt', 'fasta', 'fa']
-    with open(fn_input, 'r') as f:
-        for line in f:
-            if ext in ['fasta', 'fa']:
-                #: name
-                if line[0] == '>':
-                    continue
-            line = line.rstrip().upper()
-            
-            #: doesn't allow nuc other than ACGT
-            count_A = line.count('A')
-            count_C = line.count('C')
-            count_G = line.count('G')
-            count_T = line.count('T')
-            assert count_A + count_C + count_G + count_T == len(line)
-            
-            list_seqs.append(line)
-
-    #: check if all the seqs are equal in length
-    for s in list_seqs:
-        assert len(s) == len(list_seqs[0])
-    
-    return list_seqs
 
 def build_pwm(list_seqs):
     mapping = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
@@ -58,6 +34,5 @@ if __name__ == '__main__':
     args = parse_args()
     fn_input = args.fn_input
 
-    ext_input = fn_input[fn_input.rfind('.') + 1:]
-    list_seqs = read_from_file(fn_input, ext_input)
+    list_seqs = read_from_file(fn_input)
     pwm = build_pwm(list_seqs)
