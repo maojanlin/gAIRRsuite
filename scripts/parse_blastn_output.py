@@ -28,27 +28,71 @@ def parse_args():
         type = int
     )
     parser.add_argument(
+        '-s', '--scoring',
+        help = 'scoring of a hit, ["bit_score", "count"] ("bit_score")',
+        default = "bit_score"
+    )
+    parser.add_argument(
+        '--only-take-top',
+        help = 'enabled to only use the top-1 result, otherwise split the score/count between tied hits (False)',
+        action = 'store_true'
+    )
+    parser.add_argument(
         '-o', '--fn_output',
         help = 'output file'
     )
     args = parser.parse_args()
     return args
 
-def process_blastn_log(fn_input):
+def process_blastn_log_chunk(chunk_records, scoring, only_take_top):
+    size = len(chunk_records)
+    # scoring
+    if scoring == 'count':
+        score = 1 / size
+    elif scoring == 'bit_score':
+        score = float(chunk_records[0][3]) / size
+    
+    if only_take_top:
+        if dict_allele_count.get(chunk_records[0][1]):
+            dict_allele_count[chunk_records[0][1]] += score
+        else:
+            dict_allele_count[chunk_records[0][1]] = score
+    else:
+        for i, _ in enumerate(chunk_records):
+            if dict_allele_count.get(chunk_records[i][1]):
+                dict_allele_count[chunk_records[i][1]] += score
+            else:
+                dict_allele_count[chunk_records[i][1]] = score
+    
+    return dict_allele_count
+
+def process_blastn_log(fn_input, scoring, only_take_top):
     f = open(fn_input, 'r')
     new_record_flag = True
     dict_allele_count = {}
+    chunk_records = []
     for line in f:
         if line[0] == '#':
+            if len(chunk_records) > 0:
+                dict_allele_count = process_blastn_log_chunk(chunk_records, scoring, only_take_top)
+            # initialize chunk
             new_record_flag = True
+            chunk_records = []
             continue
         elif new_record_flag:
             fields = line.split()
-            if dict_allele_count.get(fields[1]):
-                dict_allele_count[fields[1]] += 1
+            # the first hit
+            if len(chunk_records) == 0:
+                chunk_records.append(fields)
+            # if tied bit score
+            elif fields[3] == chunk_records[-1][3]:
+                chunk_records.append(fields)
             else:
-                dict_allele_count[fields[1]] = 1
-            new_record_flag = False
+                new_record_flag = False
+    # process the last record
+    if len(chunk_records) > 0:
+        dict_allele_count = process_blastn_log_chunk(chunk_records, scoring, only_take_top)
+
     return dict_allele_count
 
 def print_dict_allele_count(dict_allele_count, top_n):
@@ -56,7 +100,7 @@ def print_dict_allele_count(dict_allele_count, top_n):
     for i, (key, value) in enumerate(dict_allele_count.items()):
         # print (key, value)
         sum_value += value
-    print ("Number of reads processed:", sum_value)
+    print ('Number of reads processed:', sum_value)
     sorted_dict = sorted(dict_allele_count.items(), key=lambda x: x[1], reverse=True)
     print (sorted_dict[: top_n])
 
@@ -65,6 +109,9 @@ if __name__ == '__main__':
     fn_input = args.fn_input
     fn_output = args.fn_output
     top_n = args.top_n
+    scoring = args.scoring
+    assert scoring in ['bit_score', 'count']
+    only_take_top = args.only_take_top
 
-    dict_allele_count = process_blastn_log(fn_input)
+    dict_allele_count = process_blastn_log(fn_input, scoring, only_take_top)
     print_dict_allele_count(dict_allele_count, top_n)
