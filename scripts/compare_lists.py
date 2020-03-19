@@ -14,18 +14,26 @@ def parse_args():
         '-g', '--gene',
         help = 'gene name of interest'
     )
+    parser.add_argument(
+        '-o', '--fn_output',
+        help = 'output file specifying the correctness of alleles [None]'
+    )
     args = parser.parse_args()
     return args
 
-def compare_files(fn_called, fn_annotated, gene):
-    # gene = 'TRBV'
+'''
+Read called and annotation files, filter by gene name, and store results in two sets.
+
+Write analyzed results to output file if it is not empty.
+'''
+def read_files(fn_called, fn_annotated, gene, fn_output):
     list_blastn = []
     dict_blastn_allele_count = {}
     with open(fn_called, 'r') as f:
         for line in f:
             line = line.strip()
-            allele = line.split(':')[0]
-            count = line.split(':')[1]
+            allele = line.split('\t')[0]
+            count = line.split('\t')[1]
             if line.count(gene) == 0:
                 print ('warning:', line)
             else:
@@ -44,6 +52,22 @@ def compare_files(fn_called, fn_annotated, gene):
     set_blastn = set(list_blastn)
     set_annotated = set(list_annotated)
 
+    if fn_output:
+        with open(fn_output, 'w') as f:
+            for s in list_blastn:
+                count = dict_blastn_allele_count[s]
+                if s in set_annotated:
+                    correctness = '1'
+                else:
+                    correctness = '0'
+                f.write(s + '\t' + str(count) + '\t' + correctness + '\n')
+
+    return set_blastn, set_annotated, dict_blastn_allele_count
+
+'''
+Print results
+'''
+def print_results(set_blastn, set_annotated, dict_blastn_allele_count):
     print ()
     print ('Size of blastn alleles:', len(set_blastn))
     print ('Size of annotated alleles:', len(set_annotated))
@@ -62,10 +86,14 @@ def compare_files(fn_called, fn_annotated, gene):
         print (s)
 
 
+
+
 if __name__ == '__main__':
     args = parse_args()
     fn_called = args.fn_called
     fn_annotated = args.fn_annotated
     gene = args.gene
+    fn_output = args.fn_output
 
-    compare_files(fn_called, fn_annotated, gene)
+    set_blastn, set_annotated, dict_blastn_allele_count = read_files(fn_called, fn_annotated, gene, fn_output)
+    print_results(set_blastn, set_annotated, dict_blastn_allele_count)
