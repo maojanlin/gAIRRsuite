@@ -44,15 +44,22 @@ def compare_files(fn_called, fn_annotated, gene):
     set_blastn = set(list_blastn)
     set_annotated = set(list_annotated)
 
+    print ()
     print ('Size of blastn alleles:', len(set_blastn))
     print ('Size of annotated alleles:', len(set_annotated))
     print ('Size of intersection:', len(set_blastn.intersection(set_annotated)))
     print ('Size of union:', len(set_blastn.union(set_annotated)))
 
     set_in_blastn_not_annotated = set_blastn - set_blastn.intersection(set_annotated)
+    print ()
     print ('Found by blastn, not annotated:')
     for s in set_in_blastn_not_annotated:
         print (s, dict_blastn_allele_count[s])
+    set_not_in_blastn_but_annotated = set_annotated - set_blastn.intersection(set_annotated)
+    print ()
+    print ('Not found by blastn, but annotated:')
+    for s in set_not_in_blastn_but_annotated:
+        print (s)
 
 
 if __name__ == '__main__':
