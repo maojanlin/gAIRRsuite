@@ -1,4 +1,6 @@
 '''
+An example of input file:
+
 # BLASTN 2.10.0+
 # Query: M01931:79:000000000-CHMNT:1:1101:21945:1007 1:N:0:46
 # Database: ../../../IMGT_DBSEQ/TRBV.fasta.txt
@@ -12,8 +14,6 @@ M01931:79:000000000-CHMNT:1:1101:21945:1007    L13762|TRBV7-4*02|Homo    1.6    
 '''
 
 import argparse
-# import operator
-# import collections
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -105,12 +105,14 @@ def process_blastn_log(fn_input, scoring, only_take_top):
 def print_dict_allele_count(dict_allele_count, top_n, fn_output):
     sum_value = 0
     sorted_dict = sorted(dict_allele_count.items(), key=lambda x: x[1], reverse=True)
-    print (sorted_dict[: top_n])
+    for i in range(top_n):
+        print (sorted_dict[i][0], ':', int(sorted_dict[i][1]))
+    # print (sorted_dict[: top_n])
     
     if fn_output:
         with open(fn_output, 'w') as f_o:
             for i in range(top_n):
-                f_o.write(sorted_dict[i][0].split('|')[1] + '\n')
+                f_o.write(sorted_dict[i][0].split('|')[1] + ':' + str(sorted_dict[i][1]) + '\n')
 
 if __name__ == '__main__':
     args = parse_args()

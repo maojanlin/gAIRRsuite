@@ -20,13 +20,17 @@ def parse_args():
 def compare_files(fn_called, fn_annotated, gene):
     # gene = 'TRBV'
     list_blastn = []
+    dict_blastn_allele_count = {}
     with open(fn_called, 'r') as f:
         for line in f:
             line = line.strip()
+            allele = line.split(':')[0]
+            count = line.split(':')[1]
             if line.count(gene) == 0:
                 print ('warning:', line)
             else:
-                list_blastn.append(line)
+                list_blastn.append(allele)
+                dict_blastn_allele_count[allele] = count
 
     list_annotated = []
     with open(fn_annotated, 'r') as f:
@@ -45,7 +49,10 @@ def compare_files(fn_called, fn_annotated, gene):
     print ('Size of intersection:', len(set_blastn.intersection(set_annotated)))
     print ('Size of union:', len(set_blastn.union(set_annotated)))
 
-    print ('Found by blastn, not annotated:', set_blastn - set_blastn.intersection(set_annotated))
+    set_in_blastn_not_annotated = set_blastn - set_blastn.intersection(set_annotated)
+    print ('Found by blastn, not annotated:')
+    for s in set_in_blastn_not_annotated:
+        print (s, dict_blastn_allele_count[s])
 
 
 if __name__ == '__main__':
