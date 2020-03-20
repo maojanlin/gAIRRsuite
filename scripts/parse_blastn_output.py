@@ -104,6 +104,9 @@ def process_blastn_log(fn_input, scoring, only_take_top):
 
 def print_dict_allele_count(dict_allele_count, top_n, fn_output):
     sorted_dict = sorted(dict_allele_count.items(), key=lambda x: x[1], reverse=True)
+    if top_n > len(sorted_dict):
+        print ('Warning: top_n({}) exceeds the number of alleles found, only print {} alleles'.format(top_n, len(sorted_dict)))
+        top_n = len(sorted_dict)
     for i in range(top_n):
         print (sorted_dict[i][0], ':', int(sorted_dict[i][1]))
     # print (sorted_dict[: top_n])
