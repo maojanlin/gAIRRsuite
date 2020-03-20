@@ -39,7 +39,7 @@ def parse_args():
     )
     parser.add_argument(
         '-o', '--fn_output',
-        help = 'output file including only alleles'
+        help = 'output file including only alleles [None]'
     )
     args = parser.parse_args()
     return args
@@ -103,7 +103,6 @@ def process_blastn_log(fn_input, scoring, only_take_top):
     return dict_allele_count
 
 def print_dict_allele_count(dict_allele_count, top_n, fn_output):
-    sum_value = 0
     sorted_dict = sorted(dict_allele_count.items(), key=lambda x: x[1], reverse=True)
     for i in range(top_n):
         print (sorted_dict[i][0], ':', int(sorted_dict[i][1]))
@@ -112,7 +111,7 @@ def print_dict_allele_count(dict_allele_count, top_n, fn_output):
     if fn_output:
         with open(fn_output, 'w') as f_o:
             for i in range(top_n):
-                f_o.write(sorted_dict[i][0].split('|')[1] + ':' + str(sorted_dict[i][1]) + '\n')
+                f_o.write(sorted_dict[i][0].split('|')[1] + '\t' + str(sorted_dict[i][1]) + '\n')
 
 if __name__ == '__main__':
     args = parse_args()
