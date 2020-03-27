@@ -8,10 +8,11 @@ library(ggplot2)
 ```
 
 ```{r process_data}
-df_trbv <- read.delim("../data/labelled_150.txt", header = F, sep = "\t")
+df_trbv <- read.delim("../../plot_tree/test.txt", header = F, sep = "\t")
+#df_trbv <- read.delim("../data/labelled_150.txt", header = F, sep = "\t")
 df_trbv$rank <- c(1: nrow(df_trbv))
 
-cols <- c("0" = "#E69F00", "1" = "#56B4E9")
+cols <- c("2" = "#E69F00", "3" = "#56B4E9", "1"= 'red')
 ggplot(df_trbv, aes(x=rank, y=V2)) + 
   geom_bar(aes(fill = factor(V3)), stat = "identity") + geom_line() +
   labs(x = "Rank", y = "Score", fill = "", title = "Top-150 calls by BLASTn, TRBV") +
@@ -20,7 +21,7 @@ ggplot(df_trbv, aes(x=rank, y=V2)) +
   theme(legend.position = c(0.8, 0.8)) +
   scale_fill_manual(
     values = cols,
-    breaks = c("0", "1"),
-    labels = c("Unannotated", "Annotated")
+    breaks = c("2", "3", "1"),
+    labels = c("Unannotated", "Annotated", "Not found")
   )
 ```
