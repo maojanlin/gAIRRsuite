@@ -9,12 +9,12 @@ option_list = list(
     make_option( c("-t","--file_tree"), type="character", default=NULL,
                  help="Input Newick tree file", metavar="character"),
     make_option( c("-a","--file_annotate"), type="character", default=NULL,
-                 help="Input annotation .csv two colums list, separated by \'\\t\', labels should be:
+                 help="Input annotation .csv three colums list, separated by \'\\t\'. 1st col name, 3rd col labels, labels should be:
                         1: Annotated only
                         2: Find only
                         3: Find & Annotated", metavar="character"),
     make_option( c("-s","--font_size"), type="double", default=1,
-                 help="label font size, default=2", metavar="double"),
+                 help="label font size, default=1", metavar="double"),
     make_option( c("-o","--file_output"), type="character", default="Rplots.pdf",
                  help="Output file name, default=\"Rplots.pdf\", default=2", metavar="character")
 );
@@ -25,15 +25,15 @@ opt = parse_args(opt_parser);
 
 ###### read tree and annotations
 tree   <- read.tree(opt$file_tree)
-tipcat <- read.csv(opt$file_annotate, sep="\t", col.name = c("allele","cat"), header = FALSE, stringsAsFactors = FALSE)
+tipcat <- read.csv(opt$file_annotate, sep="\t", col.name = c("allele","counts","cat"), header = FALSE, stringsAsFactors = FALSE)
 
 #plot tree
 p <- ggtree(tree)#, layout="circular")
 #plot labels
 p <- p %<+% tipcat + geom_tiplab(aes(fill = factor(cat)), color = "black", size=opt$font_size, geom = "label", label.padding = unit(0.05,"lines"), label.size=0)
 #adjust label colors
-p <- p + scale_fill_manual(values=c('#FF7E7E','#A6E8FF','#D8A6FF'), 
-                           label = c("Annotated only", "Find only","Find & Annotated"))
+p <- p + scale_fill_manual(values=c('1' = '#FF7E7E','2' = '#A6E8FF','3' = '#D8A6FF'), 
+                           label = c('1' = "Annotated only",'2' = "Find only",'3' = "Find & Annotated"))
 #adjust plot size to make the labels fit in
 p <- p + xlim(0,1)
 #adjust the legends
