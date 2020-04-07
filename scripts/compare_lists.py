@@ -54,14 +54,17 @@ def read_files(fn_called, fn_annotated, gene, fn_output):
 
     if fn_output:
         with open(fn_output, 'w') as f:
-            '''
-            for s in list_blastn:
+            
+            for s in list_blastn:#.intersection(set_annotated):
                 count = dict_blastn_allele_count[s]
                 if s in set_annotated:
-                    correctness = '1'
+                    correctness = '3'
                 else:
-                    correctness = '0'
+                    correctness = '2'
                 f.write(s + '\t' + str(count) + '\t' + correctness + '\n')
+            for s in set_annotated - set_blastn.intersection(set_annotated): #print those annotated but not found
+                f.write(s + '\t' + '' + '\t' + '1' + '\n')
+
             '''
             for s in set_blastn.intersection(set_annotated):
                 f.write(s + '\t' + '3' + '\n')
@@ -71,6 +74,7 @@ def read_files(fn_called, fn_annotated, gene, fn_output):
             set_not_in_blastn_but_annotated = set_annotated - set_blastn.intersection(set_annotated)
             for s in set_not_in_blastn_but_annotated:
                 f.write(s + '\t' + '1' + '\n')
+            '''
             
     return set_blastn, set_annotated, dict_blastn_allele_count
 
