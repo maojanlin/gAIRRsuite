@@ -38,13 +38,17 @@ def parse_args():
         action = 'store_true'
     )
     parser.add_argument(
+        '--fn_allele_len',
+        help = 'TSV file specifying allele lengths'
+    )
+    parser.add_argument(
         '-o', '--fn_output',
         help = 'output file including only alleles [None]'
     )
     args = parser.parse_args()
     return args
 
-def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top):
+def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top, dict_allele_len):
     size = len(chunk_records)
     # size = 1
 
@@ -55,20 +59,32 @@ def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_tak
         score = float(chunk_records[0][3]) / size
     
     if only_take_top:
-        if dict_allele_count.get(chunk_records[0][1]):
-            dict_allele_count[chunk_records[0][1]] += score
+        name = chunk_records[0][1].split('|')[1]
+        if dict_allele_len:
+            allele_len = dict_allele_len[name]
         else:
-            dict_allele_count[chunk_records[0][1]] = score
+            allele_len = 1
+
+        if dict_allele_count.get(name):
+            dict_allele_count[name] += float(score / allele_len)
+        else:
+            dict_allele_count[name] = float(score / allele_len)
     else:
         for i, _ in enumerate(chunk_records):
-            if dict_allele_count.get(chunk_records[i][1]):
-                dict_allele_count[chunk_records[i][1]] += score
+            name = chunk_records[i][1].split('|')[1]
+            if dict_allele_len:
+                allele_len = dict_allele_len[name]
             else:
-                dict_allele_count[chunk_records[i][1]] = score
+                allele_len = 1
+
+            if dict_allele_count.get(name):
+                dict_allele_count[name] += float(score / allele_len)
+            else:
+                dict_allele_count[name] = float(score / allele_len)
     
     return dict_allele_count
 
-def process_blastn_log(fn_input, scoring, only_take_top):
+def process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len):
     f = open(fn_input, 'r')
     new_record_flag = True
     dict_allele_count = {}
@@ -78,7 +94,7 @@ def process_blastn_log(fn_input, scoring, only_take_top):
         if line[0] == '#':
             if len(chunk_records) > 0:
                 num_records += 1
-                dict_allele_count = process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top)
+                dict_allele_count = process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top, dict_allele_len)
             # initialize chunk
             new_record_flag = True
             chunk_records = []
@@ -114,7 +130,22 @@ def print_dict_allele_count(dict_allele_count, top_n, fn_output):
     if fn_output:
         with open(fn_output, 'w') as f_o:
             for i in range(top_n):
-                f_o.write(sorted_dict[i][0].split('|')[1] + '\t' + str(sorted_dict[i][1]) + '\n')
+                f_o.write(sorted_dict[i][0] + '\t' + str(sorted_dict[i][1]) + '\n')
+                # f_o.write(sorted_dict[i][0].split('|')[1] + '\t' + str(sorted_dict[i][1]) + '\n')
+
+def get_allele_len(fn_allele_len):
+    '''
+    Read allele lengths TSV file
+    '''
+    dc = {}
+    with open(fn_allele_len, 'r') as f:
+        cnt = 0
+        for line in f:
+            if cnt == 0:
+                cnt += 1
+            else:
+                dc[line.split('\t')[0]] = int(line.split('\t')[1])
+    return dc
 
 if __name__ == '__main__':
     args = parse_args()
@@ -122,8 +153,14 @@ if __name__ == '__main__':
     fn_output = args.fn_output
     top_n = args.top_n
     scoring = args.scoring
+    fn_allele_len = args.fn_allele_len
     assert scoring in ['bit_score', 'count']
     only_take_top = args.only_take_top
 
-    dict_allele_count = process_blastn_log(fn_input, scoring, only_take_top)
+    if fn_allele_len:
+        dict_allele_len = get_allele_len(fn_allele_len)
+    else:
+        dict_allele_len = None
+
+    dict_allele_count = process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len)
     print_dict_allele_count(dict_allele_count, top_n, fn_output)
