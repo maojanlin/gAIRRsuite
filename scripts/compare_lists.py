@@ -35,7 +35,7 @@ def read_files(fn_called, fn_annotated, gene, fn_output):
             allele = line.split('\t')[0]
             count = line.split('\t')[1]
             if line.count(gene) == 0:
-                print ('warning:', line)
+                print ('Warning: gene {} not appearing in the blastn record: '.format(gene), line)
             else:
                 list_blastn.append(allele)
                 dict_blastn_allele_count[allele] = count
@@ -45,7 +45,7 @@ def read_files(fn_called, fn_annotated, gene, fn_output):
         for line in f:
             line = line.rstrip()
             if line.count(gene) == 0:
-                print ('warning:', line)
+                print ('Warning: gene {} not appearing in the blastn annotation: '.format(gene), line)
             else:
                 list_annotated.append(line)
 
