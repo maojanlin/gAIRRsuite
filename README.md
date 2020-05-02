@@ -27,7 +27,8 @@ An example for internal use:
 
 ```
 cd /home/naechyunchen/NAS/Yuchun/naechyun/blast/experiments
-python3.5 ../../immunogenomics/scripts/parse_blastn_output.py -f NA12878_S46_L001_R1_001.blastn.out.txt -n 80 -o trbv_top80.txt
+python ../../immunogenomics/scripts/parse_blastn_output.py -f NA12878_S46_full_name.blastn.out.txt -n 600 -o all_top600_allelelen.txt --fn_allele_len ../../../20200317_filtered_V_alleles_for_probe_design/allele_len.tsv
+# python3.5 ../../immunogenomics/scripts/parse_blastn_output.py -f NA12878_S46_L001_R1_001.blastn.out.txt -n 80 -o trbv_top80.txt
 python3.5 ../../immunogenomics/scripts/compare_lists.py -fc trbv_top80.txt -fa trbv_all.txt -g TRBV
 ```
 
