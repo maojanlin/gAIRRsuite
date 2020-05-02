@@ -37,12 +37,18 @@ M01931:79:000000000-CHMNT:1:1101:16553:1013	KM455555|IGLV11-55*02|Homo	98.980	98
 '''
 
 import argparse
+from utils import read_allele_cluster, get_allele_cluster
+import pickle
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-f', '--fn_input',
         help = 'input file (blastn log file)'
+    )
+    parser.add_argument(
+        '-c', '--fn_cluster',
+        help = 'allele cluster report (from clustal-omega)'
     )
     parser.add_argument(
         '-n', '--top_n',
@@ -74,10 +80,28 @@ def parse_args():
         '-o', '--fn_output',
         help = 'output file including only alleles [None]'
     )
+    parser.add_argument(
+        '-ocp', '--fn_output_cluster_pickle',
+        help = 'output pickle file that stores cluster_info dict [None]'
+    )
     args = parser.parse_args()
     return args
 
-def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top, dict_allele_len):
+def update_cluster_info(dict_cluster_info, allele_name, read_name, dict_allele_cluster):
+    '''
+    `dict_cluster_info` is mutable
+    '''
+    cluster_id = dict_allele_cluster.get(allele_name)
+    if not cluster_id:
+        # allele_name not in cluster
+        return
+    if dict_cluster_info.get(cluster_id):
+        dict_cluster_info[cluster_id][0].add(allele_name)
+        dict_cluster_info[cluster_id][1].add(read_name)
+    else:
+        dict_cluster_info[cluster_id] = [{allele_name}, {read_name}]
+
+def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top, dict_allele_len, dict_allele_cluster, dict_cluster_info):
     size = len(chunk_records)
     # size = 1
 
@@ -87,6 +111,7 @@ def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_tak
     elif scoring == 'bit_score':
         score = float(chunk_records[0][11]) / size
     
+    read_name = chunk_records[0][0]
     if only_take_top:
         name = chunk_records[0][1].split('|')[1]
         if dict_allele_len:
@@ -98,6 +123,8 @@ def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_tak
             dict_allele_count[name] += float(score / allele_len)
         else:
             dict_allele_count[name] = float(score / allele_len)
+
+        update_cluster_info(dict_cluster_info, name, read_name, dict_allele_cluster)
     else:
         for i, _ in enumerate(chunk_records):
             name = chunk_records[i][1].split('|')[1]
@@ -110,20 +137,28 @@ def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_tak
                 dict_allele_count[name] += float(score / allele_len)
             else:
                 dict_allele_count[name] = float(score / allele_len)
+
+            update_cluster_info(dict_cluster_info, name, read_name, dict_allele_cluster)
     
     return dict_allele_count
 
-def process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len, identity_thrsd=0):
+def process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len, dict_allele_cluster, identity_thrsd=0):
     f = open(fn_input, 'r')
     new_record_flag = True
     dict_allele_count = {}
     chunk_records = []
     num_records = 0
+    dict_cluster_info = {}
+    # dict_cluster_info
+    #   - keys: cluster_id
+    #   - values: [{a set of allele names}, {a set of read names}]
+
+    # one chunk associates with one read
     for line in f:
         if line[0] == '#':
             if len(chunk_records) > 0:
                 num_records += 1
-                dict_allele_count = process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top, dict_allele_len)
+                dict_allele_count = process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top, dict_allele_len, dict_allele_cluster, dict_cluster_info)
             # initialize chunk
             new_record_flag = True
             chunk_records = []
@@ -148,11 +183,11 @@ def process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len, identi
     # process the last record
     if len(chunk_records) > 0:
         num_records += 1
-        dict_allele_count = process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top)
+        dict_allele_count = process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_take_top, dict_allele_cluster, dict_cluster_info)
     
     print ('Number of records processed:', num_records)
 
-    return dict_allele_count
+    return dict_allele_count, dict_cluster_info
 
 def print_dict_allele_count(dict_allele_count, top_n, fn_output):
     sorted_dict = sorted(dict_allele_count.items(), key=lambda x: x[1], reverse=True)
@@ -186,6 +221,7 @@ def get_allele_len(fn_allele_len):
 if __name__ == '__main__':
     args = parse_args()
     fn_input = args.fn_input
+    fn_cluster = args.fn_cluster
     fn_output = args.fn_output
     top_n = args.top_n
     scoring = args.scoring
@@ -193,11 +229,20 @@ if __name__ == '__main__':
     fn_allele_len = args.fn_allele_len
     assert scoring in ['bit_score', 'count']
     only_take_top = args.only_take_top
+    fn_output_cluster_pickle = args.fn_output_cluster_pickle
 
     if fn_allele_len:
         dict_allele_len = get_allele_len(fn_allele_len)
     else:
         dict_allele_len = None
 
-    dict_allele_count = process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len, identity_thrsd)
+    if fn_cluster:
+        dict_allele_cluster = read_allele_cluster(fn_cluster)
+
+    dict_allele_count, dict_cluster_info = process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len, dict_allele_cluster, identity_thrsd)
     print_dict_allele_count(dict_allele_count, top_n, fn_output)
+
+    if fn_output_cluster_pickle:
+        f = open(fn_output_cluster_pickle, 'wb')
+        pickle.dump(dict_cluster_info, f)
+        f.close()
