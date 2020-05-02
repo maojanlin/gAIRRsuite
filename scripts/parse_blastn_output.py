@@ -1,6 +1,7 @@
 '''
 An example of input file:
 
+old
 # BLASTN 2.10.0+
 # Query: M01931:79:000000000-CHMNT:1:1101:21945:1007 1:N:0:46
 # Database: ../../../IMGT_DBSEQ/TRBV.fasta.txt
@@ -11,6 +12,28 @@ M01931:79:000000000-CHMNT:1:1101:21945:1007    L36092|TRBV7-7*01|Homo    0.45   
 M01931:79:000000000-CHMNT:1:1101:21945:1007    X58806|TRBV7-6*02|Homo    0.45    24.7
 M01931:79:000000000-CHMNT:1:1101:21945:1007    L36092|TRBV7-6*01|Homo    0.45    24.7
 M01931:79:000000000-CHMNT:1:1101:21945:1007    L13762|TRBV7-4*02|Homo    1.6    22.9
+
+new
+# BLASTN 2.10.0+
+# Query: M01931:79:000000000-CHMNT:1:1101:21945:1007 1:N:0:46
+# Database: ../../20200317_filtered_V_alleles_for_probe_design/all_probs.fasta
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 1 hits found
+M01931:79:000000000-CHMNT:1:1101:21945:1007	AE000661|TRAV37*01|Homo	100.000	13	0	0	140	152	144	156	3.0	24.7
+# BLASTN 2.10.0+
+# Query: M01931:79:000000000-CHMNT:1:1101:21666:1012 1:N:0:46
+# Database: ../../20200317_filtered_V_alleles_for_probe_design/all_probs.fasta
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 2 hits found
+M01931:79:000000000-CHMNT:1:1101:21666:1012	IMGT000035|IGHV(III)-2-1*02|Homo	95.000	20	1	0	231	250	119	138	0.020	32.8
+M01931:79:000000000-CHMNT:1:1101:21666:1012	AB019441|IGHV(III)-2-1*01|Homo	95.000	20	1	0	231	250	119	138	0.020	32.8
+# BLASTN 2.10.0+
+# Query: M01931:79:000000000-CHMNT:1:1101:16553:1013 1:N:0:46
+# Database: ../../20200317_filtered_V_alleles_for_probe_design/all_probs.fasta
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 122 hits found
+M01931:79:000000000-CHMNT:1:1101:16553:1013	D86996|IGLV11-55*01|Homo	100.000	98	0	0	2	99	98	1	2.15e-46	178
+M01931:79:000000000-CHMNT:1:1101:16553:1013	KM455555|IGLV11-55*02|Homo	98.980	98	1	0	2	99	98	1	9.15e-45	173
 '''
 
 import argparse
@@ -25,6 +48,12 @@ def parse_args():
         '-n', '--top_n',
         help = 'number of top alleles printed (10)',
         default = 10,
+        type = int
+    )
+    parser.add_argument(
+        '--identity_thrsd',
+        help = 'minimum identity level that we take into account ([0,100]) [0]',
+        default = 0,
         type = int
     )
     parser.add_argument(
@@ -56,7 +85,7 @@ def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_tak
     if scoring == 'count':
         score = 1 / size
     elif scoring == 'bit_score':
-        score = float(chunk_records[0][3]) / size
+        score = float(chunk_records[0][11]) / size
     
     if only_take_top:
         name = chunk_records[0][1].split('|')[1]
@@ -84,7 +113,7 @@ def process_blastn_log_chunk(dict_allele_count, chunk_records, scoring, only_tak
     
     return dict_allele_count
 
-def process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len):
+def process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len, identity_thrsd=0):
     f = open(fn_input, 'r')
     new_record_flag = True
     dict_allele_count = {}
@@ -101,12 +130,19 @@ def process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len):
             continue
         elif new_record_flag:
             fields = line.split()
-            # the first hit
+            # the first hiti
             if len(chunk_records) == 0:
-                chunk_records.append(fields)
+                # check if the identity >= identity_thrsd
+                if (float(fields[2]) >= identity_thrsd):
+                    chunk_records.append(fields)
+                else:
+                    new_record_flag = True
             # if tied bit score
-            elif fields[3] == chunk_records[-1][3]:
-                chunk_records.append(fields)
+            elif fields[11] == chunk_records[-1][11]:
+                if (float(fields[2]) >= identity_thrsd):
+                    chunk_records.append(fields)
+                else:
+                    new_record_flag = True
             else:
                 new_record_flag = False
     # process the last record
@@ -153,6 +189,7 @@ if __name__ == '__main__':
     fn_output = args.fn_output
     top_n = args.top_n
     scoring = args.scoring
+    identity_thrsd = args.identity_thrsd
     fn_allele_len = args.fn_allele_len
     assert scoring in ['bit_score', 'count']
     only_take_top = args.only_take_top
@@ -162,5 +199,5 @@ if __name__ == '__main__':
     else:
         dict_allele_len = None
 
-    dict_allele_count = process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len)
+    dict_allele_count = process_blastn_log(fn_input, scoring, only_take_top, dict_allele_len, identity_thrsd)
     print_dict_allele_count(dict_allele_count, top_n, fn_output)
