@@ -1,9 +1,9 @@
-_Updated: Mar. 18, 2020_
+_Updated: May. 1, 2020_
 ## BLASTn-based pipeline
 
-BLASTn performs local alignment, which effectively compares local regions of a sequence with the database.
-Here we use reads as queries and build databases for TCR/BCR alleles of interest.
-Because our reads can be longer than an allele, and we haven't had a deep understanding to the genetic diversity of the flanking regions, local-alignment-based methods can be useful in this application.
+BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
+Here we use reads as queries and build two databases, one for TCR genes and one for BCR genes.
+Because our reads (300-bp, paired-end) are usually longer than BCR/TCR alleles, and we haven't had a deep understanding to the genetic diversity of the flanking regions, local-alignment-based methods is useful.
 
 ### Run BLASTn
 
@@ -30,6 +30,17 @@ cd /home/naechyunchen/NAS/Yuchun/naechyun/blast/experiments
 python3.5 ../../immunogenomics/scripts/parse_blastn_output.py -f NA12878_S46_L001_R1_001.blastn.out.txt -n 80 -o trbv_top80.txt
 python3.5 ../../immunogenomics/scripts/compare_lists.py -fc trbv_top80.txt -fa trbv_all.txt -g TRBV
 ```
+
+## Cluster alleles using Clustal-omega
+
+Clustal-omega pre-built binary files can be downloaded from: http://www.clustal.org/omega/#Documentation
+
+The following command clusters TCR alleles, and limit each cluster to include less than 20 alleles:
+
+```
+~/bin/clustal-omega-1.2.3-macosx -i TR_all.fasta -o TR_msa.fasta --clustering-out=TR_all.cluster --threads 4 --cluster-size 20
+```
+
 
 ## Usage
 **Generate search patterns for haptamer and nonamer**
