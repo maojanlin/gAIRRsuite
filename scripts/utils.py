@@ -3,6 +3,73 @@ def get_reverse_complement(seq):
     reverse_complement = "".join(complement.get(base, base) for base in reversed(seq))
     return reverse_complement
 
+def get_hamming_dist(
+    str_a,
+    str_b,
+    thrsd=None,
+    case_insensitive=True,
+    try_both_orient=True
+):
+    '''
+    Calculate the hamming distance between input strings
+
+    Args:
+    - str_a, str_b (Strings): equal-length strings
+    - thrsd (Int/None):
+        if None, return distance (Int)
+        if Int, return True/False (distance is <= or > thrds)
+    - case_insensitive (Bool): whether to consider cases
+    - try_both_orient (Bool): set True to try both orientations
+
+    Returns:
+    Int or True/False
+    '''
+
+    assert (len(str_a) == len(str_b))
+    if case_insensitive:
+        str_a = str_a.upper()
+        str_b = str_b.upper()
+
+    dist = 0
+    if thrsd == None:
+        for i, a in enumerate(str_a):
+            if a != str_b[i]:
+                dist += 1
+
+        if not try_both_orient:
+            return dist
+        else:
+            r_dist = 0
+            for i, a in enumerate(get_reverse_complement(str_a)):
+                if a != str_b[i]:
+                    r_dist += 1
+            return min(dist, r_dist)
+    else:
+        dist = True
+        for i, a in enumerate(str_a):
+            if a != str_b[i]:
+                dist += 1
+            if dist > thrsd:
+                dist = False
+                break
+
+        # if it's below thrsd, return True
+        if dist != False:
+            return True
+
+        # if not, consider the other orientation
+        if not try_both_orient:
+            return False
+        else:
+            dist = True
+            for i, a in enumerate(get_reverse_complement(str_a)):
+                if a != str_b[i]:
+                    dist += 1
+                if dist > thrsd:
+                    return False
+            return True
+
+
 def read_from_fastq(fn_fastq):
     '''
     Retrive information from a fastq file
