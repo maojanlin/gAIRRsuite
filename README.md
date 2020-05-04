@@ -1,4 +1,4 @@
-_Updated: May. 1, 2020_
+_Updated: May. 3, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -28,8 +28,7 @@ An example for internal use:
 ```
 cd /home/naechyunchen/NAS/Yuchun/naechyun/blast/experiments
 python ../../immunogenomics/scripts/parse_blastn_output.py -f NA12878_S46_full_name.blastn.out.txt -n 600 -o all_top600_allelelen.txt --fn_allele_len ../../../20200317_filtered_V_alleles_for_probe_design/allele_len.tsv --identity_thrsd 100 -c clustering/TR_all.cluster -ocp all_top600_allelelen_tr.cluster.pickle
-# python3.5 ../../immunogenomics/scripts/parse_blastn_output.py -f NA12878_S46_L001_R1_001.blastn.out.txt -n 80 -o trbv_top80.txt
-python3.5 ../../immunogenomics/scripts/compare_lists.py -fc trbv_top80.txt -fa trbv_all.txt -g TRBV
+python ../../immunogenomics/scripts/compare_with_annotation.py -fc all_top600_allelelen.txt -fa NA12878_annotated_all.txt -g TR
 ```
 
 The above `parse_blastn_output.py` example:
