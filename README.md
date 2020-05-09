@@ -21,7 +21,7 @@ If there is a tie, we split the score evenly between each hit.
 (This may not be statistically true because bit score is in log space, but empirically the results look good.)
 Top `n` (which is an argument `scripts/parse_blastn_output.py`) hits are reported.
 
-We then use `scripts/compare_lists.py` to compare BLASTn calls with annotation which uses the information from personalized reference genomes.
+We then use `scripts/compare_with_annotation.py` to compare BLASTn calls with annotation which uses the information from personalized reference genomes.
 
 An example for internal use:
 
