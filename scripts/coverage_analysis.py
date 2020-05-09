@@ -105,14 +105,15 @@ def coverage_analysis(
 
     # for each cluster
     for cluster_id in dict_read_allele_clusters.keys():
-    #for cluster_id in range(9,25,15):
-        print(cluster_id)
+    #for cluster_id in range(23,24,15):
+        #print(cluster_id)
         cluster = dict_read_allele_clusters[str(cluster_id)]
         dict_allele = cluster[0]
         set_read = cluster[1]
 
         # for each allele in a cluster
         for allele in dict_allele.keys():
+            print(allele)
             seq_allele = dict_allele[allele]
             seq_coverage = np.zeros( len(seq_allele) )
 
@@ -133,7 +134,7 @@ def coverage_analysis(
                             str_a=seq_allele[i: i+len(read)],
                             thrsd=int(required_single_identity)
                         ):
-                            seq_coverage[i:i+len(read)] = 1
+                            seq_coverage[i:i+len(read)] += 1
                             read_found = True
                             break
                     # the read position is already found
@@ -149,7 +150,7 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[0:i] = 1
+                            seq_coverage[0:i] += 1
                             read_found = 1
                             break
                         if get_hamming_dist(
@@ -158,7 +159,7 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[0:i] = 1
+                            seq_coverage[0:i] += 1
                             read_found = 1
                             break
                     # the read position is already found
@@ -172,7 +173,7 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[i:] = 1
+                            seq_coverage[i:] += 1
                             break
                         if get_hamming_dist(
                             str_a=seq_allele[i:],
@@ -180,9 +181,9 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[i:] = 1
+                            seq_coverage[i:] += 1
                             break
-                else:
+                else: # len(seq_allele) <= len(read)
                     read_found = False
                     for i in range(len(read) - len(seq_allele) + 1):
                         # if dist <= threshold
@@ -192,14 +193,11 @@ def coverage_analysis(
                             thrsd=int(required_single_identity)
                         ):
                             read_found = True
-                            if dict_hcover_calls.get(allele):
-                                dict_hcover_calls[allele] += 1
-                            else:
-                                dict_hcover_calls[allele] = 1
+                            seq_coverage[:] += 1
                             break
                     # read_found means the allele is totally covered
                     if read_found:
-                        break
+                        continue
                     
                     r_read = get_reverse_complement(read)
                     for i in range(required_single_coverage, len(seq_allele)):
@@ -210,8 +208,8 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[0:i] = 1
-                            read_found = 1
+                            seq_coverage[0:i] += 1
+                            ###print('E: 0:' + str(i))
                             break
                         if get_hamming_dist(
                             str_a=seq_allele[0:i],
@@ -219,7 +217,7 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[0:i] = 1
+                            seq_coverage[0:i] += 1
                             read_found = 1
                             break
                     # the read position is already found
@@ -233,7 +231,8 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[i:] = 1
+                            seq_coverage[i:] += 1
+                            ###print('G: ' + str(i) + ':' + str(len(seq_allele)))
                             break
                         if get_hamming_dist(
                             str_a=seq_allele[i:],
@@ -241,15 +240,21 @@ def coverage_analysis(
                             thrsd=int(required_single_identity),
                             try_both_orient=False
                         ):
-                            seq_coverage[i:] = 1
+                            seq_coverage[i:] += 1
+                            ###print('H: ' + str(i) + ':' + str(len(seq_allele)))
                             break
 
             
-            if sum(seq_coverage)/len(seq_coverage) >= required_total_coverage:
+            #if sum(seq_coverage)/len(seq_coverage) >= required_total_coverage:
+            if min(seq_coverage) > 0:
                 if dict_hcover_calls.get(allele):
+                    print("Warning! evaluate two times")
                     dict_hcover_calls[allele] += 1
                 else:
-                    dict_hcover_calls[allele] = sum(seq_coverage)/len(seq_coverage)
+                    dict_hcover_calls[allele] = min(seq_coverage)
+                print("HC!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
+            else:
+                print("XX!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
 
 
     print (dict_hcover_calls)
