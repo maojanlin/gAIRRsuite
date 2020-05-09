@@ -85,6 +85,77 @@ def fetch_reads_alleles(fn_read, fn_allele, dict_cluster_info):
                 
     return dict_read_allele_clusters
 
+def hamming_traverse(
+    seq_allele,
+    read,
+    min_coverage = 100,
+    min_hamming  = 1
+):
+    '''
+    get the allele and read, traverse all possible relative position until match found.
+    return triplet (True/False, start position, end position)
+    does not concern the reverse_complement
+    '''
+    if len(read) < min_coverage:
+        return (False,0,0)
+    if len(seq_allele) > len(read):
+        for i in range(len(seq_allele) - len(read) + 1):
+            if get_hamming_dist(
+                str_a=seq_allele[i: i+len(read)],
+                str_b=read,
+                thrsd=int(min_hamming),
+                try_both_orient=False
+            ):
+                return (True, i, i+len(read))
+        
+        for i in range(min_coverage, len(read)):
+            if get_hamming_dist(
+                str_a=seq_allele[0:i],
+                str_b=read[len(read)-i: len(read)],
+                thrsd=int(min_hamming),
+                try_both_orient=False
+            ):
+                return (True, 0, i)
+
+        for i in range(len(seq_allele)-len(read), len(seq_allele)-min_coverage):
+            if get_hamming_dist(
+                str_a=seq_allele[i:],
+                str_b=read[: len(seq_allele)-i],
+                thrsd=int(min_hamming),
+                try_both_orient=False
+            ):
+                return (True, i, len(seq_allele))
+    else: # len(seq_allele) <= len(read)
+        for i in range(len(read) - len(seq_allele) + 1):
+            if get_hamming_dist(
+                str_a=seq_allele,
+                str_b=read[i: i+len(seq_allele)],
+                thrsd=int(min_hamming),
+                try_both_orient=False
+            ):
+                return (True, 0, len(seq_allele))
+        
+        for i in range(min_coverage, len(seq_allele)):
+            if get_hamming_dist(
+                str_a=seq_allele[0:i],
+                str_b=read[len(read)-i: len(read)],
+                thrsd=int(min_hamming),
+                try_both_orient=False
+            ):
+                return (True, 0, i)
+
+        for i in range(0, len(seq_allele)-min_coverage):
+            if get_hamming_dist(
+                str_a=seq_allele[i:],
+                str_b=read[: len(seq_allele)-i],
+                thrsd=int(min_hamming),
+                try_both_orient=False
+            ):
+                return (True, i, len(seq_allele))
+    
+    return (False, 0, 0)
+    
+
 def coverage_analysis(
     dict_read_allele_clusters,
     required_single_coverage = 100,
@@ -105,7 +176,7 @@ def coverage_analysis(
 
     # for each cluster
     for cluster_id in dict_read_allele_clusters.keys():
-    #for cluster_id in range(23,24,15):
+        #for cluster_id in range(23,24,15):
         #print(cluster_id)
         cluster = dict_read_allele_clusters[str(cluster_id)]
         dict_allele = cluster[0]
@@ -123,138 +194,28 @@ def coverage_analysis(
             
             # need simplify
             for read in set_read:
+                # ignore the reads that are too short
                 if len(read) < required_single_coverage:
                     continue
-                if len(seq_allele) > len(read):
-                    read_found = False
-                    for i in range(len(seq_allele) - len(read) + 1):
-                        # if dist <= threshold
-                        if get_hamming_dist(
-                            str_b=read, # reverse complement is on read
-                            str_a=seq_allele[i: i+len(read)],
-                            thrsd=int(required_single_identity)
-                        ):
-                            seq_coverage[i:i+len(read)] += 1
-                            read_found = True
-                            break
-                    # the read position is already found
-                    if read_found:
-                        continue
-                    
+
+                traverse_result = hamming_traverse(seq_allele, read, required_single_coverage, required_single_identity)
+                if traverse_result[0]:
+                    seq_coverage[traverse_result[1]:traverse_result[2]] += 1
+                else:
                     r_read = get_reverse_complement(read)
-                    for i in range(required_single_coverage, len(read)):
-                        # if dist <= threshold
-                        if get_hamming_dist(
-                            str_a=seq_allele[0:i],
-                            str_b=read[len(read)-i: len(read)],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[0:i] += 1
-                            read_found = 1
-                            break
-                        if get_hamming_dist(
-                            str_a=seq_allele[0:i],
-                            str_b=r_read[len(read)-i: len(read)],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[0:i] += 1
-                            read_found = 1
-                            break
-                    # the read position is already found
-                    if read_found:
-                        continue
-
-                    for i in range(len(seq_allele)-len(read), len(seq_allele)-required_single_coverage):
-                        if get_hamming_dist(
-                            str_a=seq_allele[i:],
-                            str_b=read[: len(seq_allele)-i],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[i:] += 1
-                            break
-                        if get_hamming_dist(
-                            str_a=seq_allele[i:],
-                            str_b=r_read[: len(seq_allele)-i],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[i:] += 1
-                            break
-                else: # len(seq_allele) <= len(read)
-                    read_found = False
-                    for i in range(len(read) - len(seq_allele) + 1):
-                        # if dist <= threshold
-                        if get_hamming_dist(
-                            str_a=seq_allele,
-                            str_b=read[i: i+len(seq_allele)],
-                            thrsd=int(required_single_identity)
-                        ):
-                            read_found = True
-                            seq_coverage[:] += 1
-                            break
-                    # read_found means the allele is totally covered
-                    if read_found:
-                        continue
-                    
-                    r_read = get_reverse_complement(read)
-                    for i in range(required_single_coverage, len(seq_allele)):
-                        # if dist <= threshold
-                        if get_hamming_dist(
-                            str_a=seq_allele[0:i],
-                            str_b=read[len(read)-i: len(read)],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[0:i] += 1
-                            ###print('E: 0:' + str(i))
-                            break
-                        if get_hamming_dist(
-                            str_a=seq_allele[0:i],
-                            str_b=r_read[len(read)-i: len(read)],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[0:i] += 1
-                            read_found = 1
-                            break
-                    # the read position is already found
-                    if read_found:
-                        continue
-
-                    for i in range(0, len(seq_allele)-required_single_coverage):
-                        if get_hamming_dist(
-                            str_a=seq_allele[i:],
-                            str_b=read[: len(seq_allele)-i],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[i:] += 1
-                            ###print('G: ' + str(i) + ':' + str(len(seq_allele)))
-                            break
-                        if get_hamming_dist(
-                            str_a=seq_allele[i:],
-                            str_b=r_read[: len(seq_allele)-i],
-                            thrsd=int(required_single_identity),
-                            try_both_orient=False
-                        ):
-                            seq_coverage[i:] += 1
-                            ###print('H: ' + str(i) + ':' + str(len(seq_allele)))
-                            break
-
+                    traverse_result = hamming_traverse(seq_allele, r_read, required_single_coverage, required_single_identity)
+                    if traverse_result[0]:
+                        seq_coverage[traverse_result[1]:traverse_result[2]] += 1
             
-            #if sum(seq_coverage)/len(seq_coverage) >= required_total_coverage:
             if min(seq_coverage) > 0:
                 if dict_hcover_calls.get(allele):
                     print("Warning! evaluate two times")
                     dict_hcover_calls[allele] += 1
                 else:
                     dict_hcover_calls[allele] = min(seq_coverage)
-                print("HC!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
+                print("high-con!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
             else:
-                print("XX!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
+                print("un-match!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
 
 
     print (dict_hcover_calls)
