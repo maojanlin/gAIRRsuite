@@ -180,8 +180,7 @@ def coverage_analysis(
     list_answer = []
 
     # for each cluster
-    #for cluster_id in dict_read_allele_clusters.keys():
-    for cluster_id in range(23,24,15):
+    for cluster_id in dict_read_allele_clusters.keys():
         print("============= Cluster: " + str(cluster_id) + " ==============")
         cluster = dict_read_allele_clusters[str(cluster_id)]
         dict_allele = cluster[0]
