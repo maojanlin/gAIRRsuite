@@ -16,6 +16,11 @@ def parse_args():
         help = 'allele fasta file'
     )
     parser.add_argument(
+        '-md', '--min_depth',
+        default=0,
+        help = 'minimun required read-depth for hc allele'
+    )
+    parser.add_argument(
         '-fnp', '--fn_pickle_file', 
         help = 'input pickle file indicating reads and alleles in the clusters'
     )
@@ -158,12 +163,12 @@ def hamming_traverse(
 
 def coverage_analysis(
     dict_read_allele_clusters,
+    required_min_depth = 0,
     required_single_coverage = 100,
-    required_total_coverage  = 1,
     required_single_identity = 1,
 ):
 
-    dict_hcover_calls = {}
+    dict_hc_calls = {}
 
     # tmp: for dev
     list_annotated = []
@@ -175,9 +180,9 @@ def coverage_analysis(
     list_answer = []
 
     # for each cluster
-    for cluster_id in dict_read_allele_clusters.keys():
-        #for cluster_id in range(23,24,15):
-        #print(cluster_id)
+    #for cluster_id in dict_read_allele_clusters.keys():
+    for cluster_id in range(23,24,15):
+        print("============= Cluster: " + str(cluster_id) + " ==============")
         cluster = dict_read_allele_clusters[str(cluster_id)]
         dict_allele = cluster[0]
         set_read = cluster[1]
@@ -207,27 +212,27 @@ def coverage_analysis(
                     if traverse_result[0]:
                         seq_coverage[traverse_result[1]:traverse_result[2]] += 1
             
-            if min(seq_coverage) > 0:
-                if dict_hcover_calls.get(allele):
+            if min(seq_coverage) > required_min_depth:
+                if dict_hc_calls.get(allele):
                     print("Warning! evaluate two times")
-                    dict_hcover_calls[allele] += 1
+                    dict_hc_calls[allele] += 1
                 else:
-                    dict_hcover_calls[allele] = min(seq_coverage)
-                print("high-con!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
+                    dict_hc_calls[allele] = min(seq_coverage)
+                print("OOO: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
             else:
-                print("un-match!: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
+                print("XXX: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
 
 
-    print (dict_hcover_calls)
+    print (dict_hc_calls)
     print (list_answer)
 
     # tmp
     print ('Num. high-confidence calls')
-    print (len(set(dict_hcover_calls)))
+    print (len(set(dict_hc_calls)))
     print ('Num. answer')
     print (len(set(list_answer)))
     print ('Num. intersection')
-    print (len(set(list_answer).intersection(set(dict_hcover_calls))))
+    print (len(set(list_answer).intersection(set(dict_hc_calls))))
     
 
 
@@ -300,6 +305,7 @@ if __name__ == '__main__':
     args = parse_args()
     fn_read = args.fn_read
     fn_allele = args.fn_allele
+    min_depth = int(args.min_depth)
     fn_pickle_file = args.fn_pickle_file
     fn_output_cluster_pickle = args.fn_output_cluster_pickle
 
@@ -318,5 +324,5 @@ if __name__ == '__main__':
             pickle.dump(dict_read_allele_clusters, f)
             f.close()
 
-    coverage_analysis(dict_read_allele_clusters)
+    coverage_analysis(dict_read_allele_clusters, min_depth)
 
