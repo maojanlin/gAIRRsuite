@@ -73,6 +73,7 @@ def fetch_reads_alleles(fn_read, fn_allele, dict_cluster_info):
                 allele_SEQs = ""
             else:
                 allele_SEQs = allele_SEQs + line.strip()
+        dict_read_allele_clusters = add_alleles(allele_name, allele_SEQs, dict_cluster_info, dict_read_allele_clusters)
 
     with open(fn_read, 'r') as f_r:
         read_name = ""
@@ -87,6 +88,7 @@ def fetch_reads_alleles(fn_read, fn_allele, dict_cluster_info):
                 read_SEQs = ""
             else:
                 read_SEQs = read_SEQs + line.strip()
+        dict_read_allele_clusters = add_reads(read_name, read_SEQs, dict_cluster_info, dict_read_allele_clusters)
                 
     return dict_read_allele_clusters
 
@@ -220,6 +222,7 @@ def coverage_analysis(
                 print("OOO: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
             else:
                 print("XXX: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
+            #print(seq_coverage)
 
 
     print (dict_hc_calls)
@@ -310,7 +313,7 @@ if __name__ == '__main__':
 
     # load pickle if it's already there
     if os.path.exists(fn_output_cluster_pickle):
-        print ('Pickle file {} has existed, load for it instread re-calculating'.format(fn_output_cluster_pickle))
+        print ('Pickle file {} has existed, load for it instead of re-calculating'.format(fn_output_cluster_pickle))
         f = open(fn_output_cluster_pickle, 'rb')
         dict_read_allele_clusters = pickle.load(f)
         f.close()
