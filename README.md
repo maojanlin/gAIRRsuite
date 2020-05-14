@@ -1,4 +1,4 @@
-_Updated: May. 10, 2020_
+_Updated: May. 15, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -29,7 +29,6 @@ An example for internal use:
 cd /home/naechyunchen/NAS/Yuchun/naechyun/blast/experiments
 python ../../immunogenomics/scripts/parse_blastn_output.py -f NA12878_S46_full_name.blastn.out.txt -n 600 -o all_top600_allelelen.txt --fn_allele_len ../../../20200317_filtered_V_alleles_for_probe_design/allele_len.tsv --identity_thrsd 100 -c clustering/TR_all.cluster -ocp all_top600_allelelen_tr.cluster.pickle
 python ../../immunogenomics/scripts/compare_with_annotation.py -fc all_top600_allelelen.txt -fa NA12878_annotated_all.txt -g TR
-python ../../immunogenomics/scripts/coverage_analysis.py -fr NA12878_S46.fasta -fa clustering/TR_all.fasta -md 10 -fnp all_q30_top600_allelelen_tr.cluster.pickle -fop TCR_top600_reads_alleles.pickle
 ```
 
 The above `parse_blastn_output.py` example:
@@ -41,6 +40,25 @@ The above `parse_blastn_output.py` example:
 - writes reads associated with each allele group for second-step high-confidence allele calling
   - cluster labelling is from `TR_all.cluster`
   - cluster-allele-read information is shown as a dictionary, serialized by pickle, as `all_top600_allelelen_tr.cluster.pickle`
+
+## Detailed analysis of the read-coverage on candidate alleles
+
+After `parse_blastn_output.py` and the clusters information group up reads and alleles into different clusters, an all read-to-allele comparison is done in each cluster.
+
+In comparison, the coverage of a read on allele should more than a threshold (100), and no Hamming distance is allowed for a match. In other word, all the matched reads possess perfect identity to the allele with more than (100) nucleotide coverage.
+
+After the comparison, we analyze the read-depth on every alleles, and another threshold (10) is posed on the minimun read-depth on alleles. Only the alleles with minimum read-depth more than (10) are classified as high-confidence allele. It turns out that most unannotated alleles' minimum read-depths are below (10), and annotated ones are above the threshold.
+
+```
+python ../../immunogenomics/scripts/coverage_analysis.py -fr NA12878_S46.fasta -fa clustering/TR_all.fasta -md 10 -fnp all_top600_allelelen_tr.cluster.pickle -fop TCR_top600_reads_alleles.pickle
+```
+The above `coverage_analysis.py` example:
+- fetches the sequence data from read fasta file `NA12878_S46.fasta` and allele fasta file `TR_all.fasta`
+- reference the clustering in `all_top600_allelelen_tr.cluster.pickle` to build read/allele pickle file `TCR_top600_reads_alleles.pickle`
+- If `TCR_top600_reads_alleles.pickle` is already existed, the data will be directly loaded instead of re-calculating
+- the minimum coverage threshold between read and allele is set to 100
+- the minimum read-depth threshold is set to 10 and can be adjusted with -md command
+
 
 ## Cluster alleles using Clustal-omega
 
