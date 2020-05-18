@@ -1,4 +1,4 @@
-_Updated: May. 15, 2020_
+_Updated: May. 19, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -36,7 +36,8 @@ The above `parse_blastn_output.py` example:
 - takes top-600 ranked alleles
 - writes top-ranked alleles and associated scores as `all_top600_allelelen.txt`
 - normalizes scores with allele length, extracted from file `allele_len.tsv`
-- set an identity threshold at 100
+- set an identity threshold at 100, it is highly recommended to set the identity threshold at 100.
+  - Since in the second phase analysis, 100% identity is also considered, identity threshold 100 in this phase can group reads in different clusters more precisely.
 - writes reads associated with each allele group for second-step high-confidence allele calling
   - cluster labelling is from `TR_all.cluster`
   - cluster-allele-read information is shown as a dictionary, serialized by pickle, as `all_top600_allelelen_tr.cluster.pickle`
