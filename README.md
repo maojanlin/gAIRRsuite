@@ -61,12 +61,12 @@ The above `coverage_analysis.py` example:
 - the minimum read-depth threshold is set to 10 and can be adjusted with -md command
 - the -ans argument read in the annotation file for different sample
 - the -fsp argument output a pickle file showing all the supporting reads of all alleles in the coverage analysis
-- `coverage_analysis.py` also shows which allele and its min/average/max coverage on terminal when processing.
+- `coverage_analysis.py` also shows which allele and its min/average/max coverage on terminal when processing. And can be parsed to `read_depth_NA12878_bcrv.log`
 
 
 After the coverage analysis, we can see whats going on in each allele from the `NA12878_bcrv_support_reads.pickle` file. Below two command generates the supporting reads fasta file ``
 ```
-python fetch_support_reads.py -fr NA12878_S46.fasta -fsup NA12878_bcrv_support_reads.pickle -fa IGHV1/OR16-3*01 -fo sup_reads-f1-H1.fasta
+python ../../../immunogenomics/scripts/fetch_support_reads.py -fr NA12878_S46.fasta -fsup NA12878_bcrv_support_reads.pickle -fa IGHV1/OR16-3*01 -fo sup_reads-f1-H1.fasta
 python ../../../immunogenomics/scripts/fetch_chromosome.py -fg ../../../../asm/NA12878/NA12878-H1.fa -fc NA12878-S1544-H1-000005F -fo chromosome-f1-H1.fasta
 ```
 
