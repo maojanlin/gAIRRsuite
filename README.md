@@ -1,4 +1,4 @@
-_Updated: May. 19, 2020_
+_Updated: May. 20, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -51,7 +51,7 @@ In comparison, the coverage of a read on allele should more than a threshold (10
 After the comparison, we analyze the read-depth on every alleles, and another threshold (10) is posed on the minimun read-depth on alleles. Only the alleles with minimum read-depth more than (10) are classified as high-confidence allele. It turns out that most unannotated alleles' minimum read-depths are below (10), and annotated ones are above the threshold.
 
 ```
-python ../../immunogenomics/scripts/coverage_analysis.py -fr NA12878_S46.fasta -fa clustering/TR_all.fasta -md 10 -fnp all_top600_allelelen_tr.cluster.pickle -fop TCR_top600_reads_alleles.pickle
+python ../../immunogenomics/scripts/coverage_analysis.py -fr NA12878_S46.fasta -fa clustering/IG_all.fasta -ans NA12878_annotated_all.txt -md 10 -fnp ./NA12878/all_top600_allelelen_ig_idthrd100.cluster.pickle -fop ./NA12878/BCR_top600_reads_alleles.pickle -fsp ./NA12878/NA12878_bcrv_support_reads.pickle > read_depth_NA12878_bcrv.log
 ```
 The above `coverage_analysis.py` example:
 - fetches the sequence data from read fasta file `NA12878_S46.fasta` and allele fasta file `TR_all.fasta`
@@ -59,6 +59,16 @@ The above `coverage_analysis.py` example:
 - If `TCR_top600_reads_alleles.pickle` is already existed, the data will be directly loaded instead of re-calculating
 - the minimum coverage threshold between read and allele is set to 100
 - the minimum read-depth threshold is set to 10 and can be adjusted with -md command
+- the -ans argument read in the annotation file for different sample
+- the -fsp argument output a pickle file showing all the supporting reads of all alleles in the coverage analysis
+- `coverage_analysis.py` also shows which allele and its min/average/max coverage on terminal when processing.
+
+
+After the coverage analysis, we can see whats going on in each allele from the `NA12878_bcrv_support_reads.pickle` file. Below two command generates the supporting reads fasta file ``
+```
+python fetch_support_reads.py -fr NA12878_S46.fasta -fsup NA12878_bcrv_support_reads.pickle -fa IGHV1/OR16-3*01 -fo sup_reads-f1-H1.fasta
+python ../../../immunogenomics/scripts/fetch_chromosome.py -fg ../../../../asm/NA12878/NA12878-H1.fa -fc NA12878-S1544-H1-000005F -fo chromosome-f1-H1.fasta
+```
 
 
 ## Cluster alleles using Clustal-omega
