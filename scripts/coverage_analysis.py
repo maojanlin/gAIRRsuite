@@ -16,6 +16,10 @@ def parse_args():
         help = 'allele fasta file'
     )
     parser.add_argument(
+        '-ans', '--fn_annotation',
+        help = 'answer file, for development'
+    )
+    parser.add_argument(
         '-md', '--min_depth',
         default=0,
         help = 'minimun required read-depth for hc allele'
@@ -27,6 +31,10 @@ def parse_args():
     parser.add_argument(
         '-fop', '--fn_output_cluster_pickle',
         help = 'output file of the cluster with reads and alleles [None]'
+    )
+    parser.add_argument(
+        '-fsp', '--fn_output_support_read_pickle',
+        help = 'output file of indicating reads that support an alleles [None]'
     )
     args = parser.parse_args()
     return args
@@ -42,24 +50,23 @@ def add_alleles(allele_name, allele_SEQs, dict_cluster_info, dict_read_allele_cl
             if dict_read_allele_clusters.get(cluster_id):
                 dict_read_allele_clusters[cluster_id][0][allele_name] = allele_SEQs
             else:
-                dict_read_allele_clusters[cluster_id] = [{allele_name: allele_SEQs}, set()]
+                dict_read_allele_clusters[cluster_id] = [{allele_name: allele_SEQs}, {}]
     return dict_read_allele_clusters
 
 def add_reads(read_name, read_SEQs, dict_cluster_info, dict_read_allele_clusters):
     for cluster_id in dict_cluster_info:
         if read_name in dict_cluster_info[cluster_id][1]:
             if dict_read_allele_clusters.get(cluster_id):
-                dict_read_allele_clusters[cluster_id][1].add(read_SEQs)
+                dict_read_allele_clusters[cluster_id][1][read_name] = read_SEQs
             else:
                 print("Warning: cluster_id errors!")
     return dict_read_allele_clusters
-
 
 def fetch_reads_alleles(fn_read, fn_allele, dict_cluster_info):
     dict_read_allele_clusters = {}
     # dict_read_allele_clusters
     #   - keys: cluster_id
-    #   - values: [{a dict with {allele names: ALLELE_SEQs}, {a set of read SEQs}]
+    #   - values: [{a dict with {allele names: ALLELE_SEQs}, {read names: READ_SEQs}]
 
     with open(fn_allele, 'r') as f_a:
         allele_name = ""
@@ -165,16 +172,19 @@ def hamming_traverse(
 
 def coverage_analysis(
     dict_read_allele_clusters,
+    fn_annotation,
     required_min_depth = 0,
     required_single_coverage = 100,
     required_single_identity = 1,
 ):
 
     dict_hc_calls = {}
+    dict_sup_reads = {}
 
     # tmp: for dev
     list_annotated = []
-    f_tmp = open('./NA12878_annotated_all.txt', 'r')
+    #f_tmp = open('./NA12878_annotated_all.txt', 'r')
+    f_tmp = open(fn_annotation, 'r')
     for line in f_tmp:
         list_annotated.append(line.rstrip())
 
@@ -186,32 +196,36 @@ def coverage_analysis(
         print("============= Cluster: " + str(cluster_id) + " ==============")
         cluster = dict_read_allele_clusters[str(cluster_id)]
         dict_allele = cluster[0]
-        set_read = cluster[1]
+        dict_read = cluster[1]
 
         # for each allele in a cluster
         for allele in dict_allele.keys():
             print(allele)
             seq_allele = dict_allele[allele]
             seq_coverage = np.zeros( len(seq_allele) )
+            dict_sup_reads[allele] = set()
 
             # tmp
             if allele in list_annotated:
                 list_answer.append(allele)
             
             # need simplify
-            for read in set_read:
+            for read in dict_read:
+                seq_read = dict_read[read]
                 # ignore the reads that are too short
-                if len(read) < required_single_coverage:
+                if len(seq_read) < required_single_coverage:
                     continue
 
-                traverse_result = hamming_traverse(seq_allele, read, required_single_coverage, required_single_identity)
+                traverse_result = hamming_traverse(seq_allele, seq_read, required_single_coverage, required_single_identity)
                 if traverse_result[0]:
                     seq_coverage[traverse_result[1]:traverse_result[2]] += 1
+                    dict_sup_reads[allele].add(read)
                 else:
-                    r_read = get_reverse_complement(read)
-                    traverse_result = hamming_traverse(seq_allele, r_read, required_single_coverage, required_single_identity)
+                    r_seq_read = get_reverse_complement(seq_read)
+                    traverse_result = hamming_traverse(seq_allele, r_seq_read, required_single_coverage, required_single_identity)
                     if traverse_result[0]:
                         seq_coverage[traverse_result[1]:traverse_result[2]] += 1
+                        dict_sup_reads[allele].add(read)
             
             if min(seq_coverage) > required_min_depth:
                 if dict_hc_calls.get(allele):
@@ -235,71 +249,13 @@ def coverage_analysis(
     print (len(set(list_answer)))
     print ('Num. intersection')
     print (len(set(list_answer).intersection(set(dict_hc_calls))))
+
+    #print ("Support reads of alleles:")
+    #print (dict_sup_reads)
+
+    return dict_sup_reads
     
 
-
-def get_high_confidence_calls(
-    dict_read_allele_clusters,
-    required_coverage = 280,
-    required_identity = 0.99
-):
-    '''
-    Get high-confidence allele calls.
-    High-confidence means high identity and high allele coverage
-    '''
-
-    dict_hc_calls = {}
-
-    # tmp: for dev
-    list_annotated = []
-    f_tmp = open('./NA12878_annotated_all.txt', 'r')
-    for line in f_tmp:
-        list_annotated.append(line.rstrip())
-
-    # tmp
-    list_answer = []
-
-    # for each cluster
-    for cluster_id in dict_read_allele_clusters.keys():
-        cluster = dict_read_allele_clusters[cluster_id]
-        dict_allele = cluster[0]
-        set_read = cluster[1]
-
-        # for each allele in a cluster
-        for allele in dict_allele.keys():
-            seq_allele = dict_allele[allele]
-            # tmp
-            if allele in list_annotated:
-                list_answer.append(allele)
-            # tmp
-            if len(seq_allele) > required_coverage:
-                continue
-            else:
-                # print (allele)
-                for read in set_read:
-                    for i in range(len(read) - len(seq_allele) + 1):
-                        # if dist <= threshold
-                        if get_hamming_dist(
-                            str_a=seq_allele,
-                            str_b=read[i: i+len(seq_allele)],
-                            thrsd=int(len(seq_allele)*(1-required_identity))
-                        ):
-                            if dict_hc_calls.get(allele):
-                                dict_hc_calls[allele] += 1
-                            else:
-                                dict_hc_calls[allele] = 1
-                            break
-        
-    print (dict_hc_calls)
-    print (list_answer)
-
-    # tmp
-    print ('Num. high-confidence calls')
-    print (len(set(dict_hc_calls)))
-    print ('Num. answer')
-    print (len(set(list_answer)))
-    print ('Num. intersection')
-    print (len(set(list_answer).intersection(set(dict_hc_calls))))
 
 
 
@@ -307,9 +263,11 @@ if __name__ == '__main__':
     args = parse_args()
     fn_read = args.fn_read
     fn_allele = args.fn_allele
+    fn_annotation = args.fn_annotation
     min_depth = int(args.min_depth)
     fn_pickle_file = args.fn_pickle_file
     fn_output_cluster_pickle = args.fn_output_cluster_pickle
+    fn_output_support_read_pickle = args.fn_output_support_read_pickle
 
     # load pickle if it's already there
     if os.path.exists(fn_output_cluster_pickle):
@@ -326,5 +284,9 @@ if __name__ == '__main__':
             pickle.dump(dict_read_allele_clusters, f)
             f.close()
 
-    coverage_analysis(dict_read_allele_clusters, min_depth)
+    dict_sup_reads = coverage_analysis(dict_read_allele_clusters, fn_annotation, min_depth)
+    if fn_output_support_read_pickle:
+        f = open(fn_output_support_read_pickle, 'wb')
+        pickle.dump(dict_sup_reads, f)
+        f.close()
 
