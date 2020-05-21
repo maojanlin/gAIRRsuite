@@ -1,4 +1,4 @@
-_Updated: May. 20, 2020_
+_Updated: May. 21, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -63,11 +63,18 @@ The above `coverage_analysis.py` example:
 - the -fsp argument output a pickle file showing all the supporting reads of all alleles in the coverage analysis
 - `coverage_analysis.py` also shows which allele and its min/average/max coverage on terminal when processing. And can be parsed to `read_depth_NA12878_bcrv.log`
 
+### Checking the annotation
 
-After the coverage analysis, we can see whats going on in each allele from the `NA12878_bcrv_support_reads.pickle` file. Below two command generates the supporting reads fasta file ``
+This part can only be done with annotation from whole genome assembly. After the coverage analysis, we can see whats going on in each allele from the `NA12878_bcrv_support_reads.pickle` file. Below two command generates the supporting reads fasta file `sup_reads-f1-H1.fasta` and `chromosome-f1-H1.fasta`
 ```
 python ../../../immunogenomics/scripts/fetch_support_reads.py -fr NA12878_S46.fasta -fsup NA12878_bcrv_support_reads.pickle -fa IGHV1/OR16-3*01 -fo sup_reads-f1-H1.fasta
 python ../../../immunogenomics/scripts/fetch_chromosome.py -fg ../../../../asm/NA12878/NA12878-H1.fa -fc NA12878-S1544-H1-000005F -fo chromosome-f1-H1.fasta
+```
+We can also check the whole reads alignment on the region, and check the number of supporting reads of different haplotype.
+
+```
+samtools view ../../../../align_to_asm/20200514_NA12878_aligntoasm_H1/NA12878_align_to_H1asm.sorted.bam "NA12878-S1544-H1-000005F:21185-21186" > interval.sam
+python parse_sam_haplotyping.py -fs interval.sam -fp 21186 21198 21238 -fo haplotype.txt
 ```
 
 
