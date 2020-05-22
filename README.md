@@ -88,6 +88,7 @@ The following command clusters TCR alleles, and limit each cluster to include le
 ~/bin/clustal-omega-1.2.3-macosx -i TR_all.fasta -o TR_msa.fasta --clustering-out=TR_all.cluster --threads 4 --cluster-size 20
 ```
 
+# Worki-in-progress methods that consider RSS structures
 
 ## Usage
 **Generate search patterns for haptamer and nonamer**
