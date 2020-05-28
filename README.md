@@ -1,4 +1,4 @@
-_Updated: May. 21, 2020_
+_Updated: May. 28, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -77,6 +77,15 @@ samtools view ../../../../align_to_asm/20200514_NA12878_aligntoasm_H1/NA12878_al
 python parse_sam_haplotyping.py -fs interval.sam -fp 21186 21198 21238 -fo haplotype.txt
 ```
 
+The above commands are integrated into `haplotype_analysis.sh`
+```
+../../immunogenomics/scripts/haplotype_analysis.sh IGKV2-29*01
+```
+- the bash file first use `fetch_sam.py` searching the allele sam file to find the target allele `IGKV2-29*01`'s alignment location to the assembly genome. 
+- `samtools view` is then used to fetch all the alignment reads in the `IGKV2-29*01` alignment region
+- the contig is also fetched by `fetch_chromosome.py`
+- finally with the allele_SEQ, contig_SEQ and all the reads in the region, a haplotype analysis if performed with `parse_sam_haplotyping.py`
+- the same analysis is applied on the other strand of the assembly genome
 
 ## Cluster alleles using Clustal-omega
 
