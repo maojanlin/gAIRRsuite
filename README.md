@@ -1,4 +1,4 @@
-_Updated: May. 28, 2020_
+_Updated: June. 2, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -96,6 +96,22 @@ The following command clusters TCR alleles, and limit each cluster to include le
 ```
 ~/bin/clustal-omega-1.2.3-macosx -i TR_all.fasta -o TR_msa.fasta --clustering-out=TR_all.cluster --threads 4 --cluster-size 20
 ```
+
+### Assembly approach
+```
+./assembly_analysis.sh
+```
+The command runs the assembly pipeline.
+First `output_reads.py` is called and produce three files each cluster according to `all_top600_allelelen_ig.cluster.pickle`. Three files are:
+- reads_cluster_H1.fasta
+- reads_cluster_H2.fasta
+- alleles_cluster.fasta
+all the pair-end counterpart of reads in the cluster are also fetched and seperated in the H1 and H2 fasta files.
+`reads_cluster_H1.fasta` and `reads_cluster_H2.fasta` are then made into contigs by `spades.py`.
+We align `alleles_cluster.fasta` to the contigs with BWA.
+`parse_bwa_sam.py` can filter the mismatch and soft-clip alignment results of BWA, the remaining alignments are all perfect matches.
+All the matches from different clusters are incorporated into assembly_call.txt
+
 
 # Worki-in-progress methods that consider RSS structures
 
