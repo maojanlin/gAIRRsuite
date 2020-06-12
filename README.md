@@ -1,4 +1,4 @@
-_Updated: June. 2, 2020_
+_Updated: June. 12, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -97,7 +97,7 @@ The following command clusters TCR alleles, and limit each cluster to include le
 ~/bin/clustal-omega-1.2.3-macosx -i TR_all.fasta -o TR_msa.fasta --clustering-out=TR_all.cluster --threads 4 --cluster-size 20
 ```
 
-### Assembly approach
+## Assembly approach
 ```
 ./assembly_analysis.sh
 ```
@@ -111,6 +111,18 @@ all the pair-end counterpart of reads in the cluster are also fetched and sepera
 We align `alleles_cluster.fasta` to the contigs with BWA.
 `parse_bwa_sam.py` can filter the mismatch and soft-clip alignment results of BWA, the remaining alignments are all perfect matches.
 All the matches from different clusters are incorporated into assembly_call.txt
+
+### Checking the SPAdes coverage on annotations
+```
+python3 annotation_locus_parser.py -fa $file -fo annotation_contigs.txt
+python3 locus.py -fs ./flanking_region_analysis/flanking_H1.sam -fo flanking_region_analysis/locus_flanking_H1.pickle > flanking_region_analysis/locus_flanking_H1.csv
+python3 flanking_coverage.py -fna ./flanking_region_analysis/annotation_contigs_H2.txt -fpa ./flanking_region_analysis/locus_annotated_H2.pickle -fpf ./flanking_region_analysis/locus_flanking_H2.pickle
+```
+`annotation_locus_parser.py` is used to parse the annotation files in ./20200527_NA12878_BCRV_annotated_alleles 
+Since the file name of the annotation indicates the contig of the annotated allele belong. `annotation_locus_parser.py`
+incorporate the information of contig_name and allele position on the contig.
+`locus.py` parses the sam file and indicate the regions on asm_contig that SPAdes_contig covered.
+`flanking_coverage.py` compares the annotated allele positions and the SPAdes_contig covered regions. 
 
 
 # Worki-in-progress methods that consider RSS structures
