@@ -1,4 +1,4 @@
-_Updated: June. 12, 2020_
+_Updated: June. 21, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -115,13 +115,13 @@ All the matches from different clusters are incorporated into assembly_call.txt
 ### Checking the SPAdes coverage on annotations
 ```
 python3 annotation_locus_parser.py -fa $file -fo annotation_contigs.txt
-python3 locus.py -fs ./flanking_region_analysis/flanking_H1.sam -fo flanking_region_analysis/locus_flanking_H1.pickle > flanking_region_analysis/locus_flanking_H1.csv
+python3 locus.py -fs1 ./flanking_region_analysis/flanking_NA12878_tcrv_sup_size_H1.sam -fs2 ./flanking_region_analysis/flanking_NA12878_tcrv_sup_size_H2.sam -fo1 flanking_region_analysis/locus_flanking_NA12878_tcrv_sup_size_H1.pickle -fo2 flanking_region_analysis/locus_flanking_NA12878_tcrv_sup_size_H2.pickle > flanking_region_analysis/NA12878_tcrv_size_edit_dis.txt -td 10
 python3 flanking_coverage.py -fna ./flanking_region_analysis/annotation_contigs_H2.txt -fpa ./flanking_region_analysis/locus_annotated_H2.pickle -fpf ./flanking_region_analysis/locus_flanking_H2.pickle
 ```
 `annotation_locus_parser.py` is used to parse the annotation files in ./20200527_NA12878_BCRV_annotated_alleles 
 Since the file name of the annotation indicates the contig of the annotated allele belong. `annotation_locus_parser.py`
 incorporate the information of contig_name and allele position on the contig.
-`locus.py` parses the sam file and indicate the regions on asm_contig that SPAdes_contig covered.
+`locus.py` parses the H1, H2 sam file together and indicate the regions on asm_contig that SPAdes_contig covered. If the same SPAdes_contig align to H1 with significantly less mismatches than align to H2 (with difference larger than threshold `td`), locus.py keep only SPAdes_contig to H1 region and vice versa.
 `flanking_coverage.py` compares the annotated allele positions and the SPAdes_contig covered regions. 
 
 
