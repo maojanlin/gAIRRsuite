@@ -54,21 +54,26 @@ def flanking_coverage(dict_allele, dict_flanking):
     
     num_TP = 0
     num_FN = 0
-    num_locus = 0
+    num_annotated_locus = 0
+    num_flanking_locus = 0
     for contig_name in sorted(dict_TP):
         print(contig_name)
-        print(dict_TP[contig_name])
+        print(sorted(dict_TP[contig_name]))
         num_TP += len(dict_TP[contig_name])
     print("===============================")
     for contig_name in sorted(dict_FN):
         print(contig_name)
-        print(dict_FN[contig_name])
+        print(sorted(dict_FN[contig_name]))
         num_FN += len (dict_FN[contig_name])
     for contig_name in dict_allele.keys():
-        num_locus += len(dict_allele[contig_name])
+        #print(contig_name + '\t' + str(len(dict_allele[contig_name])))
+        num_annotated_locus += len(dict_allele[contig_name])
+    for contig_name in dict_flanking.keys():
+        num_flanking_locus += len(dict_flanking[contig_name])
+    print("number of annotated locus:" + str(num_annotated_locus))
     print("number of TP:" + str(num_TP))
     print("number of FN:" + str(num_FN))
-    print("number of locus:" + str(num_locus))
+    print("number of flanking locus:" + str(num_flanking_locus))
 
 
 def read_annotation_contigs(fn_allele_contig):
@@ -80,7 +85,7 @@ def read_annotation_contigs(fn_allele_contig):
 
     for locus in list_locus:
         fields = locus.split(',')
-        contig_name = fields[0].split('_')[1]
+        contig_name = fields[0]
         if dict_locus.get(contig_name):
             dict_locus[contig_name].add((int(fields[2]),int(fields[3]), fields[1]))
         else:

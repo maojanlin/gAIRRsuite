@@ -4,6 +4,7 @@ import os
 import numpy as np
 from utils import get_hamming_dist
 from utils import get_reverse_complement
+import sys
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -38,6 +39,9 @@ def parse_args():
     )
     args = parser.parse_args()
     return args
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 def read_pickle(pickle_file):
     f = open(pickle_file, 'rb')
@@ -174,7 +178,7 @@ def coverage_analysis(
     dict_read_allele_clusters,
     fn_annotation,
     required_min_depth = 0,
-    required_single_coverage = 100,
+    required_single_coverage = 50,
     required_single_identity = 1,
 ):
 
@@ -192,8 +196,10 @@ def coverage_analysis(
     list_answer = []
 
     # for each cluster
-    for cluster_id in dict_read_allele_clusters.keys():
-        print("============= Cluster: " + str(cluster_id) + " ==============")
+    #for cluster_id in dict_read_allele_clusters.keys():
+    for cluster_id in range(55,len(dict_read_allele_clusters.keys()),50):
+        print("Cluster: " + str(cluster_id))
+        eprint("============= Cluster: " + str(cluster_id) + " ==============")
         cluster = dict_read_allele_clusters[str(cluster_id)]
         dict_allele = cluster[0]
         dict_read = cluster[1]
@@ -236,7 +242,7 @@ def coverage_analysis(
                 print("OOO: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
             else:
                 print("XXX: " + str(min(seq_coverage)) + ' ' + str(sum(seq_coverage)/len(seq_coverage)) + ' ' + str(max(seq_coverage)))
-            #print(seq_coverage)
+            print(seq_coverage)
 
 
     print (dict_hc_calls)
