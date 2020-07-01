@@ -1,0 +1,32 @@
+---
+title: "coverage_edit"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+library(reshape)
+```
+
+```{r process_data}
+realign_tcrv <- read.delim("../../experiments/TCRV_realign_255.rpt", header = F, sep = "\t")
+realign_tcrv$rank <- c(1: nrow(realign_tcrv))
+
+cols <- c("2" = "#E69F00", "3" = "#56B4E9")
+
+ggplot(realign_tcrv) + 
+  geom_line(aes(x = rank, y = V2, color="#56B4E9"), size = 1.0) + 
+  geom_line(aes(x = rank, y = V3, color="#E69F00"), size = 0.5) +
+  labs(x = "Position", y = "Number", fill = "", title = "TRBV6-2*01's contig read alignment coverage") +
+  theme(legend.position = c(0.8, 0.8),
+        legend.spacing.y = unit(-0.3, "cm")) +
+  #scale_color_discrete(name = "",labels = c("read coverage", "mismatches")) +
+  scale_color_manual(
+    name = "",
+    values = c("#56B4E9", "#E69F00"), 
+    labels = c("read coverage", "mismatches")
+    )
+  
+
+
+```
