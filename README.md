@@ -1,4 +1,4 @@
-_Updated: June. 21, 2020_
+_Updated: July. 1, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -124,6 +124,13 @@ incorporate the information of contig_name and allele position on the contig.
 `locus.py` parses the H1, H2 sam file together and indicate the regions on asm_contig that SPAdes_contig covered. If the same SPAdes_contig align to H1 with significantly less mismatches than align to H2 (with difference larger than threshold `td`), locus.py keep only SPAdes_contig to H1 region and vice versa.
 `flanking_coverage.py` compares the annotated allele positions and the SPAdes_contig covered regions. 
 
+```
+python3 parse_contig_realign.py -fs NA12878_tcrv_support_asm/asm_realign/TCRV_realign_225.sam -fo NA12878_tcrv_support_asm/asm_realign/TCRV_remain_225.fasta > TCRV_realign_255.rpt
+```
+the `parse_contig_realign.py` parse the reads-to-SPAdes_contig realignment file:
+- analyze the sam file to mark the region with high diversity
+- pop out the reads perfectly matched to the marked diversed region
+- produce the pair-end reads fasta file that can be assemblied to alternative contig
 
 # Worki-in-progress methods that consider RSS structures
 
