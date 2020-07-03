@@ -13,6 +13,7 @@ import pickle
 import os
 import numpy as np
 from parse_sam_haplotyping import parse_CIGAR
+from utils import get_reverse_complement
 np.set_printoptions(threshold=5000)
 
 def parse_args():
@@ -52,8 +53,7 @@ def parse_MD(MD_tag):
 def mark_edit_region(fn_sam, fn_output_file):
     edit_histogram = None
     cov_histogram  = None
-    list_match = []
-    list_edit  = []
+    list_read_info = []
     contig_len = 0
     dict_reads = {}
     even_odd_flag = 1
@@ -68,8 +68,19 @@ def mark_edit_region(fn_sam, fn_output_file):
                 fields    = line.split()
                 read_name = fields[0]
                 read_SEQ  = fields[9]
-                edit_dist = int(fields[11].split(':')[2])
                 cigar     = fields[5]
+                sam_flag  = int(fields[1])
+                if cigar == '*':
+                    dict_reads[(read_name, even_odd_flag)] = read_SEQ
+                    #list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
+                    list_read_info.append((0, 0, read_name, even_odd_flag, []))
+                    if even_odd_flag == 1:
+                        even_odd_flag = 2
+                    else:
+                        even_odd_flag = 1
+                    continue
+
+                edit_dist = int(fields[11].split(':')[2])
                 MD_tag    = fields[12].split(':')[2]
                 start_pos = int(fields[3])
                 
@@ -94,34 +105,45 @@ def mark_edit_region(fn_sam, fn_output_file):
                             if op == 'D':
                                 diff_len += number[idx]
                 
-                edit_histogram[mis_region_MD] += 1
-                edit_histogram[mis_region_I]  += 1
+                mis_region = mis_region_MD + mis_region_I
+                edit_histogram[mis_region] += 1
+                #edit_histogram[mis_region_MD] += 1
+                #edit_histogram[mis_region_I]  += 1
                 
                 end_pos   = int(fields[3]) + len(fields[9]) + diff_len
                 cov_histogram[start_pos:end_pos] += 1
                 
                 # record the reads information
-                dict_reads[(read_name, even_odd_flag)] = read_SEQ
-                if edit_dist == 0:
-                    list_match.append((start_pos, end_pos, read_name, even_odd_flag, read_SEQ))
+                if int(sam_flag/16)%2 == 1:
+                    dict_reads[(read_name, even_odd_flag)] = get_reverse_complement(read_SEQ.upper())
                 else:
-                    list_edit.append((start_pos, end_pos, read_name, even_odd_flag, read_SEQ))
+                    dict_reads[(read_name, even_odd_flag)] = read_SEQ
+                list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
                 if even_odd_flag == 1:
                     even_odd_flag = 2
                 else:
                     even_odd_flag = 1
 
-    return edit_histogram, cov_histogram, list_match, list_edit, dict_reads
+    return edit_histogram, cov_histogram, list_read_info, dict_reads
 
 
-def pop_perfect_reads(edit_region, list_match, dict_reads, fn_output_file):
-    for read_info in list_match:
-        start_pos, end_pos, read_name, even_odd_flag, read_SEQ = read_info
+def pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file):
+    # pop perfect matches in the edit_region
+    for read_info in list_read_info:
+        start_pos, end_pos, read_name, even_odd_flag, mis_region = read_info
         for spot in edit_region:
-            # if perfect match cover the edit spot
+            # if match cover the edit spot
             if start_pos <= spot and end_pos >= spot:
+                support_flag = False
+                for ele in mis_region:
+                    if ele in edit_region: # the read support some edit regions
+                        support_flag = True
+                        break
                 # if the read and its pair is in dict_read
-                if dict_reads.get((read_name, even_odd_flag)):
+                if support_flag:
+                    # the read support some edit regions
+                    break
+                elif dict_reads.get((read_name, even_odd_flag)):
                     # pop the reads
                     dict_reads.pop((read_name, 1))
                     dict_reads.pop((read_name, 2))
@@ -162,7 +184,7 @@ if __name__ == '__main__':
     fn_output_file = args.fn_output_file
 
     #parse the sam file and generate
-    edit_histogram, cov_histogram, list_match, list_edit, dict_reads = mark_edit_region(fn_sam, fn_output_file)
+    edit_histogram, cov_histogram, list_read_info, dict_reads = mark_edit_region(fn_sam, fn_output_file)
     
     #determine the region contains alternative flanking region
     edit_region = []
@@ -171,12 +193,12 @@ if __name__ == '__main__':
         if ele > cov_histogram[idx]/4:
             edit_region.append(idx)
 
-    #print("edit_region")
-    #print(edit_region)
+    print("edit_region")
+    print(edit_region)
     #print(list_match)
     #print(list_edit)
 
-    pop_perfect_reads(edit_region, list_match, dict_reads, fn_output_file)
+    pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file)
 
     
 
