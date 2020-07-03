@@ -1,4 +1,4 @@
-_Updated: July. 1, 2020_
+_Updated: July. 3, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -125,12 +125,20 @@ incorporate the information of contig_name and allele position on the contig.
 `flanking_coverage.py` compares the annotated allele positions and the SPAdes_contig covered regions. 
 
 ```
-python3 parse_contig_realign.py -fs NA12878_tcrv_support_asm/asm_realign/TCRV_realign_225.sam -fo NA12878_tcrv_support_asm/asm_realign/TCRV_remain_225.fasta > TCRV_realign_255.rpt
+./alternative_contig.sh
+python3 parse_contig_realign.py -fs NA12878_tcrv_support_asm/asm_realign/TCRV_realign_225.sam -fo NA12878_tcrv_support_asm/asm_realign/TCRV_remain_225.fasta > TCRV_realign_225.rpt
 ```
+`alternative_contig.sh` script automatically run:
+- the realignment of supporting reads to first round contig.
+- parse_contig_realign.py to prepare the reads for alternative assembly.
+- SPAdes that assemble the alternative contig.
+- cat first round contig and the alternative contig into a fasta file.
+- align the fasta file back to H1 and H2 assembly to check the correctness of the flanking region.
+
 the `parse_contig_realign.py` parse the reads-to-SPAdes_contig realignment file:
-- analyze the sam file to mark the region with high diversity
-- pop out the reads perfectly matched to the marked diversed region
-- produce the pair-end reads fasta file that can be assemblied to alternative contig
+- analyze the sam file to mark the potential variant (hot spot region).
+- pop out the reads covered the hot spot region and support all variant favors the first round contig.
+- produce the pair-end reads fasta file `TCRV_remain_225_P1.fasta` and `TCRV_remain_225_P2.fasta` that can be assembled into alternative contig.
 
 # Worki-in-progress methods that consider RSS structures
 
