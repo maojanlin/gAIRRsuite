@@ -1,6 +1,6 @@
 # the out most directory
 outer_dir="NA12878_tcrv_support_asm/"
-cluster_id="256"
+cluster_id="106"
 
 ../bwa/bwa mem $outer_dir"asm_contigs/TCRV_contigs_"$cluster_id".fasta" $outer_dir"asm_reads_and_alleles/TCRV_"$cluster_id"_H1.fasta" $outer_dir"asm_reads_and_alleles/TCRV_"$cluster_id"_H2.fasta" > $outer_dir"asm_realign/TCRV_realign_"$cluster_id".sam"
 python3 parse_contig_realign.py -fs $outer_dir"asm_realign/TCRV_realign_"$cluster_id".sam" -fo $outer_dir"asm_realign/TCRV_remain_"$cluster_id".fasta" > "TCRV_realign_"$cluster_id".rpt"
@@ -20,3 +20,5 @@ cat $outer_dir"asm_contigs/TCRV_contigs_"$cluster_id".fasta" $outer_dir"asm_real
 ../bwa/bwa mem ../asm_NA12878/NA12878-H2.fa $outer_dir"asm_realign/TCRV_contigs_pair_"$cluster_id".fasta" > $outer_dir"asm_realign/align_pair_"$cluster_id"_H2.sam"
 #samtools sort $outer_dir"asm_realign/align_pair_"$cluster_id"_H2.sam" > $outer_dir"asm_realign/align_pair_"$cluster_id"_H2_sorted.bam"
 #samtools index $outer_dir"asm_realign/align_pair_"$cluster_id"_H2_sorted.bam"
+
+
