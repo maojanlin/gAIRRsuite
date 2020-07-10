@@ -27,6 +27,10 @@ def parse_args():
         help = 'edit distance threshold'
     )
     parser.add_argument(
+        '-it_region', '--interest_region',
+        help = '\"start-end\" the region interested, only variants inside are considered'
+    )
+    parser.add_argument(
         '-fo', '--fn_output_file',
         help = 'output report file'
     )
@@ -86,10 +90,10 @@ def mark_edit_region(fn_sam, fn_output_file):
                 
                 number, operate = parse_CIGAR(cigar)
                 mis_region_MD = parse_MD(MD_tag)
-                if operate[0] == 'S':
-                    mis_region_MD = [ele + number[0] + start_pos - 1 for ele in mis_region_MD]
-                else:
-                    mis_region_MD = [ele + start_pos - 1 for ele in mis_region_MD]
+                #if operate[0] == 'S':
+                #    mis_region_MD = [ele + number[0] + start_pos - 1 for ele in mis_region_MD]
+                #else:
+                mis_region_MD = [ele + start_pos - 1 for ele in mis_region_MD]
 
                 mis_region_I = []   # insertion boundary region
                 diff_len = 0        # len contribution of D and I
@@ -101,10 +105,16 @@ def mark_edit_region(fn_sam, fn_output_file):
                             mis_region_I.append(idx_I)
                             mis_region_I.append(idx_I+1)
                         else:
-                            idx_I += number[idx]
-                            if op == 'D':
+                            if op == 'S':
                                 diff_len += number[idx]
+                            else:
+                                idx_I += number[idx]
+                                if op == 'D':
+                                    diff_len += number[idx]
                 
+                #print(fields[0])
+                #print(mis_region_MD)
+                #print(mis_region_I)
                 mis_region = mis_region_MD + mis_region_I
                 edit_histogram[mis_region] += 1
                 #edit_histogram[mis_region_MD] += 1
@@ -181,6 +191,7 @@ if __name__ == '__main__':
     args = parse_args()
     fn_sam = args.fn_sam
     thrsd = args.thrsd
+    interest_region = args.interest_region
     fn_output_file = args.fn_output_file
 
     #parse the sam file and generate
@@ -190,15 +201,31 @@ if __name__ == '__main__':
     edit_region = []
     for idx, ele in enumerate(edit_histogram):
         print(str(idx) + ':\t' + str(cov_histogram[idx])  + '\t' + str(ele))
-        if ele > cov_histogram[idx]/4:
+        if ele > cov_histogram[idx]/(4):
             edit_region.append(idx)
 
-    print("edit_region")
-    print(edit_region)
-    #print(list_match)
-    #print(list_edit)
-
-    pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file)
+    if interest_region:
+        print("interested_region:")
+        print(interest_region)
+        print("edit_region:")
+        print(edit_region)
+        region_st = int(interest_region.split('-')[0])
+        region_ed = int(interest_region.split('-')[1])
+        break_flag = False
+        for ele in edit_region:
+            if ele >= region_st and ele <= region_ed:
+                pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file)
+                break_flag = True
+                break
+        if break_flag == False:
+            print("No variant detected in the interested region!")
+    else:
+        print("edit_region:")
+        print(edit_region)
+        if len(edit_region) > 0:
+            pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file)
+        else:
+            print("No variant detected!")
 
     
 
