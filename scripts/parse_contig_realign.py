@@ -59,17 +59,24 @@ def mark_edit_region(fn_sam, fn_output_file):
     cov_histogram  = None
     list_read_info = []
     contig_len = 0
+    contig_name = ""
     dict_reads = {}
     even_odd_flag = 1
     with open(fn_sam, 'r') as f_s:
         for line in f_s:
             if line[0] == '@': # header, information of the contig
                 if line.find('LN:') != -1:
-                    contig_len = int(line[line.find('LN:')+3:-1]) + 1 # the number system start with 1
-                    edit_histogram = np.zeros(contig_len)
-                    cov_histogram  = np.zeros(contig_len)
+                    # sometimes SPAdes would produce more than 1 contig, but the short one are not very useful
+                    # so we discard the short contigs and reads align to them
+                    if contig_len == 0: 
+                        contig_len = int(line[line.find('LN:')+3:-1]) + 1 # the number system start with 1
+                        contig_name = line.split(':')[1][:-3] 
+                        edit_histogram = np.zeros(contig_len)
+                        cov_histogram  = np.zeros(contig_len)
             else: # real alignment information
                 fields    = line.split()
+                if contig_name != fields[2]: # if the read align to shorter contigs
+                    continue
                 read_name = fields[0]
                 read_SEQ  = fields[9]
                 cigar     = fields[5]
@@ -112,9 +119,9 @@ def mark_edit_region(fn_sam, fn_output_file):
                                 if op == 'D':
                                     diff_len += number[idx]
                 
-                #print(fields[0])
-                #print(mis_region_MD)
-                #print(mis_region_I)
+                print(fields[0])
+                print(mis_region_MD)
+                print(mis_region_I)
                 mis_region = mis_region_MD + mis_region_I
                 edit_histogram[mis_region] += 1
                 #edit_histogram[mis_region_MD] += 1
@@ -201,7 +208,7 @@ if __name__ == '__main__':
     edit_region = []
     for idx, ele in enumerate(edit_histogram):
         print(str(idx) + ':\t' + str(cov_histogram[idx])  + '\t' + str(ele))
-        if ele > cov_histogram[idx]/(4):
+        if ele > cov_histogram[idx]/4:
             edit_region.append(idx)
 
     if interest_region:
