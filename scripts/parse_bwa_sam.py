@@ -82,7 +82,7 @@ def parse_edit_distance(fn_sam, fn_output_file, fn_output_flanking_region, fn_ou
                     continue
                 contig_name = fields[2]
                 if contig_name != '*' and eDist <= thrsd:
-                    print_word = fields[0] + ' ' + contig_name.split('_')[5] + ' ' + contig_name + '\n'
+                    print_word = fields[0] + ' ' + contig_name.split('_')[5] + ' ' + contig_name + ' ' + str(cluster_id) + '\n'
                     #print_word = fields[0] + '\t' + fields[2] + '\t' + fields[11]
                     f_report.write(print_word)
                     
@@ -92,8 +92,9 @@ def parse_edit_distance(fn_sam, fn_output_file, fn_output_flanking_region, fn_ou
                         f_flank.write(contig_SEQ + '\n')
                         
                         allele_name = fields[0]
-                        start_pos = int(fields[3]) - flanking_size 
-                        end_pos   = int(fields[3]) + len(fields[9]) + flanking_size
+                        start_pos = int(fields[3]) -1 - flanking_size
+                        end_pos   = int(fields[3]) -1 + len(fields[9]) + flanking_size
+                        print(str(start_pos) + '-' + str(end_pos))
                         if start_pos < 0:
                             start_pos = 0
                         if end_pos > len(contig_SEQ):
