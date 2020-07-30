@@ -35,6 +35,19 @@ def parse_args():
         '-fo', '--fn_output_file',
         help = 'output report file'
     )
+    
+    parser.add_argument(
+        '--contig_file',
+        help = 'fasta file showing the contig information'
+    )
+    parser.add_argument(
+        '--allele_file',
+        help = 'fasta file containing the allele name information'
+    )
+    parser.add_argument(
+        '--corrected_contig_output_file',
+        help = 'output corrected contig as flanking region fasta file'
+    )
     args = parser.parse_args()
     return args
 
@@ -55,7 +68,7 @@ def parse_MD(MD_tag):
     return(mis_region)
 
 
-def mark_edit_region(fn_sam, fn_output_file):
+def mark_edit_region(fn_sam, fn_output_file, contig_file):
     edit_histogram = None
     cov_histogram  = None
     #list_read_info: [ (start_pos, end_pos, read_name, even_odd_flag, mis_region) ]
@@ -95,7 +108,7 @@ def mark_edit_region(fn_sam, fn_output_file):
                 if cigar == '*':
                     dict_reads[(read_name, even_odd_flag)] = read_SEQ
                     #list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
-                    list_read_info.append((0, 0, read_name, even_odd_flag, []))
+                    list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
                     if even_odd_flag == 1:
                         even_odd_flag = 2
                     else:
@@ -137,40 +150,8 @@ def mark_edit_region(fn_sam, fn_output_file):
                 mis_region = mis_region_MD + mis_region_I
                 mis_region.sort()
                 
-                '''
-                mis_base = []
-                mis_idx = 0
-                ref_cursor = start_pos
-                read_cursor = 0
-                for idx, op in enumerate(operate):
-                    print(mis_base)
-                    print(ref_cursor, '---', read_cursor)
-                    if op == 'M' or op == 'S':
-                        tmp_ref_cursor = ref_cursor + number[idx]
-                        while (mis_idx < len(mis_region) ) and (mis_region[mis_idx] < tmp_ref_cursor):
-                            dist = mis_region[mis_idx] - ref_cursor
-                            mis_base.append(read_SEQ[read_cursor+dist])
-                            mis_idx += 1
-                        ref_cursor  += number[idx]
-                        read_cursor += number[idx]
-                    elif op == 'D':
-                        num_D = number[idx]
-                        mis_idx  += num_D
-                        mis_base += ['-']*num_D
-                        ref_cursor += num_D
-                    elif op == 'I':
-                        num_I = number[idx]
-                        mis_idx + 1
-                        mis_base.append('I')
-                        mis_base.append(read_SEQ[read_cursor:read_cursor+num_I])
-                        read_cursor += num_I
-                print(mis_base)
-                '''
-
 
                 edit_histogram[mis_region] += 1
-                #edit_histogram[mis_region_MD] += 1
-                #edit_histogram[mis_region_I]  += 1
                 
                 end_pos   = start_pos + len(fields[9]) + diff_len
                 cov_histogram[start_pos:end_pos] += 1
@@ -186,7 +167,20 @@ def mark_edit_region(fn_sam, fn_output_file):
                 else:
                     even_odd_flag = 1
 
-    return edit_histogram, cov_histogram, list_read_info, dict_reads
+    contig_SEQ = ""
+    with open(contig_file, 'r') as f_c:
+        contig_flag = False
+        for line in f_c:
+            if line[0] == '>':
+                tmp_name = line[1:].strip()
+                if tmp_name == contig_name:
+                    contig_flag = True
+                else:
+                    contig_flag = False
+            elif contig_flag:
+                contig_SEQ += line.strip()
+
+    return edit_histogram, cov_histogram, list_read_info, dict_reads, contig_SEQ
 
 
 def pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file):
@@ -239,10 +233,9 @@ def pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file):
 
 
 def report_variant_base(start_pos, cigar, mis_region, read_SEQ):
-    #list_var_pair = []
+    list_var_pair = []
     if len(mis_region) < 1:
         return []
-    mis_base = []
     mis_idx = 0
     ref_cursor = start_pos
     read_cursor = 0
@@ -251,55 +244,69 @@ def report_variant_base(start_pos, cigar, mis_region, read_SEQ):
     for idx, op in enumerate(operate):
         if mis_idx >= len(mis_region):
             break
+        # We just ignore the soft-clip and hard-clip reads for precision purpose
         if op == 'M':# or op == 'S' or op == 'H':
             tmp_ref_cursor = ref_cursor + number[idx]
             while (mis_idx < len(mis_region) ) and (mis_region[mis_idx] < tmp_ref_cursor):
                 dist = mis_region[mis_idx] - ref_cursor
-                mis_base.append( (mis_region[mis_idx], read_SEQ[read_cursor+dist]) )
+                list_var_pair.append( (mis_region[mis_idx], read_SEQ[read_cursor+dist]) )
                 mis_idx += 1
             ref_cursor  += number[idx]
             read_cursor += number[idx]
         elif op == 'D':
             num_D = number[idx]
-            #mis_base += [ (D_idx,'-') for D_idx in range(mis_region[mis_idx], mis_region[mis_idx]+num_D) ]
-            mis_base.append( (mis_region[mis_idx], 'D'+str(num_D)) )
+            #list_var_pair += [ (D_idx,'-') for D_idx in range(mis_region[mis_idx], mis_region[mis_idx]+num_D) ]
+            list_var_pair.append( (mis_region[mis_idx], 'D'+str(num_D)) )
             mis_idx  += num_D
             ref_cursor += num_D
         elif op == 'I':
             num_I = number[idx]
-            mis_base.append( (mis_region[mis_idx], 'I'+read_SEQ[read_cursor:read_cursor+num_I]) )
+            list_var_pair.append( (mis_region[mis_idx], 'I'+read_SEQ[read_cursor:read_cursor+num_I]) )
             mis_idx + 1
             read_cursor += num_I
-    return mis_base
-    #return list_var_pair
+    return list_var_pair
 
 
 def variant_link_graph(edit_region, list_read_info):
     # the function group the reads that cover at least two variant and link the variants for haplotyping
-    # dict_link_graph = {}
+    #
+    # dict_link_graph = {}      # record all the links on the interested position
     #  - keys: (position, base)
     #  - values: dict_link {}
-    #             - keys: ((position_0, base_0), (position_1, base_1), ... (position_n, base_n))
-    #                       position_0 is not necessary position, but position is one of position_x
+    #             - keys: (node_idx, ((position_0, base_0), (position_1, base_1), ... (position_n, base_n)))
+    #                     (position, base) is the (position_node_idx, base_node_idx)
     #             - values: weight
     #
-    # dict_var_weight = {}
+    # dict_var_weight = {}      # record all the bases (not concerning the links) on the interested position
     #  - keys: position
     #  - values: dict_base_weight {}
     #            - keys: base
     #            - values: weight
+    #
+    # dict_link_outward = {}    # record all right side links with one shift relative to (position, base)
+    #  - keys: (position, base)
+    #  - values: dict_1_link {}
+    #             - keys: ((position, base), (position_0, base_0))
+    #             - values: weight
+    #
+    # dict_link_inward = {}     # record all left side links with one shift relative to (position, base)
+    #  - keys: (position, base)
+    #  - values: dict_1_link {}
+    #             - keys: ((position_inward, base_inward), (position, base))
+    #             - values: weight
 
     dict_link_graph = {}
     dict_var_weight = { pos:{} for pos in edit_region }
+    dict_link_outward = {}
+    dict_link_inward  = {}
     
     for list_idx in range(0,len(list_read_info),2):
-        read_info_0 = list_read_info[list_idx]
-        read_info_1 = list_read_info[list_idx+1]
-        start_pos_0, end_pos_0, read_name_0, even_odd_flag_0, mis_region_0, cigar_0, read_SEQ_0 = read_info_0
-        start_pos_1, end_pos_1, read_name_1, even_odd_flag_1, mis_region_1, cigar_1, read_SEQ_1 = read_info_1
+        start_pos_0, end_pos_0, read_name_0, even_odd_flag_0, mis_region_0, cigar_0, read_SEQ_0 = list_read_info[list_idx]
+        start_pos_1, end_pos_1, read_name_1, even_odd_flag_1, mis_region_1, cigar_1, read_SEQ_1 = list_read_info[list_idx+1]
         if read_name_0 != read_name_1:
             eprint("Error with read name:", read_name_0, "and", read_name_1)
             continue
+        # we suppose that one of the read with soft-clip means that the read pairs should not be here
         if 'S' in cigar_0 or 'S' in cigar_1:
             continue
 
@@ -307,22 +314,15 @@ def variant_link_graph(edit_region, list_read_info):
         covered_edit_region_1 = []
         for spot in edit_region:
             # if match cover the edit spot
-            if start_pos_0 <= spot and end_pos_0 >= spot:
+            if start_pos_0 <= spot <= end_pos_0:
                 covered_edit_region_0.append(spot)
-            elif start_pos_1 <= spot and end_pos_1 >= spot:
+            elif start_pos_1 <= spot <= end_pos_1:
                 covered_edit_region_1.append(spot)
 
-        #if len(covered_edit_region_0) > 0 and len(covered_edit_region_1) > 0:
-        if len(covered_edit_region_0) + len(covered_edit_region_1) > 1:
-            # if there are long range coverage between mate pairs
+        # if the read pairs cover any interested spot, record the base information in dict_var_weight
+        if len(covered_edit_region_0) + len(covered_edit_region_1) > 0:
             list_var_pair_0 = report_variant_base(start_pos_0, cigar_0, covered_edit_region_0, read_SEQ_0)
             list_var_pair_1 = report_variant_base(start_pos_1, cigar_1, covered_edit_region_1, read_SEQ_1)
-            #print("================================")
-            #print(read_name_0)
-            #print(covered_edit_region_0)
-            #print(list_var_pair_0)
-            #print(covered_edit_region_1)
-            #print(list_var_pair_1)
             haplotype_frag = tuple(sorted(list_var_pair_0 + list_var_pair_1))
             # record all the variant proportions at every variant position
             for var_pair in haplotype_frag:
@@ -331,192 +331,207 @@ def variant_link_graph(edit_region, list_read_info):
                 else:
                     dict_var_weight[var_pair[0]][var_pair[1]] = 1
             
-            # record all the links
-            for node_idx, var_pair in enumerate(haplotype_frag):
-                if dict_link_graph.get(var_pair):
-                    if dict_link_graph[var_pair].get((node_idx, haplotype_frag)):
-                        dict_link_graph[var_pair][(node_idx, haplotype_frag)] += 1
+            # if there are long range coverage between mate pairs, then record the links in dict_link_graph
+            if len(haplotype_frag) > 1:
+                for node_idx, var_pair in enumerate(haplotype_frag):
+                    # dict_link_graph
+                    if dict_link_graph.get(var_pair):
+                        if dict_link_graph[var_pair].get((node_idx, haplotype_frag)):
+                            dict_link_graph[var_pair][(node_idx, haplotype_frag)] += 1
+                        else:
+                            dict_link_graph[var_pair][(node_idx, haplotype_frag)] = 1
                     else:
-                        dict_link_graph[var_pair][(node_idx, haplotype_frag)] = 1
-                else:
-                    dict_link_graph[var_pair] = {(node_idx, haplotype_frag):1}
-    #for key in sorted(dict_link_graph.keys()):
-    #    print (dict_link_graph[key])
-    return dict_link_graph, dict_var_weight
+                        dict_link_graph[var_pair] = {(node_idx, haplotype_frag):1}
+                    # dict_link_outward
+                    if node_idx < len(haplotype_frag)-1:
+                        if dict_link_outward.get(var_pair):
+                            if dict_link_outward[var_pair].get((var_pair, haplotype_frag[node_idx+1])):
+                                dict_link_outward[var_pair][(var_pair, haplotype_frag[node_idx+1])] += 1
+                            else:
+                                dict_link_outward[var_pair][(var_pair, haplotype_frag[node_idx+1])] = 1
+                        else:
+                            dict_link_outward[var_pair] = {(var_pair, haplotype_frag[node_idx+1]):1}
+                    # dict_link_inward
+                    if node_idx > 0:
+                        if dict_link_inward.get(var_pair):
+                            if dict_link_inward[var_pair].get((haplotype_frag[node_idx-1], var_pair)):
+                                dict_link_inward[var_pair][(haplotype_frag[node_idx-1], var_pair)] += 1
+                            else:
+                                dict_link_inward[var_pair][(haplotype_frag[node_idx-1], var_pair)] = 1
+                        else:
+                            dict_link_inward[var_pair] = {(haplotype_frag[node_idx-1], var_pair):1}
+
+    return dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward
 
 
-def trim_dict(dict_target):
+def find_double_pos(pos_start_idx, list_pos_weight, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1):
+    while pos_start_idx < len(list_pos_weight):
+        if len(list_pos_weight[pos_start_idx]) == 0:
+            print("There is no reads covered the position", list_pos_weight[0][0])
+            pos_start_idx += 1
+        elif len(list_pos_weight[pos_start_idx]) == 1:
+            print("There is no variant detected in position", list_pos_weight[0][0])
+            haplotype_0.append((list_pos_weight[0][0], list_pos_weight[0][1][0][0]))
+            haplotype_1.append((list_pos_weight[0][0], list_pos_weight[0][1][0][0]))
+            pos_start_idx += 1
+            hap_cursor_0 += 1
+            hap_cursor_1 += 1
+        else:
+            haplotype_0.append((list_pos_weight[0][0], list_pos_weight[0][1][0][0]))
+            haplotype_1.append((list_pos_weight[0][0], list_pos_weight[0][1][1][0]))
+            pos_start_idx += 1
+            return pos_start_idx, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1
+    return pos_start_idx, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1
+
+
+def trim_dict(dict_target, thrsd=4):
     sorted_items = sorted(dict_target.items(), key=lambda pair:pair[1], reverse=True)
     for pair_id in range(1, len(sorted_items)):
-        if sorted_items[ pair_id-1 ] > sorted_items[ pair_id ]*4:
+        if sorted_items[ pair_id-1 ][1] > sorted_items[ pair_id ][1]*thrsd:
             for i in range(pair_id, len(sorted_items)):
                 dict_target.pop(sorted_items[i][0])
             break
 
 
-def haplotyping_link_graph(dict_link_graph, dict_var_weight, edit_region):
+
+def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, edit_region):
+    # sort the potential variants on the interested site, can only use these variants bases
     list_pos_weight = []
+    print("Trimming the significant bases at interested site:")
+    '''
     for key in sorted(dict_var_weight.keys()):
-        #print("+++++++++++++++++++")
-        list_pos_base = [(pos_key,pos_value) for pos_key, pos_value in dict_var_weight[key].items()]
+        list_pos_base = list(dict_var_weight[key].items()) #[(pos_key,pos_value) for pos_key, pos_value in dict_var_weight[key].items()]
         list_pos_base.sort(key=lambda pair:pair[1], reverse=True)
-        print(list_pos_base)
-        for idx in range(len(list_pos_base)-1):
-            if list_pos_base[idx][1] > list_pos_base[idx+1][1]*10:
-                list_pos_base = list_pos_base[:idx+1]
+        for idx in range(1, len(list_pos_base)):
+            if list_pos_base[idx-1][1] > list_pos_base[idx][1]*10:
+                list_pos_base = list_pos_base[:idx]
                 break
         list_pos_weight.append((key,list_pos_base))
-        print(list_pos_base)
-    print(list_pos_weight)
-    print("+++++++++++++++++++")
+    '''
+    for key in sorted(dict_var_weight.keys()):
+        dict_part = dict_var_weight[key]
+        trim_dict(dict_part, 10)
+        list_pos_weight.append((key, sorted(dict_part.items(), key=lambda pair:pair[1], reverse=True)))
 
+    print("Final site-base list:", list_pos_weight)
+    if list_pos_weight == []:
+        print("There is no variant detected!")
+        return [], []
+    
+    print("+++++++++++++++++++", "dict_link_graph", "+++++++++++++++++++")
+    for key in sorted(dict_link_graph.keys()):
+        print(dict_link_graph[key])
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    
     # initializing the haplotype list and the cursor
     haplotype_0 = []
     hap_cursor_0 = 0
     haplotype_1 = []
     hap_cursor_1 = 0
-    if len(list_pos_weight[0]) < 2:
-        eprint("ERROR ON START OF THE HAPLOTYPING!")
-    else: # len(list_pos_weight[0]) == 2:
-        haplotype_0.append((list_pos_weight[0][0], list_pos_weight[0][1][0][0]))
-        haplotype_1.append((list_pos_weight[0][0], list_pos_weight[0][1][1][0]))
+    pos_start_idx = 0
+   
+    # find the first variant site with two variants
+    pos_start_idx, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1 = find_double_pos(pos_start_idx, list_pos_weight, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1)
 
     # haplotyping from list_pos_weight:
-    for pos_idx in range(1, len(list_pos_weight)):
+    for pos_idx in range(pos_start_idx, len(list_pos_weight)):
         pos_weight = list_pos_weight[pos_idx]
         position = pos_weight[0]
         list_pos_base = pos_weight[1]
         print("XXXXXXXXXXXXXX", position, "XXXXXXXXXXXXXXXX")
+
         # deal with haplotype_0's outward link
-        dict_connection = dict_link_graph[haplotype_0[hap_cursor_0]]
-        dict_outward_0  = {}
-        for key in dict_connection.keys():
-            node_idx = key[0]
-            path     = key[1]
-            if len(path) > node_idx+1:
-                if dict_outward_0.get((path[node_idx], path[node_idx+1])):
-                    dict_outward_0[(path[node_idx], path[node_idx+1])] += dict_connection[key]
-                else:
-                    dict_outward_0[(path[node_idx], path[node_idx+1])] = dict_connection[key]
-                #print(path[node_idx], path[node_idx+1], dict_connection[key])
-        
+        dict_outward_0 = dict_link_outward[haplotype_0[hap_cursor_0]]
         trim_dict(dict_outward_0)
         print(dict_outward_0)
         # deal with haplotype_1's outward link
-        print("----------------")
-        dict_connection = dict_link_graph[haplotype_1[hap_cursor_1]]
-        dict_outward_1  = {}
-        for key in dict_connection.keys():
-            node_idx = key[0]
-            path     = key[1]
-            if len(path) > node_idx+1:
-                if dict_outward_1.get((path[node_idx], path[node_idx+1])):
-                    dict_outward_1[(path[node_idx], path[node_idx+1])] += dict_connection[key]
-                else:
-                    dict_outward_1[(path[node_idx], path[node_idx+1])] = dict_connection[key]
-                #print(path[node_idx], path[node_idx+1], dict_connection[key])
-        
+        print("--------------------")
+        dict_outward_1 = dict_link_outward[haplotype_1[hap_cursor_1]]
         trim_dict(dict_outward_1)
         print(dict_outward_1)
         # deal with position's inward link
-        print("----------------")
-        dict_connection = dict_link_graph[(position, list_pos_base[0][0])]
-        dict_inward_0   = {}
-        for key in dict_connection.keys():
-            node_idx = key[0]
-            path     = key[1]
-            if node_idx > 0:
-                if dict_inward_0.get((path[node_idx-1], path[node_idx])):
-                    dict_inward_0[(path[node_idx-1], path[node_idx])] += dict_connection[key]
-                else:
-                    dict_inward_0[(path[node_idx-1], path[node_idx])] = dict_connection[key]
-                #print(path[node_idx-1], path[node_idx], dict_connection[key])
-
-        print(dict_inward_0)
+        print("--------------------")
+        dict_inward_0 = dict_link_inward[(position, list_pos_base[0][0])]
         trim_dict(dict_inward_0)
         print(dict_inward_0)
         #print(dict_link_graph[(position, list_pos_base[1][0])])
         if len(list_pos_base) > 1:
-            print("----------------")
-            dict_connection = dict_link_graph[(position, list_pos_base[1][0])]
-            dict_inward_1   = {}
-            for key in dict_connection.keys():
-                node_idx = key[0]
-                path     = key[1]
-                if node_idx > 0:
-                    if dict_inward_1.get((path[node_idx-1], path[node_idx])):
-                        dict_inward_1[(path[node_idx-1], path[node_idx])] += dict_connection[key]
-                    else:
-                        dict_inward_1[(path[node_idx-1], path[node_idx])] = dict_connection[key]
-                    #print(path[node_idx-1], path[node_idx], dict_connection[key])
+            print("--------------------")
+            dict_inward_1 = dict_link_inward[(position, list_pos_base[1][0])]
             trim_dict(dict_inward_1)
             print(dict_inward_1)
 
         for outward_key in sorted(dict_outward_0.keys()):
-            for inward_key in sorted(dict_inward_0.keys()):
-                if outward_key == inward_key:
-                    print("Connect: ", outward_key, 0, 0)
-                    haplotype_0.append((position, outward_key[1][1]))
-                    hap_cursor_0 += 1
-                    break
+            if dict_inward_0.get(outward_key):
+                print("Connect: ", outward_key, 0, 0)
+                haplotype_0.append((position, outward_key[1][1]))
+                hap_cursor_0 += 1
+                break
         for outward_key in sorted(dict_outward_1.keys()):
-            for inward_key in sorted(dict_inward_0.keys()):
-                if outward_key == inward_key:
-                    print("Connect: ", outward_key, 1, 0)
-                    haplotype_1.append((position, outward_key[1][1]))
-                    hap_cursor_1 += 1
-                    break
+            if dict_inward_0.get(outward_key):
+                print("Connect: ", outward_key, 1, 0)
+                haplotype_1.append((position, outward_key[1][1]))
+                hap_cursor_1 += 1
+                break
         
         if len(list_pos_base) > 1:
             for outward_key in sorted(dict_outward_0.keys()):
-                for inward_key in sorted(dict_inward_1.keys()):
-                    if outward_key == inward_key:
-                        print("Connect: ", outward_key, 0, 1)
-                        haplotype_0.append((position, outward_key[1][1]))
-                        hap_cursor_0 += 1
-                        break
+                if dict_inward_1.get(outward_key):
+                    print("Connect: ", outward_key, 0, 1)
+                    haplotype_0.append((position, outward_key[1][1]))
+                    hap_cursor_0 += 1
+                    break
             for outward_key in sorted(dict_outward_1.keys()):
-                for inward_key in sorted(dict_inward_1.keys()):
-                    if outward_key == inward_key:
-                        print("Connect: ", outward_key, 1, 1)
-                        haplotype_1.append((position, outward_key[1][1]))
-                        hap_cursor_1 += 1
-                        break
+                if dict_inward_1.get(outward_key):
+                    print("Connect: ", outward_key, 1, 1)
+                    haplotype_1.append((position, outward_key[1][1]))
+                    hap_cursor_1 += 1
+                    break
     
     print(haplotype_0)
     print(haplotype_1)
+    return haplotype_0, haplotype_1
 
-    '''
-    sorted_key_list = sorted(dict_link_graph.keys())
-    list_var_weight = []
-    ref_cursor = sorted_key_list[0][0]
-    for key in sorted_key_list:
-        print(key, dict_link_graph[key])
-        
-        if key[0] != ref_cursor:
-            # update ref_cursor
-            ref_cursor = key[0]
-            print ("---------------------")
-            if len(list_var_weight) == 1:
-                print ("only one variant")
-                print (list_var_weight[0])
-            elif len(list_var_weight) == 2:
-                print ("Normal Case")
-                print (list_var_weight[0])
-                print (list_var_weight[1])
-            else: # multiple variants, take the largest two
-                list_var_weight.sort(reverse=True)
-                # evaluate which two? variant are the most common
-                print (list_var_weight)
-                print (list_var_weight[0])
-                print (list_var_weight[1])
-            
-            list_var_weight = []
-            print ("---------------------")
-        '''
-        #list_var_weight.append( (sum(dict_link_graph[key].values()), key[1]) )
-        #print( ref_cursor, key[1], sum(dict_link_graph[key].values()) )
-        #print( key, sum(dict_link_graph[key].values()), dict_link_graph[key] )
+
+def sequence_substitution(sequence, list_correct_pairs):
+    hap_offset = 0
+    for pair in list_correct_pairs:
+        position = pair[0]
+        operation = pair[1]
+        if operation[0] == 'D':
+            D_len = int(operation[1:])
+            sequence = sequence[:position+hap_offset] + sequence[position+hap_offset+D_len:]
+            hap_offset -= D_len
+        elif operation[0] == 'H':
+            H_len = len(operation[1:])
+            sequence = sequence[:position+hap_offset] + operation[1:] + sequence[position+hap_offset:]
+            hap_offset += H_len
+        else:
+            sequence = sequence[:position+hap_offset-1] + operation + sequence[position+hap_offset:]
+    return sequence
+
+
+def output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_file, corrected_contig_output_file):
+    corrected_contig_SEQ_0 = sequence_substitution(contig_SEQ, haplotype_0)
+    corrected_contig_SEQ_0 = corrected_contig_SEQ_0[region_st:region_ed]
+
+    corrected_contig_SEQ_1 = sequence_substitution(contig_SEQ, haplotype_1)
+    corrected_contig_SEQ_1 = corrected_contig_SEQ_1[region_st:region_ed]
+
+    allele_name = ""
+    with open(allele_file, 'r') as f_a:
+        for line in f_a:
+            if line[0] == '>':
+                allele_name = line[1:].strip()
+                break
+
+    f_c = open(corrected_contig_output_file, 'a')
+    f_c.write(">" + allele_name + "_corrected_0\n")
+    f_c.write(corrected_contig_SEQ_0 + "\n")
+    f_c.write(">" + allele_name + "_corrected_1\n")
+    f_c.write(corrected_contig_SEQ_1 + "\n")
+    f_c.close()
+    return (corrected_contig_SEQ_0, corrected_contig_SEQ_1)
 
 
 
@@ -526,9 +541,13 @@ if __name__ == '__main__':
     thrsd = args.thrsd
     interest_region = args.interest_region
     fn_output_file = args.fn_output_file
+    # parameter for corrected contig
+    contig_file = args.contig_file
+    allele_file = args.allele_file
+    corrected_contig_output_file = args.corrected_contig_output_file
 
     #parse the sam file and generate
-    edit_histogram, cov_histogram, list_read_info, dict_reads = mark_edit_region(fn_sam, fn_output_file)
+    edit_histogram, cov_histogram, list_read_info, dict_reads, contig_SEQ = mark_edit_region(fn_sam, fn_output_file, contig_file)
     
     #determine the region contains alternative flanking region
     edit_region = []
@@ -553,8 +572,9 @@ if __name__ == '__main__':
             pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file)
                 
             print("=========== start haplotyping ==============")
-            dict_link_graph, dict_var_weight = variant_link_graph(interest_edit_region, list_read_info)
-            haplotyping_link_graph(dict_link_graph, dict_var_weight, interest_region)
+            dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph(interest_edit_region, list_read_info)
+            haplotype_0, haplotype_1 = haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, interest_region)
+            output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_file, corrected_contig_output_file)
         else:
             print("No variant detected in the interested region!")
     else:
@@ -562,8 +582,11 @@ if __name__ == '__main__':
         print(edit_region)
         if len(edit_region) > 0:
             pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file)
-            dict_link_graph, dict_var_weight = variant_link_graph(edit_region, list_read_info)
-            haplotyping_link_graph(dict_link_graph, dict_var_weight, edit_region)
+                
+            print("=========== start haplotyping ==============")
+            dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph(edit_region, list_read_info)
+            haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, edit_region)
+            output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_file, corrected_contig_output_file)
         else:
             print("No variant detected!")
 
