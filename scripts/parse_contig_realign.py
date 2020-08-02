@@ -244,8 +244,8 @@ def report_variant_base(start_pos, cigar, mis_region, read_SEQ):
     for idx, op in enumerate(operate):
         if mis_idx >= len(mis_region):
             break
-        # We just ignore the soft-clip and hard-clip reads for precision purpose
-        if op == 'M':# or op == 'S' or op == 'H':
+        # Not now. We just ignore the soft-clip and hard-clip reads for precision purpose
+        if op == 'M' or op == 'S':
             tmp_ref_cursor = ref_cursor + number[idx]
             while (mis_idx < len(mis_region) ) and (mis_region[mis_idx] < tmp_ref_cursor):
                 dist = mis_region[mis_idx] - ref_cursor
@@ -307,9 +307,19 @@ def variant_link_graph(edit_region, list_read_info):
             eprint("Error with read name:", read_name_0, "and", read_name_1)
             continue
         # we suppose that one of the read with soft-clip means that the read pairs should not be here
+        #if '4D' in cigar_0 or '4D' in cigar_1:
+        #        print(read_name_0, start_pos_0, end_pos_0, "----", start_pos_1, end_pos_1)
+        '''
         if 'S' in cigar_0 or 'S' in cigar_1:
+            if start_pos_0 <= 583 <= end_pos_0 or start_pos_1 <= 583 <= end_pos_1:
+                print("Soft Clip!", read_name_0, start_pos_0, end_pos_0, "----", start_pos_1, end_pos_1)
             continue
-
+        else:
+            if start_pos_0 <= 583 <= end_pos_0:
+                print("pos_0", start_pos_0, end_pos_0)
+            if start_pos_1 <= 583 <= end_pos_1:
+                print("pos_1", start_pos_1, end_pos_1)
+        '''
         covered_edit_region_0 = []
         covered_edit_region_1 = []
         for spot in edit_region:
@@ -393,11 +403,26 @@ def trim_dict(dict_target, thrsd=4):
             break
 
 
+def get_farthest_ext(dict_link, hap_base_info):
+    list_ext = [ext[1][0] for ext in dict_link.keys()]
+    position = hap_base_info[0]
+    subst_base = hap_base_info[1]
+    if subst_base[0] == 'D':
+        min_ext = position + int(subst_base[1:])
+        list_ext.append(min_ext)
+    elif subst_base[0] == 'H':
+        min_ext = position + len(subst_base[1:])
+        list_ext.append(min_ext)
+    else:
+        list_ext.append(position)
+    return max(list_ext)
+
 
 def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, edit_region):
     # sort the potential variants on the interested site, can only use these variants bases
     list_pos_weight = []
     print("Trimming the significant bases at interested site:")
+    print("Original site-base dict", dict_var_weight)
     '''
     for key in sorted(dict_var_weight.keys()):
         list_pos_base = list(dict_var_weight[key].items()) #[(pos_key,pos_value) for pos_key, pos_value in dict_var_weight[key].items()]
@@ -423,11 +448,13 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
         print(dict_link_graph[key])
     print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     
-    # initializing the haplotype list and the cursor
-    haplotype_0 = []
-    hap_cursor_0 = 0
+    # initializing the haplotype list, the cursor, and the last_ext
+    haplotype_0 = []        # record the (position, base) pair of the haplotype
+    hap_cursor_0 = 0        # record the position got the linking information (still useless in this version)
+    break_flag_0 = False    # the flag indicating of the haplotype is breaked
     haplotype_1 = []
     hap_cursor_1 = 0
+    break_flag_1 = False
     pos_start_idx = 0
    
     # find the first variant site with two variants
@@ -440,53 +467,104 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
         list_pos_base = pos_weight[1]
         print("XXXXXXXXXXXXXX", position, "XXXXXXXXXXXXXXXX")
 
-        # deal with haplotype_0's outward link
-        dict_outward_0 = dict_link_outward[haplotype_0[hap_cursor_0]]
+        # deal with haplotype_0's outward lin
+        dict_outward_0 = {}
+        if dict_link_outward.get(haplotype_0[hap_cursor_0]):
+            dict_outward_0 = dict_link_outward[haplotype_0[hap_cursor_0]]
         trim_dict(dict_outward_0)
+        if position > get_farthest_ext(dict_outward_0, haplotype_0[hap_cursor_0]):
+            break_flag_0 = True
+            eprint("Haplotype 0 has a break at", haplotype_0[hap_cursor_0], "to", position)
         print(dict_outward_0)
         # deal with haplotype_1's outward link
         print("--------------------")
-        dict_outward_1 = dict_link_outward[haplotype_1[hap_cursor_1]]
+        dict_outward_1 = {}
+        if dict_link_outward.get(haplotype_1[hap_cursor_1]):
+            dict_outward_1 = dict_link_outward[haplotype_1[hap_cursor_1]]
         trim_dict(dict_outward_1)
+        if position > get_farthest_ext(dict_outward_1, haplotype_1[hap_cursor_1]):
+            break_flag_1 = True
+            eprint("Haplotype 1 has a break at", haplotype_1[hap_cursor_1], "to", position)
         print(dict_outward_1)
         # deal with position's inward link
         print("--------------------")
-        dict_inward_0 = dict_link_inward[(position, list_pos_base[0][0])]
+        dict_inward_0 = {}
+        if dict_link_inward.get((position, list_pos_base[0][0])):
+            dict_inward_0 = dict_link_inward[(position, list_pos_base[0][0])]
         trim_dict(dict_inward_0)
         print(dict_inward_0)
         #print(dict_link_graph[(position, list_pos_base[1][0])])
         if len(list_pos_base) > 1:
             print("--------------------")
-            dict_inward_1 = dict_link_inward[(position, list_pos_base[1][0])]
+            dict_inward_1 = {}
+            if dict_link_inward.get((position, list_pos_base[1][0])):
+                dict_inward_1 = dict_link_inward[(position, list_pos_base[1][0])]
             trim_dict(dict_inward_1)
             print(dict_inward_1)
 
-        for outward_key in sorted(dict_outward_0.keys()):
+        connect_info_0 = None
+        connect_info_1 = None
+        # There must be at least one kind of base in the position
+        for (outward_key, weight) in sorted(dict_outward_0.items(), key=lambda pair:pair[1], reverse=True):
             if dict_inward_0.get(outward_key):
-                print("Connect: ", outward_key, 0, 0)
-                haplotype_0.append((position, outward_key[1][1]))
-                hap_cursor_0 += 1
+                print("Potential Connect: ", outward_key, 0, 0)
+                connect_info_0 = (dict_outward_0[outward_key], (position, outward_key[1][1]))
                 break
-        for outward_key in sorted(dict_outward_1.keys()):
+        for (outward_key, weight) in sorted(dict_outward_1.items(), key=lambda pair:pair[1], reverse=True):
             if dict_inward_0.get(outward_key):
-                print("Connect: ", outward_key, 1, 0)
-                haplotype_1.append((position, outward_key[1][1]))
-                hap_cursor_1 += 1
+                print("Potential Connect: ", outward_key, 1, 0)
+                connect_info_1 = (dict_outward_1[outward_key], (position, outward_key[1][1]))
                 break
         
+        # if there are two variants in the position
         if len(list_pos_base) > 1:
-            for outward_key in sorted(dict_outward_0.keys()):
+            for (outward_key, weight) in sorted(dict_outward_0.items(), key=lambda pair:pair[1], reverse=True):
                 if dict_inward_1.get(outward_key):
-                    print("Connect: ", outward_key, 0, 1)
-                    haplotype_0.append((position, outward_key[1][1]))
-                    hap_cursor_0 += 1
-                    break
-            for outward_key in sorted(dict_outward_1.keys()):
+                    print("Potential Connect: ", outward_key, 0, 1)
+                    if connect_info_0 == None or connect_info_0[0] < weight:
+                        connect_info_0 = (dict_outward_0[outward_key], (position, outward_key[1][1]))
+                        break
+            for (outward_key, weight) in sorted(dict_outward_1.items(), key=lambda pair:pair[1], reverse=True):
                 if dict_inward_1.get(outward_key):
-                    print("Connect: ", outward_key, 1, 1)
-                    haplotype_1.append((position, outward_key[1][1]))
-                    hap_cursor_1 += 1
-                    break
+                    print("Potential Connect: ", outward_key, 1, 1)
+                    if connect_info_1 == None or connect_info_1[0] < weight:
+                        connect_info_1 = (dict_outward_1[outward_key], (position, outward_key[1][1]))
+                        break
+
+        # update the nodes if the connection is found
+        if connect_info_0:    
+            haplotype_0.append(connect_info_0[1])
+            hap_cursor_0 += 1
+            if break_flag_1 and len(list_pos_base) >1:
+                for idx in range(2):
+                    potential_base = list_pos_base[idx][0] 
+                    if potential_base != connect_info_0[1][1]:
+                        eprint("Link rebuilt on Haplotype 1 at", haplotype_1[hap_cursor_1] , "to", position)
+                        haplotype_1.append((position, potential_base))
+                        hap_cursor_1 += 1
+                        break_flag_1 = False
+                        break
+        if connect_info_1:    
+            haplotype_1.append(connect_info_1[1])
+            hap_cursor_1 += 1
+            if break_flag_0 and len(list_pos_base) >1:
+                for idx in range(2):
+                    potential_base = list_pos_base[idx][0] 
+                    if potential_base != connect_info_1[1][1]:
+                        eprint("Link rebuilt on Haplotype 0 at", haplotype_0[hap_cursor_0] , "to", position)
+                        haplotype_0.append((position, potential_base))
+                        hap_cursor_0 += 1
+                        break_flag_0 = False
+                        break
+
+        if break_flag_0 and break_flag_1:
+            eprint("BREAKING LINKS FOR BOTH HAPLOTYPE AT", position, "!!!!")
+            eprint("Breaking links cannot resloved, we guess...")
+            haplotype_0.append((position, list_pos_base[0][0]))
+            hap_cursor_0 += 1
+            if len(list_pos_base) > 1:
+                haplotype_1.append((position, list_pos_base[1][0]))
+                hap_cursor_1 += 1
     
     print(haplotype_0)
     print(haplotype_1)
@@ -534,6 +612,20 @@ def output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, hapl
     return (corrected_contig_SEQ_0, corrected_contig_SEQ_1)
 
 
+def output_original_contig(contig_SEQ, region_st, region_ed, allele_file, corrected_contig_output_file):
+    allele_name = ""
+    with open(allele_file, 'r') as f_a:
+        for line in f_a:
+            if line[0] == '>':
+                allele_name = line[1:].strip()
+                break
+
+    f_c = open(corrected_contig_output_file, 'a')
+    f_c.write(">" + allele_name + "_original\n")
+    f_c.write(contig_SEQ[region_st:region_ed] + "\n")
+    f_c.close()
+    
+
 
 if __name__ == '__main__':
     args = parse_args()
@@ -576,7 +668,8 @@ if __name__ == '__main__':
             haplotype_0, haplotype_1 = haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, interest_region)
             output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_file, corrected_contig_output_file)
         else:
-            print("No variant detected in the interested region!")
+            output_original_contig(contig_SEQ, region_st, region_ed, allele_file, corrected_contig_output_file)
+            print("No variant detected in the interested region, output original contig...")
     else:
         print("edit_region:")
         print(edit_region)
