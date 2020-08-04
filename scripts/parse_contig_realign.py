@@ -242,9 +242,9 @@ def report_variant_base(start_pos, cigar, mis_region, read_SEQ):
 
     number, operate = parse_CIGAR(cigar)
     for idx, op in enumerate(operate):
-        if mis_idx >= len(mis_region):
+        if mis_idx >= len(mis_region): # if the CIGAR is out of mis_region, skip
             break
-        # Not now. We just ignore the soft-clip and hard-clip reads for precision purpose
+        # Not operate now ---> We just ignore the soft-clip and hard-clip reads for precision purpose
         if op == 'M' or op == 'S':
             tmp_ref_cursor = ref_cursor + number[idx]
             while (mis_idx < len(mis_region) ) and (mis_region[mis_idx] < tmp_ref_cursor):
@@ -256,13 +256,15 @@ def report_variant_base(start_pos, cigar, mis_region, read_SEQ):
         elif op == 'D':
             num_D = number[idx]
             #list_var_pair += [ (D_idx,'-') for D_idx in range(mis_region[mis_idx], mis_region[mis_idx]+num_D) ]
-            list_var_pair.append( (mis_region[mis_idx], 'D'+str(num_D)) )
-            mis_idx  += num_D
+            if (mis_idx < len(mis_region)) and (mis_region[mis_idx] <= ref_cursor):
+                list_var_pair.append( (mis_region[mis_idx], 'D'+str(num_D)) )
+                mis_idx  += num_D
             ref_cursor += num_D
         elif op == 'I':
             num_I = number[idx]
-            list_var_pair.append( (mis_region[mis_idx], 'I'+read_SEQ[read_cursor:read_cursor+num_I]) )
-            mis_idx + 1
+            if (mis_idx < len(mis_region)) and (mis_region[mis_idx] <= ref_cursor):
+                list_var_pair.append( (mis_region[mis_idx], 'I'+read_SEQ[read_cursor:read_cursor+num_I]) )
+                mis_idx + 1
             read_cursor += num_I
     return list_var_pair
 
@@ -530,6 +532,9 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
                     if connect_info_1 == None or connect_info_1[0] < weight:
                         connect_info_1 = (dict_outward_1[outward_key], (position, outward_key[1][1]))
                         break
+        #else: # the case that two haplotypes may collapse into one
+        #    if connect_info_0 and connect_info_1: # two haplotypes are collapsed
+
 
         # update the nodes if the connection is found
         if connect_info_0:    
