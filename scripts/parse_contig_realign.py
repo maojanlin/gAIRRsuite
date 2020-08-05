@@ -309,8 +309,6 @@ def variant_link_graph(edit_region, list_read_info):
             eprint("Error with read name:", read_name_0, "and", read_name_1)
             continue
         # we suppose that one of the read with soft-clip means that the read pairs should not be here
-        #if '4D' in cigar_0 or '4D' in cigar_1:
-        #        print(read_name_0, start_pos_0, end_pos_0, "----", start_pos_1, end_pos_1)
         '''
         if 'S' in cigar_0 or 'S' in cigar_1:
             if start_pos_0 <= 583 <= end_pos_0 or start_pos_1 <= 583 <= end_pos_1:
@@ -383,14 +381,14 @@ def find_double_pos(pos_start_idx, list_pos_weight, haplotype_0, haplotype_1, ha
             pos_start_idx += 1
         elif len(list_pos_weight[pos_start_idx]) == 1:
             print("There is no variant detected in position", list_pos_weight[0][0])
-            haplotype_0.append((list_pos_weight[0][0], list_pos_weight[0][1][0][0]))
-            haplotype_1.append((list_pos_weight[0][0], list_pos_weight[0][1][0][0]))
+            haplotype_0.append((list_pos_weight[pos_start_idx][0], list_pos_weight[pos_start_idx][1][0][0]))
+            haplotype_1.append((list_pos_weight[pos_start_idx][0], list_pos_weight[pos_start_idx][1][0][0]))
             pos_start_idx += 1
             hap_cursor_0 += 1
             hap_cursor_1 += 1
         else:
-            haplotype_0.append((list_pos_weight[0][0], list_pos_weight[0][1][0][0]))
-            haplotype_1.append((list_pos_weight[0][0], list_pos_weight[0][1][1][0]))
+            haplotype_0.append((list_pos_weight[pos_start_idx][0], list_pos_weight[pos_start_idx][1][0][0]))
+            haplotype_1.append((list_pos_weight[pos_start_idx][0], list_pos_weight[pos_start_idx][1][1][0]))
             pos_start_idx += 1
             return pos_start_idx, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1
     return pos_start_idx, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1
@@ -447,7 +445,7 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
     
     print("+++++++++++++++++++", "dict_link_graph", "+++++++++++++++++++")
     for key in sorted(dict_link_graph.keys()):
-        print(dict_link_graph[key])
+        print(key, dict_link_graph[key])
     print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     
     # initializing the haplotype list, the cursor, and the last_ext
@@ -532,8 +530,68 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
                     if connect_info_1 == None or connect_info_1[0] < weight:
                         connect_info_1 = (dict_outward_1[outward_key], (position, outward_key[1][1]))
                         break
-        #else: # the case that two haplotypes may collapse into one
-        #    if connect_info_0 and connect_info_1: # two haplotypes are collapsed
+        
+        # the case that two haplotypes may collapse into one
+        if connect_info_0 and connect_info_1:
+            if connect_info_0[1] == connect_info_1[1]: # two haplotypes are collapsed
+                for redouble_idx in range(pos_idx, len(list_pos_weight)):
+                    rd_pos_weight = list_pos_weight[redouble_idx]
+                    rd_position = rd_pos_weight[0]
+                    rd_list_pos_base = rd_pos_weight[1]
+                    if(len(rd_list_pos_base)) >= 2: # if there are two variants at the site
+                        # call the potential connections
+                        last_info_0 = haplotype_0[hap_cursor_0]
+                        last_info_1 = haplotype_1[hap_cursor_1]
+                        dict_info_0 = dict_link_graph[last_info_0]
+                        dict_info_1 = dict_link_graph[last_info_1]
+                        # connect them
+                        rd_info_0 = None
+                        rd_info_1 = None
+                        for rd_link_info, rd_weight in sorted(dict_info_0.items(), key=lambda pair:pair[1], reverse=True):
+                            variant_flag = False
+                            for info_pair in rd_link_info[1]:
+                                tmp_rd_info = []
+                                if info_pair == connect_info_0[1]:
+                                    variant_flag = True
+                                    tmp_rd_info.append(info_pair)
+                                if variant_flag:
+                                    tmp_rd_info.append(info_pair)
+                                    if info_pair[0] == rd_position:
+                                        rd_info_0 = tmp_rd_info
+                                        break
+                            if rd_info_0:
+                                break
+                            
+                        for rd_link_info, rd_weight in sorted(dict_info_1.items(), key=lambda pair:pair[1], reverse=True):
+                            for info_pair in rd_link_info[1]:
+                                tmp_rd_info = []
+                                if info_pair == connect_info_1[1]:
+                                    variant_flag = True
+                                    tmp_rd_info.append(info_pair)
+                                if variant_flag:
+                                    tmp_rd_info.append(info_pair)
+                                    if info_pair[0] == rd_position:
+                                        rd_info_1 = tmp_rd_info
+                                        break
+                            if rd_info_1:
+                                break
+
+                        if rd_info_0 != rd_info_1:
+                            if rd_info_0:
+                                haplotype_0 += rd_info_0
+                                hap_cursor_0 += len(rd_info_0)
+                            else:
+                                break_flag_0 = True
+                            if rd_info_1:
+                                haplotype_1 += rd_info_1
+                                hap_cursor_1 += len(rd_info_1)
+                            else:
+                                break_flag_1 = True
+                            break
+                         
+                print("Crossing the single base variant site...")
+                continue
+
 
 
         # update the nodes if the connection is found
@@ -585,10 +643,11 @@ def sequence_substitution(sequence, list_correct_pairs):
             D_len = int(operation[1:])
             sequence = sequence[:position+hap_offset] + sequence[position+hap_offset+D_len:]
             hap_offset -= D_len
-        elif operation[0] == 'H':
-            H_len = len(operation[1:])
-            sequence = sequence[:position+hap_offset] + operation[1:] + sequence[position+hap_offset:]
-            hap_offset += H_len
+        elif operation[0] == 'I':
+            I_len = len(operation[1:])
+            print("I situation", sequence[:position+hap_offset-1], operation, sequence[position+hap_offset-1:])
+            sequence = sequence[:position+hap_offset-1] + operation[1:] + sequence[position+hap_offset-1:]
+            hap_offset += I_len
         else:
             sequence = sequence[:position+hap_offset-1] + operation + sequence[position+hap_offset:]
     return sequence
