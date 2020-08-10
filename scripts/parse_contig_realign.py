@@ -95,6 +95,12 @@ def mark_edit_region(fn_sam, fn_output_file, contig_file):
                 fields    = line.split()
                 # if the read align to shorter contigs, pass
                 if contig_name != fields[2]: 
+                    dict_reads[(read_name, even_odd_flag)] = read_SEQ
+                    list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
+                    if even_odd_flag == 1:
+                        even_odd_flag = 2
+                    else:
+                        even_odd_flag = 1
                     continue
                 read_name = fields[0]
                 read_SEQ  = fields[9]
@@ -199,10 +205,12 @@ def pop_perfect_reads(edit_region, list_read_info, dict_reads, fn_output_file):
                 if support_flag:
                     # the read support some edit regions
                     break
-                elif dict_reads.get((read_name, even_odd_flag)):
-                    # pop the reads
-                    dict_reads.pop((read_name, 1))
-                    dict_reads.pop((read_name, 2))
+                else: # pop the reads
+                    #if dict_reads.get((read_name, even_odd_flag)):
+                    if dict_reads.get((read_name, 1)):
+                        dict_reads.pop((read_name, 1))
+                    if dict_reads.get((read_name, 2)):
+                        dict_reads.pop((read_name, 2))
                 break
 
     # output the pair end reads
@@ -376,10 +384,10 @@ def variant_link_graph(edit_region, list_read_info):
 
 def find_double_pos(pos_start_idx, list_pos_weight, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1):
     while pos_start_idx < len(list_pos_weight):
-        if len(list_pos_weight[pos_start_idx]) == 0:
+        if len(list_pos_weight[pos_start_idx][1]) == 0:
             print("There is no reads covered the position", list_pos_weight[0][0])
             pos_start_idx += 1
-        elif len(list_pos_weight[pos_start_idx]) == 1:
+        elif len(list_pos_weight[pos_start_idx][1]) == 1:
             print("There is no variant detected in position", list_pos_weight[0][0])
             haplotype_0.append((list_pos_weight[pos_start_idx][0], list_pos_weight[pos_start_idx][1][0][0]))
             haplotype_1.append((list_pos_weight[pos_start_idx][0], list_pos_weight[pos_start_idx][1][0][0]))
