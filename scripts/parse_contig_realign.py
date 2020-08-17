@@ -143,7 +143,7 @@ def mark_edit_region(fn_sam, fn_output_file, contig_file):
                             mis_region_I.append(idx_I+1)
                         else:
                             if op == 'S':
-                                diff_len += number[idx]
+                                diff_len -= number[idx]
                             else:
                                 idx_I += number[idx]
                                 if op == 'D':
@@ -253,7 +253,7 @@ def report_variant_base(start_pos, cigar, mis_region, read_SEQ):
         if mis_idx >= len(mis_region): # if the CIGAR is out of mis_region, skip
             break
         # Not operate now ---> We just ignore the soft-clip and hard-clip reads for precision purpose
-        if op == 'M' or op == 'S':
+        if op == 'M':# or op == 'S':
             tmp_ref_cursor = ref_cursor + number[idx]
             while (mis_idx < len(mis_region) ) and (mis_region[mis_idx] < tmp_ref_cursor):
                 dist = mis_region[mis_idx] - ref_cursor
@@ -274,6 +274,9 @@ def report_variant_base(start_pos, cigar, mis_region, read_SEQ):
                 list_var_pair.append( (mis_region[mis_idx], 'I'+read_SEQ[read_cursor:read_cursor+num_I]) )
                 mis_idx + 1
             read_cursor += num_I
+        elif op == 'S':
+            num_S = number[idx]
+            read_cursor += num_S
     return list_var_pair
 
 
@@ -309,12 +312,17 @@ def variant_link_graph(edit_region, list_read_info):
     dict_var_weight = { pos:{} for pos in edit_region }
     dict_link_outward = {}
     dict_link_inward  = {}
-    
-    for list_idx in range(0,len(list_read_info),2):
+   
+    list_idx = -2
+    len_list_read_info = len(list_read_info)-3
+    #for list_idx in range(0,len(list_read_info),2):
+    while list_idx < len_list_read_info:
+        list_idx += 2
         start_pos_0, end_pos_0, read_name_0, even_odd_flag_0, mis_region_0, cigar_0, read_SEQ_0 = list_read_info[list_idx]
         start_pos_1, end_pos_1, read_name_1, even_odd_flag_1, mis_region_1, cigar_1, read_SEQ_1 = list_read_info[list_idx+1]
         if read_name_0 != read_name_1:
-            eprint("Error with read name:", read_name_0, "and", read_name_1)
+            eprint("Error with read name:", read_name_0, "and", read_name_1, list_idx)
+            list_idx -= 1
             continue
         # we suppose that one of the read with soft-clip means that the read pairs should not be here
         '''
@@ -334,7 +342,7 @@ def variant_link_graph(edit_region, list_read_info):
             # if match cover the edit spot
             if start_pos_0 <= spot <= end_pos_0:
                 covered_edit_region_0.append(spot)
-            elif start_pos_1 <= spot <= end_pos_1:
+            if start_pos_1 <= spot <= end_pos_1:
                 covered_edit_region_1.append(spot)
 
         # if the read pairs cover any interested spot, record the base information in dict_var_weight
@@ -661,19 +669,20 @@ def sequence_substitution(sequence, list_correct_pairs):
     return sequence
 
 
-def output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_file, corrected_contig_output_file):
+def get_allele_name(allele_file):
+    with open(allele_file, 'r') as f_a:
+        for line in f_a:
+            if line[0] == '>':
+                allele_name = line[1:].strip()
+                return allele_name
+
+
+def output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_name, corrected_contig_output_file):
     corrected_contig_SEQ_0 = sequence_substitution(contig_SEQ, haplotype_0)
     corrected_contig_SEQ_0 = corrected_contig_SEQ_0[region_st:region_ed]
 
     corrected_contig_SEQ_1 = sequence_substitution(contig_SEQ, haplotype_1)
     corrected_contig_SEQ_1 = corrected_contig_SEQ_1[region_st:region_ed]
-
-    allele_name = ""
-    with open(allele_file, 'r') as f_a:
-        for line in f_a:
-            if line[0] == '>':
-                allele_name = line[1:].strip()
-                break
 
     f_c = open(corrected_contig_output_file, 'a')
     f_c.write(">" + allele_name + "_corrected_0\n")
@@ -738,7 +747,7 @@ if __name__ == '__main__':
             print("=========== start haplotyping ==============")
             dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph(interest_edit_region, list_read_info)
             haplotype_0, haplotype_1 = haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, interest_region)
-            output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_file, corrected_contig_output_file)
+            output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, get_allele_name(allele_file), corrected_contig_output_file)
         else:
             output_original_contig(contig_SEQ, region_st, region_ed, allele_file, corrected_contig_output_file)
             print("No variant detected in the interested region, output original contig...")
@@ -751,7 +760,7 @@ if __name__ == '__main__':
             print("=========== start haplotyping ==============")
             dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph(edit_region, list_read_info)
             haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, edit_region)
-            output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_file, corrected_contig_output_file)
+            output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, get_allele_name(allele_file), corrected_contig_output_file)
         else:
             print("No variant detected!")
 
