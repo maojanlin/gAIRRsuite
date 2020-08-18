@@ -58,11 +58,10 @@ def parse_perfect_sam(fn_sam):
     with open(fn_sam, 'r') as f_s:
         for line in f_s:
             if line[0] != '@':
-                if "NM:i:0" in line:
-                    fields = line.strip().split()
+                fields = line.strip().split()
+                if "NM:i:0" in line and ('S' in fields[5] or 'H' in fields[5]) == False:
                     list_perfect_fields.append(fields)
                 else:
-                    fields = line.strip().split()
                     list_mismatch_fields.append(fields)
     return list_perfect_fields, list_mismatch_fields
 

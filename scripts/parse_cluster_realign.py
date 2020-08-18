@@ -269,6 +269,8 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
         # the case that two haplotypes may collapse into one
         if connect_info_0 and connect_info_1:
             if connect_info_0[1] == connect_info_1[1]: # two haplotypes are collapsed
+                record_info_0 = [connect_info_0[1]]
+                record_info_1 = [connect_info_1[1]]
                 for redouble_idx in range(pos_idx, len(list_pos_weight)):
                     rd_pos_weight = list_pos_weight[redouble_idx]
                     rd_position = rd_pos_weight[0]
@@ -311,19 +313,26 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
                             if rd_info_1:
                                 break
 
+                        record_info_0 += rd_info_0
+                        record_info_1 += rd_info_1
+                        print("connect_info_0", record_info_0)
+                        print("connect_info_1", record_info_1)
+                        print("rd_info_0", rd_info_0)
+                        print("rd_info_1", rd_info_1)
                         if rd_info_0 != rd_info_1:
+                            haplotype_0 += record_info_0
+                            hap_cursor_0 += len(record_info_0)
                             if rd_info_0:
-                                haplotype_0 += rd_info_0
-                                hap_cursor_0 += len(rd_info_0)
+                                pass
                             else:
                                 break_flag_0 = True
+                            haplotype_1 += record_info_1
+                            hap_cursor_1 += len(record_info_1)
                             if rd_info_1:
-                                haplotype_1 += rd_info_1
-                                hap_cursor_1 += len(rd_info_1)
+                                pass
                             else:
                                 break_flag_1 = True
                             break
-                         
                 print("Crossing the single base variant site...")
                 continue
 

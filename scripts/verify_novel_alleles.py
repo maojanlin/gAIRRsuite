@@ -41,12 +41,34 @@ if __name__ == "__main__":
     print("There are", len(list_perfect_fields_1), "true novel alleles in H1:")
     for fields in list_perfect_fields_1:
         print("\t", fields[0] + '\t\t' + fields[2] + '\t' + fields[3])
-    print("There are", len(list_perfect_fields_2), "true novel alleles in H1:")
+    print("There are", len(list_perfect_fields_2), "true novel alleles in H2:")
     for fields in list_perfect_fields_2:
         print("\t", fields[0] + '\t\t' + fields[2] + '\t' + fields[3])
 
-    set_mismatch_fields_1 = {fields[0] for fields in list_mismatch_fields_1}
-    set_mismatch_fields_2 = {fields[0] for fields in list_mismatch_fields_2}
-    print("Useless corrected alleles are:\t", sorted(set_mismatch_fields_1.intersection(set_mismatch_fields_2)))
+    dict_mismatch_fields_1 = {}
+    for fields in list_mismatch_fields_1:
+        try:
+            dict_mismatch_fields_1[fields[0]] = (fields[5], fields[11])
+        except:
+            dict_mismatch_fields_1[fields[0]] = ('*', '*')
+    dict_mismatch_fields_2 = {}
+    for fields in list_mismatch_fields_2:
+        try:
+            dict_mismatch_fields_2[fields[0]] = (fields[5], fields[11])
+        except:
+            dict_mismatch_fields_2[fields[0]] = ('*', '*')
+    
+    set_mismatch_fields_1 = set(dict_mismatch_fields_1.keys())
+    set_mismatch_fields_2 = set(dict_mismatch_fields_2.keys())
+    set_common_mismatch_fields = set_mismatch_fields_1.intersection(set_mismatch_fields_2)
+    
+    if len(set_common_mismatch_fields) == 0:
+        print("No common mismatched alleles between H1 and H2.")
+    else:
+    print("Common mismatched alleles / CIGAR in H1 / NM:i in H1 / CIGAR in H2 / NM:i in H2")
+        for allele_name in sorted(set_common_mismatch_fields):
+            pair_H1 = dict_mismatch_fields_1[allele_name]
+            pair_H2 = dict_mismatch_fields_2[allele_name]
+            print("\t", allele_name, ' / ', pair_H1[0], ' / ', pair_H1[1], ' / ', pair_H2[0], ' / ', pair_H2[1])
 
 
