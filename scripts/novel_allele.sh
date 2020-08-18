@@ -8,8 +8,8 @@ asm_path_H2="../asm_NA12878/NA12878-H2.fa"
 
 # setting for the data
 mkdir -p ${outer_dir}
-../bwa/bwa index ${allele_path}
-../bwa/bwa mem -t 16 ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele.sam
+#../bwa/bwa index ${allele_path}
+#../bwa/bwa mem -t 16 ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele.sam
 
 # start analysis
 echo "[NOVEL ALLELE] Finding novel alleles..."
@@ -23,9 +23,7 @@ python3 parse_cluster_realign.py -fs  ${outer_dir}bwa_read_to_allele.sam \
 
 # product refinement, bwa mem -a mode is used to find all duplications
 echo "[NOVEL ALLELE] Product refinement..."
-../bwa/bwa index ${outer_dir}corrected_alleles_raw.fasta
-../bwa/bwa mem -t 16 -a ${outer_dir}corrected_alleles_raw.fasta ${allele_path} > ${outer_dir}bwa_c_alleles_realign.sam
-python3 filter_corrected_alleles.py -fs  ${outer_dir}bwa_c_alleles_realign.sam \
+python3 filter_corrected_alleles.py -fa  ${allele_path} \
                                     -fca ${outer_dir}corrected_alleles_raw.fasta \
                                     -fof ${outer_dir}corrected_alleles_filtered.fasta
 

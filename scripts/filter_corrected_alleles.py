@@ -2,17 +2,18 @@ import argparse
 import pickle
 import os
 import numpy as np
+from utils import get_reverse_complement
 import sys
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '-fs', '--fn_sam',
-        help = 'input sam file where alleles.fasta align to corrected_alleles.fasta'
+        '-fa', '--fn_original_alleles',
+        help = 'input original allele fasta file'
     )
     parser.add_argument(
         '-fca', '--fn_corrected_alleles',
-        help = 'input corrected allele file'
+        help = 'input corrected allele fasta file'
     )
     
     parser.add_argument(
@@ -66,26 +67,77 @@ def parse_perfect_sam(fn_sam):
     return list_perfect_fields, list_mismatch_fields
 
 
+def assign_new_name(basic_name, str_interval, dict_target):
+    if '|' in basic_name:
+        try:
+            basic_name = basic_name.split('|')[1]
+        except:
+            pass
+    ext_num = 0
+    while True:
+        tmp_name = basic_name + str_interval + str(ext_num)
+        if dict_target.get(tmp_name):
+            ext_num += 1
+        else:
+            return tmp_name
+
+
+def duplicate_trim_set_with_2nd_set(dict_target_allele_SEQ, dict_fixed_allele_SEQ, ext_flag=True, ext_thrd=0.70, ori_flag=False):
+    # if any target_SEQ is subseq of any fixed_SEQ, the target_SEQ is popped
+    # if ext_flag is True, when a fixed_SEQ is a subseq of a target_SEQ, target_SEQ is kept and target_name is changed into fixed_name_ext
+    # the ext_flag is effective if only len(fixed_SEQ) > len(target_SEQ)*ext_thrd
+    dict_trimmed_allele_SEQ = {}
+    for (t_name, t_SEQ) in dict_target_allele_SEQ.items():
+        assign_name = t_name
+        for (f_name, f_SEQ) in dict_fixed_allele_SEQ.items():
+            if t_SEQ.upper() in f_SEQ.upper() or t_SEQ.upper() in get_reverse_complement(f_SEQ.upper()): # t_SEQ is the subseq
+                assign_name = False
+                break
+            elif f_SEQ.upper() in t_SEQ.upper() or f_SEQ.upper() in get_reverse_complement(t_SEQ.upper()): # an f_SEQ is the subseq
+                if ext_flag == True and len(f_SEQ) >= len(t_SEQ)*ext_thrd:
+                    ext_num = 0
+                    assign_name = assign_new_name(f_name, '_extend_', dict_trimmed_allele_SEQ)
+                else:
+                    assign_name = False
+        if assign_name:
+            if ori_flag == True:
+                dict_trimmed_allele_SEQ[t_name] = t_SEQ
+            else:
+                if 'extend' in assign_name:
+                    dict_trimmed_allele_SEQ[assign_name] = t_SEQ
+                else:
+                    assign_name = assign_new_name(assign_name, '_corrected_', dict_trimmed_allele_SEQ)
+                    dict_trimmed_allele_SEQ[assign_name] = t_SEQ
+    return dict_trimmed_allele_SEQ
+
+
+
 if __name__ == "__main__":
     args = parse_args()
-    fn_sam = args.fn_sam
+    fn_original_alleles = args.fn_original_alleles
     fn_corrected_alleles = args.fn_corrected_alleles
     fo_filtered_alleles = args.fo_filtered_alleles
 
-    dict_allele_SEQ = parse_fasta(fn_corrected_alleles)
-    list_perfect_fields, list_mismatch_fields = parse_perfect_sam(fn_sam)
-    set_duplicate_allele = set()
-    for fields in list_perfect_fields:
-        # get the ref (allele) info
-        set_duplicate_allele.add(fields[2])
+    dict_o_allele_SEQ = parse_fasta(fn_original_alleles)
+    dict_c_allele_SEQ = parse_fasta(fn_corrected_alleles)
 
-    for ele in set_duplicate_allele:
-        dict_allele_SEQ.pop(ele)
+    dict_ref_trimmed_allele_SEQ = duplicate_trim_set_with_2nd_set(dict_c_allele_SEQ, dict_o_allele_SEQ)
+    dict_shrink = {}
+    for name, SEQ in dict_ref_trimmed_allele_SEQ.items():
+        dict_shrink[name+'_prefix'] = SEQ[:-1]
+        dict_shrink[name+'_suffix'] = SEQ[1:]
+    dict_self_trimmed_allele_SEQ = duplicate_trim_set_with_2nd_set(dict_ref_trimmed_allele_SEQ, dict_shrink, ext_flag=True, ext_thrd=0, ori_flag=True)
+    set_SEQ = set()
+    for name, SEQ in sorted(dict_self_trimmed_allele_SEQ.items()):
+        if SEQ in set_SEQ:
+            dict_self_trimmed_allele_SEQ.pop(name)
+        else:
+            set_SEQ.add(SEQ)
 
     f_o = open(fo_filtered_alleles, 'w')
-    for allele_name in sorted(dict_allele_SEQ.keys()):
+    for allele_name in sorted(dict_self_trimmed_allele_SEQ.keys()):
         f_o.write(">" + allele_name + '\n')
-        f_o.write(dict_allele_SEQ[allele_name] + '\n')
+        f_o.write(dict_self_trimmed_allele_SEQ[allele_name] + '\n')
     f_o.close()
 
 
