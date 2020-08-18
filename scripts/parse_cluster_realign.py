@@ -320,19 +320,19 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
                         print("rd_info_0", rd_info_0)
                         print("rd_info_1", rd_info_1)
                         if rd_info_0 != rd_info_1:
-                            haplotype_0 += record_info_0
-                            hap_cursor_0 += len(record_info_0)
                             if rd_info_0:
                                 pass
                             else:
                                 break_flag_0 = True
-                            haplotype_1 += record_info_1
-                            hap_cursor_1 += len(record_info_1)
                             if rd_info_1:
                                 pass
                             else:
                                 break_flag_1 = True
                             break
+                haplotype_0 += record_info_0
+                hap_cursor_0 += len(record_info_0)
+                haplotype_1 += record_info_1
+                hap_cursor_1 += len(record_info_1)
                 print("Crossing the single base variant site...")
                 continue
 

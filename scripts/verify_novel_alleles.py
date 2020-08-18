@@ -65,7 +65,7 @@ if __name__ == "__main__":
     if len(set_common_mismatch_fields) == 0:
         print("No common mismatched alleles between H1 and H2.")
     else:
-    print("Common mismatched alleles / CIGAR in H1 / NM:i in H1 / CIGAR in H2 / NM:i in H2")
+        print("Common mismatched alleles / CIGAR in H1 / NM:i in H1 / CIGAR in H2 / NM:i in H2")
         for allele_name in sorted(set_common_mismatch_fields):
             pair_H1 = dict_mismatch_fields_1[allele_name]
             pair_H2 = dict_mismatch_fields_2[allele_name]
