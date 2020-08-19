@@ -1,4 +1,4 @@
-_Updated: July. 3, 2020_
+_Updated: August. 19, 2020_
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
@@ -139,6 +139,32 @@ the `parse_contig_realign.py` parse the reads-to-SPAdes_contig realignment file:
 - analyze the sam file to mark the potential variant (hot spot region).
 - pop out the reads covered the hot spot region and support all variant favors the first round contig.
 - produce the pair-end reads fasta file `TCRV_remain_225_P1.fasta` and `TCRV_remain_225_P2.fasta` that can be assembled into alternative contig.
+
+
+## Novel alleles calling pipeline
+```
+./novel_alleles.sh
+```
+The input path of `novel_allele.sh` is list below
+- outer_dir="NA12878_tcrv_novel_alleles/"   # the pipeline will make a directory to store all the files
+- allele_path="TCRV_alleles.fasta"          # the known allele list download from IMGT database
+- read_path_1="NA12878_S46_R1.fasta"        # captured R1 short read fasta file
+- read_path_2="NA12878_S46_R2.fasta"        # captured R2 short read fasta file
+- asm_path_H1="../NA12878/NA12878-H1.fa"    # FOR VERIFICATION ONLY -- assembly H1 fasta file
+- asm_path_H2="../NA12878/NA12878-H2.fa"    # FOR VERIFICATION ONLY -- assembly H2 fasta file
+
+The pipeline start with BWA alignment using `TCRV_alleles.fasta` as reference and short reads `NA12878_S46_R1/R2.fasta` as query to produce `bwa_read_to_allele.sam`.
+
+The python file `parse_cluster_realign.py` analyze the variants in `bwa_read_to_allele.sam` and call the haplotype with reference to `TCRV_alleles.fasta`. Without the loss of generality we take a reference sequence TCRV allele TRAV21\*01 as an example. There is a G/A variant in TRAV21\*01, which means that there are several short reads support the haplotype with variant A other than G in original alleles in `TCRV_alleles.fasta`. We put all the haplotypes as candidates of novel alleles. The output fasta file is `corrected_alleles_raw.fasta`.
+
+Since the correction is done on alleles separately, duplications may happened. For example, the corrected TRAV21\*01_corrected is in fact TRAV21\*02. The duplications may happened between `corrected_alleles_raw.fasta` and `TCRV_alleles.fasta` or between `corrected_alleles_raw.fasta` itself. `filter_corrected_alleles.py` filters the `corrected_alleles_raw.fasta` to `corrected_alleles_filtered.fasta`. In some cases, the duplicated novel alleles are longer than its original allele like the case TRAV21\*01_corrected is longer than TRAV21\*02, in these cases, we rename TRAV21\*01_corrected to TRAV21\*02_txtend. 
+
+### Verification of novel alleles
+This part of the pipeline is only done for verification if the long reads assembly exists. We first align the novel alleles to whole genome `NA12878-H1.fa` and `NA12878-H2.fa`. The novel allele that matched perfectly to the whole genome assembly can be seem as high confident novel allele. On the other hand, if an allele cannot matched to both `NA12878-H1.fa` and `NA12878-H2.fa`. It is probable that the novel alleles called had some problems.
+
+`verify_novel_alleles.py` parsed the sam file from above BWA alignment to print the results.
+
+
 
 # Worki-in-progress methods that consider RSS structures
 
