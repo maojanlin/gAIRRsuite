@@ -128,10 +128,11 @@ if __name__ == "__main__":
     dict_self_trimmed_allele_SEQ = duplicate_trim_set_with_2nd_set(dict_ref_trimmed_allele_SEQ, dict_shrink, ext_flag=True, ext_thrd=0, ori_flag=True)
     set_SEQ = set()
     for name, SEQ in sorted(dict_self_trimmed_allele_SEQ.items()):
-        if SEQ in set_SEQ:
+        if SEQ.upper() in set_SEQ:
             dict_self_trimmed_allele_SEQ.pop(name)
         else:
-            set_SEQ.add(SEQ)
+            set_SEQ.add(SEQ.upper())
+            set_SEQ.add(get_reverse_complement(SEQ.upper()))
 
     f_o = open(fo_filtered_alleles, 'w')
     for allele_name in sorted(dict_self_trimmed_allele_SEQ.keys()):
