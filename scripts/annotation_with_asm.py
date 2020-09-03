@@ -97,8 +97,6 @@ def output_dict_occupied(dict_occupied_place, f_o):
                     mismatch_tag += ',HS:i:' + str(pairs[7])
             
             f_o.write(pairs[3].split('|')[1] + ',' + contig_name + ',' + str(pairs[0]) + ',' + str(pairs[1]-pairs[0]) + mismatch_tag)
-            #else:
-            #    f_o.write(pairs[3].split('|')[1] + ',' + contig_name + ',' + str(pairs[0]) + ',' + str(pairs[1]-pairs[0]) + ',NM:i:' + str(pairs[2]))
             f_o.write('\n')
 
 
@@ -201,45 +199,78 @@ if __name__ == "__main__":
     fo_mismatched_annotation_report = args.fo_mismatched_annotation_report
     fo_mismatched_fasta = args.fo_mismatched_fasta
 
-    list_perfect_fields_1, list_mismatch_fields_1 = parse_perfect_sam(fn_sam_H1)
-    list_perfect_fields_2, list_mismatch_fields_2 = parse_perfect_sam(fn_sam_H2)
-    set_perfect_allele_1 = set(fields[0] for fields in list_perfect_fields_1)
-    set_perfect_allele_2 = set(fields[0] for fields in list_perfect_fields_2)
-    print("========== Annotation of IMGT Alleles ==========")
-    print("There are", len(list_perfect_fields_1), "allele sites and", len(set_perfect_allele_1), "alleles in H1.")
-    print("There are", len(list_perfect_fields_2), "allele sites and", len(set_perfect_allele_2), "alleles in H2.")
-    print("There are", len(set_perfect_allele_1.intersection(set_perfect_allele_2)), "common alleles in H1 and H2.") 
-
-    # output the perfect annotations
-    dict_occupied_place_1 = {}
-    dict_occupied_place_2 = {}
-    occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_perfect_fields_1, list_perfect_fields_2, fo_perfect_annotation_report)
+    if fn_sam_H2: # if there are two genome H1, H2 to analyze
+        list_perfect_fields_1, list_mismatch_fields_1 = parse_perfect_sam(fn_sam_H1)
+        list_perfect_fields_2, list_mismatch_fields_2 = parse_perfect_sam(fn_sam_H2)
+        set_perfect_allele_1 = set(fields[0] for fields in list_perfect_fields_1)
+        set_perfect_allele_2 = set(fields[0] for fields in list_perfect_fields_2)
+        print("========== Annotation of IMGT Alleles ==========")
+        print("There are", len(list_perfect_fields_1), "allele sites and", len(set_perfect_allele_1), "alleles in H1.")
+        print("There are", len(list_perfect_fields_2), "allele sites and", len(set_perfect_allele_2), "alleles in H2.")
+        print("There are", len(set_perfect_allele_1.intersection(set_perfect_allele_2)), "common alleles in H1 and H2.") 
     
-    # output the mismatched annotations
-    if fo_mismatched_annotation_report:
-        occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_mismatch_fields_1, list_mismatch_fields_2, fo_mismatched_annotation_report)
-        print("========== Annotation of Imperfect Matches ==========")
-        allele_num_H1 = sum([len(list_contig) for list_contig in dict_occupied_place_1.values()])
-        print("There are", allele_num_H1, "potential alleles in H1 among", len(dict_occupied_place_1), "contigs.")
-        allele_num_H2 = sum([len(list_contig) for list_contig in dict_occupied_place_2.values()])
-        print("There are", allele_num_H2, "potential alleles in H2 among", len(dict_occupied_place_2), "contigs.")
-
-        if fo_mismatched_fasta:
-            dict_SEQ = {}
-            get_SEQ_from_sam_list(list_perfect_fields_1, dict_SEQ)
-            get_SEQ_from_sam_list(list_perfect_fields_2, dict_SEQ)
-            get_SEQ_from_sam_list(list_mismatch_fields_1, dict_SEQ)
-            get_SEQ_from_sam_list(list_mismatch_fields_2, dict_SEQ)
-
-            dict_corrected_alleles = {}
-            correct_allele(dict_occupied_place_1, dict_SEQ, dict_corrected_alleles)
-            correct_allele(dict_occupied_place_2, dict_SEQ, dict_corrected_alleles)
-            f_f = open(fo_mismatched_fasta, 'w')
-            for allele_name in sorted(dict_corrected_alleles.keys()):
-                for idx, SEQ in enumerate(sorted(dict_corrected_alleles[allele_name])):
-                    f_f.write('>' + allele_name.split('|')[1] + '_corrected_' + str(idx) + '\n')
-                    f_f.write(SEQ + '\n')
-            print("Output corrected mismatched alleles.")
-        else:
-            print("Corrected mismatched files not specified.")
+        # output the perfect annotations
+        dict_occupied_place_1 = {}
+        dict_occupied_place_2 = {}
+        occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_perfect_fields_1, list_perfect_fields_2, fo_perfect_annotation_report)
         
+        # output the mismatched annotations
+        if fo_mismatched_annotation_report:
+            occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_mismatch_fields_1, list_mismatch_fields_2, fo_mismatched_annotation_report)
+            print("========== Annotation of Imperfect Matches ==========")
+            allele_num_H1 = sum([len(list_contig) for list_contig in dict_occupied_place_1.values()])
+            print("There are", allele_num_H1, "potential alleles in H1 among", len(dict_occupied_place_1), "contigs.")
+            allele_num_H2 = sum([len(list_contig) for list_contig in dict_occupied_place_2.values()])
+            print("There are", allele_num_H2, "potential alleles in H2 among", len(dict_occupied_place_2), "contigs.")
+    
+            if fo_mismatched_fasta:
+                dict_SEQ = {}
+                get_SEQ_from_sam_list(list_perfect_fields_1, dict_SEQ)
+                get_SEQ_from_sam_list(list_perfect_fields_2, dict_SEQ)
+                get_SEQ_from_sam_list(list_mismatch_fields_1, dict_SEQ)
+                get_SEQ_from_sam_list(list_mismatch_fields_2, dict_SEQ)
+    
+                dict_corrected_alleles = {}
+                correct_allele(dict_occupied_place_1, dict_SEQ, dict_corrected_alleles)
+                correct_allele(dict_occupied_place_2, dict_SEQ, dict_corrected_alleles)
+                f_f = open(fo_mismatched_fasta, 'w')
+                for allele_name in sorted(dict_corrected_alleles.keys()):
+                    for idx, SEQ in enumerate(sorted(dict_corrected_alleles[allele_name])):
+                        f_f.write('>' + allele_name.split('|')[1] + '_corrected_' + str(idx) + '\n')
+                        f_f.write(SEQ + '\n')
+                print("Output corrected mismatched alleles.")
+            else:
+                print("Corrected mismatched files not specified.")
+    else: # if there is only one genome to analyze
+        list_perfect_fields_1, list_mismatch_fields_1 = parse_perfect_sam(fn_sam_H1)
+        set_perfect_allele_1 = set(fields[0] for fields in list_perfect_fields_1)
+        print("========== Annotation of IMGT Alleles ==========")
+        print("There are", len(list_perfect_fields_1), "allele sites and", len(set_perfect_allele_1), "alleles in genome.")
+    
+        # output the perfect annotations
+        dict_occupied_place_1 = {}
+        occupied_annotation(dict_occupied_place_1, {}, list_perfect_fields_1, [], fo_perfect_annotation_report)
+        
+        # output the mismatched annotations
+        if fo_mismatched_annotation_report:
+            occupied_annotation(dict_occupied_place_1, {}, list_mismatch_fields_1, [], fo_mismatched_annotation_report)
+            print("========== Annotation of Imperfect Matches ==========")
+            allele_num_H1 = sum([len(list_contig) for list_contig in dict_occupied_place_1.values()])
+            print("There are", allele_num_H1, "potential alleles in the genome among", len(dict_occupied_place_1), "contigs.")
+    
+            if fo_mismatched_fasta:
+                dict_SEQ = {}
+                get_SEQ_from_sam_list(list_perfect_fields_1, dict_SEQ)
+                get_SEQ_from_sam_list(list_mismatch_fields_1, dict_SEQ)
+    
+                dict_corrected_alleles = {}
+                correct_allele(dict_occupied_place_1, dict_SEQ, dict_corrected_alleles)
+                f_f = open(fo_mismatched_fasta, 'w')
+                for allele_name in sorted(dict_corrected_alleles.keys()):
+                    for idx, SEQ in enumerate(sorted(dict_corrected_alleles[allele_name])):
+                        f_f.write('>' + allele_name.split('|')[1] + '_corrected_' + str(idx) + '\n')
+                        f_f.write(SEQ + '\n')
+                print("Output corrected mismatched alleles.")
+            else:
+                print("Corrected mismatched files not specified.")
+            
