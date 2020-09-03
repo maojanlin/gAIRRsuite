@@ -41,14 +41,20 @@ def parse_fasta(fn_fasta):
                 if seq_name != "":
                     if dict_name_SEQ.get(seq_name):
                         print("WARNING! Duplicate sequence name:", seq_name)
-                    dict_name_SEQ[seq_name] = seq_SEQ
+                        new_name = assign_new_name_basic(seq_name, dict_name_SEQ)
+                        dict_name_SEQ[new_name] = seq_SEQ
+                    else:
+                        dict_name_SEQ[seq_name] = seq_SEQ
                 seq_name = line.strip()[1:]
                 seq_SEQ = ""
             else:
                 seq_SEQ += line.strip()
         if dict_name_SEQ.get(seq_name):
+            new_name = assign_new_name_basic(seq_name, dict_name_SEQ)
+            dict_name_SEQ[new_name] = seq_SEQ
             print("WARNING! Duplicate sequence name:", seq_name)
-        dict_name_SEQ[seq_name] = seq_SEQ
+        else:
+            dict_name_SEQ[seq_name] = seq_SEQ
     return dict_name_SEQ
 
 
@@ -61,9 +67,19 @@ def parse_perfect_sam(fn_sam):
                 fields = line.strip().split()
                 if "NM:i:0" in line and ('S' in fields[5] or 'H' in fields[5]) == False:
                     list_perfect_fields.append(fields)
-                else:
+                elif fields[2] != '*':
                     list_mismatch_fields.append(fields)
     return list_perfect_fields, list_mismatch_fields
+
+
+def assign_new_name_basic(basic_name, dict_target):
+    ext_num = 0
+    while True:
+        tmp_name = basic_name + '_' + str(ext_num)
+        if dict_target.get(tmp_name):
+            ext_num+=1
+        else:
+            return tmp_name
 
 
 def assign_new_name(basic_name, str_interval, dict_target):
