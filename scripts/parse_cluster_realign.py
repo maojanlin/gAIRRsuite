@@ -73,36 +73,23 @@ def mark_edit_region(contig_name, contig_info):
     # contig_info = [edit_histogram, cov_histogram, contig_SEQ, list_read]
     edit_histogram = contig_info[0]
     cov_histogram  = contig_info[1]
-    #list_read_info: [ (start_pos, end_pos, read_name, even_odd_flag, mis_region) ]
+    # list_read_info: [ (start_pos, end_pos, read_name, even_odd_flag, mis_region) ]
     list_read_info = []
-    # dict_reads{}
-    #  - key: (read_name, pair_number)
-    #  - values: read_SEQ
-    dict_reads = {}
     even_odd_flag = 1
     list_read_field = contig_info[3]
     for fields in list_read_field:
-        # if the read align to shorter contigs, pass
-        if contig_name != fields[2]: 
-            dict_reads[(read_name, even_odd_flag)] = read_SEQ
-            list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
-            if even_odd_flag == 1:
-                even_odd_flag = 2
-            else:
-                even_odd_flag = 1
-            continue
         read_name = fields[0]
         read_SEQ  = fields[9]
         cigar     = fields[5]
         sam_flag  = int(fields[1])
-        # if the alignment is a supplementary alignment, pass
+        # if the alignment is a supplementary alignment, pass, it does not matter the even odd
         # read BWA manual "Supplementary Alignment" for more information
         if sam_flag > 1024:
             continue
         # if cigar == '*', means alignment is bad, pass
-        if cigar == '*':# or 'S' in cigar or 'H' in cigar:
-            dict_reads[(read_name, even_odd_flag)] = read_SEQ
-            #list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
+        # if the read align to incorrect contigs, pass
+        if cigar == '*' or contig_name != fields[2]:
+            # list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
             list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
             if even_odd_flag == 1:
                 even_odd_flag = 2
@@ -110,19 +97,16 @@ def mark_edit_region(contig_name, contig_info):
                 even_odd_flag = 1
             continue
 
-        edit_dist = int(fields[11].split(':')[2])
-        MD_tag    = fields[12].split(':')[2]
+        edit_dist = int(fields[11].split(':')[2])  # NM:i:2 tag
+        MD_tag    = fields[12].split(':')[2]       # MD:Z:38G2A20
         start_pos = int(fields[3])
         
         number, operate = parse_CIGAR(cigar)
         mis_region_MD = parse_MD(MD_tag)
-        #if operate[0] == 'S':
-        #    mis_region_MD = [ele + number[0] + start_pos - 1 for ele in mis_region_MD]
-        #else:
-        mis_region_MD = [ele + start_pos - 1 for ele in mis_region_MD]
+        mis_region_MD = [ele + start_pos - 1 for ele in mis_region_MD] # change to ref coordinate
 
         mis_region_I = []   # insertion boundary region
-        diff_len = 0        # len contribution of D and I
+        diff_len = 0        # len contribution of D, I, and S
         if 'I' in operate or 'D' in operate or 'S' in operate:
             idx_I = start_pos - 1 # index in reference
             for idx, op in enumerate(operate):
@@ -138,28 +122,55 @@ def mark_edit_region(contig_name, contig_info):
                         if op == 'D':
                             diff_len += number[idx]
         
-        mis_region = mis_region_MD + mis_region_I
-        mis_region.sort()
+        end_pos = start_pos + len(fields[9]) + diff_len
         
+        match_len = end_pos - start_pos
+        mis_region_S = []
+        recover_S_flag = False
+        
+        if operate[0] == 'S':
+            left_S_len = min(number[0], start_pos-1)
+            if left_S_len < match_len/10: # if S len is not to long, we accept it as mismatch
+                mis_region_S = [pos for pos in range(start_pos-left_S_len,start_pos)]
+                start_pos -= left_S_len
+                operate[0] = 'M'
+                if left_S_len != number[0]:
+                    operate = ['S'] + operate 
+                    number  = [number[0]-left_S_len] + number
+                    number[1] = left_S_len
+                recover_S_flag = True
+        if operate[-1] == 'S':
+            right_S_len = min(number[-1], len(cov_histogram)-end_pos)
+            if right_S_len < match_len/10: # if S len is not to long, we accept it as mismatch
+                mis_region_S += [pos for pos in range(end_pos,end_pos+right_S_len)]
+                end_pos += right_S_len 
+                operate[-1] = 'M'
+                if right_S_len != number[-1]:
+                    operate = operate + ['S']
+                    number  = number  + [number[-1]-right_S_len]
+                    number[-2] = right_S_len
+                recover_S_flag = True
+        if recover_S_flag:
+            cigar = ""
+            for cigar_id, element in enumerate(number):
+                cigar += str(element)
+                cigar += operate[cigar_id]
+        
+        #print(read_name + '\t', start_pos, end_pos)
+        cov_histogram[start_pos:end_pos] += 1
 
+        mis_region = mis_region_MD + mis_region_I + mis_region_S
+        mis_region.sort()
         edit_histogram[mis_region] += 1
         
-        end_pos   = start_pos + len(fields[9]) + diff_len
-        print(read_name + '\t', start_pos, end_pos)
-        cov_histogram[start_pos:end_pos] += 1
-        
         # record the reads information
-        if int(sam_flag/16)%2 == 1:
-            dict_reads[(read_name, even_odd_flag)] = get_reverse_complement(read_SEQ.upper())
-        else:
-            dict_reads[(read_name, even_odd_flag)] = read_SEQ
         list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region, cigar, read_SEQ))
         if even_odd_flag == 1:
             even_odd_flag = 2
         else:
             even_odd_flag = 1
 
-    return edit_histogram, cov_histogram, list_read_info, dict_reads
+    return edit_histogram, cov_histogram, list_read_info
 
 
 def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, edit_region):
@@ -391,12 +402,9 @@ if __name__ == '__main__':
     
     dict_contig = cluster_separate(fn_cluster_contig, fn_sam)
 
-    for contig_name in sorted(dict_contig.keys()):
-        #if contig_name != "L06881|TRAV9-2*03|Homo":
-        #    continue
-
+    for contig_name, contig_info in sorted(dict_contig.items()):
         #parse the sam file and generate
-        edit_histogram, cov_histogram, list_read_info, dict_reads = mark_edit_region(contig_name, dict_contig[contig_name])
+        edit_histogram, cov_histogram, list_read_info = mark_edit_region(contig_name, contig_info)
         
         #determine the region contains alternative flanking region
         edit_region = []
@@ -408,22 +416,8 @@ if __name__ == '__main__':
         print(contig_name, edit_region)
         
         contig_SEQ = dict_contig[contig_name][2]
-        #start = 100+1
-        #end   = len(contig_SEQ) - 100+1
-        #a_start = start+200
-        #a_end = end-200
-        #interest_region = []
-        #for ele in edit_region:
-        #    if start < ele < end:
-        #        interest_region.append(ele)
-        #for ele in interest_region:
-        #    if a_start < ele < a_end:
-        #        interest_region = []
-        #        break
         interest_region = "0-" + str(len(contig_SEQ))
         interest_edit_region = edit_region
-        #eprint(contig_name.split('|')[1], max(cov_histogram), min(cov_histogram[1:]), interest_edit_region)
-        
         if interest_edit_region != [] and min(cov_histogram[1:]) > 20:
             print("=========== allele correction ==============")
             eprint("CORRECT", contig_name.split('|')[1], min(cov_histogram[1:]), interest_edit_region)
