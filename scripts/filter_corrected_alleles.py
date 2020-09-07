@@ -20,6 +20,10 @@ def parse_args():
         '-fof', '--fo_filtered_alleles',
         help = 'output filtered corrected allele file'
     )
+    parser.add_argument(
+        '-foe', '--fo_extended_alleles',
+        help = 'output extended allele file'
+    )
     args = parser.parse_args()
     return args
 
@@ -46,6 +50,10 @@ def parse_fasta(fn_fasta):
                     else:
                         dict_name_SEQ[seq_name] = seq_SEQ
                 seq_name = line.strip()[1:]
+                try:
+                    seq_name = seq_name.split()[0]
+                except:
+                    pass
                 seq_SEQ = ""
             else:
                 seq_SEQ += line.strip()
@@ -132,6 +140,7 @@ if __name__ == "__main__":
     fn_original_alleles = args.fn_original_alleles
     fn_corrected_alleles = args.fn_corrected_alleles
     fo_filtered_alleles = args.fo_filtered_alleles
+    fo_extended_alleles = args.fo_extended_alleles
 
     dict_o_allele_SEQ = parse_fasta(fn_original_alleles)
     dict_c_allele_SEQ = parse_fasta(fn_corrected_alleles)
@@ -150,10 +159,16 @@ if __name__ == "__main__":
             set_SEQ.add(SEQ.upper())
             set_SEQ.add(get_reverse_complement(SEQ.upper()))
 
-    f_o = open(fo_filtered_alleles, 'w')
+    f_of = open(fo_filtered_alleles, 'w')
+    f_oe = open(fo_extended_alleles, 'w')
     for allele_name in sorted(dict_self_trimmed_allele_SEQ.keys()):
-        f_o.write(">" + allele_name + '\n')
-        f_o.write(dict_self_trimmed_allele_SEQ[allele_name] + '\n')
-    f_o.close()
+        if 'extend' in allele_name:
+            f_oe.write(">" + allele_name + '\n')
+            f_oe.write(dict_self_trimmed_allele_SEQ[allele_name] + '\n')
+        else:
+            f_of.write(">" + allele_name + '\n')
+            f_of.write(dict_self_trimmed_allele_SEQ[allele_name] + '\n')
+    f_of.close()
+    f_oe.close()
 
 

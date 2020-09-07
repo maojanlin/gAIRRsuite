@@ -31,11 +31,11 @@ def parse_contig (fn_contig, fo_fasta):
                 else:
                     contig_SEQ += line.strip()
     except FileNotFoundError:
-        print("NO CONTIG FILE", fn_contig, "FOUND!!!")
+        print("NO CONTIG FILE", fn_contig, "FOUND!")
         
 
     if contig_name == "" or contig_SEQ == "":
-        print("There is no contig in", fn_contig, "!!!")
+        print("There is no contig assembled in", fn_contig, "!")
     else:
         f_o = open(fo_fasta, 'w')
         f_o.write(contig_name + '\n')

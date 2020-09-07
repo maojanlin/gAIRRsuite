@@ -10,6 +10,7 @@ import pickle
 import os
 import numpy as np
 from parse_sam_haplotyping import parse_CIGAR
+from utils import eprint
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -52,18 +53,21 @@ def fetch_contig(fn_contig):
     dict_contig = {}
     contig_name = ""
     contig_SEQ  = ""
-    with open(fn_contig) as f_o:
-        for line in f_o:
-            if line[0] == '>':
-                if dict_contig.get(contig_name):
-                    print("Warning! Duplicate contig name: " + contig_name)
+    try:
+        with open(fn_contig) as f_o:
+            for line in f_o:
+                if line[0] == '>':
+                    if dict_contig.get(contig_name):
+                        print("Warning! Duplicate contig name: " + contig_name)
+                    else:
+                        dict_contig[contig_name] = contig_SEQ
+                    contig_name = line[1:-1]
+                    contig_SEQ = ""
                 else:
-                    dict_contig[contig_name] = contig_SEQ
-                contig_name = line[1:-1]
-                contig_SEQ = ""
-            else:
-                contig_SEQ += line.strip()
-        dict_contig[contig_name] = contig_SEQ
+                    contig_SEQ += line.strip()
+            dict_contig[contig_name] = contig_SEQ
+    except:
+        pass
     return dict_contig
 
 
@@ -102,7 +106,7 @@ def parse_edit_distance(fn_sam, fn_output_file, fn_output_flanking_region, fn_ou
                         f_flank_size.write('>' + allele_name + '_cluster_' + cluster_id + '\n')
                         f_flank_size.write(contig_SEQ[start_pos:end_pos] + '\n')
                     else:
-                        print("Warning! Contig name does not exist! " + contig_name)
+                        eprint("Warning! Contig name does not exist! " + contig_name)
     f_report.close()
     f_flank.close()
     f_flank_size.close()
@@ -120,6 +124,9 @@ if __name__ == '__main__':
     fn_output_flanking_size = args.fn_output_flanking_size
 
     dict_contig = fetch_contig(fn_contig)
-    parse_edit_distance(fn_sam, fn_output_file, fn_output_flanking_region, fn_output_flanking_size, dict_contig, cluster_id, thrsd, flanking_size)
-    
+    if len(dict_contig) > 0:
+        parse_edit_distance(fn_sam, fn_output_file, fn_output_flanking_region, fn_output_flanking_size, dict_contig, cluster_id, thrsd, flanking_size)
+    else:
+        eprint("No contig to process.")
+
 

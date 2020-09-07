@@ -27,6 +27,10 @@ def parse_args():
         help = 'output calling report file'
     )
     parser.add_argument(
+        '-fop', '--fo_grouping_pickle',
+        help = 'output allele-read group pickle file'
+    )
+    parser.add_argument(
         '-fv', '--fn_verify_annotation',
         help = 'input annotation file for verification'
     )
@@ -51,11 +55,13 @@ def parse_perfect_sam_with_S(fn_sam):
     return list_perfect_fields, list_mismatch_fields
 
 
-def histogram_read_depth(dict_allele_histogram, list_perfect_fields, thrsd=100):
+def histogram_read_depth(dict_allele_histogram, list_perfect_fields, dict_allele_reads, thrsd=100):
     for fields in list_perfect_fields:
+        allele_name = fields[2]
+        read_name = fields[0]
         start_pos = int(fields[3])
         cigar = fields[5]
-        ref_end_pos = len(dict_allele_histogram[fields[2]]) + 1
+        ref_end_pos = len(dict_allele_histogram[allele_name]) + 1
         min_coverage_thrsd = min(thrsd, ref_end_pos-1)
         number, operate = parse_CIGAR(cigar)
         if len(operate) > 3:
@@ -70,12 +76,14 @@ def histogram_read_depth(dict_allele_histogram, list_perfect_fields, thrsd=100):
         end_pos = number[M_idx] + start_pos
         if start_pos == 1: # read map to the left side
             if operate[-1] == 'M' or end_pos == ref_end_pos: # right side is open or till the end
-                dict_allele_histogram[fields[2]][start_pos-1:end_pos-1] += 1
+                dict_allele_histogram[allele_name][start_pos-1:end_pos-1] += 1
         elif end_pos == ref_end_pos: # read map to the left side
             if operate[0] == 'M': # left side is open
-                dict_allele_histogram[fields[2]][start_pos-1:end_pos-1] += 1
+                dict_allele_histogram[allele_name][start_pos-1:end_pos-1] += 1
         elif operate == ['M']: # read is including in the allele
-            dict_allele_histogram[fields[2]][start_pos-1:end_pos-1] += 1
+            dict_allele_histogram[allele_name][start_pos-1:end_pos-1] += 1
+
+        dict_allele_reads[allele_name].add(read_name)
 
 
 
@@ -84,14 +92,16 @@ if __name__ == '__main__':
     fn_alleles = args.fn_alleles
     fn_sam = args.fn_sam
     thrsd = args.thrsd
-    fo_calling_report = args.fo_calling_report
+    fo_calling_report  = args.fo_calling_report
+    fo_grouping_pickle = args.fo_grouping_pickle
     fn_verify_annotation = args.fn_verify_annotation
 
     dict_allele = parse_fasta(fn_alleles)
     dict_allele_histogram = { name.split()[0]:np.zeros(len(SEQ)) for name, SEQ in dict_allele.items() }
+    dict_allele_reads = { name.split()[0]:set() for name in dict_allele.keys() }
 
     list_perfect_fields, list_mismatch_fields = parse_perfect_sam_with_S(fn_sam)
-    histogram_read_depth(dict_allele_histogram, list_perfect_fields, thrsd)
+    histogram_read_depth(dict_allele_histogram, list_perfect_fields, dict_allele_reads, thrsd)
 
     list_min_depth = [ [min(histogram), None, name.split('|')[1]] for name, histogram in  dict_allele_histogram.items() ]
 
@@ -120,11 +130,17 @@ if __name__ == '__main__':
     f_oc = open(fo_calling_report,'w')
     for element in sorted(list_min_depth, reverse=True):
         min_depth, tag, name = element
-        if tag==0:
-            continue
-        f_oc.write(name + '\t' + str(min_depth) + '\t' + str(tag))
+        if fn_verify_annotation:
+            if tag==0:
+                continue
+            f_oc.write(name + '\t' + str(min_depth) + '\t' + str(tag))
+        else:
+            f_oc.write(name + '\t' + str(min_depth))
         f_oc.write('\n')
     f_oc.close()
+
+    f_op = open(fo_grouping_pickle, 'wb')
+    pickle.dump(dict_allele_reads, f_op)
 
     
 
