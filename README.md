@@ -1,4 +1,43 @@
-_Updated: August. 19, 2020_
+_Updated: September. 7, 2020_
+## AIRRCall pipeline
+
+Usage:
+```
+./AIRRCall.sh
+```
+
+The `AIRRCall.sh` pipeline uses the capture based short reads and the alleles downloaded from IMGT database to
+- Call alleles
+- Call novel alleles
+- Call flanking sequences
+
+### Call alleles
+
+Shell script:
+```
+./allele_calling.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+```
+
+The pipeline finds if the known allele is possessed by the person or not.
+`./allele_calling.sh` first aligns the capture-based short reads to the IMGT alleles. Afterward, it analyzed the alignment, filtering out those mismatched reads and those reads with coverage length below a threshold (100 or allele length in the code). 
+For each allele, a histogram on all positions of the allele is built, the coverage area of all filtered alleles are accumulated in the histogram. The minimum value in the histogram (the mimnum filtered read coverage of the allele) is the calling score of the allele.
+The scoring of positive alleles are way larger than those of negative alleles.
+
+### Call novel alleles
+
+Shell script:
+```
+./novel_allele.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+```
+
+### Call flanking sequences
+
+Shell script:
+```
+./flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+```
+
+
 ## BLASTn-based pipeline
 
 BLASTn performs local alignment, which effectively compares local regions of a sequence with a database.
