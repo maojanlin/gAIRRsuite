@@ -69,7 +69,8 @@ def check_occupied(dict_occupied_place, list_fields):
                 for idx, element in enumerate(dict_occupied_place[contig_name]): # check if the place is already occupied
                     e_start = element[0]
                     e_end = element[1]
-                    if (pos_end < e_start) == False and (e_end < pos_start) == False:
+                    #if (pos_end < e_start) == False and (e_end < pos_start) == False:
+                    if min((pos_end - e_start), (e_end - pos_start)) > 0.8*min((pos_end-pos_start), (e_end-e_start)):
                         e_mismatch = element[2]
                         occupied_flag = True
                         if mismatch < e_mismatch:

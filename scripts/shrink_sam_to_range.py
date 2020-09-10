@@ -97,7 +97,7 @@ if __name__ == '__main__':
             #output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, contig_name, corrected_contig_output_file)
             output_contig_correction(contig_SEQ.lower(), interest_region[0], interest_region[1], haplotype_0, haplotype_1, contig_name.split('_')[0], fo_flanking_haplotype)
         #elif interest_edit_region != []:
-        elif min(cov_histogram[interest_region[0]:interest_region[1]]) <= 20:
+        elif min(cov_histogram[interest_region[0]:interest_region[1]]) < 20:
             eprint("Deficient", contig_name.split('_')[0], min(cov_histogram[interest_region[0]:interest_region[1]]), interest_edit_region)
             print("=== cov not efficient:", min(cov_histogram[1:]), "=======")
         else:

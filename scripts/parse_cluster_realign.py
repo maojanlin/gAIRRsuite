@@ -87,9 +87,18 @@ def mark_edit_region(contig_name, contig_info, ignore_S=False):
         if sam_flag > 1024:
             continue
 
+        S_flag = False
+        number, operate = parse_CIGAR(cigar)
+        if ignore_S and 'S' in cigar:
+            if operate[0] == 'S':
+                if number[0] >= len(read_SEQ)/15:
+                    S_flag = True
+            if operate[-1] == 'S':
+                if number[-1] >= len(read_SEQ)/15:
+                    S_flag = True
         # if cigar == '*', means alignment is bad, pass
         # if the read align to incorrect contigs, pass
-        if cigar == '*' or contig_name != fields[2] or (ignore_S and 'S' in cigar):
+        if cigar == '*' or contig_name != fields[2] or S_flag:
             # list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
             list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
             if even_odd_flag == 1:
@@ -102,7 +111,6 @@ def mark_edit_region(contig_name, contig_info, ignore_S=False):
         MD_tag    = fields[12].split(':')[2]       # MD:Z:38G2A20
         start_pos = int(fields[3])
         
-        number, operate = parse_CIGAR(cigar)
         mis_region_MD = parse_MD(MD_tag)
         mis_region_MD = [ele + start_pos - 1 for ele in mis_region_MD] # change to ref coordinate
 
