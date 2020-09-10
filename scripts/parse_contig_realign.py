@@ -483,7 +483,7 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
         list_pos_base = pos_weight[1]
         print("XXXXXXXXXXXXXX", position, "XXXXXXXXXXXXXXXX")
 
-        # deal with haplotype_0's outward lin
+        # deal with haplotype_0's outward link
         dict_outward_0 = {}
         if dict_link_outward.get(haplotype_0[hap_cursor_0]):
             dict_outward_0 = dict_link_outward[haplotype_0[hap_cursor_0]]
@@ -509,7 +509,6 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
             dict_inward_0 = dict_link_inward[(position, list_pos_base[0][0])]
         trim_dict(dict_inward_0)
         print(dict_inward_0)
-        #print(dict_link_graph[(position, list_pos_base[1][0])])
         if len(list_pos_base) > 1:
             print("--------------------")
             dict_inward_1 = {}
@@ -550,7 +549,7 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
         # the case that two haplotypes may collapse into one
         if connect_info_0 and connect_info_1:
             if connect_info_0[1] == connect_info_1[1]: # two haplotypes are collapsed
-                for redouble_idx in range(pos_idx, len(list_pos_weight)):
+                for redouble_idx in range(pos_idx, len(list_pos_weight)): # make it double again
                     rd_pos_weight = list_pos_weight[redouble_idx]
                     rd_position = rd_pos_weight[0]
                     rd_list_pos_base = rd_pos_weight[1]
@@ -677,7 +676,7 @@ def get_allele_name(allele_file):
                 return allele_name
 
 
-def output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_name, corrected_contig_output_file):
+def output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, allele_name, corrected_contig_output_file, suffix="/haplotype-"):
     corrected_contig_SEQ_0 = sequence_substitution(contig_SEQ, haplotype_0)
     corrected_contig_SEQ_0 = corrected_contig_SEQ_0[region_st:region_ed]
 
@@ -685,9 +684,9 @@ def output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, hapl
     corrected_contig_SEQ_1 = corrected_contig_SEQ_1[region_st:region_ed]
 
     f_c = open(corrected_contig_output_file, 'a')
-    f_c.write(">" + allele_name + "_corrected_0\n")
+    f_c.write(">" + allele_name + suffix + "0\n")
     f_c.write(corrected_contig_SEQ_0 + "\n")
-    f_c.write(">" + allele_name + "_corrected_1\n")
+    f_c.write(">" + allele_name + suffix + "1\n")
     f_c.write(corrected_contig_SEQ_1 + "\n")
     f_c.close()
     return (corrected_contig_SEQ_0, corrected_contig_SEQ_1)
@@ -702,7 +701,7 @@ def output_original_contig(contig_SEQ, region_st, region_ed, allele_file, correc
                 break
 
     f_c = open(corrected_contig_output_file, 'a')
-    f_c.write(">" + allele_name + "_original\n")
+    f_c.write(">" + allele_name + "/original\n")
     f_c.write(contig_SEQ[region_st:region_ed] + "\n")
     f_c.close()
     

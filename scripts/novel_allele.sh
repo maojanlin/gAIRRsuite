@@ -1,8 +1,9 @@
 # path parameters
-outer_dir=${1}/${4}_${2}_novel/   #"NA12878_tcrv_novel_alleles/"
-allele_path=$3  #"../plot_tree/TCRV_alleles.fasta"
-read_path_1=$5  #"NA12878_S46_R1.fasta"
-read_path_2=$6  #"NA12878_S46_R2.fasta"
+outer_dir=${1}/${4}_${2}_novel/ 
+allele_name=$2
+allele_path=$3  
+read_path_1=$5  
+read_path_2=$6  
 
 # setting for the data
 mkdir -p ${outer_dir}
@@ -25,5 +26,11 @@ python3 filter_corrected_alleles.py -fa  ${allele_path} \
                                     -fca ${outer_dir}corrected_alleles_raw.fasta \
                                     -fof ${outer_dir}corrected_alleles_filtered.fasta \
                                     -foe ${outer_dir}corrected_alleles_extended.fasta
+
+# merge the refined product with original alleles
+echo "[AIRRCall] [NOVEL ALLELE] Add novel allele to target alleles..."
+python3 merge_novel_alleles.py -fa  ${allele_path} \
+                               -fn  ${outer_dir}corrected_alleles_filtered.fasta \
+                               -fom ${outer_dir}/${allele_name}_with_novel.fasta
 
 echo "[AIRRCall] [NOVEL ALLELE] Finished!"

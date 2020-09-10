@@ -10,7 +10,7 @@ import pickle
 import os
 import numpy as np
 from parse_sam_haplotyping import parse_CIGAR
-from utils import eprint
+from utils import eprint, get_reverse_complement
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -86,24 +86,30 @@ def parse_edit_distance(fn_sam, fn_output_file, fn_output_flanking_region, fn_ou
                     continue
                 contig_name = fields[2]
                 if contig_name != '*' and eDist <= thrsd:
-                    print_word = fields[0] + ' ' + contig_name.split('_')[5] + ' ' + contig_name + ' ' + str(cluster_id) + '\n'
+                    print_word = fields[0] + ' ' + contig_name.split('_')[2] + ' ' + contig_name + ' ' + str(cluster_id) + '\n'
                     #print_word = fields[0] + '\t' + fields[2] + '\t' + fields[11]
                     f_report.write(print_word)
                     
                     if dict_contig.get(contig_name):
                         contig_SEQ = dict_contig[contig_name]
-                        f_flank.write('>' + contig_name + '_cluster_' + cluster_id + '\n')
-                        f_flank.write(contig_SEQ + '\n')
-                        
                         allele_name = fields[0]
+                        allele_print = allele_name + '_cluster_' + cluster_id
+                        f_flank.write('>' + allele_print + '\n')
+                        if (int(fields[1]) % 32) >= 16:
+                            f_flank.write(get_reverse_complement(contig_SEQ) + '\n')
+                            print(str(len(contig_SEQ) - int(fields[3]) - len(fields[9]) +1) + '-' + str(len(contig_SEQ) - int(fields[3]) +1) + ',' + allele_print)
+                        else:
+                            f_flank.write(contig_SEQ + '\n')
+                            print(str(int(fields[3]) -1) + '-' + str(int(fields[3]) -1 + len(fields[9])) + ',' + allele_print)
+                        
                         start_pos = int(fields[3]) -1 - flanking_size
                         end_pos   = int(fields[3]) -1 + len(fields[9]) + flanking_size
-                        print(str(start_pos) + '-' + str(end_pos))
+                        #print(str(start_pos) + '-' + str(end_pos))
                         if start_pos < 0:
                             start_pos = 0
                         if end_pos > len(contig_SEQ):
                             end_pos = len(contig_SEQ)
-                        f_flank_size.write('>' + allele_name + '_cluster_' + cluster_id + '\n')
+                        f_flank_size.write('>' + allele_print + '\n')
                         f_flank_size.write(contig_SEQ[start_pos:end_pos] + '\n')
                     else:
                         eprint("Warning! Contig name does not exist! " + contig_name)

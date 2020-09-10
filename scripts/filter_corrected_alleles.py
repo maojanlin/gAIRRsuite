@@ -119,7 +119,7 @@ def duplicate_trim_set_with_2nd_set(dict_target_allele_SEQ, dict_fixed_allele_SE
             elif f_SEQ.upper() in t_SEQ.upper() or f_SEQ.upper() in get_reverse_complement(t_SEQ.upper()): # an f_SEQ is the subseq
                 if ext_flag == True and len(f_SEQ) >= len(t_SEQ)*ext_thrd:
                     ext_num = 0
-                    assign_name = assign_new_name(f_name, '_extend_', dict_trimmed_allele_SEQ)
+                    assign_name = assign_new_name(f_name, '/extend-', dict_trimmed_allele_SEQ)
                 else:
                     assign_name = False
         if assign_name:
@@ -129,7 +129,7 @@ def duplicate_trim_set_with_2nd_set(dict_target_allele_SEQ, dict_fixed_allele_SE
                 if 'extend' in assign_name:
                     dict_trimmed_allele_SEQ[assign_name] = t_SEQ
                 else:
-                    assign_name = assign_new_name(assign_name, '_corrected_', dict_trimmed_allele_SEQ)
+                    assign_name = assign_new_name(assign_name, '/novel-', dict_trimmed_allele_SEQ)
                     dict_trimmed_allele_SEQ[assign_name] = t_SEQ
     return dict_trimmed_allele_SEQ
 

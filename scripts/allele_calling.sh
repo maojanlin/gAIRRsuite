@@ -1,12 +1,4 @@
-# the out most directory
-#outer_dir="CHM13_bcrv_allele_with_novel_calling/"
-#allele_path="../plot_tree/TCRJ_alleles.fasta"
-#allele_path="merged_IMGT_alleles/BCRV_with_CHM13_novel_alleles.fasta"
-#read_path_1="CHM13_filtered_R1.fasta"
-#read_path_2="CHM13_filtered_R2.fasta"
-
-annotation_path="asm_annotation/annotation_NA12878_tcrv.txt"
-
+#annotation_path="asm_annotation/annotation_NA12878_tcrv.txt"
 # path parameters
 outer_dir=$1/$4_$2/   #"NA12878_tcrv_novel_alleles/"
 allele_path=$3  #"../plot_tree/TCRV_alleles.fasta"
@@ -16,8 +8,8 @@ coverage_thrsd=100
 
 # setting for the data
 mkdir -p ${outer_dir}
-#bwa index ${allele_path}
-#bwa mem -t 16 -a ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele_all.sam
+bwa index ${allele_path}
+bwa mem -t 16 -a ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele_all.sam
 
 # start analysis
 echo "[AIRRCall] [ALLELE CALLING] Calling alleles..."

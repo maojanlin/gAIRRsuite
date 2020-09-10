@@ -69,7 +69,7 @@ def cluster_separate(fn_cluster_contig, fn_sam):
 
 
 
-def mark_edit_region(contig_name, contig_info):
+def mark_edit_region(contig_name, contig_info, ignore_S=False):
     # contig_info = [edit_histogram, cov_histogram, contig_SEQ, list_read]
     edit_histogram = contig_info[0]
     cov_histogram  = contig_info[1]
@@ -86,9 +86,10 @@ def mark_edit_region(contig_name, contig_info):
         # read BWA manual "Supplementary Alignment" for more information
         if sam_flag > 1024:
             continue
+
         # if cigar == '*', means alignment is bad, pass
         # if the read align to incorrect contigs, pass
-        if cigar == '*' or contig_name != fields[2]:
+        if cigar == '*' or contig_name != fields[2] or (ignore_S and 'S' in cigar):
             # list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
             list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
             if even_odd_flag == 1:
@@ -130,7 +131,7 @@ def mark_edit_region(contig_name, contig_info):
         
         if operate[0] == 'S':
             left_S_len = min(number[0], start_pos-1)
-            if left_S_len < match_len/10: # if S len is not to long, we accept it as mismatch
+            if left_S_len < match_len/10: # if S len is not too long, we accept it as mismatch
                 mis_region_S = [pos for pos in range(start_pos-left_S_len,start_pos)]
                 start_pos -= left_S_len
                 operate[0] = 'M'
@@ -324,12 +325,14 @@ def haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, 
                             if rd_info_1:
                                 break
 
-                        record_info_0 += rd_info_0
-                        record_info_1 += rd_info_1
                         print("connect_info_0", record_info_0)
                         print("connect_info_1", record_info_1)
                         print("rd_info_0", rd_info_0)
                         print("rd_info_1", rd_info_1)
+                        if rd_info_0:
+                            record_info_0 += rd_info_0
+                        if rd_info_1:
+                            record_info_1 += rd_info_1
                         if rd_info_0 != rd_info_1:
                             if rd_info_0:
                                 pass
@@ -424,7 +427,7 @@ if __name__ == '__main__':
             dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph(interest_edit_region, list_read_info)
             haplotype_0, haplotype_1 = haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, interest_region)
             #output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, contig_name, corrected_contig_output_file)
-            output_contig_correction(contig_SEQ, 0, len(contig_SEQ), haplotype_0, haplotype_1, contig_name, fo_corrected_alleles)
+            output_contig_correction(contig_SEQ, 0, len(contig_SEQ), haplotype_0, haplotype_1, contig_name, fo_corrected_alleles, "/novel")
         elif interest_edit_region != []:
             eprint("DDeficient", contig_name.split('|')[1], min(cov_histogram[1:]), interest_edit_region)
             print("=== cov not efficient:", min(cov_histogram[1:]), "=======")

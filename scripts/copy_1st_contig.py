@@ -7,6 +7,14 @@ def parse_args():
         help = 'input contig fasta file'
     )
     parser.add_argument(
+        '-id', '--cluster_id',
+        help = 'the cluster id'
+    )
+    parser.add_argument(
+        '-map', '--id_allele_map',
+        help = 'cluster id to allele name mapping file'
+    )
+    parser.add_argument(
         '-fo', '--fo_fasta',
         help = 'output parsed contig fasta file'
     )
@@ -17,7 +25,7 @@ def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def parse_contig (fn_contig, fo_fasta):
+def parse_contig (fn_contig, fo_fasta, allele_name):
     contig_name = ""
     contig_SEQ  = ""
     try:
@@ -38,7 +46,10 @@ def parse_contig (fn_contig, fo_fasta):
         print("There is no contig assembled in", fn_contig, "!")
     else:
         f_o = open(fo_fasta, 'w')
-        f_o.write(contig_name + '\n')
+        if allele_name:
+            f_o.write('>' + allele_name + '_contig_' + contig_name.split('_')[5] + '\n')
+        else:
+            f_o.write(contig_name + '\n')
         f_o.write(contig_SEQ + '\n')
         f_o.close()
         print("Contig", fn_contig, "copy successfully!")
@@ -47,7 +58,20 @@ def parse_contig (fn_contig, fo_fasta):
 
 if __name__ == '__main__':
     args = parse_args()
+    # input-output file
     fn_contig = args.fn_contig
     fo_fasta  = args.fo_fasta
 
-    parse_contig(fn_contig, fo_fasta)
+    # parameter for rename the contigs
+    cluster_id = args.cluster_id
+    id_allele_map = args.id_allele_map
+
+    allele_name = None
+    if cluster_id and id_allele_map:
+        f_map = open(id_allele_map, 'r')
+        for line in f_map:
+            allele_id, allele_name = (line.strip()).split(',')
+            if allele_id == cluster_id:
+                break
+        f_map.close()
+    parse_contig(fn_contig, fo_fasta, allele_name)

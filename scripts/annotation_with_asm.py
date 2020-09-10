@@ -96,7 +96,10 @@ def output_dict_occupied(dict_occupied_place, f_o):
                 if pairs[7]:
                     mismatch_tag += ',HS:i:' + str(pairs[7])
             
-            f_o.write(pairs[3].split('|')[1] + ',' + contig_name + ',' + str(pairs[0]) + ',' + str(pairs[1]-pairs[0]) + mismatch_tag)
+            try:
+                f_o.write(pairs[3].split('|')[1] + ',' + contig_name + ',' + str(pairs[0]) + ',' + str(pairs[1]-pairs[0]) + mismatch_tag)
+            except:
+                f_o.write(pairs[3].split()[0] + ',' + contig_name + ',' + str(pairs[0]) + ',' + str(pairs[1]-pairs[0]) + mismatch_tag)
             f_o.write('\n')
 
 
@@ -236,7 +239,10 @@ if __name__ == "__main__":
                 f_f = open(fo_mismatched_fasta, 'w')
                 for allele_name in sorted(dict_corrected_alleles.keys()):
                     for idx, SEQ in enumerate(sorted(dict_corrected_alleles[allele_name])):
-                        f_f.write('>' + allele_name.split('|')[1] + '_corrected_' + str(idx) + '\n')
+                        try:
+                            f_f.write('>' + allele_name.split('|')[1] + '/novel-' + str(idx) + '\n')
+                        except:
+                            f_f.write('>' + allele_name.split()[0] + '/novel-' + str(idx) + '\n')
                         f_f.write(SEQ + '\n')
                 print("Output corrected mismatched alleles.")
             else:

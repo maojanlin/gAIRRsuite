@@ -1,15 +1,41 @@
-
+# path of AIRRAnnotate
 asm_path_H1="../asm_NA12878/NA12878-H1.fa"
 asm_path_H2="../asm_NA12878/NA12878-H2.fa"
-outer_dir="target_call/NA12878_TCRJ_novel/"
+annotation_dir="target_annotation/"
+
+# path of AIRRCall
+workspace="target_call"
+allele_path="../plot_tree/TCRJ_alleles.fasta"
+allele_name="TCRJ"
+person_name="NA12878"
 
 
 # verification
+novel_dir=${workspace}/${person_name}_${allele_name}_novel/
 echo "[AIRRVerify] Verify novel allele calls..."
-mkdir -p ${outer_dir}verification/
-../bwa/bwa mem -t 16 ${asm_path_H1} ${outer_dir}corrected_alleles_filtered.fasta > ${outer_dir}verification/bwa_c_alleles_f_verify_H1.sam 
-../bwa/bwa mem -t 16 ${asm_path_H2} ${outer_dir}corrected_alleles_filtered.fasta > ${outer_dir}verification/bwa_c_alleles_f_verify_H2.sam 
-python3 verify_novel_alleles.py -fs1 ${outer_dir}verification/bwa_c_alleles_f_verify_H1.sam \
-                                -fs2 ${outer_dir}verification/bwa_c_alleles_f_verify_H2.sam \
-                                -fo  ${outer_dir}verification/verification.rpt
+mkdir -p ${novel_dir}verification/
+bwa mem -t 16 ${asm_path_H1} ${novel_dir}corrected_alleles_filtered.fasta > ${novel_dir}verification/bwa_c_alleles_f_verify_H1.sam 
+bwa mem -t 16 ${asm_path_H2} ${novel_dir}corrected_alleles_filtered.fasta > ${novel_dir}verification/bwa_c_alleles_f_verify_H2.sam 
+python3 verify_novel_alleles.py -fs1 ${novel_dir}verification/bwa_c_alleles_f_verify_H1.sam \
+                                -fs2 ${novel_dir}verification/bwa_c_alleles_f_verify_H2.sam \
+                                -fo  ${novel_dir}verification/novel_verification.rpt
+
+
+flank_dir=${workspace}/${person_name}_${allele_name}_flanking/
+echo "[AIRRVerify] Verify flanking sequences..."
+bwa mem -t 16 -a ${asm_path_H1} ${flank_dir}/flanking_result/flanking_haplotypes.fasta > ${flank_dir}/flanking_result/bwa_flanking_haplotype_H1.sam
+bwa mem -t 16 -a ${asm_path_H2} ${flank_dir}/flanking_result/flanking_haplotypes.fasta > ${flank_dir}/flanking_result/bwa_flanking_haplotype_H2.sam
+
+mkdir -p ${flank_dir}verification/
+python3 annotation_with_asm.py -foa  ${flank_dir}verification/annotation_${allele_name}.txt \
+                               -foma ${flank_dir}verification/annotation_imperfect_${allele_name}.txt \
+                               -fom  ${flank_dir}verification/corrected_${allele_name}_flanking.fasta \
+                               -fs1  ${flank_dir}flanking_result/bwa_flanking_haplotype_H1.sam \
+                               -fs2  ${flank_dir}flanking_result/bwa_flanking_haplotype_H2.sam
+
+python3 compare_annotation.py  -fab ${annotation_dir}annotation_imperfect_${person_name}_${allele_name}.txt \
+                               -fan ${flank_dir}verification/annotation_imperfect_${allele_name}.txt \
+                               -fh  ${flank_dir}flanking_result/flanking_haplotypes.fasta \
+                               -for ${flank_dir}verification/annotation_report.txt \
+                               -fos ${flank_dir}verification/annotation_summary.txt
 
