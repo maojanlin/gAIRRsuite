@@ -90,7 +90,7 @@ The `AIRRAnnotate.sh` pipeline uses the personal assembly contigs and the allele
 
 To run the `AIRRAnnotate.sh` pipeline, BWA aligner should be installed.
 
-The path parameters in `AIRRCall.sh` should be specified:
+The path parameters in `AIRRAnnotate.sh` should be specified:
 - outer_dir: the directory all results and intermediate data be stored (e.g. "./target_annotation/")
 - list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV")
 - allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
@@ -99,14 +99,42 @@ The path parameters in `AIRRCall.sh` should be specified:
 - asm_path_H1: personal assembly H1 contig fasta file (e.g. "../asm_NA12878/NA12878-H1.fa")
 - asm_path_H2: personal assembly H2 contig fasta file (e.g. "../asm_NA12878/NA12878-H2.fa")
 
-The `AIRRAnnotate.sh` pipeline first indexes the personalized assembly and aligns IMGT alleles to the assembly with BWT. Afterward, `annotation_with_asm.py` analyzes the alignment sam file. The perfectly matched alleles are kept and aligned alleles with edit-distance are seen as novel alleles. 
+The `AIRRAnnotate.sh` pipeline first indexes the personalized assembly and aligns IMGT alleles to the assembly with BWT. Afterward, `annotation_with_asm.py` analyzes the alignment sam file. The perfectly matched alleles are kept and aligned alleles with edit-distance are seen as novel alleles. Finally `get_asm_flanking.py` utilize the previous alignment sam file and crop the flanking sequence from the personal assembly fasta file.
+
+Generated files:
 
 `target_annotation/annotation_imperfect_NA12878_TCRV.txt` is the report showing the aligned allele, aligned contig, contig position, and alignment length. If there are edit-distance in the alignment, the report shows additional tag the same as sam format.
+`target_annotation/novel_NA12878_TCRV.fasta` is the collection of novel alleles.
+`target_annotation/flanking_NA12878_TCRV.fasta` is the collection of flanking sequence (including novel alleles).
 
-`get_asm_flanking.py` utilize the previous alignment file and crop the flanking sequence from the personal assembly fasta file.
-`target_annotation/flanking_NA12878_TCRV.fasta` is the collection of flanking sequence.
+## AIRRVerify pipeline
 
+`AIRRCall.sh` and `AIRRAnnotate.sh` can be operated independently; however, `AIRRVerify.sh` can only be operated after both `AIRRCall.sh` and `AIRRAnnotate.sh` be performed successfully.
 
+Usage
+```
+./scripts/AIRRVerify.sh
+```
+
+`AIRRVerify.sh` check if the calling results of `AIRRCall.sh` and `AIRRAnnotate.sh` agree with each others.
+
+To run the `AIRRVerify.sh` pipeline, BWA aligner should be installed.
+
+The path parameters in `AIRRVerify.sh` should agree with those specified in `AIRRCall.sh`:
+- workspace: the working directory of `AIRRCall.sh` (e.g. "./target_call/").
+- allele_name: allele type (e.g. "TCRV").
+- allele_path: where IMGT allele fasta file store (e.g. "../IMGT_alleles/TCRV_alleles.fasta").
+- person_name: person's id (e.g. "NA12878").
+And `AIRRAnnotate.sh`:
+- asm_path_H1: personal assembly H1 contig fasta file (e.g. "../asm_NA12878/NA12878-H1.fa").
+- asm_path_H2: personal assembly H2 contig fasta file (e.g. "../asm_NA12878/NA12878-H2.fa").
+- annotation_dir: the working directory of `AIRRAnnotate.sh` (e.g. "./target_annotation/").
+
+Generated files:
+
+`target_call/NA12878_TCRV_flanking/verification/annotation_report.txt` shows the comparison details of each AIRRCall flanking sequence to AIRRAnnotate alleles including the position on personlized assembly and the extending length of AIRRCall flanking sequence.
+
+`target_call/NA12878_TCRV_flanking/verification/annotation_summary.txt` shows all the false positive (AIRRCall only) and false negative (AIRRAnnotate only) of AIRRCall called flanking sequence comparing to AIRRAnnotate. For any AIRRCall flanking sequence that cannot be aligned to both H1 and H2 assembly fasta file, the flanking sequence is reported as redundant flanking sequence.
 
 
 
