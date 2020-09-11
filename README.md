@@ -1,40 +1,59 @@
-_Updated: September. 7, 2020_
+_Updated: September. 11, 2020_
 ## AIRRCall pipeline
 
 Usage:
 ```
-./AIRRCall.sh
+./scripts/AIRRCall.sh
 ```
 
-The `AIRRCall.sh` pipeline uses the capture based short reads and the alleles downloaded from IMGT database to
-- Call alleles
-- Call novel alleles
-- Call flanking sequences
+The `AIRRCall.sh` pipeline uses the capture-based short reads and the alleles downloaded from IMGT database to
+- Find **novel alleles**
+- **Call alleles** (including both known and novel alleles)
+- Assemble and haplotyping **flanking sequences**
+
+To run the `AIRRCall.sh` pipeline, BWA aligner and SPAdes assembler should be installed.
+
+The path parameters should be specified:
+- workspace: the directory all results and intermediate data be stored (e.g. "./target_call/").
+- allele_name: allele type (e.g. "TCRV").
+- allele_path: where IMGT allele fasta file store (e.g. "../IMGT_alleles/TCRV_alleles.fasta").
+- person_name: person's id (e.g. "NA12878").
+- read_path_1: capture-based short reads R1 fasta file (e.g. "NA12878_S46_R1.fasta")
+- read_path_2: capture-based short reads R2 fasta file (e.g. "NA12878_S46_R2.fasta")
+
+### Find novel alleles
+
+Shell script:
+```
+./scripts/novel_allele.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+```
+
+The `novel_allele.sh` pipeline aligns capture-based short reads to IMGT alleles with BWA MEM. Then the program `parse_cluster_realign.py` finds the variant in each alleles. If threre are variants, the program haplotypes the allele and call the haplotypes not in the IMGT database as novel alleles.
+
+`target_call/NA12878_TCRV_novel/corrected_alleles_filtered.fasta` is all the novel alleles fasta file.
+`target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta` is the merged allele file of IMGT alleles and haplotyped novel alleles.
 
 ### Call alleles
 
 Shell script:
 ```
-./allele_calling.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+allele_path=target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta
+./scripts/allele_calling.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
 ```
 
-The pipeline finds if the known allele is possessed by the person or not.
-`./allele_calling.sh` first aligns the capture-based short reads to the IMGT alleles. Afterward, it analyzed the alignment, filtering out those mismatched reads and those reads with coverage length below a threshold (100 or allele length in the code). 
+The pipeline finds if the alleles in the merged fasta file (containing both IMGT and novel alleles) are possessed by the person or not.
+In `allele_calling.sh`, the capture-based short reads are aligned to the merged allele fasta file with BWA MEM again. This time the -a option of BWA is used to ensure the alleles can be reached by any potential reads. Afterward, `analyze_read_depth_with_bwa.py` filters out reads with edit-distance (mismatches or indels) and reads with coverage length below a threshold (minimum between 100 or allele length in the code). 
+
 For each allele, a histogram on all positions of the allele is built, the coverage area of all filtered alleles are accumulated in the histogram. The minimum value in the histogram (the mimnum filtered read coverage of the allele) is the calling score of the allele.
-The scoring of positive alleles are way larger than those of negative alleles.
+Empirically, the scores of the positive alleles are way larger than those of negative alleles.
 
-### Call novel alleles
+the `target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` is the report file of all the alleles sorted by their scoring (minimum read-depth).
 
-Shell script:
-```
-./novel_allele.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
-```
-
-### Call flanking sequences
+### Assemble and haplotype flanking sequences
 
 Shell script:
 ```
-./flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
 ```
 
 
