@@ -1,4 +1,4 @@
-_Updated: September. 11, 2020_
+_Updated: September. 12, 2020_
 ## AIRRCall pipeline
 
 Usage:
@@ -13,13 +13,15 @@ The `AIRRCall.sh` pipeline uses the capture-based short reads and the alleles do
 
 To run the `AIRRCall.sh` pipeline, BWA aligner and SPAdes assembler should be installed.
 
-The path parameters should be specified:
+The path parameters in `AIRRCall.sh` should be specified:
 - workspace: the directory all results and intermediate data be stored (e.g. "./target_call/").
 - allele_name: allele type (e.g. "TCRV").
 - allele_path: where IMGT allele fasta file store (e.g. "../IMGT_alleles/TCRV_alleles.fasta").
 - person_name: person's id (e.g. "NA12878").
-- read_path_1: capture-based short reads R1 fasta file (e.g. "NA12878_S46_R1.fasta")
-- read_path_2: capture-based short reads R2 fasta file (e.g. "NA12878_S46_R2.fasta")
+- read_path_1: capture-based short reads R1 fasta file (e.g. "NA12878_S46_R1.fasta").
+- read_path_2: capture-based short reads R2 fasta file (e.g. "NA12878_S46_R2.fasta").
+
+Below paths in the README.md use `NA12878` and `TCRV` as examples.
 
 ### Find novel alleles
 
@@ -29,6 +31,8 @@ Shell script:
 ```
 
 The `novel_allele.sh` pipeline aligns capture-based short reads to IMGT alleles with BWA MEM. Then the program `parse_cluster_realign.py` finds the variant in each alleles. If threre are variants, the program haplotypes the allele and call the haplotypes not in the IMGT database as novel alleles.
+
+Generated files:
 
 `target_call/NA12878_TCRV_novel/corrected_alleles_filtered.fasta` is all the novel alleles fasta file.
 `target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta` is the merged allele file of IMGT alleles and haplotyped novel alleles.
@@ -47,7 +51,10 @@ In `allele_calling.sh`, the capture-based short reads are aligned to the merged 
 For each allele, a histogram on all positions of the allele is built, the coverage area of all filtered alleles are accumulated in the histogram. The minimum value in the histogram (the mimnum filtered read coverage of the allele) is the calling score of the allele.
 Empirically, the scores of the positive alleles are way larger than those of negative alleles.
 
-the `target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` is the report file of all the alleles sorted by their scoring (minimum read-depth).
+Generated files:
+
+`target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` reports the alleles sorted by their scores (minimum read-depth).
+`target_call/NA24385_TCRV/allele_support_reads.pickle` is a pickle file contains a dictionary, the dictionary indicating the read names supporting each alleles. The dictionary key is the allele name and the dictionary value is a set containing all reads support (perfectly match to with enough length coverage) the allele.
 
 ### Assemble and haplotype flanking sequences
 
@@ -55,6 +62,54 @@ Shell script:
 ```
 ./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
 ```
+
+The `flanking_sequence.sh` first groups pair-end read sequences and allele sequences in the directory `target_call/NA24385_TCRV_flanking/group_allele_reads/` according to `target_call/NA24385_TCRV/allele_support_reads.pickle`. Then the sub-pipeline `denovo_backbone.sh` uses SPAdes to assemble each short reads group into a flanking contig (backbone). Afterward, each allele has a backbone in the `target_call/NA24385_TCRV_flanking/asm_contigs/` directory.
+
+The `denovo_backbone.sh` sub-pipeline also use BWA MEM to align alleles to the backbone to check the correctness of the backbone. Those backbones do not contain perfectly matched contig are discarded. The remaining backbones are marked the start and end positions by `parse_bwa_sam.py`.
+
+`target_call/NA24385_TCRV_flanking/flanking_result/flank_region.txt` is the start-end report and
+`target_call/NA24385_TCRV_flanking/flanking_result/flanking_contigs.fasta` is the backbone collections.
+
+Finally the `flanking_sequence.sh` align all the capture-based reads to the backbones `target_call/NA24385_TCRV_flanking/flanking_result/flanking_contigs.fasta`, the sam file is haplotyped by `shrink_sam_to_range.py`. The region extending 200 bps from two ends of the original allele is cropped and reported as flanking sequences.
+
+Generated file:
+
+`target_call/NA24385_TCRV_flanking/flanking_result/flanking_haplotypes.fasta` is the final called flanking sequences.
+
+
+## AIRRAnnotate pipeline
+
+Usage:
+```
+./scripts/AIRRAnnotate.sh
+```
+
+The `AIRRAnnotate.sh` pipeline uses the personal assembly contigs and the alleles downloaded from IMGT database to
+- **Call alleles** (novel alleles are marked)
+- **Call flanking sequences**
+
+To run the `AIRRAnnotate.sh` pipeline, BWA aligner should be installed.
+
+The path parameters in `AIRRCall.sh` should be specified:
+- outer_dir: the directory all results and intermediate data be stored (e.g. "./target_annotation/")
+- list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV")
+- allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
+- allele_suffix: the suffix of allele fasta file, should agree with the real file name ( e.g."\_alleles.fasta")
+- person_name: person's id (e.g. "NA12878").
+- asm_path_H1: personal assembly H1 contig fasta file (e.g. "../asm_NA12878/NA12878-H1.fa")
+- asm_path_H2: personal assembly H2 contig fasta file (e.g. "../asm_NA12878/NA12878-H2.fa")
+
+The `AIRRAnnotate.sh` pipeline first indexes the personalized assembly and aligns IMGT alleles to the assembly with BWT. Afterward, `annotation_with_asm.py` analyzes the alignment sam file. The perfectly matched alleles are kept and aligned alleles with edit-distance are seen as novel alleles. 
+
+`target_annotation/annotation_imperfect_NA12878_TCRV.txt` is the report showing the aligned allele, aligned contig, contig position, and alignment length. If there are edit-distance in the alignment, the report shows additional tag the same as sam format.
+
+`get_asm_flanking.py` utilize the previous alignment file and crop the flanking sequence from the personal assembly fasta file.
+`target_annotation/flanking_NA12878_TCRV.fasta` is the collection of flanking sequence.
+
+
+
+
+
 
 
 ## BLASTn-based pipeline
