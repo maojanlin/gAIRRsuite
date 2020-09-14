@@ -2,7 +2,7 @@ import argparse
 import pickle
 import os
 import numpy as np
-from filter_corrected_alleles import parse_perfect_sam
+from filter_corrected_alleles import parse_perfect_sam, parse_fasta
 from parse_contig_realign import parse_CIGAR
 from utils import get_reverse_complement
 import sys
@@ -17,6 +17,18 @@ def parse_args():
         '-fs2', '--fn_sam_H2',
         help = 'input sam file where alleles.fasta align to corrected_alleles.fasta'
     )
+    parser.add_argument(
+        '-fasm1', '--fn_asm_H1',
+        help = 'input assembly fasta file'
+    )
+    parser.add_argument(
+        '-fasm2', '--fn_asm_H2',
+        help = 'input assembly fasta file'
+    )
+    parser.add_argument(
+        '-ext', '--len_extend', type=int, default=200,
+        help = 'the flanking sequence length cropped from the contigs'
+    )
     
     parser.add_argument(
         '-foa', '--fo_perfect_annotation_report',
@@ -30,6 +42,10 @@ def parse_args():
         '-fom', '--fo_mismatched_fasta',
         help = 'output allele with perfect match relative to whole genome assembly'
     )
+    parser.add_argument(
+        '-fof', '--fo_flanking_fasta',
+        help = 'output flanking sequence fasta file from asm'
+    )
     args = parser.parse_args()
     return args
 
@@ -37,10 +53,12 @@ def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def check_occupied(dict_occupied_place, list_fields):
+def check_occupied(dict_occupied_place, list_fields, dict_contig):
     for fields in list_fields:
         allele_name = fields[0]
+        allele_tag = int(fields[1])
         contig_name = fields[2]
+        contig_len = len(dict_contig[contig_name])
         pos_start = int(fields[3])
         cigar = fields[5]
         if (contig_name =='*'):# or ('S' in cigar) or ('H' in cigar):
@@ -54,36 +72,46 @@ def check_occupied(dict_occupied_place, list_fields):
                 align_length += number[idx]
             elif (op == 'H') or (op == 'S'):
                 clip_length += number[idx]
-        pos_end = pos_start + align_length
-        mismatch = int(fields[11][5:]) + clip_length # get NM:i: number
-        if clip_length > 0.1*align_length: # if the clip portion is too large, ignore the alignment
+       
+        # if the clip portion is too large, ignore the alignment
+        if clip_length > 0.1*align_length: 
             continue
+        
+        if (operate[0] == 'S') or (operate[0] == 'H'):
+            pos_start = pos_start - number[0]
+        pos_end = pos_start + align_length + clip_length
+        # trim the occupied region if they surpass the contig boundary
+        if pos_start < 1:
+            clip_length += pos_start
+            pos_start = 1
+        if pos_end > contig_len+1:
+            clip_length = clip_length + contig_len+1 - pos_end
+            pos_end = contig_len+1
+
+        mismatch = int(fields[11][5:]) + clip_length # get NM:i: number
         if mismatch == 0:
             if dict_occupied_place.get(contig_name):
-                dict_occupied_place[contig_name].append( (pos_start, pos_end, mismatch, allele_name) )
+                dict_occupied_place[contig_name].append( (pos_start, pos_end, mismatch, allele_name, allele_tag) )
             else:
-                dict_occupied_place[contig_name] = [ (pos_start, pos_end, mismatch, allele_name) ]
+                dict_occupied_place[contig_name] = [ (pos_start, pos_end, mismatch, allele_name, allele_tag) ]
         else: # contain mismatches!
             if dict_occupied_place.get(contig_name):
                 occupied_flag = False
                 for idx, element in enumerate(dict_occupied_place[contig_name]): # check if the place is already occupied
                     e_start = element[0]
                     e_end = element[1]
-                    #if min((pos_end - e_start), (e_end - pos_start)) > 0.8*min((pos_end-pos_start), (e_end-e_start)):
-                    if (pos_end < e_start) == False and (e_end < pos_start) == False and min(abs(pos_end-e_end), abs(pos_start-e_start)) < 50:
+                    #if (pos_end < e_start) == False and (e_end < pos_start) == False:
+                    if min((pos_end - e_start), (e_end - pos_start)) > 0.8*min((pos_end-pos_start), (e_end-e_start)):
                         e_mismatch = element[2]
                         occupied_flag = True
                         if mismatch < e_mismatch:
-                            allele_tag = int(fields[1])
                             MD_tag = fields[12][5:]
                             dict_occupied_place[contig_name][idx] = (pos_start, pos_end, mismatch, allele_name, allele_tag, cigar, MD_tag, clip_length)
                         break
                 if occupied_flag == False:
-                    allele_tag = int(fields[1])
                     MD_tag = fields[12][5:]
                     dict_occupied_place[contig_name].append( (pos_start, pos_end, mismatch, allele_name, allele_tag, cigar, MD_tag, clip_length) )
             else:
-                allele_tag = int(fields[1])
                 MD_tag = fields[12][5:]
                 dict_occupied_place[contig_name] = [ (pos_start, pos_end, mismatch, allele_name, allele_tag, cigar, MD_tag, clip_length) ]
 
@@ -104,12 +132,12 @@ def output_dict_occupied(dict_occupied_place, f_o):
             f_o.write('\n')
 
 
-def occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_fields_1, list_fields_2, fo_annotation_report):
+def occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_fields_1, list_fields_2, fo_annotation_report, dict_contig_H1, dict_contig_H2):
     # dict_occupied_place {}
     #  - key: contig_name
     #  - value: list_occupied_pair[ (pos_start, pos_end, NM:i), ... ]
-    check_occupied(dict_occupied_place_1, list_fields_1)
-    check_occupied(dict_occupied_place_2, list_fields_2)
+    check_occupied(dict_occupied_place_1, list_fields_1, dict_contig_H1)
+    check_occupied(dict_occupied_place_2, list_fields_2, dict_contig_H2)
 
     f_o = open(fo_annotation_report, 'w')
     output_dict_occupied(dict_occupied_place_1, f_o)
@@ -155,29 +183,53 @@ def reference_recovery(allele_SEQ, cigar, MD_tag):
     return allele_SEQ
 
 
-def correct_allele(dict_occupied_place, dict_SEQ, dict_corrected_alleles):
+def correct_allele(dict_occupied_place, dict_SEQ, dict_corrected_alleles, dict_flanking_alleles, dict_contig, len_extend):
     # dict_corrected_alleles {}
     #  - keys: allele_name
     #  - values: corrected_SEQ_set {corrected_SEQ_1, corrected_SEQ_2}
-    for list_contig in dict_occupied_place.values():
+    
+    # dict_flanking_alleles {}
+    #  - keys: allele_name
+    #  - values: corrected_SEQ_set {flanking_SEQ_1, flanking_SEQ_2}
+    for contig_name, list_contig in dict_occupied_place.items():
+        contig_SEQ = dict_contig[contig_name]
+        contig_len = len(contig_SEQ)
         for pairs in list_contig:
+            pos_start = pairs[0]
+            pos_end   = pairs[1]
+            allele_name = pairs[3]
+            try:
+                allele_name = allele_name.split('|')[1]
+            except:
+                allele_name = allele_name.split()[0]
+            flag = pairs[4]
+            flanking_SEQ = contig_SEQ[max(0, pos_start-len_extend-1):min(contig_len, pos_end+len_extend-1)].lower()
             if pairs[2] != 0: # mismatched alleles but remain in contig
-                allele_name = pairs[3]
-                flag = pairs[4]
-                allele_SEQ = dict_SEQ[allele_name]
-                if flag % 32 >= 16:
-                    allele_SEQ = get_reverse_complement(allele_SEQ)
-                cigar  = pairs[5]
-                MD_tag = pairs[6]
-                corrected_SEQ = reference_recovery(allele_SEQ, cigar, MD_tag)
+                corrected_SEQ = contig_SEQ[pos_start-1:pos_end-1].lower()
                 if flag % 32 >= 16:
                     corrected_SEQ = get_reverse_complement(corrected_SEQ)
+                    flanking_SEQ  = get_reverse_complement(flanking_SEQ)
 
                 if dict_corrected_alleles.get(allele_name):
                     dict_corrected_alleles[allele_name].add(corrected_SEQ)
                 else:
                     dict_corrected_alleles[allele_name] = {corrected_SEQ}
-    return dict_corrected_alleles
+                
+                flanking_name = allele_name + "/novel"
+                if dict_flanking_alleles.get(flanking_name):
+                    dict_flanking_alleles[flanking_name].add(flanking_SEQ)
+                else:
+                    dict_flanking_alleles[flanking_name] = {flanking_SEQ}
+            else:
+                if flag % 32 >= 16:
+                    flanking_SEQ  = get_reverse_complement(flanking_SEQ)
+                flanking_name = allele_name
+                if dict_flanking_alleles.get(flanking_name):
+                    dict_flanking_alleles[flanking_name].add(flanking_SEQ)
+                else:
+                    dict_flanking_alleles[flanking_name] = {flanking_SEQ}
+
+    return dict_corrected_alleles, dict_flanking_alleles
 
 
 def get_SEQ_from_sam_list(list_fields, dict_SEQ):
@@ -199,11 +251,18 @@ if __name__ == "__main__":
     args = parse_args()
     fn_sam_H1 = args.fn_sam_H1
     fn_sam_H2 = args.fn_sam_H2
+    fn_asm_H1 = args.fn_asm_H1
+    fn_asm_H2 = args.fn_asm_H2
+    len_extend = args.len_extend
+
     fo_perfect_annotation_report = args.fo_perfect_annotation_report
     fo_mismatched_annotation_report = args.fo_mismatched_annotation_report
     fo_mismatched_fasta = args.fo_mismatched_fasta
+    fo_flanking_fasta = args.fo_flanking_fasta
 
     if fn_sam_H2: # if there are two genome H1, H2 to analyze
+        dict_contig_H1 = parse_fasta(fn_asm_H1)
+        dict_contig_H2 = parse_fasta(fn_asm_H2)
         list_perfect_fields_1, list_mismatch_fields_1 = parse_perfect_sam(fn_sam_H1)
         list_perfect_fields_2, list_mismatch_fields_2 = parse_perfect_sam(fn_sam_H2)
         set_perfect_allele_1 = set(fields[0] for fields in list_perfect_fields_1)
@@ -216,11 +275,13 @@ if __name__ == "__main__":
         # output the perfect annotations
         dict_occupied_place_1 = {}
         dict_occupied_place_2 = {}
-        occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_perfect_fields_1, list_perfect_fields_2, fo_perfect_annotation_report)
+        occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_perfect_fields_1, list_perfect_fields_2, \
+                            fo_perfect_annotation_report, dict_contig_H1, dict_contig_H2)
         
         # output the mismatched annotations
         if fo_mismatched_annotation_report:
-            occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_mismatch_fields_1, list_mismatch_fields_2, fo_mismatched_annotation_report)
+            occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_mismatch_fields_1, list_mismatch_fields_2, \
+                                fo_mismatched_annotation_report, dict_contig_H1, dict_contig_H2)
             print("========== Annotation of Imperfect Matches ==========")
             allele_num_H1 = sum([len(list_contig) for list_contig in dict_occupied_place_1.values()])
             print("There are", allele_num_H1, "potential alleles in H1 among", len(dict_occupied_place_1), "contigs.")
@@ -235,32 +296,39 @@ if __name__ == "__main__":
                 get_SEQ_from_sam_list(list_mismatch_fields_2, dict_SEQ)
     
                 dict_corrected_alleles = {}
-                correct_allele(dict_occupied_place_1, dict_SEQ, dict_corrected_alleles)
-                correct_allele(dict_occupied_place_2, dict_SEQ, dict_corrected_alleles)
-                f_f = open(fo_mismatched_fasta, 'w')
+                dict_flanking_alleles  = {}
+                correct_allele(dict_occupied_place_1, dict_SEQ, dict_corrected_alleles, dict_flanking_alleles, dict_contig_H1, len_extend)
+                correct_allele(dict_occupied_place_2, dict_SEQ, dict_corrected_alleles, dict_flanking_alleles, dict_contig_H2, len_extend)
+                f_n = open(fo_mismatched_fasta, 'w')
                 for allele_name in sorted(dict_corrected_alleles.keys()):
                     for idx, SEQ in enumerate(sorted(dict_corrected_alleles[allele_name])):
-                        try:
-                            f_f.write('>' + allele_name.split('|')[1] + '/novel-' + str(idx) + '\n')
-                        except:
-                            f_f.write('>' + allele_name.split()[0] + '/novel-' + str(idx) + '\n')
+                        f_n.write('>' + allele_name + '/novel-' + str(idx) + '\n')
+                        f_n.write(SEQ + '\n')
+                f_n.close()
+                print("Output novel alleles.")
+                f_f = open(fo_flanking_fasta, 'w')
+                for allele_name in sorted(dict_flanking_alleles.keys()):
+                    for idx, SEQ in enumerate(sorted(dict_flanking_alleles[allele_name])):
+                        f_f.write('>' + allele_name + '-' + str(idx) + '\n')
                         f_f.write(SEQ + '\n')
-                print("Output corrected mismatched alleles.")
+                f_f.close()
+                print("Output flanking sequences")
             else:
                 print("Corrected mismatched files not specified.")
     else: # if there is only one genome to analyze
         list_perfect_fields_1, list_mismatch_fields_1 = parse_perfect_sam(fn_sam_H1)
         set_perfect_allele_1 = set(fields[0] for fields in list_perfect_fields_1)
+        dict_contig_H1 = parse_fasta(fn_asm_H1)
         print("========== Annotation of IMGT Alleles ==========")
         print("There are", len(list_perfect_fields_1), "allele sites and", len(set_perfect_allele_1), "alleles in genome.")
     
         # output the perfect annotations
         dict_occupied_place_1 = {}
-        occupied_annotation(dict_occupied_place_1, {}, list_perfect_fields_1, [], fo_perfect_annotation_report)
+        occupied_annotation(dict_occupied_place_1, {}, list_perfect_fields_1, [], fo_perfect_annotation_report, dict_contig_H1, {})
         
         # output the mismatched annotations
         if fo_mismatched_annotation_report:
-            occupied_annotation(dict_occupied_place_1, {}, list_mismatch_fields_1, [], fo_mismatched_annotation_report)
+            occupied_annotation(dict_occupied_place_1, {}, list_mismatch_fields_1, [], fo_mismatched_annotation_report, dict_contig_H1, {})
             print("========== Annotation of Imperfect Matches ==========")
             allele_num_H1 = sum([len(list_contig) for list_contig in dict_occupied_place_1.values()])
             print("There are", allele_num_H1, "potential alleles in the genome among", len(dict_occupied_place_1), "contigs.")
@@ -271,13 +339,21 @@ if __name__ == "__main__":
                 get_SEQ_from_sam_list(list_mismatch_fields_1, dict_SEQ)
     
                 dict_corrected_alleles = {}
-                correct_allele(dict_occupied_place_1, dict_SEQ, dict_corrected_alleles)
-                f_f = open(fo_mismatched_fasta, 'w')
+                correct_allele(dict_occupied_place_1, dict_SEQ, dict_corrected_alleles, dict_flanking_alleles, dict_contig_H1, len_extend)
+                f_n = open(fo_mismatched_fasta, 'w')
                 for allele_name in sorted(dict_corrected_alleles.keys()):
                     for idx, SEQ in enumerate(sorted(dict_corrected_alleles[allele_name])):
-                        f_f.write('>' + allele_name.split('|')[1] + '_corrected_' + str(idx) + '\n')
+                        f_n.write('>' + allele_name + '/novel-' + str(idx) + '\n')
+                        f_n.write(SEQ + '\n')
+                f_n.close()
+                print("Output novel alleles.")
+                f_f = open(fo_flanking_fasta, 'w')
+                for allele_name in sorted(dict_flanking_alleles.keys()):
+                    for idx, SEQ in enumerate(sorted(dict_flanking_alleles[allele_name])):
+                        f_f.write('>' + allele_name + '-' + str(idx) + '\n')
                         f_f.write(SEQ + '\n')
-                print("Output corrected mismatched alleles.")
+                f_f.close()
+                print("Output flanking sequences")
             else:
                 print("Corrected mismatched files not specified.")
             
