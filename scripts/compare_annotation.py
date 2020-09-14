@@ -98,13 +98,13 @@ if __name__ == "__main__":
                             mismatch_tag = ',' + more_fields[4] + ',' + more_fields[5]
                         elif len(more_fields) == 5:
                             mismatch_tag = ',' + more_fields[4]
-                        f_or.write(more_contig + ',*,*,' + str(more_start_pos) + ',' + str(more_seq_len) + ',' + more_name + ',' + mismatch_tag + '\n')
-                        list_annotate_only_info.append(more_contig + ',' + more_name + ',' + str(more_start_pos) + ',' + str(more_seq_len) + ',' + mismatch_tag)
+                        f_or.write(more_contig + ',*,*,' + str(more_start_pos) + ',' + str(more_flank_len) + ',' + more_name + ',' + mismatch_tag + '\n')
+                        list_captured_only_info.append(more_contig + ',' + more_name + ',' + str(more_start_pos) + ',' + str(more_flank_len) + ',' + mismatch_tag)
                     idx_new = idx_search + 1
                     break
         if miss_flag:
             f_or.write(contig_name + ',' + str(start_pos) + ',' + str(allele_len) + ',*,*,' + allele_name + ',' + '*' + '\n')
-            list_captured_only_info.append(contig_name + ',' + allele_name + ',' + str(start_pos) + ',' + str(allele_len))
+            list_annotate_only_info.append(contig_name + ',' + allele_name + ',' + str(start_pos) + ',' + str(allele_len))
     f_or.close()
 
     f_os = open(fo_summary, 'w')
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     if len(list_captured_only_info) > 0:
         f_os.write("AIRRCall only position:\n")
         f_os.write("contig,allele_name,position,len,mismatch_tag\n")
-        print("AIRCall only position:")
+        print("AIRRCall only position:")
         for info in list_captured_only_info:
             f_os.write(info + '\n')
             print(info)

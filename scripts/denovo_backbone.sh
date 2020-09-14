@@ -11,15 +11,15 @@ rm ${contig_path}spades_log.log
 for ((cluster_id=0; cluster_id <${cluster_num}; cluster_id++ ))
 do
     echo "[SPAdes] group ${cluster_id} assembled..."
-    #python3 ../SPAdes-3.11.1-Darwin/bin/spades.py -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
-    #                                              -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
-    #                                              --only-assembler -t 8 \
-    #                                              -o ${contig_path}${allele_name}_${cluster_id} \
-    #                                              >> ${contig_path}spades_log.log
-    python3 copy_1st_contig.py -fc ${contig_path}${allele_name}_${cluster_id}/contigs.fasta \
-                               -id ${cluster_id} \
-                               -map ${raw_seq_path}/${allele_name}_group_allele_map.txt \
-                               -fo ${contig_path}${allele_name}_contig_${cluster_id}.fasta
+    python3 ../../naechyun/SPAdes-3.11.1-Linux/bin/spades.py -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
+                                                             -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
+                                                             --only-assembler -t 8 \
+                                                             -o ${contig_path}${allele_name}_${cluster_id} \
+                                                             >> ${contig_path}spades_log.log
+    python3 scripts/copy_1st_contig.py -fc ${contig_path}${allele_name}_${cluster_id}/contigs.fasta \
+                                       -id ${cluster_id} \
+                                       -map ${raw_seq_path}/${allele_name}_group_allele_map.txt \
+                                       -fo ${contig_path}${allele_name}_contig_${cluster_id}.fasta
 done
 
 mkdir -p ${contig_check_path}
@@ -38,13 +38,13 @@ do
                   ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
                   >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
                   2>> ${contig_check_path}/bwa_log.log
-    python3 parse_bwa_sam.py -fs ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
-                             -fc ${contig_path}/${allele_name}_contig_${cluster_id}.fasta \
-                             -td 0 \
-                             -fo ${flanking_result_path}/assembly_call.txt \
-                             -fr ${flanking_result_path}/flanking_contigs.fasta \
-                             --cluster_id ${cluster_id} \
-                             -fsize 200 \
-                             -frs ${flanking_result_path}/flanking_size200.fasta \
-                             >>   ${flanking_result_path}/flank_region.txt
+    python3 scripts/parse_bwa_sam.py -fs ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
+                                     -fc ${contig_path}/${allele_name}_contig_${cluster_id}.fasta \
+                                     -td 0 \
+                                     -fo ${flanking_result_path}/assembly_call.txt \
+                                     -fr ${flanking_result_path}/flanking_contigs.fasta \
+                                     --cluster_id ${cluster_id} \
+                                     -fsize 200 \
+                                     -frs ${flanking_result_path}/flanking_size200.fasta \
+                                     >>   ${flanking_result_path}/flank_region.txt
 done
