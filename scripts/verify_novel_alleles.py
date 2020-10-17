@@ -38,12 +38,17 @@ if __name__ == "__main__":
     list_perfect_fields_2, list_mismatch_fields_2 = parse_perfect_sam(fn_sam_H2)
     list_perfect_fields_1.sort(key=lambda fields:(fields[2], fields[3]), reverse=True)
     list_perfect_fields_2.sort(key=lambda fields:(fields[2], fields[3]), reverse=True)
-    print("There are", len(list_perfect_fields_1), "true novel alleles in H1:")
+    f_or = open(fo_verification_report, 'w')
+    print("There are ", len(list_perfect_fields_1), "true novel alleles in H1:")
+    f_or.write("There are" + str(len(list_perfect_fields_1)) + " true novel alleles in H1:\n")
     for fields in list_perfect_fields_1:
         print("\t", fields[0] + '\t\t' + fields[2] + '\t' + fields[3])
-    print("There are", len(list_perfect_fields_2), "true novel alleles in H2:")
+        f_or.write("\t" + fields[0] + '\t\t' + fields[2] + '\t' + fields[3] + '\n')
+    print("There are ", len(list_perfect_fields_2), "true novel alleles in H2:")
+    f_or.write("There are" + str(len(list_perfect_fields_2)) + " true novel alleles in H2:\n")
     for fields in list_perfect_fields_2:
         print("\t", fields[0] + '\t\t' + fields[2] + '\t' + fields[3])
+        f_or.write("\t" + fields[0] + '\t\t' + fields[2] + '\t' + fields[3] + '\n')
 
     dict_mismatch_fields_1 = {}
     for fields in list_mismatch_fields_1:
@@ -64,11 +69,15 @@ if __name__ == "__main__":
     
     if len(set_common_mismatch_fields) == 0:
         print("No common mismatched alleles between H1 and H2.")
+        f_or.write("No common mismatched alleles between H1 and H2.")
     else:
         print("Common mismatched alleles / CIGAR in H1 / NM:i in H1 / CIGAR in H2 / NM:i in H2")
+        f_or.write("Common mismatched alleles / CIGAR in H1 / NM:i in H1 / CIGAR in H2 / NM:i in H2\n")
         for allele_name in sorted(set_common_mismatch_fields):
             pair_H1 = dict_mismatch_fields_1[allele_name]
             pair_H2 = dict_mismatch_fields_2[allele_name]
             print("\t", allele_name, ' / ', pair_H1[0], ' / ', pair_H1[1], ' / ', pair_H2[0], ' / ', pair_H2[1])
+            f_or.write("\t" + allele_name + ' / ' + pair_H1[0] + ' / ' + pair_H1[1] + ' / ' + pair_H2[0] + ' / ' + pair_H2[1] + '\n')
+    f_or.close()
 
 

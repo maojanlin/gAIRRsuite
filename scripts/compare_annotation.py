@@ -59,6 +59,8 @@ if __name__ == "__main__":
     f_or = open(fo_report, 'w')
     for idx_base in range(len(list_annotation_base)):
         fields = list_annotation_base[idx_base]
+        if len(fields) < 2:
+            continue
         allele_name = fields[0]
         contig_name = fields[1]
         start_pos = int(fields[2])
@@ -67,6 +69,8 @@ if __name__ == "__main__":
         miss_flag = True
         for idx_search in range(idx_new, len(list_annotation_new)):
             new_fields = list_annotation_new[idx_search]
+            if len(new_fields) < 2:
+                continue
             search_name = new_fields[0]
             used_seqs.add(search_name)
             search_contig = new_fields[1]
