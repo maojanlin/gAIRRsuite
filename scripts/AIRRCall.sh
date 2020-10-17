@@ -1,16 +1,10 @@
-#allele_path="../plot_tree/TCRJ_alleles.fasta"
-#read_path_1="CHM13_filtered_R1.fasta"
-#read_path_2="CHM13_filtered_R2.fasta"
-
 workspace="target_call"
 list_allele_name="TCRJ TCRV BCRV"
 allele_dir="../genomeData/"
 allele_suffix="_alleles_parsed.fasta"
-person_name="PL"
-#read_path_1="../../naechyun/blast/experiments/NA12878_S46_L001_R1_001.fasta"
-#read_path_2="../../naechyun/blast/experiments/NA12878_S46_L001_R2_001.fasta"
-read_path_1="../captured_reads/PL_S47_L001_R1_001.fasta"
-read_path_2="../captured_reads/PL_S47_L001_R1_001.fasta"
+person_name="NA12878"
+read_path_1="../captured_reads/NA12878_S46_L001_R1_001.fasta"
+read_path_2="../captured_reads/NA12878_S46_L001_R2_001.fasta"
 
 # environment settings
 mkdir -p ${workspace}

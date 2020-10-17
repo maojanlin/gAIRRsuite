@@ -6,16 +6,13 @@ allele_suffix="_alleles_parsed.fasta"
 #person_name="NA24385"
 #asm_path_H1="../../asm/NA24385/HG002-H1.fa"
 #asm_path_H2="../../asm/NA24385/HG002-H2.fa"
-#person_name="CHM13-T2T"
-#asm_path_H1="../genomeData/T2T_CHM13/chm13.draft_v1.0.fasta"
-person_name="GCA_HG004"
-asm_path_H1="../genomeData/pacbio_GIAB/GCA_001549595.1_GIAB_Ashkenazim_Mother_HG004_NA24143_hu8E87A9_PacBio_Assembly_with_PBcR_genomic.fna"
-#asm_path_H1="../genomeData/pacbio_GIAB/GCA_001549605.1_GIAB_Ashkenazim_Father_HG003_NA24149_hu6E4515_PacBio_Assembly_with_PBcR_genomic.fna"
+person_name="CHM13-T2T"
+asm_path_H1="../genomeData/T2T_CHM13/chm13.draft_v1.0.fasta"
 
 # setting for the data
 echo "[AIRRAnnotate] Indexing assembly..."
-#bwa index ${asm_path_H1}
-#bwa index ${asm_path_H2}
+bwa index ${asm_path_H1}
+bwa index ${asm_path_H2}
 
 mkdir -p ${outer_dir}
 for allele_name in ${list_allele_name}; do
