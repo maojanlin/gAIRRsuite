@@ -49,29 +49,38 @@ if __name__ == '__main__':
         name_ed = file_name.find(".fasta")
         person_name = file_name[name_st:name_ed]
         for allele_name, SEQ in dict_allele.items():
-            allele_name = allele_name[:allele_name.rfind('-')]
+            if allele_name == "":
+                continue
+            novel_allele_name = "" 
+            if 'novel' in file_name:
+                novel_allele_name = allele_name[:allele_name.rfind('/')]
+                novel_allele_name += '/n'
+            elif 'flanking' in file_name:
+                novel_allele_name = allele_name[:allele_name.rfind('-')]
+                novel_allele_name += '/f'
+            else:
+                print("WARNING! Incorrect naming in file", person_name)
             SEQ = SEQ.lower()
-            if dict_database.get(allele_name):
-                dict_SEQ = dict_database[allele_name]
+            if dict_database.get(novel_allele_name):
+                dict_SEQ = dict_database[novel_allele_name]
                 if dict_SEQ.get(SEQ):
                     dict_SEQ[SEQ].append(person_name)
                 elif dict_SEQ.get(get_reverse_complement(SEQ)):
                     dict_SEQ[get_reverse_complement(SEQ)].append(person_name)
-                else:
+                else: # add the SEQ into dict_SEQ
                     dict_SEQ[SEQ] = [person_name]
             else:
-                dict_database[allele_name] = {SEQ:[person_name]}
+                dict_database[novel_allele_name] = {SEQ:[person_name]}
 
     f_of = open(fo_merged_fasta,  'w')
     f_or = open(fo_merged_report, 'w')
+    f_or.write('allele_name\tnumber_of_found_in_database\tsamples_possessing_the_allele\n')
     for allele_name, dict_SEQ in sorted(dict_database.items()):
-        if allele_name == "":
-            continue
-        for idx, (SEQ, list_person) in enumerate(dict_SEQ.items()):
-            f_of.write(">" + allele_name + '-' + str(idx) + '\n')
+        for idx, (SEQ, list_person) in enumerate(sorted(dict_SEQ.items(), key = lambda pair : len(pair[1]), reverse=True)):
+            f_of.write(">" + allele_name + str(idx).zfill(2) + '\n')
             f_of.write(SEQ + '\n')
 
-            f_or.write(allele_name + '-' + str(idx) + ',' + str(len(list_person)) + ',' + ','.join(list_person) + '\n' )
+            f_or.write(allele_name + str(idx).zfill(2) + '\t' + str(len(list_person)) + '\t' + ','.join(list_person) + '\n' )
     f_of.close()
     f_or.close()
 
