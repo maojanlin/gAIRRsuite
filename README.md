@@ -9,7 +9,7 @@ Usage:
 The `AIRRCall.sh` pipeline uses the capture-based short reads and the alleles downloaded from IMGT database to
 - Find **novel alleles**
 - **Call alleles** (including both known and novel alleles)
-- Assemble and haplotyping **flanking sequences**
+- Assemble and haplotype **flanking sequences**
 
 To run the `AIRRCall.sh` pipeline, BWA aligner and SPAdes assembler should be installed.
 
@@ -30,12 +30,12 @@ Shell script:
 ./scripts/novel_allele.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
 ```
 
-The `novel_allele.sh` pipeline aligns capture-based short reads to IMGT alleles with BWA MEM. Then the program `parse_cluster_realign.py` finds the variant in each alleles. If threre are variants, the program haplotypes the allele and call the haplotypes not in the IMGT database as novel alleles.
+The `novel_allele.sh` pipeline aligns capture-based short reads to IMGT alleles with BWA MEM. Then the program `parse_cluster_realign.py` finds the variant in each alleles. If threre are variants, the program haplotypes the allele and call the haplotypes not in the IMGT database as novel allele candidates.
 
 Generated files:
 
-`target_call/NA12878_TCRV_novel/corrected_alleles_filtered.fasta` is all the novel alleles fasta file.
-`target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta` is the merged allele file of IMGT alleles and haplotyped novel alleles.
+`target_call/NA12878_TCRV_novel/corrected_alleles_filtered.fasta` is all the novel allele candidates fasta file.
+`target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta` is the merged allele file containing IMGT alleles and haplotyped novel allele candidates.
 
 ### Call alleles
 
@@ -45,16 +45,16 @@ allele_path=target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta
 ./scripts/allele_calling.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
 ```
 
-The pipeline finds if the alleles in the merged fasta file (containing both IMGT and novel alleles) are possessed by the person or not.
-In `allele_calling.sh`, the capture-based short reads are aligned to the merged allele fasta file with BWA MEM again. This time the -a option of BWA is used to ensure the alleles can be reached by any potential reads. Afterward, `analyze_read_depth_with_bwa.py` filters out reads with edit-distance (mismatches or indels) and reads with coverage length below a threshold (minimum between 100 or allele length in the code). 
+The pipeline finds if the alleles in the merged fasta file (containing both IMGT and novel alleles) are positive (possessed by the person).
+In `allele_calling.sh`, the capture-based short reads are aligned to the merged allele fasta file with BWA MEM again. This time the "-a" option of BWA is used to ensure that the alleles can be reached by any potential reads. Afterward, `analyze_read_depth_with_bwa.py` filters out reads with edit-distance (mismatches or indels) and reads with coverage length below a threshold (minimum between 100 or allele length in the code). 
 
-For each allele, a histogram on all positions of the allele is built, the coverage area of all filtered alleles are accumulated in the histogram. The minimum value in the histogram (the mimnum filtered read coverage of the allele) is the calling score of the allele.
-Empirically, the scores of the positive alleles are way larger than those of negative alleles.
+For each allele, a histogram on all positions of the allele is built. The read-depth of all filtered alleles are accumulated in the histogram. The minimum value in the histogram (the mimnum filtered read depth of the allele) is the calling score of the allele.
+Empirically, the scores (minimum read-depth) of the true alleles are way larger than those of false alleles.
 
 Generated files:
 
 `target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` reports the alleles sorted by their scores (minimum read-depth).
-`target_call/NA24385_TCRV/allele_support_reads.pickle` is a pickle file contains a dictionary, the dictionary indicating the read names supporting each alleles. The dictionary key is the allele name and the dictionary value is a set containing all reads support (perfectly match to with enough length coverage) the allele.
+`target_call/NA24385_TCRV/allele_support_reads.pickle` is a pickle file containing a dictionary. The dictionary indicates the names of the read supporting each alleles. The dictionary key is the allele name and the dictionary value is a set containing all reads support (perfectly match with enough length coverage) the allele.
 
 ### Assemble and haplotype flanking sequences
 
@@ -63,14 +63,14 @@ Shell script:
 ./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
 ```
 
-The `flanking_sequence.sh` first groups pair-end read sequences and allele sequences in the directory `target_call/NA24385_TCRV_flanking/group_allele_reads/` according to `target_call/NA24385_TCRV/allele_support_reads.pickle`. Then the sub-pipeline `denovo_backbone.sh` uses SPAdes to assemble each short reads group into a flanking contig (backbone). Afterward, each allele has a backbone in the `target_call/NA24385_TCRV_flanking/asm_contigs/` directory.
+The `flanking_sequence.sh` first groups pair-end read sequences and allele sequences in the directory `target_call/NA24385_TCRV_flanking/group_allele_reads/` according to `target_call/NA24385_TCRV/allele_support_reads.pickle`. Then the sub-pipeline `denovo_backbone.sh` uses SPAdes to assemble each short reads group into an unphased flanking contig (backbone). Afterward, each allele has a backbone in the `target_call/NA24385_TCRV_flanking/asm_contigs/` directory.
 
-The `denovo_backbone.sh` sub-pipeline also use BWA MEM to align alleles to the backbone to check the correctness of the backbone. Those backbones do not contain perfectly matched contig are discarded. The remaining backbones are marked the start and end positions by `parse_bwa_sam.py`.
+The `denovo_backbone.sh` sub-pipeline also use BWA MEM to align alleles to the backbone to check the correctness of the backbone. Those backbones do not contain perfectly matched contig are discarded. The the start and end positions of the allele in qualified backbones are marked by `parse_bwa_sam.py`.
 
 `target_call/NA24385_TCRV_flanking/flanking_result/flank_region.txt` is the start-end report and
 `target_call/NA24385_TCRV_flanking/flanking_result/flanking_contigs.fasta` is the backbone collections.
 
-Finally the `flanking_sequence.sh` align all the capture-based reads to the backbones `target_call/NA24385_TCRV_flanking/flanking_result/flanking_contigs.fasta`, the sam file is haplotyped by `shrink_sam_to_range.py`. The region extending 200 bps from two ends of the original allele is cropped and reported as flanking sequences.
+Finally the `flanking_sequence.sh` align all the capture-based reads to the backbones `target_call/NA24385_TCRV_flanking/flanking_result/flanking_contigs.fasta`, the sam file is haplotyped by `shrink_sam_to_range.py`. The region extending 200 bps from two ends of the original allele is cropped and reported as the flanking sequences.
 
 Generated file:
 
@@ -107,7 +107,7 @@ Generated files:
 `target_annotation/novel_NA12878_TCRV.fasta` is the collection of novel alleles.
 `target_annotation/flanking_NA12878_TCRV.fasta` is the collection of flanking sequence (including novel alleles).
 
-## gAIRR-verify pipeline
+## Verification pipeline
 
 `AIRRCall.sh` and `AIRRAnnotate.sh` can be operated independently; however, `AIRRVerify.sh` can only be operated after both `AIRRCall.sh` and `AIRRAnnotate.sh` be performed successfully.
 
