@@ -1,4 +1,5 @@
 import argparse
+from utils import fasta_to_dict
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -7,8 +8,12 @@ def parse_args():
         help = 'input sam file that hepNona_file align to flanking haplotypes'
     )
     parser.add_argument(
+        '-ff', '--fn_flanking',
+        help = 'input fasta file that contains flanking haplotypes'
+    )
+    parser.add_argument(
         '-gtype', '--gene_type',
-        help = '\"TCRV\" for V alleles and \"TCRJ\" for J alleles'
+        help = '\"TCRV\", \"BCRV\" for V alleles and \"TCRJ\" for J alleles'
     )
     parser.add_argument(
         '-fo', '--fo_output',
@@ -82,13 +87,14 @@ def parse_sam_with_lenInfo(fn_sam):
 
 
 def select_best_RSS(interested_list):
+    """ranks are list as following: perfect, shift perfect, +/-1, shift +/-1"""
     ranks = [[],[],[],[]]
     for pair in interested_list:
         if (pair[0] == 0) and (abs(pair[1]) == 12 or abs(pair[1]) == 23):
             ranks[0].append(pair)
-        elif pair[0] == 0:
-            ranks[1].append(pair)
         elif (-10 <= pair[0] <= 10) and (pair[1] == 12 or pair[1] == 23):
+            ranks[1].append(pair)
+        elif pair[0] == 0:
             ranks[2].append(pair)
         else:
             ranks[3].append(pair)
@@ -102,19 +108,31 @@ def select_best_RSS(interested_list):
 if __name__ == '__main__':
     args = parse_args()
     fn_sam = args.fn_sam
+    fn_flanking = args.fn_flanking
     fo_output = args.fo_output
     fo_summary = args.fo_summary
     gene_type = args.gene_type
-    if 'V' in gene_type or 'v' in gene_type:
-        gene_type = 1
+    if "TCR" or "tcr" in gene_type:
+        if 'V' in gene_type or 'v' in gene_type:
+            gene_type = 1
+        else:
+            gene_type = 0
+    elif "BCR" or "bcr" in gene_type:
+        if 'V' in gene_type or 'v' in gene_type:
+            gene_type = 3
+        else:
+            gene_type = 2
     else:
-        gene_type = 0
+        print("WARNING: ERROR in gene_type!!")
 
+    dict_flank = fasta_to_dict(fn_flanking)
     dict_haplotype_hepNona = parse_sam_with_lenInfo(fn_sam)
 
-    list_fault = []
-    list_bad   = []
-    list_num   = [0,0,0,0,0]
+    # dict_list_fault:
+    # - key: gene_name
+    # - value: set( print_pair_info )
+    list_fault = [{},{},{},{},{}]
+    set_flank  = set()
     f_o = open(fo_output, 'w')
     f_o.write("Extended_allele_name,len,rank,RSS_pairs\n")
     for haplotype_name, info_pair in sorted(dict_haplotype_hepNona.items()):
@@ -140,6 +158,11 @@ if __name__ == '__main__':
                     else:
                         interested_pair.append( (position_hep - 194, spacer_len, hep_info_tuple[0], nona_info_tuple[0]) )
         rank, best_RSS = select_best_RSS(interested_pair)
+        ext_seq = dict_flank[haplotype_name]
+        #if gene_type == 1:
+        #    ext_seq = ext_seq[200]
+        #else:
+        #    ext_seq = ext_seq[]
         
         f_o.write(haplotype_name + ',' + str(haplotype_len) + ',' + str(rank) + ',')
         print_pair_info = ""
@@ -147,19 +170,48 @@ if __name__ == '__main__':
             print_pair_info += ("(" + str(pair[0]) + ' ' + str(pair[1]) + "),")
         f_o.write(print_pair_info + "\n")
         
-        list_num[rank] += 1
-        if 1 <= rank <= 3:
-            list_fault.append((haplotype_name, print_pair_info))
-        elif rank >= 4:
-            list_bad.append((haplotype_name, print_pair_info))
+        # setup for allele level group analysis
+        #allele_name = haplotype_name.split('/')[0]
+        allele_name = haplotype_name[:haplotype_name.rfind('/')]
+        if list_fault[rank].get(allele_name):
+            if print_pair_info in list_fault[rank][allele_name]:
+                pass
+            else:
+                list_fault[rank][allele_name].add(print_pair_info)
+        else:
+            list_fault[rank][allele_name] = {print_pair_info}
     f_o.close()
 
     f_s = open(fo_summary, 'w')
-    f_s.write("Extended_allele with perfect RSS: " + str(list_num[0]) + '\n')
-    f_s.write("Extended_allele with fault RSS (+/-10 position or +/- 12/23 spacer): " + str(sum(list_num[1:4])) + '\n')
-    for haplotype_name, print_pair_info in list_fault:
-        f_s.write('\t' + haplotype_name + '\t' + print_pair_info + '\n')
-    f_s.write("Extended_allele without known RSS: " + str(list_num[4]) + '\n')
-    for haplotype_name, print_pair_info in list_bad:
-        f_s.write('\t' + haplotype_name + '\t' + allele_functionality(haplotype_name) + '\t' + print_pair_info + '\n')
+    rank_property = ["perfect", "shift (10) perfect", "+/-1", "shift (10) +/-1", "Not found"]
+    # ========== print alleles with missing or novel RSS ==========
+    f_s.write("Alleles with missing or novel RSS: " + str(len(list_fault[4])) + '\n')
+    for allele_name, print_pair_info in sorted(list_fault[4].items()):
+        f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
+    # ========== print alleles with +/- 1 spacer ==========
+    set_violate = set(list_fault[2].keys()) | set(list_fault[3].keys())
+    f_s.write("Alleles with +/- 1 spacer: " + str(len(set_violate)) + '\n')
+    for allele_name in sorted(set_violate):
+        if list_fault[2].get(allele_name):
+            print_pair_info = list_fault[2][allele_name]
+        else:
+            print_pair_info = list_fault[3][allele_name]
+        f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
+    # ========== print alleles with normal or shift RSS ==========
+    set_normal = set(list_fault[0].keys()) | set(list_fault[1].keys())
+    f_s.write("Alleles with 12/23 spacer: " + str(len(set_normal)) + '\n')
+    for allele_name in sorted(set_normal):
+        if list_fault[0].get(allele_name):
+            print_pair_info = list_fault[0][allele_name]
+        else:
+            print_pair_info = list_fault[1][allele_name]
+        f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
+
+    #for rank in range(5):
+    #    dict_list_fault = list_fault[rank]
+    #    f_s.write("Extended_allele with " + rank_property[rank] + " RSS: " + str(len(dict_list_fault)) + '\n')
+    #    if rank > 0:
+    #        for allele_name, set_print_pair_info in sorted(dict_list_fault.items()):
+    #            for print_pair_info in set_print_pair_info:
+    #                f_s.write('\t' + allele_name + '\t' + allele_functionality(allele_name) + '\t' + print_pair_info + '\n')
     f_s.close()
