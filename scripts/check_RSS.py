@@ -1,5 +1,6 @@
 import argparse
-from utils import fasta_to_dict
+from utils import fasta_to_dict, parse_CIGAR
+from check_RSS_preprocess import get_ref_len
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -22,6 +23,10 @@ def parse_args():
     parser.add_argument(
         '-fos', '--fo_summary',
         help = 'output summary file'
+    )
+    parser.add_argument(
+        '-fon', '--fo_novel_fasta',
+        help = 'output novel RSS fasta file'
     )
     args = parser.parse_args()
     return args
@@ -53,16 +58,19 @@ def hep_nano_info(fields):
     if int(fields[1]) % 32 >= 16:
         strend = False
     position = int(fields[3])
+    CIGAR = fields[5]
+    list_num, list_operand = parse_CIGAR(CIGAR)
+    ref_len = get_ref_len(list_num, list_operand)
     if len(fields) >= 11:
-        NM = fields[11]
-    return (strend, position, NM)
+        NM = int(fields[11].split(':')[2])
+    return (strend, position, NM, ref_len)
 
 
 def parse_sam_with_lenInfo(fn_sam):
     # dict_haplotype_hepNona = {}
     # -  key: haplotype_name
     # -  values: [haplotype_len, set(heptamer info), set(nonamer info)]
-    #        - nonamer info: (strend, position, NM:i)
+    #        - nonamer info: (strend, position, ref_len)
     dict_haplotype_hepNona = {}
 
     f_n = open(fn_sam)
@@ -73,26 +81,38 @@ def parse_sam_with_lenInfo(fn_sam):
             haplotype_len  = int(fields[2][3:])
             dict_haplotype_hepNona[haplotype_name] = [haplotype_len, set(), set()]
         elif ('HEPTAMER' in fields[0]):
-            heplotype_name = fields[2]
+            haplotype_name = fields[2]
+            if haplotype_name == '*':
+                continue
             info_tuple = hep_nano_info(fields)
-            if info_tuple[0] and (info_tuple[2] == "NM:i:0"):
-                dict_haplotype_hepNona[heplotype_name][1].add( info_tuple )
+            if info_tuple[0] and (info_tuple[2] <= 2):
+                dict_haplotype_hepNona[haplotype_name][1].add( (info_tuple[0], info_tuple[1], info_tuple[3]) )
         elif ('NONAMER' in fields[0]):
-            heplotype_name = fields[2]
+            haplotype_name = fields[2]
+            if haplotype_name == '*':
+                continue
             info_tuple = hep_nano_info(fields)
-            if info_tuple[0] and (info_tuple[2] == "NM:i:0"):
-                dict_haplotype_hepNona[heplotype_name][2].add( info_tuple )
+            if info_tuple[0] and (info_tuple[2] <= 2):
+                dict_haplotype_hepNona[haplotype_name][2].add( (info_tuple[0], info_tuple[1], info_tuple[3]) )
     f_n.close()
     return dict_haplotype_hepNona
 
 
-def select_best_RSS(interested_list):
+def select_best_RSS(interested_list, gene_type):
     """ranks are list as following: perfect, shift perfect, +/-1, shift +/-1"""
     ranks = [[],[],[],[]]
+    perfect_len = 23
+    if gene_type == 1:
+        pass
+    elif gene_type == 0:
+        perfect_len = -12
+    else:
+        print("WANRING: not support IG yet...")
+    
     for pair in interested_list:
-        if (pair[0] == 0) and (abs(pair[1]) == 12 or abs(pair[1]) == 23):
+        if (pair[0] == 0) and (pair[1] == perfect_len):
             ranks[0].append(pair)
-        elif (-10 <= pair[0] <= 10) and (pair[1] == 12 or pair[1] == 23):
+        elif (-10 <= pair[0] <= 10) and (pair[1] == perfect_len):
             ranks[1].append(pair)
         elif pair[0] == 0:
             ranks[2].append(pair)
@@ -101,7 +121,7 @@ def select_best_RSS(interested_list):
     for idx, sub_rank in enumerate(ranks):
         if len(sub_rank) > 0:
             return idx, sub_rank
-    return 4, interested_list
+    return 4, [(-1,-1,-1,-1,"")]
 
 
 
@@ -111,6 +131,7 @@ if __name__ == '__main__':
     fn_flanking = args.fn_flanking
     fo_output = args.fo_output
     fo_summary = args.fo_summary
+    fo_novel_fasta = args.fo_novel_fasta
     gene_type = args.gene_type
     if "TCR" or "tcr" in gene_type:
         if 'V' in gene_type or 'v' in gene_type:
@@ -152,45 +173,54 @@ if __name__ == '__main__':
                     spacer_len += 9
                 else:
                     break
-                if ( 11 <= abs(spacer_len) <= 13 ) or ( 22 <= abs(spacer_len) <= 24): # make sure within 12/23
-                    if gene_type == 1:
-                        interested_pair.append( (position_hep + 199 - haplotype_len, spacer_len, hep_info_tuple[0], nona_info_tuple[0]) )
-                    else:
-                        interested_pair.append( (position_hep - 194, spacer_len, hep_info_tuple[0], nona_info_tuple[0]) )
-        rank, best_RSS = select_best_RSS(interested_pair)
+                #if ( 11 <= abs(spacer_len) <= 13 ) or ( 22 <= abs(spacer_len) <= 24): # make sure within 12/23
+                if gene_type == 1:
+                    if (20 <= spacer_len <= 30):
+                        normalized_pos = position_hep + 199 - haplotype_len
+                        haplotype_SEQ = dict_flank[haplotype_name]
+                        RSS_len = spacer_len + hep_info_tuple[2] + nona_info_tuple[2]
+                        RSS_SEQ = haplotype_SEQ[position_hep-1:position_hep-1+RSS_len]
+                        if normalized_pos > -100:
+                            interested_pair.append( (normalized_pos, spacer_len, hep_info_tuple[0], nona_info_tuple[0], RSS_SEQ) )
+                elif gene_type == 0:
+                    if (-13 <= spacer_len <= -7):
+                        normalized_pos = position_hep - 194
+                        haplotype_SEQ = dict_flank[haplotype_name]
+                        RSS_len = abs(spacer_len) + hep_info_tuple[2] + nona_info_tuple[2]
+                        RSS_SEQ = haplotype_SEQ[position_nona-1:position_nona-1+RSS_len]
+                        if normalized_pos < 60:
+                            interested_pair.append( (position_hep - 194, spacer_len, hep_info_tuple[0], nona_info_tuple[0], RSS_SEQ) )
+                else:
+                    print("WARNING: This program do not support IG yet...")
+        rank, best_RSS = select_best_RSS(interested_pair, gene_type)
         ext_seq = dict_flank[haplotype_name]
-        #if gene_type == 1:
-        #    ext_seq = ext_seq[200]
-        #else:
-        #    ext_seq = ext_seq[]
         
+        # setup for allele level group analysis
+        allele_name = haplotype_name[:haplotype_name.rfind('/')]
         f_o.write(haplotype_name + ',' + str(haplotype_len) + ',' + str(rank) + ',')
         print_pair_info = ""
         for pair in best_RSS:
-            print_pair_info += ("(" + str(pair[0]) + ' ' + str(pair[1]) + "),")
-        f_o.write(print_pair_info + "\n")
-        
-        # setup for allele level group analysis
-        #allele_name = haplotype_name.split('/')[0]
-        allele_name = haplotype_name[:haplotype_name.rfind('/')]
-        if list_fault[rank].get(allele_name):
-            if print_pair_info in list_fault[rank][allele_name]:
-                pass
+            print_pair_info += ("(pos: " + str(pair[0]) + ', spacer: ' + str(pair[1]) + ', SEQ: ' + str(pair[4]) + "),")
+            keep_info = (pair[0], pair[1], pair[4])
+            if list_fault[rank].get(allele_name):
+                if keep_info in list_fault[rank][allele_name]:
+                    pass
+                else:
+                    list_fault[rank][allele_name].add(keep_info)
             else:
-                list_fault[rank][allele_name].add(print_pair_info)
-        else:
-            list_fault[rank][allele_name] = {print_pair_info}
+                list_fault[rank][allele_name] = {keep_info}
+        f_o.write(print_pair_info + "\n")
     f_o.close()
 
     f_s = open(fo_summary, 'w')
     rank_property = ["perfect", "shift (10) perfect", "+/-1", "shift (10) +/-1", "Not found"]
     # ========== print alleles with missing or novel RSS ==========
-    f_s.write("Alleles with missing or novel RSS: " + str(len(list_fault[4])) + '\n')
+    f_s.write("Heptamer/Nonamer cannot be found: " + str(len(list_fault[4])) + '\n')
     for allele_name, print_pair_info in sorted(list_fault[4].items()):
         f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
     # ========== print alleles with +/- 1 spacer ==========
     set_violate = set(list_fault[2].keys()) | set(list_fault[3].keys())
-    f_s.write("Alleles with +/- 1 spacer: " + str(len(set_violate)) + '\n')
+    f_s.write("Alleles with abnormal spacer: " + str(len(set_violate)) + '\n')
     for allele_name in sorted(set_violate):
         if list_fault[2].get(allele_name):
             print_pair_info = list_fault[2][allele_name]
@@ -206,12 +236,12 @@ if __name__ == '__main__':
         else:
             print_pair_info = list_fault[1][allele_name]
         f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
-
-    #for rank in range(5):
-    #    dict_list_fault = list_fault[rank]
-    #    f_s.write("Extended_allele with " + rank_property[rank] + " RSS: " + str(len(dict_list_fault)) + '\n')
-    #    if rank > 0:
-    #        for allele_name, set_print_pair_info in sorted(dict_list_fault.items()):
-    #            for print_pair_info in set_print_pair_info:
-    #                f_s.write('\t' + allele_name + '\t' + allele_functionality(allele_name) + '\t' + print_pair_info + '\n')
     f_s.close()
+
+    f_n = open(fo_novel_fasta, 'w')
+    for rank in (0,1,2,3):
+        for allele_name, set_info in sorted(list_fault[rank].items()):
+            for idx, info in enumerate(sorted(set_info)):
+                f_n.write('>' + allele_name + '/RSS*n' + str(idx).zfill(2) + '\n')
+                f_n.write(info[2] + '\n')
+    f_o.close()

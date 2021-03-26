@@ -215,32 +215,8 @@ if __name__ == '__main__':
         f_o.write('\t' + str(element) + '\t' + allele_functionality(element[0])  + '\n')
     f_o.close()
 
-    # ========== merge the haplotypes to alleles  ===============
-    dict_allele_novel_RSS = merge_haplotype_to_allele(list_novel_RSS)
-    """
-    for info_pair in list_novel_RSS:
-        haplotype_name = info_pair[0]
-        best_matched_RSS = info_pair[1]
-        allele_name = haplotype_name[:haplotype_name.rfind('/')]
-        if dict_allele_novel_RSS.get(allele_name):
-            another_best_match_RSS = dict_allele_novel_RSS[allele_name]
-            if best_matched_RSS == another_best_match_RSS:
-                continue
-            else:
-                for RSS_info_pair in best_matched_RSS:
-                    exist_flag = False
-                    RSS_SEQ = RSS_info_pair[3]
-                    for another_RSS_info_pair in another_best_match_RSS:
-                        if RSS_SEQ.lower() == another_RSS_info_pair[3].lower():
-                            exist_flag = True
-                            break
-                    if exist_flag == False:
-                        dict_allele_novel_RSS[allele_name].append(RSS_info_pair)
-        else:
-            dict_allele_novel_RSS[allele_name] = best_matched_RSS
-    """
-
     # ============ output the novel RSS sequences ==================
+    dict_allele_novel_RSS = merge_haplotype_to_allele(list_novel_RSS)
     f_of = open(fo_novel_fasta, 'w')
     for allele_name, list_RSS_info in sorted(dict_allele_novel_RSS.items()):
         for idx, RSS_info in enumerate(list_RSS_info):
@@ -249,11 +225,12 @@ if __name__ == '__main__':
     f_of.close()
 
     # ============ output all RSS based on alleles into summary file ==========
+    set_allele_missing_RSS = {name[:name.rfind('/')] for name in list_no_RSS}
     dict_allele_perfect_RSS = merge_haplotype_to_allele(list_perfect_RSS)
     f_o = open(fo_summary, 'w')
-    f_o.write("RSS not found: " + str(len(list_no_RSS)) + '\n')
-    for element in list_no_RSS:
-        f_o.write('\t' + element + '\t' + allele_functionality(element) + '\n')
+    f_o.write("RSS not found: " + str(len(set_allele_missing_RSS)) + '\n')
+    for allele_name in sorted(set_allele_missing_RSS):
+        f_o.write('\t' + allele_name + '\t' + allele_functionality(allele_name) + '\n')
     f_o.write("Alleles with novel RSS: " + str(len(dict_allele_novel_RSS)) + '\n')
     for allele_name, info in sorted(dict_allele_novel_RSS.items()):
         f_o.write('\t' + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(info) + '\n')

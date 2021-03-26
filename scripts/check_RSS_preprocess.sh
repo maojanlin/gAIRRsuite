@@ -22,7 +22,7 @@ for allele in ${list_allele}; do
     flanking_file="RSS_checking/${person_name}_${allele}_flanking_haplotypes.fasta"
     bwa index ${flanking_file}
     
-    bwa mem -t 16 -a -k 15 -T 20 ${flanking_file} ${RSS_file} > ${outer_dir}${first_dir}/bwa_${person_name}_${allele}_RSS_first_scan.sam
+    bwa mem -t 16 -a -k 10 -T 20 ${flanking_file} ${RSS_file} > ${outer_dir}${first_dir}/bwa_${person_name}_${allele}_RSS_first_scan.sam
     samtools sort  ${outer_dir}${first_dir}/bwa_${person_name}_${allele}_RSS_first_scan.sam > ${outer_dir}${first_dir}bwa_${person_name}_${allele}_RSS_first_scan_sorted.bam
     samtools index ${outer_dir}${first_dir}/bwa_${person_name}_${allele}_RSS_first_scan_sorted.bam
 
@@ -45,6 +45,7 @@ for allele in ${list_allele}; do
                          -ff    ${outer_dir}${first_dir}/missing_RSS_${person_name}_${allele}_first_scan.fasta \
                          -gtype ${allele} \
                          -fo    ${outer_dir}/${second_dir}/${person_name}_${allele}_RSS.csv \
-                         -fos   ${outer_dir}/${second_dir}/summary_${person_name}_${allele}_RSS.rpt
+                         -fos   ${outer_dir}/${second_dir}/summary_${person_name}_${allele}_RSS.rpt \
+                         -fon   ${outer_dir}/${second_dir}/novel_RSS_${person_name}_${allele}_second_scan.fasta
 done
 echo "[AIRRCall] RSS First Scanning Finished!"
