@@ -27,14 +27,6 @@ def parse_args():
         '-fonf', '--fo_novel_fasta',
         help = 'output novel RSS fasta file'
     )
-    #parser.add_argument(
-    #    '-fonc', '--fo_novel_csv',
-    #    help = 'output novel RSS csv file'
-    #)
-    #parser.add_argument(
-    #    '-fooc', '--fo_original_csv',
-    #    help = 'output original RSS csv file'
-    #)
     parser.add_argument(
         '-fomf', '--fo_missing_fasta',
         help = 'output missing RSS fasta file for next stage analysis'
