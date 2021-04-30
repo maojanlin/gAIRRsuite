@@ -2,6 +2,30 @@ import sys
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
+def fasta_to_dict(fn_fasta):
+    '''parse the fasta file into a dictionary'''
+    # dict_name_SEQ {}
+    #  - keys: seq_name
+    #  - values: seq_SEQ
+    dict_name_SEQ = {}
+    with open(fn_fasta, 'r') as f_f:
+        seq_name = ""
+        seq_SEQ = ""
+        for line in f_f:
+            if line[0] == '>':
+                if seq_name != "":
+                    if dict_name_SEQ.get(seq_name):
+                        print("WARNING! Duplicate sequence name:", seq_name)
+                    dict_name_SEQ[seq_name] = seq_SEQ
+                seq_name = line.strip()[1:].split(' ')[0]
+                seq_SEQ = ""
+            else:
+                seq_SEQ += line.strip()
+        if dict_name_SEQ.get(seq_name):
+            print("WARNING! Duplicate sequence name:", seq_name)
+        dict_name_SEQ[seq_name] = seq_SEQ
+    return dict_name_SEQ
+
 def get_reverse_complement(seq):
     complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A', 'a': 't', 'c': 'g', 'g': 'c', 't': 'a'}
     reverse_complement = "".join(complement.get(base, base) for base in reversed(seq))
