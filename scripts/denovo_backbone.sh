@@ -4,6 +4,7 @@ contig_check_path=$3
 flanking_result_path=$4
 allele_name=$5
 cluster_num=$6
+path_SPAdes=$7
 
 mkdir -p ${contig_path} 
 echo "[AIRRCall] [FLANGKING SEQUENCE] Denovo assemble the backbones..."
@@ -11,11 +12,11 @@ rm ${contig_path}spades_log.log
 for ((cluster_id=0; cluster_id <${cluster_num}; cluster_id++ ))
 do
     echo "[SPAdes] group ${cluster_id} assembled..."
-    python3 ../../naechyun/SPAdes-3.11.1-Linux/bin/spades.py -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
-                                                             -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
-                                                             --only-assembler -t 8 \
-                                                             -o ${contig_path}${allele_name}_${cluster_id} \
-                                                             >> ${contig_path}spades_log.log
+    python3 ${path_SPAdes} -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
+                           -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
+                           --only-assembler -t 8 \
+                           -o ${contig_path}${allele_name}_${cluster_id} \
+                           >> ${contig_path}spades_log.log
     python3 scripts/copy_1st_contig.py -fc ${contig_path}${allele_name}_${cluster_id}/contigs.fasta \
                                        -id ${cluster_id} \
                                        -map ${raw_seq_path}/${allele_name}_group_allele_map.txt \

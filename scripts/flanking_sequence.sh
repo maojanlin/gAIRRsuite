@@ -4,6 +4,7 @@ allele_name=$2
 allele_path=$3
 read_path_1=$5
 read_path_2=$6
+path_SPAdes=$7
 
 # working sub directories
 raw_seq_path=${outer_dir}group_allele_reads/
@@ -24,7 +25,7 @@ cluster_num=$( python3 ./scripts/group_allele_reads.py -fp  $1/$4_$2/allele_supp
                                                        -fod ${raw_seq_path} )
 
 echo "[AIRRCall] [FLANKING SEQUENCE] Get the backbone flanking sequences..."
-./scripts/denovo_backbone.sh ${raw_seq_path} ${contig_path} ${contig_check_path} ${flanking_result_path} ${allele_name} ${cluster_num}
+./scripts/denovo_backbone.sh ${raw_seq_path} ${contig_path} ${contig_check_path} ${flanking_result_path} ${allele_name} ${cluster_num} ${path_SPAdes}
 
 mkdir -p $haplotype_sam_path
 echo "[AIRRCall] [FLANKING SEQUENCE] Align short reads to the backbones..."

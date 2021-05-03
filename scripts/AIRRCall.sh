@@ -1,10 +1,11 @@
 workspace="target_call"
+path_SPAdes="../../naechyun/SPAdes-3.11.1-Linux/bin/spades.py"
 list_allele_name="TCRJ TCRV BCRV"
-allele_dir="../genomeData/"
+allele_dir="./example/material/"
 allele_suffix="_alleles_parsed.fasta"
-person_name="NA12878"
-read_path_1="../captured_reads/NA12878_S46_L001_R1_001.fasta"
-read_path_2="../captured_reads/NA12878_S46_L001_R2_001.fasta"
+person_name="HG002-part"
+read_path_1="./example/samples/HG002_part_gAIRR-seq_R1.fasta"
+read_path_2="./example/samples/HG002_part_gAIRR-seq_R2.fasta"
 
 # environment settings
 mkdir -p ${workspace}
@@ -20,5 +21,5 @@ for allele_name in ${list_allele_name}; do
     ./scripts/allele_calling.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
     
     echo "[AIRRCall] ${person_name} ${allele_name} flanking sequence calling..."
-    ./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+    ./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2} ${path_SPAdes}
 done
