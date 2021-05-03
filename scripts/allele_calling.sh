@@ -19,4 +19,6 @@ python3 scripts/analyze_read_depth_with_bwa.py -fs  ${outer_dir}bwa_read_to_alle
                                                -foc ${outer_dir}read_depth_calling_by_bwa.rpt \
                                                -fop ${outer_dir}allele_support_reads.pickle \
                                                #-fv  ${annotation_path}
+
+python3 scripts/calling_threshold.py -dp ${outer_dir}read_depth_calling_by_bwa.rpt > ${outer_dir}gAIRR-call_report.rpt
 echo "[AIRRCall] [ALLELE CALLING] Finished!"

@@ -18,7 +18,7 @@ def find_thresh(list_depth):
             continue
         if depth / p_depth < 0.75:
             thresh = depth + 1
-            print("THreshold!!", thresh)
+            #print("Threshold!!", thresh)
             return thresh
         p_depth = depth
     return thresh
@@ -33,7 +33,7 @@ def thresh_divide(list_depth, thresh):
         if depth < thresh:
             if flag:
                 flag = False
-                print("------------- thresh ----------------")
+                print("------------- thresh: " + str(thresh) + " ----------------")
             pass
         else:
             total_num += 1
