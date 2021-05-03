@@ -22,6 +22,7 @@ The below three parameters indicate the interested allele reference (IMGT) fasta
 - allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
 - allele_suffix: the suffix of allele fasta file, should agree with the real file name ( e.g."\_alleles.fasta")
 
+The final three parameters indicate the target sequencing fasta files.
 - person_name: person's id (e.g. "NA12878").
 - read_path_1: capture-based short reads R1 fasta file (e.g. "NA12878_S46_R1.fasta").
 - read_path_2: capture-based short reads R2 fasta file (e.g. "NA12878_S46_R2.fasta").
