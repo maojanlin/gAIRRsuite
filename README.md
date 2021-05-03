@@ -1,4 +1,4 @@
-_Updated: Dec 18, 2020_
+_Updated: May 3, 2021_
 ## gAIRR-call
 
 Usage:
@@ -15,13 +15,18 @@ To run the `AIRRCall.sh` pipeline, BWA aligner and SPAdes assembler should be in
 
 The path parameters in `AIRRCall.sh` should be specified:
 - workspace: the directory all results and intermediate data be stored (e.g. "./target_call/").
-- allele_name: allele type (e.g. "TCRV").
-- allele_path: where IMGT allele fasta file store (e.g. "../IMGT_alleles/TCRV_alleles.fasta").
+- path_SPAdes: the path to the spades.py installed (e.g. "../SPAdes-3.11.1-Linux/bin/spades.py")
+
+The below three parameters indicate the interested allele reference (IMGT) fasta files.
+- list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV")
+- allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
+- allele_suffix: the suffix of allele fasta file, should agree with the real file name ( e.g."\_alleles.fasta")
+
 - person_name: person's id (e.g. "NA12878").
 - read_path_1: capture-based short reads R1 fasta file (e.g. "NA12878_S46_R1.fasta").
 - read_path_2: capture-based short reads R2 fasta file (e.g. "NA12878_S46_R2.fasta").
 
-Below paths in the README.md use `NA12878` and `TCRV` as examples.
+Below paths in the README.md use `NA24385` and `TCRV` as examples.
 
 ### Find novel alleles
 
@@ -36,14 +41,14 @@ Since the correction is done on each allele separately, two alleles may generate
 
 Generated files:
 
-`target_call/NA12878_TCRV_novel/corrected_alleles_filtered.fasta` is all the novel allele candidates fasta file.
-`target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta` is the merged allele file containing IMGT alleles and haplotyped novel allele candidates.
+`target_call/NA24385_TCRV_novel/corrected_alleles_filtered.fasta` is all the novel allele candidates fasta file.
+`target_call/NA24385_TCRV_novel/TCRV_with_novel.fasta` is the merged allele file containing IMGT alleles and haplotyped novel allele candidates.
 
 ### Call alleles
 
 Shell script:
 ```
-allele_path=target_call/NA12878_TCRV_novel/TCRV_with_novel.fasta
+allele_path=target_call/NA24385_TCRV_novel/TCRV_with_novel.fasta
 ./scripts/allele_calling.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
 ```
 
@@ -55,14 +60,15 @@ Empirically, the scores (minimum read-depth) of the true alleles are way larger 
 
 Generated files:
 
-`target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` reports the alleles sorted by their scores (minimum read-depth).
+`target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` reports all the alleles sorted by their scores (minimum read-depth).
+`target_call/NA24385_TCRV/gAIRR-call_report.rpt` reports the positive alleles with the adaptive threshold.
 `target_call/NA24385_TCRV/allele_support_reads.pickle` is a pickle file containing a dictionary. The dictionary indicates the names of the read supporting each alleles. The dictionary key is the allele name and the dictionary value is a set containing all reads support (perfectly match with enough length coverage) the allele.
 
 ### Assemble and haplotype flanking sequences
 
 Shell script:
 ```
-./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2} ${path_SPAdes}
 ```
 
 The `flanking_sequence.sh` first groups pair-end read sequences and allele sequences in the directory `target_call/NA24385_TCRV_flanking/group_allele_reads/` according to `target_call/NA24385_TCRV/allele_support_reads.pickle`. Then the sub-pipeline `denovo_backbone.sh` uses SPAdes to assemble each short reads group into an unphased flanking contig (backbone). Afterward, each allele has a backbone in the `target_call/NA24385_TCRV_flanking/asm_contigs/` directory.
