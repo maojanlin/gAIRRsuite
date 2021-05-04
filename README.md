@@ -1,4 +1,4 @@
-_Updated: May 3, 2021_
+_Updated: May 4, 2021_
 ## gAIRR-call
 
 Usage:
@@ -63,6 +63,7 @@ Generated files:
 
 `target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` reports all the alleles sorted by their scores (minimum read-depth).
 `target_call/NA24385_TCRV/gAIRR-call_report.rpt` reports the positive alleles with the adaptive threshold.
+
 `target_call/NA24385_TCRV/allele_support_reads.pickle` is a pickle file containing a dictionary. The dictionary indicates the names of the read supporting each alleles. The dictionary key is the allele name and the dictionary value is a set containing all reads support (perfectly match with enough length coverage) the allele.
 
 ### Assemble and haplotype flanking sequences
@@ -115,6 +116,15 @@ Generated files:
 `target_annotation/annotation_imperfect_NA12878_TCRV.txt` is the report showing the aligned allele, aligned contig, contig position, and alignment length. If there are edit-distance in the alignment, the report shows additional tag the same as sam format.
 `target_annotation/novel_NA12878_TCRV.fasta` is the collection of novel alleles.
 `target_annotation/flanking_NA12878_TCRV.fasta` is the collection of flanking sequence (including novel alleles).
+
+## Example
+
+The `example/material/` directory contains IMGT allele sequences and RSS information.
+The `example/samples/` containts two miniature samples. `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta` are a small part of the pair-end gAIRR-seq reads sequenced from HG002. `HG002-S22-H1-000000F_1900000-2900000.fasta` is a genome assembly sequence extracted from (Garg, S. *et al*, 2021). The genome sequence is the 1900000:2900000 segment from the contig HG002-S22-H1 of HG002's maternal haplotype assembly.
+
+In the example settings. Running `./scripts/AIRRCall.sh` will gAIRR-call the HG002's AIRR alleles based on `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta`.
+Running `./scripts/AIRRAnnotate.sh` will gAIRR-annotate part of the HG002's genome assembly `HG002-S22-H1-000000F_1900000-2900000.fasta`.
+
 
 ## Verification pipeline
 
