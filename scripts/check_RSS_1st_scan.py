@@ -24,9 +24,21 @@ def parse_args():
         help = 'output summary allele report file'
     )
     parser.add_argument(
+        '-foh', '--fo_database',
+        help = 'output human readable database csv file'
+    )
+    parser.add_argument(
         '-fonf', '--fo_novel_fasta',
         help = 'output novel RSS fasta file'
     )
+    #parser.add_argument(
+    #    '-fonc', '--fo_novel_csv',
+    #    help = 'output novel RSS csv file'
+    #)
+    #parser.add_argument(
+    #    '-fooc', '--fo_original_csv',
+    #    help = 'output original RSS csv file'
+    #)
     parser.add_argument(
         '-fomf', '--fo_missing_fasta',
         help = 'output missing RSS fasta file for next stage analysis'
@@ -69,10 +81,10 @@ def get_ref_len(CIGAR_num, CIGAR_operand):
 
 
 def parse_sam(fn_sam, dict_ref):
-    # dict_haplotype_hepNona = {}
+    # dict_haplotype_RSS = {}
     # -  key: haplotype_name
-    # -  values: [haplotype_len, set(heptamer info), set(nonamer info)]
-    #        - nonamer info: (strend, position, NM:i)
+    # -  values: [(match_info_1), (match_info_2), (match_info_3), ... ]
+    #        - (match_info): (position, NM, RSS_name, RSS_SEQ)
     dict_haplotype_RSS = {}
 
     f_n = open(fn_sam)
@@ -148,6 +160,7 @@ if __name__ == '__main__':
     fn_flanking = args.fn_flanking
     fo_detail   = args.fo_detail
     fo_summary  = args.fo_summary
+    fo_database = args.fo_database
     fo_output   = args.fo_output
     fo_novel_fasta   = args.fo_novel_fasta
     #fo_novel_csv     = args.fo_novel_csv
@@ -158,13 +171,13 @@ if __name__ == '__main__':
     set_allele_name = {v[:v.rfind('/')] for v in sorted(dict_flank.keys())}
     dict_haplotype_RSS = parse_sam(fn_sam, dict_flank)
 
-    list_perfect_RSS = []
-    list_novel_RSS = []
+    list_perfect_RSS = [] # all RSS matches inside are perfect
+    list_novel_RSS = []   # contain at least one mismatch
     list_no_RSS = []
     #for haplotype_name in sorted(set_allele_name):
     for haplotype_name in sorted(dict_flank.keys()):
         if dict_haplotype_RSS.get(haplotype_name):
-            matched_RSS = dict_haplotype_RSS[haplotype_name]
+            matched_RSS = dict_haplotype_RSS[haplotype_name] # may be multiple matches
             best_matched_RSS = []
             # match_info: (position, NM, RSS_name)
             for match_info in matched_RSS:
@@ -177,11 +190,11 @@ if __name__ == '__main__':
                 if collision_flag == False:
                     best_matched_RSS.append(match_info)
             
-            if best_matched_RSS[0][1] == 0:
+            if sum([match_RSS[1] for match_RSS in best_matched_RSS]) == 0: # if all NMs equal 0
                 list_perfect_RSS.append((haplotype_name, best_matched_RSS))
             else:
                 list_novel_RSS.append((haplotype_name, best_matched_RSS))
-        else:
+        else: # if haplotype_name is not recorded in dict_flank, there is no RSS match
             list_no_RSS.append((haplotype_name))
 
     # ========== output missing RSS's flanking sequences for next stage analysis ===========
@@ -207,26 +220,91 @@ if __name__ == '__main__':
         f_o.write('\t' + str(element) + '\t' + allele_functionality(element[0])  + '\n')
     f_o.close()
 
+    # ========== output the haplotype database file ===============
+    f_o = open(fo_database, 'w')
+    f_o.write("Alleles_missing_RSS:" + str(len(list_no_RSS)) + '\n')
+    f_o.write("flanking_sequence_name,gene_functionality,RSS_id,sequence\n")
+    for allele_name in list_no_RSS:
+        f_o.write(allele_name + ',' + allele_functionality(allele_name) + '\n')
+    
+    # dict_novel_RSS_id {}
+    # - key: allele_name
+    # - value: [waiting_id, dict_SEQ_id{}]
+    #                       dict_SEQ_id{}
+    #                       - key: SEQ
+    #                       - value: RSS_id
+    dict_novel_RSS_id = {}
+    for print_word, list_RSS_processed in [("novel", list_novel_RSS), ("IMGT", list_perfect_RSS)]:
+        f_o.write("Alleles_with_" + print_word +"_RSS:" + str(len(list_RSS_processed)) + '\n')
+        f_o.write("flanking_sequence_name,gene_functionality,RSS_id,sequence\n")
+        for element in list_RSS_processed:
+            haplotype_name = element[0]
+            allele_name = haplotype_name[:haplotype_name.rfind('/')]
+            RSS_info = element[1]
+            # best_info_pair: (position, NM, RSS_id, RSS_SEQ)
+            best_info_pair = None
+            if len(RSS_info) > 1:
+                for info_pair in sorted(RSS_info, key = lambda x : abs(x[0]-173), reverse=True ):
+                    if allele_name in info_pair[2]:
+                        best_info_pair = list(info_pair)
+                        break
+                if best_info_pair == None:
+                    best_info_pair = list(info_pair)
+            else:
+                best_info_pair = list(RSS_info[0])
+
+            RSS_SEQ = best_info_pair[3]
+            if print_word == "novel":
+                RSS_id = None
+                if best_info_pair[1] == 0:
+                    list_perfect_RSS.append(element)
+                    continue
+                else: # assign novel RSS_id
+                    if dict_novel_RSS_id.get(allele_name):
+                        dict_SEQ_id = dict_novel_RSS_id[allele_name][1]
+                        if dict_SEQ_id.get(RSS_SEQ):
+                            RSS_id = dict_SEQ_id[RSS_SEQ]
+                        else:
+                            RSS_id = allele_name + '/RSS*n' + str(dict_novel_RSS_id[allele_name][0]).zfill(2)
+                            dict_novel_RSS_id[allele_name][0] + 1
+                            dict_novel_RSS_id[allele_name][1][RSS_SEQ] = RSS_id
+                    else:
+                        RSS_id = allele_name + '/RSS*n' + '1'.zfill(2)
+                        dict_novel_RSS_id[allele_name] = [2, {RSS_SEQ:RSS_id}]
+            else:
+                RSS_id = best_info_pair[2]
+            f_o.write(haplotype_name + ',' + allele_functionality(haplotype_name) + ',' + RSS_id + ',' + RSS_SEQ  + '\n')
+    f_o.close()
+
     # ============ output the novel RSS sequences ==================
     dict_allele_novel_RSS = merge_haplotype_to_allele(list_novel_RSS)
     f_of = open(fo_novel_fasta, 'w')
-    for allele_name, list_RSS_info in sorted(dict_allele_novel_RSS.items()):
-        for idx, RSS_info in enumerate(list_RSS_info):
-            f_of.write('>' + allele_name + '/RSS*n' + str(idx).zfill(2) + '\n')
-            f_of.write(RSS_info[3] + '\n')
+    for allele_name, RSS_info in sorted(dict_novel_RSS_id.items()):
+        dict_SEQ_id = RSS_info[1]
+        for RSS_SEQ, RSS_id in sorted(dict_SEQ_id.items(), key = lambda pair: pair[1]):
+            f_of.write('>' + RSS_id + '\n')
+            f_of.write(RSS_SEQ + '\n')
     f_of.close()
 
     # ============ output all RSS based on alleles into summary file ==========
+    set_count_IMGT_allele = set()
+    set_count_novel_allele = set()
+    for haplotype_name, list_match in (list_perfect_RSS + list_novel_RSS):
+        for match_info in list_match:
+            if match_info[1] == 0:
+                set_count_IMGT_allele.add(match_info[3])
+            else:
+                set_count_novel_allele.add(match_info[3])
     set_allele_missing_RSS = {name[:name.rfind('/')] for name in list_no_RSS}
     dict_allele_perfect_RSS = merge_haplotype_to_allele(list_perfect_RSS)
     f_o = open(fo_summary, 'w')
     f_o.write("RSS not found: " + str(len(set_allele_missing_RSS)) + '\n')
     for allele_name in sorted(set_allele_missing_RSS):
         f_o.write('\t' + allele_name + '\t' + allele_functionality(allele_name) + '\n')
-    f_o.write("Alleles with novel RSS: " + str(len(dict_allele_novel_RSS)) + '\n')
+    f_o.write("Alleles with novel RSS: " + str(len(dict_allele_novel_RSS)) + ' alleles, ' + str(len(set_count_novel_allele)) + ' RSS_seqs' + '\n')
     for allele_name, info in sorted(dict_allele_novel_RSS.items()):
         f_o.write('\t' + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(info) + '\n')
-    f_o.write("Alleles with perfect RSS: " + str(len(dict_allele_perfect_RSS)) + '\n')
+    f_o.write("Alleles with perfect RSS: " + str(len(dict_allele_perfect_RSS)) +  ' alleles, ' + str(len(set_count_IMGT_allele)) + ' RSS_seqs' + '\n')
     for allele_name, info in sorted(dict_allele_perfect_RSS.items()):
         f_o.write('\t' + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(info) + '\n')
     f_o.close()

@@ -1,6 +1,6 @@
 import argparse
 from utils import fasta_to_dict, parse_CIGAR
-from check_RSS_preprocess import get_ref_len
+from check_RSS_1st_scan import get_ref_len
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -23,6 +23,10 @@ def parse_args():
     parser.add_argument(
         '-fos', '--fo_summary',
         help = 'output summary file'
+    )
+    parser.add_argument(
+        '-foh', '--fo_database',
+        help = 'output database csv file'
     )
     parser.add_argument(
         '-fon', '--fo_novel_fasta',
@@ -131,6 +135,7 @@ if __name__ == '__main__':
     fn_flanking = args.fn_flanking
     fo_output = args.fo_output
     fo_summary = args.fo_summary
+    fo_database = args.fo_database
     fo_novel_fasta = args.fo_novel_fasta
     gene_type = args.gene_type
     if "TCR" or "tcr" in gene_type:
@@ -153,6 +158,8 @@ if __name__ == '__main__':
     # - key: gene_name
     # - value: set( print_pair_info )
     list_fault = [{},{},{},{},{}]
+    list_recover_hap = []
+    list_missing_hap = []
     set_flank  = set()
     f_o = open(fo_output, 'w')
     f_o.write("Extended_allele_name,len,rank,RSS_pairs\n")
@@ -210,16 +217,50 @@ if __name__ == '__main__':
             else:
                 list_fault[rank][allele_name] = {keep_info}
         f_o.write(print_pair_info + "\n")
+        
+        # setup for database data
+        if rank == 4:
+            list_missing_hap.append([haplotype_name,allele_functionality(allele_name)]) # pair[4] is the SEQ
+        else:
+            for pair in best_RSS:
+                list_recover_hap.append([haplotype_name,allele_functionality(allele_name), pair[4]])
     f_o.close()
 
+    f_h = open(fo_database, 'w')
+    f_h.write("Allele_without_RSS:" + str(len(list_missing_hap)) + '\n')
+    f_h.write("flanking_sequence_name,gene_functionality,RSS_id,sequence\n")
+    for haplotype_name, functionality in sorted(list_missing_hap):
+        f_h.write(haplotype_name + ',' + functionality + '\n')
+    f_h.write("Allele_with_novel_RSS:" + str(len(list_recover_hap)) + '\n')
+    f_h.write("flanking_sequence_name,gene_functionality,RSS_id,sequence\n")
+    dict_allele_count = {}
+    for pair_info in sorted(list_recover_hap):
+        haplotype_name = pair_info[0]
+        allele_name = haplotype_name[:haplotype_name.rfind('/')]
+        functionality  = pair_info[1]
+        SEQ            = pair_info[2] 
+        if dict_allele_count.get(allele_name):
+            if SEQ in dict_allele_count[allele_name]:
+                pass
+            else:
+                dict_allele_count[allele_name].add(SEQ)
+            count_id = len(dict_allele_count[allele_name])
+            f_h.write(haplotype_name + ',' + functionality + ',' + allele_name + '_RSS*n' + str(count_id).zfill(2) + ',' + SEQ + '\n')
+        else:
+            dict_allele_count[allele_name] = {SEQ}
+            count_id = 1
+            f_h.write(haplotype_name + ',' + functionality + ',' + allele_name + '_RSS*n' + str(count_id).zfill(2) + ',' + SEQ + '\n')
+    
     f_s = open(fo_summary, 'w')
     rank_property = ["perfect", "shift (10) perfect", "+/-1", "shift (10) +/-1", "Not found"]
     # ========== print alleles with missing or novel RSS ==========
     f_s.write("Heptamer/Nonamer cannot be found: " + str(len(list_fault[4])) + '\n')
     for allele_name, print_pair_info in sorted(list_fault[4].items()):
         f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
+        #f_h.write(allele_name + ',' + allele_functionality(allele_name) + '\n')
     # ========== print alleles with +/- 1 spacer ==========
     set_violate = set(list_fault[2].keys()) | set(list_fault[3].keys())
+    set_normal  = set(list_fault[0].keys()) | set(list_fault[1].keys())
     f_s.write("Alleles with abnormal spacer: " + str(len(set_violate)) + '\n')
     for allele_name in sorted(set_violate):
         if list_fault[2].get(allele_name):
@@ -227,8 +268,10 @@ if __name__ == '__main__':
         else:
             print_pair_info = list_fault[3][allele_name]
         f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
+        #for pair_info in print_pair_info:
+        #    f_h.write(allele_name + ',' + allele_functionality(allele_name) + ',,' + pair_info[2] + '\n')
+
     # ========== print alleles with normal or shift RSS ==========
-    set_normal = set(list_fault[0].keys()) | set(list_fault[1].keys())
     f_s.write("Alleles with 12/23 spacer: " + str(len(set_normal)) + '\n')
     for allele_name in sorted(set_normal):
         if list_fault[0].get(allele_name):
@@ -236,12 +279,15 @@ if __name__ == '__main__':
         else:
             print_pair_info = list_fault[1][allele_name]
         f_s.write("\t" + allele_name + '\t' + allele_functionality(allele_name) + '\t' + str(print_pair_info) + '\n')
+        #for pair_info in print_pair_info:
+        #    f_h.write(allele_name + ',' + allele_functionality(allele_name) + ',,' + pair_info[2] + '\n')
     f_s.close()
+    f_h.close()
 
     f_n = open(fo_novel_fasta, 'w')
     for rank in (0,1,2,3):
         for allele_name, set_info in sorted(list_fault[rank].items()):
             for idx, info in enumerate(sorted(set_info)):
-                f_n.write('>' + allele_name + '/RSS*n' + str(idx).zfill(2) + '\n')
+                f_n.write('>' + allele_name + '/RSS*n' + str(idx+1).zfill(2) + '\n')
                 f_n.write(info[2] + '\n')
     f_o.close()

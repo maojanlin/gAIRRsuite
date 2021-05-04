@@ -26,6 +26,23 @@ def fasta_to_dict(fn_fasta):
         dict_name_SEQ[seq_name] = seq_SEQ
     return dict_name_SEQ
 
+
+def parse_CIGAR(cigar):
+    list_number = []
+    list_operand = []
+    tmp_num = 0
+    for char in cigar:
+        if char.isdigit():
+            # since cigar will always starts in number
+            tmp_num = tmp_num*10 + int(char)
+        else:
+            # since cigar will always ends in operator
+            list_number.append(tmp_num)
+            tmp_num = 0
+            list_operand.append(char)
+    return (list_number, list_operand)
+
+
 def get_reverse_complement(seq):
     complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A', 'a': 't', 'c': 'g', 'g': 'c', 't': 'a'}
     reverse_complement = "".join(complement.get(base, base) for base in reversed(seq))
