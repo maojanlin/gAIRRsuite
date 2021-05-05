@@ -1,7 +1,5 @@
 # the out most directory
-#outer_dir="target_annotation/"
 outer_dir="HGSVC_annotation/"
-outer_dir="set_12_plus_24/"
 list_allele_name="TCRV TCRJ BCRV BCRJ TCRD_plusHep BCRD_plusHep"
 novel_prefix="novel_"
 novel_suffix=".fasta"

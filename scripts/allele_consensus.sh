@@ -2,7 +2,7 @@
 # the out most directory
 outer_dir="HGSVC_annotation/"
 list_allele_name="TCRV TCRD_plusHep TCRJ BCRV BCRD_plusHep BCRJ"
-name_log="consensus_name_HGSVC.log"
+name_log="./example/samples/consensus_name_HGSVC.log"
 
 echo "[genAIRR] Building the Consensus Database in ${outer_dir}"
 for allele_name in ${list_allele_name}; do
