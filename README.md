@@ -1,4 +1,4 @@
-_Updated: May 4, 2021_
+_Updated: May 5, 2021_
 ## gAIRR-call
 
 Usage:
@@ -117,20 +117,7 @@ Generated files:
 `target_annotation/flanking_NA12878_TCRV.fasta` is the collection of flanking sequence (including novel alleles).
 
 
-## Example
-
-The `example/material/` directory contains IMGT allele sequences and RSS information.
-The `example/samples/` containts two miniature samples. `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta` are a small part of the pair-end gAIRR-seq reads sequenced from HG002. `HG002-S22-H1-000000F_1900000-2900000.fasta` is a genome assembly sequence extracted from (Garg, S. *et al*, 2021). The genome sequence is the 1900000:2900000 segment from the contig HG002-S22-H1 of HG002's maternal haplotype assembly.
-
-In the example settings. Running 
-```./scripts/AIRRCall.sh```
-will gAIRR-call the HG002's AIRR alleles based on `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta`.
-Running 
-```./scripts/AIRRAnnotate.sh``` 
-will gAIRR-annotate part of the HG002's genome assembly `HG002-S22-H1-000000F_1900000-2900000.fasta`. In `./scripts/AIRRAnnotate.sh` , several shell script commands are commented. The commented commands are the settings to gAIRR-annotate two phased assemblies while in the example is to gAIRR-annotate single strend genome assembly.
-
-
-## checking RSS
+### checking RSS
 
 Usage:
 ```
@@ -148,6 +135,37 @@ Generated files:
 `RSS_checking/second_scan/database_HG002-part_TCRJ_second_scan.csv` is the RSS report file of the flanking sequences that missed RSS in the first scanning.
 
 
+### Data collection pipeline
+
+Usage:
+```
+./scripts/database_collect.sh
+./scripts/allele_consensus.sh
+```
+
+The `database_collect.sh` pipeline collects the novel and flanking sequence database into database files. The duplicated novel or flanking sequences will be collapsed into one. Take TRV novel allele as an example, generated file `database_novel_TRV.tsv` indicates which samples possess which novel allele, and `database_novel_TRV.fasta` recorded the novel allele sequence.
+
+For samples with multiple assembly. Consensus allele result can be get from `allele_consensus.sh` pipeline. Taking `database_novel_TRV.tsv` and `database_novel_TRV.fasta` as input, `allele_consensus.sh` will generate `database_novel_TRV_consensus.tsv` and `database_novel_TRV_consensus.fasta` as output according to `./example/samples/consensus_name_HGSVC.log`.
+
+In `./example/samples/consensus_name_HGSVC.log`, terms are separated by space. The first term is the consensus name while the later terms indicate the samples' different assembly id.
+
+
+## Example
+
+The `example/material/` directory contains IMGT allele sequences and RSS information.
+The `example/samples/` containts two miniature samples. `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta` are a small part of the pair-end gAIRR-seq reads sequenced from HG002. `HG002-S22-H1-000000F_1900000-2900000.fasta` is a genome assembly sequence extracted from (Garg, S. *et al*, 2021). The genome sequence is the 1900000:2900000 segment from the contig HG002-S22-H1 of HG002's maternal haplotype assembly.
+
+In the example settings. Running 
+```./scripts/AIRRCall.sh```
+will gAIRR-call the HG002's AIRR alleles based on `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta`.
+Running 
+```./scripts/AIRRAnnotate.sh``` 
+will gAIRR-annotate part of the HG002's genome assembly `HG002-S22-H1-000000F_1900000-2900000.fasta`. In `./scripts/AIRRAnnotate.sh` , several shell script commands are commented. The commented commands are the settings to gAIRR-annotate two phased assemblies while in the example is to gAIRR-annotate single strend genome assembly.
+
+
+
+
+<!--
 ## Verification pipeline
 
 `AIRRCall.sh` and `AIRRAnnotate.sh` can be operated independently; however, `AIRRVerify.sh` can only be operated after both `AIRRCall.sh` and `AIRRAnnotate.sh` be performed successfully.
@@ -186,8 +204,6 @@ This part of the pipeline is only done for verification if the long reads assemb
 
 
 
-
-<!--
 Old method that use two round assembly approach
 ## Assembly approach
 ```
