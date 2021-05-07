@@ -104,7 +104,7 @@ The path parameters in `AIRRAnnotate.sh` should be specified:
 - list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV")
 - allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
 - allele_suffix: the suffix of allele fasta file, should agree with the real file name ( e.g."\_alleles.fasta")
-- person_name: person's id (e.g. "NA12878").
+- person_name: person's id (e.g. "NA12878")
 - asm_path_H1: personal assembly H1 contig fasta file (e.g. "../asm_NA12878/NA12878-H1.fa")
 - asm_path_H2: personal assembly H2 contig fasta file (e.g. "../asm_NA12878/NA12878-H2.fa")
 
@@ -143,7 +143,7 @@ Usage:
 ./scripts/allele_consensus.sh
 ```
 
-The `database_collect.sh` pipeline collects the novel and flanking sequence database into database files. The duplicated novel or flanking sequences will be collapsed into one. Take TRV novel allele as an example, generated file `database_novel_TRV.tsv` indicates which samples possess which novel allele, and `database_novel_TRV.fasta` recorded the novel allele sequence.
+The `database_collect.sh` pipeline collects the novel and flanking sequence database into database files. The duplicated novel or flanking sequences will be collapsed into one. Taking TRV novel allele as an example, generated file `database_novel_TRV.tsv` indicates which samples possess which novel allele, and `database_novel_TRV.fasta` recorded the novel allele sequence.
 
 For samples with multiple assembly. Consensus allele result can be get from `allele_consensus.sh` pipeline. Taking `database_novel_TRV.tsv` and `database_novel_TRV.fasta` as input, `allele_consensus.sh` will generate `database_novel_TRV_consensus.tsv` and `database_novel_TRV_consensus.fasta` as output according to `./example/samples/consensus_name_HGSVC.log`.
 
@@ -170,7 +170,7 @@ will gAIRR-annotate part of the HG002's genome assembly `HG002-S22-H1-000000F_19
 
 `AIRRCall.sh` and `AIRRAnnotate.sh` can be operated independently; however, `AIRRVerify.sh` can only be operated after both `AIRRCall.sh` and `AIRRAnnotate.sh` be performed successfully.
 
-Usage
+Usage:
 ```
 ./scripts/AIRRVerify.sh
 ```
