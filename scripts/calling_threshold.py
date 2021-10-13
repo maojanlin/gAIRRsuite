@@ -11,16 +11,26 @@ def parse_args():
 
 
 def find_thresh(list_depth):
-    p_depth = 1
-    thresh = 1
-    for idx, (allele_name, depth) in enumerate(list_depth):
-        if 'TRAV8-5*01' in allele_name: # the special allele
-            continue
-        if depth / p_depth < 0.75:
-            thresh = depth + 1
-            #print("Threshold!!", thresh)
-            return thresh
-        p_depth = depth
+    list_d = [pair_info[1] for pair_info in list_depth if 'TRAV8-5*01' not in pair_info[0]] # rebuild a list without TRAV8-5*01 (outlier) stuff 
+    list_d = [list_d[0]]*3 + list_d + [list_d[-1]]*2                                        # padding max value and zeros
+    #print(list_d)
+    list_value = []     # the division value between two windows
+    for idx in range(3,len(list_d)-2):
+        window   = (list_d[idx] + list_d[idx+1]*0.25 + list_d[idx+2]*0.1)
+        p_window = (list_d[idx-3]*0.1 + list_d[idx-2]*0.25 + list_d[idx-1])
+        list_value.append((((window+2)/(p_window+2))*((window+2)/(window+0.5)),idx))
+        #print(idx-3, list_d[idx], format(((window+2)/(p_window+2))*((window+2)/(window+0.5)), '.3f'))
+    #print(sorted(list_value))
+    sorted_value = sorted(list_value)
+    thresh_id = -1
+    if sorted_value[0][0]*2 < sorted_value[1][0]: # absolute winner
+        thresh_id = sorted_value[0][1]
+    else:                                         # if there are similar candidate, use the old method
+        for idx in range(3,len(list_d)-2):
+            if list_d[idx] / list_d[idx-1] < 0.73:
+                thresh_id = idx
+                break
+    thresh = list_d[thresh_id] + 1
     return thresh
 
 
@@ -58,6 +68,8 @@ if __name__ == '__main__':
         allele_name = fields[0]
         depth = float(fields[1])
         list_depth.append((allele_name, depth))
+        if depth == 0:
+            break
     f_n.close()
 
     thresh = find_thresh(list_depth)
