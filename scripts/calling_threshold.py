@@ -22,6 +22,8 @@ def find_thresh(list_depth):
         #print(idx-3, list_d[idx], format(((window+2)/(p_window+2))*((window+2)/(window+0.5)), '.3f'))
     #print(sorted(list_value))
     sorted_value = sorted(list_value)
+    if len(sorted_value) <= 1:
+        return 1
     thresh_id = -1
     if sorted_value[0][0]*2 < sorted_value[1][0]: # absolute winner
         thresh_id = sorted_value[0][1]
