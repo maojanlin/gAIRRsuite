@@ -7,7 +7,7 @@ cluster_num=$6
 path_SPAdes=$7
 
 mkdir -p ${contig_path} 
-echo "[AIRRCall] [FLANGKING SEQUENCE] Denovo assemble the backbones..."
+echo "[AIRRCall] [FLANKING SEQUENCE] Denovo assemble the backbones..."
 rm ${contig_path}spades_log.log
 for ((cluster_id=0; cluster_id <${cluster_num}; cluster_id++ ))
 do
