@@ -1,6 +1,6 @@
 workspace="target_call"
 path_SPAdes="../../naechyun/SPAdes-3.11.1-Linux/bin/spades.py"
-list_allele_name="TCRJ TCRV BCRV"
+list_allele_name="TCRJ TCRV BCRV BCRJ"
 allele_dir="./example/material/"
 allele_suffix="_alleles_parsed.fasta"
 person_name="HG002-part"
