@@ -2,7 +2,7 @@ import argparse
 import pickle
 import os
 import sys
-import pysam
+import pyfastx
 
 
 def parse_args():
@@ -80,9 +80,9 @@ def group_allele_reads(dict_allele_support_reads, dict_allele, dict_read_1, dict
 def parse_fastx(fn_fastx):
     "parser for both fasta and fastq file"
     dict_read = {}
-    f_fastx = pysam.FastxFile(fn_fastx)
-    for segment in f_fastx:
-        dict_read[segment.name] = segment.sequence
+    f_fastx = pyfastx.Fastx(fn_fastx)
+    for seq_info in f_fastx:
+        dict_read[seq_info[0]] = seq_info[1]
     return dict_read
 
 
