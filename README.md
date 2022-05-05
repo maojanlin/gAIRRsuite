@@ -1,4 +1,4 @@
-_Updated: May 5, 2021_
+_Updated: May 5, 2022_
 ## gAIRR-call
 
 Usage:
@@ -11,14 +11,15 @@ The `AIRRCall.sh` pipeline uses the capture-based short reads and the alleles do
 - **Call alleles** (including both known and novel alleles)
 - Assemble and haplotype **flanking sequences**
 
-To run the `AIRRCall.sh` pipeline, BWA aligner and SPAdes assembler should be installed.
+To run the `AIRRCall.sh` pipeline, BWA aligner (0.7.17) and SPAdes assembler (v3.13.0) should be installed.
+Python3 (3.7.13) module numpy (1.17.0) and pyfastx (0.8.4) also needs to be installed.
 
 The path parameters in `AIRRCall.sh` should be specified:
 - workspace: the directory all results and intermediate data be stored (e.g. "./target_call/").
 - path_SPAdes: the path to the spades.py installed (e.g. "../SPAdes-3.11.1-Linux/bin/spades.py")
 
 The below three parameters indicate the interested allele reference (IMGT) fasta files.
-- list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV")
+- list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV BCRJ")
 - allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
 - allele_suffix: the suffix of allele fasta file, should agree with the real file name ( e.g."\_alleles.fasta")
 
