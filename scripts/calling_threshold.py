@@ -11,7 +11,13 @@ def parse_args():
 
 
 def find_thresh(list_depth):
+    """
+    Threshold algorithm:
+        - threshold should <= average # considering 0s are filtered
+        - a sliding window size 3
+    """
     list_d = [pair_info[1] for pair_info in list_depth if 'TRAV8-5*01' not in pair_info[0]] # rebuild a list without TRAV8-5*01 (outlier) stuff 
+    avg_d  = sum(list_d)/len(list_d)
     list_d = [list_d[0]]*3 + list_d + [list_d[-1]]*2                                        # padding max value and zeros
     #print(list_d)
     list_value = []     # the division value between two windows
@@ -28,8 +34,8 @@ def find_thresh(list_depth):
     if sorted_value[0][0]*2 < sorted_value[1][0]: # absolute winner
         thresh_id = sorted_value[0][1]
     else:                                         # if there are similar candidate, use the old method
-        for idx in range(3,len(list_d)-2):
-            if list_d[idx] / list_d[idx-1] < 0.73:
+        for idx in range(3,len(list_d)-2):        # old method: find single site has slope greater than 0.73
+            if list_d[idx] / list_d[idx-1] < 0.73 and list_d[idx] <= avg_d:
                 thresh_id = idx
                 break
     thresh = list_d[thresh_id] + 1
@@ -70,7 +76,7 @@ if __name__ == '__main__':
         allele_name = fields[0]
         depth = float(fields[1])
         list_depth.append((allele_name, depth))
-        if depth == 0:
+        if depth == 0: # keep the first 0
             break
     f_n.close()
 
