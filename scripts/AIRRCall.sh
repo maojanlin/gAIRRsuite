@@ -4,8 +4,8 @@ list_allele_name="TCRJ TCRV BCRV BCRJ"
 allele_dir="./example/material/"
 allele_suffix="_alleles_parsed.fasta"
 person_name="HG002-part"
-read_path_1="./example/samples/HG002_part_gAIRR-seq_R1.fasta"
-read_path_2="./example/samples/HG002_part_gAIRR-seq_R2.fasta"
+read_path_1="./example/samples/HG002_part_gAIRR-seq_R1.fastq"
+read_path_2="./example/samples/HG002_part_gAIRR-seq_R2.fastq"
 
 # environment settings
 mkdir -p ${workspace}

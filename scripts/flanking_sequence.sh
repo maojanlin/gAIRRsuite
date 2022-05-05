@@ -33,7 +33,9 @@ bwa index ${flanking_result_path}/flanking_contigs.fasta
 bwa mem -t 16 ${flanking_result_path}/flanking_contigs.fasta ${read_path_1} ${read_path_2} > ${haplotype_sam_path}/bwa_reads_to_flanking.sam
 
 len_extend=200
-rm ${flanking_result_path}/flanking_haplotypes.fasta
+if [ -f "${flanking_result_path}/flanking_haplotypes.fasta" ] ; then
+    rm ${flanking_result_path}/flanking_haplotypes.fasta
+fi
 python3 scripts/shrink_sam_to_range.py -fs ${haplotype_sam_path}/bwa_reads_to_flanking.sam \
                                        -fc ${flanking_result_path}/flanking_contigs.fasta \
                                        -fr ${flanking_result_path}/flank_region.txt \

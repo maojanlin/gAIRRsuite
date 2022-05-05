@@ -12,7 +12,9 @@ bwa mem -t 16 ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_rea
 
 # start analysis
 echo "[AIRRCall] [NOVEL ALLELE] Finding novel alleles..."
-rm    ${outer_dir}corrected_alleles_raw.fasta
+if [ -f "${outer_dir}corrected_alleles_raw.fasta" ] ; then
+    rm ${outer_dir}corrected_alleles_raw.fasta
+fi
 python3 scripts/parse_cluster_realign.py -fs  ${outer_dir}bwa_read_to_allele.sam \
                                          -fc  ${allele_path} \
                                          -for test.txt \

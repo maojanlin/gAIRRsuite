@@ -2,7 +2,7 @@ import argparse
 import pickle
 import os
 import sys
-from filter_corrected_alleles import parse_fasta
+import pysam
 
 
 def parse_args():
@@ -77,6 +77,15 @@ def group_allele_reads(dict_allele_support_reads, dict_allele, dict_read_1, dict
     return idx
     
 
+def parse_fastx(fn_fastx):
+    "parser for both fasta and fastq file"
+    dict_read = {}
+    f_fastx = pysam.FastxFile(fn_fastx)
+    for segment in f_fastx:
+        dict_read[segment.name] = segment.sequence
+    return dict_read
+
+
 
 if __name__ == '__main__':
     args = parse_args()
@@ -94,16 +103,16 @@ if __name__ == '__main__':
     except:
         dict_allele_support_reads = {name.split()[0]:list_reads for name, list_reads in dict_allele_support_reads.items()}
     #print(dict_allele_support_reads.keys())
-    dict_allele = parse_fasta(fn_allele)
+    dict_allele = parse_fastx(fn_allele)
     try:
         dict_allele = {name.split('|')[1]:SEQ for name, SEQ in dict_allele.items()}
     except:
         dict_allele = {name.split()[0]:SEQ for name, SEQ in dict_allele.items()}
     #print(dict_allele.keys())
-    dict_read_1 = parse_fasta(fn_read_1)
+    dict_read_1 = parse_fastx(fn_read_1)
     group_num = 0
     if fn_read_2:
-        dict_read_2 = parse_fasta(fn_read_2)
+        dict_read_2 = parse_fastx(fn_read_2)
         group_num = group_allele_reads(dict_allele_support_reads, dict_allele, dict_read_1, dict_read_2, target_name, fo_output_dir)
     else:
         group_num = group_allele_reads(dict_allele_support_reads, dict_allele, dict_read_1, None, target_name, fo_output_dir)

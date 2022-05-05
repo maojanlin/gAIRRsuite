@@ -8,7 +8,9 @@ path_SPAdes=$7
 
 mkdir -p ${contig_path} 
 echo "[AIRRCall] [FLANKING SEQUENCE] Denovo assemble the backbones..."
-rm ${contig_path}spades_log.log
+if [ -f "${contig_path}spades_log.log" ] ; then
+    rm ${contig_path}spades_log.log
+fi
 for ((cluster_id=0; cluster_id <${cluster_num}; cluster_id++ ))
 do
     echo "[SPAdes] group ${cluster_id} assembled..."
@@ -25,11 +27,21 @@ done
 
 mkdir -p ${contig_check_path}
 echo "[AIRRCall] [FLANKING SEQUENCE] Checking contigs..."
-rm ${contig_check_path}bwa_log.log
-rm ${flanking_result_path}/assembly_call.txt
-rm ${flanking_result_path}/flanking_contigs.fasta
-rm ${flanking_result_path}/flanking_size200.fasta
-rm ${flanking_result_path}/flank_region.txt
+if [ -f "${contig_check_path}bwa_log.log" ] ; then
+    rm ${contig_check_path}bwa_log.log
+fi
+if [ -f "${flanking_result_path}/assembly_call.txt" ] ; then
+    rm ${flanking_result_path}/assembly_call.txt
+fi
+if [ -f "${flanking_result_path}/flanking_contigs.fasta" ] ; then
+    rm ${flanking_result_path}/flanking_contigs.fasta
+fi
+if [ -f "${flanking_result_path}/flanking_size200.fasta" ] ; then
+    rm ${flanking_result_path}/flanking_size200.fasta
+fi
+if [ -f "${flanking_result_path}/flank_region.txt" ] ; then
+    rm ${flanking_result_path}/flank_region.txt
+fi
 for ((cluster_id=0; cluster_id <${cluster_num}; cluster_id++ ))
 do
     echo "checking contig ${cluster_id}"
