@@ -14,7 +14,7 @@ fi
 for ((cluster_id=0; cluster_id <${cluster_num}; cluster_id++ ))
 do
     echo "[SPAdes] group ${cluster_id} assembled..."
-    python3 ${path_SPAdes} -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
+    spades.py -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
                            -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
                            --only-assembler -t 8 \
                            -o ${contig_path}${allele_name}_${cluster_id} \
@@ -47,10 +47,18 @@ do
     echo "checking contig ${cluster_id}"
     bwa index     ${contig_path}/${allele_name}_contig_${cluster_id}.fasta \
                   2>> ${contig_check_path}bwa_log.log
-    bwa mem -t 16 ${contig_path}/${allele_name}_contig_${cluster_id}.fasta  \
-                  ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
-                  >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
-                  2>> ${contig_check_path}/bwa_log.log
+    if [ ${allele_name} == "TCRD_plusHep" ] || [ ${allele_name} == "BCRD_plusHep" ]; then
+        echo "[AIRRCall] Adjust BWA parameters for shorter alleles..."
+        bwa mem -t 16 -T 10 ${contig_path}/${allele_name}_contig_${cluster_id}.fasta  \
+                            ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
+                            >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
+                            2>> ${contig_check_path}/bwa_log.log
+    else
+        bwa mem -t 16 ${contig_path}/${allele_name}_contig_${cluster_id}.fasta  \
+                      ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
+                      >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
+                      2>> ${contig_check_path}/bwa_log.log
+    fi
     python3 scripts/parse_bwa_sam.py -fs ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
                                      -fc ${contig_path}/${allele_name}_contig_${cluster_id}.fasta \
                                      -td 0 \

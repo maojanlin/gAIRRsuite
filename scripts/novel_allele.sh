@@ -8,7 +8,12 @@ read_path_2=$6
 # setting for the data
 mkdir -p ${outer_dir}
 bwa index ${allele_path}
-bwa mem -t 16 ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele.sam
+if [ ${allele_name} == "TCRD_plusHep" ] || [ ${allele_name} == "BCRD_plusHep" ]; then
+    echo "[AIRRCall] Adjust BWA parameters for shorter alleles..."
+    bwa mem -t 16 -T 10 ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele.sam
+else
+    bwa mem -t 16 ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele.sam
+fi
 
 # start analysis
 echo "[AIRRCall] [NOVEL ALLELE] Finding novel alleles..."
