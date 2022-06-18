@@ -29,6 +29,8 @@ if __name__ == "__main__":
             fields = line.strip().split(',')
             if len(fields) < 2:
                 continue
+            elif len(fields) > 5:
+                allele_name = fields[0] + '(' + fields[4][3:] + ',h' + fields[5][4:] + ')'
             elif len(fields) > 4:
                 allele_name = fields[0] + '(' + fields[4][3:] + ')'
             else:
