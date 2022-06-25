@@ -1,5 +1,4 @@
-```{r}
- # library
+```{r lib}
 library(ggplot2)
 library(dplyr)
 library(ggplot2)
@@ -8,7 +7,16 @@ library(reshape2)
 
 ```{r global_settings}
 mendelian_colors <- c("Identical" = "#56B4E9", "Paternal" = "#7bda7c", "Maternal"= '#0072B2', "Violation"= '#D55E00')
+precision_recall_colors <- c("Precision" = "#56B4E9", "Recall" = "#7bda7c")
 ```
+
+
+# Mendelian violation analysis using trios
+
+HG002, HG005: gAIRR-call
+
+HG00514, HG00733, NA19240: gAIRR-annotate
+
 
 ```{r check_mendelian_violation}
 df.trio.all <- read.delim("Trio_result.tsv", header=T)
@@ -26,8 +34,8 @@ for (ch in c("TRV", "TRJ", "IGV", "IGJ")) {
       theme_bw() +
       theme(legend.position = "bottom")
     title <- paste(ch, nov, sep="_")
-    fn <- paste(title, ".pdf", sep="")
-    ggsave(fn, fig)
+    fn <- paste("figures/", title, ".pdf", sep="")
+    ggsave(fn, fig, width=5, height=4)
   }
 }
 
@@ -38,7 +46,25 @@ ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("TRV", "
   scale_fill_manual(values = mendelian_colors) + 
   theme_bw() +
   theme(legend.position = "bottom")
-ggsave("TR.pdf")
+ggsave("figures/TR.pdf", width=5, height=4)
+
+ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("TRV", "TRJ"))), aes(fill=variable, y=value, x=Sample)) +
+  geom_bar(position="stack", stat="identity") +
+  ggtitle("TR novel")+
+  labs(x = "Sample", y = "Count", fill = "") +
+  scale_fill_manual(values = mendelian_colors) + 
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave("figures/TR_novel.pdf", width=5, height=4)
+
+ggplot(df.trio.all.melt %>% filter((Novelty == "known") & (Chain %in% c("TRV", "TRJ"))), aes(fill=variable, y=value, x=Sample)) +
+  geom_bar(position="stack", stat="identity") +
+  ggtitle("TR known")+
+  labs(x = "Sample", y = "Count", fill = "") +
+  scale_fill_manual(values = mendelian_colors) + 
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave("figures/TR_known.pdf", width=5, height=4)
 
 ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("IGV", "IGJ"))), aes(fill=variable, y=value, x=Sample)) +
   geom_bar(position="stack", stat="identity") +
@@ -47,7 +73,7 @@ ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("IGV", "
   scale_fill_manual(values = mendelian_colors) + 
   theme_bw() +
   theme(legend.position = "bottom")
-ggsave("IG_novel.pdf")
+ggsave("figures/IG_novel.pdf", width=5, height=4)
 
 ggplot(df.trio.all.melt %>% filter((Novelty == "known") & (Chain %in% c("IGV", "IGJ"))), aes(fill=variable, y=value, x=Sample)) +
   geom_bar(position="stack", stat="identity") +
@@ -56,6 +82,24 @@ ggplot(df.trio.all.melt %>% filter((Novelty == "known") & (Chain %in% c("IGV", "
   scale_fill_manual(values = mendelian_colors) + 
   theme_bw() +
   theme(legend.position = "bottom")
-ggsave("IG_known.pdf")
+ggsave("figures/IG_known.pdf", width=5, height=4)
 
 ```
+
+# gAIRR-call accuracy
+
+```{r call_accuracy}
+df.gairr.call <- melt(read.delim("HG001_accuracy.tsv", header=T))
+
+df.gairr.call$Chain <- factor(df.gairr.call$Chain, levels=c("TRV", "TRJ", "IGHV", "IGKV", "IGLV", "IGJ"))
+
+ggplot(df.gairr.call, aes(fill=variable, y=value, x=Chain)) +
+  geom_bar(position="dodge", stat="identity") +
+  ggtitle("")+
+  labs(x = "Chain", y = "", fill = "") +
+  scale_fill_manual(values = precision_recall_colors) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave("figures/HG001-gairr_call.pdf", width=5, height=4)
+```
+
