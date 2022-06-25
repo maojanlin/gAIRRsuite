@@ -1,0 +1,61 @@
+```{r}
+ # library
+library(ggplot2)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+```
+
+```{r global_settings}
+mendelian_colors <- c("Identical" = "#56B4E9", "Paternal" = "#7bda7c", "Maternal"= '#0072B2', "Violation"= '#D55E00')
+```
+
+```{r check_mendelian_violation}
+df.trio.all <- read.delim("Trio_result.tsv", header=T)
+
+df.trio.all.melt <- melt(df.trio.all)
+
+for (ch in c("TRV", "TRJ", "IGV", "IGJ")) {
+  for (nov in c("known", "novel")) {
+    title <- paste(ch, nov)
+    fig <- ggplot(df.trio.all.melt %>% filter((Novelty == nov) & (Chain == ch)), aes(fill=variable, y=value, x=Sample)) +
+      geom_bar(position="stack", stat="identity") +
+      ggtitle(title)+
+      labs(x = "Sample", y = "Count", fill = "") +
+      scale_fill_manual(values = mendelian_colors) + 
+      theme_bw() +
+      theme(legend.position = "bottom")
+    title <- paste(ch, nov, sep="_")
+    fn <- paste(title, ".pdf", sep="")
+    ggsave(fn, fig)
+  }
+}
+
+ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("TRV", "TRJ"))), aes(fill=variable, y=value, x=Sample)) +
+  geom_bar(position="stack", stat="identity") +
+  ggtitle("TR")+
+  labs(x = "Sample", y = "Count", fill = "") +
+  scale_fill_manual(values = mendelian_colors) + 
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave("TR.pdf")
+
+ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("IGV", "IGJ"))), aes(fill=variable, y=value, x=Sample)) +
+  geom_bar(position="stack", stat="identity") +
+  ggtitle("IG novel")+
+  labs(x = "Sample", y = "Count", fill = "") +
+  scale_fill_manual(values = mendelian_colors) + 
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave("IG_novel.pdf")
+
+ggplot(df.trio.all.melt %>% filter((Novelty == "known") & (Chain %in% c("IGV", "IGJ"))), aes(fill=variable, y=value, x=Sample)) +
+  geom_bar(position="stack", stat="identity") +
+  ggtitle("IG known")+
+  labs(x = "Sample", y = "Count", fill = "") +
+  scale_fill_manual(values = mendelian_colors) + 
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave("IG_known.pdf")
+
+```
