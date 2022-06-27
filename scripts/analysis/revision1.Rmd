@@ -6,7 +6,7 @@ library(reshape2)
 ```
 
 ```{r global_settings}
-mendelian_colors <- c("Identical" = "#56B4E9", "Paternal" = "#7bda7c", "Maternal"= '#0072B2', "Violation"= '#D55E00')
+mendelian_colors <- c("Identical" = "#56B4E9", "Paternal" = "#7bda7c", "Maternal" = "#0072B2", "Violation" = "#D55E00", "Post.V.D.J" = "#A9A9A9")
 precision_recall_colors <- c("Precision" = "#56B4E9", "Recall" = "#7bda7c")
 ```
 
@@ -19,9 +19,11 @@ HG00514, HG00733, NA19240: gAIRR-annotate
 
 
 ```{r check_mendelian_violation}
-df.trio.all <- read.delim("Trio_result.tsv", header=T)
-
+# df.trio.all <- read.delim("Trio_result.tsv", header=T)
+df.trio.all <- read.delim("Trio_result_consensus_postVDJ.tsv", header=T)
 df.trio.all.melt <- melt(df.trio.all)
+df.trio.all.melt$variable <- factor(df.trio.all.melt$variable, levels=c("Violation", "Post.V.D.J", "Maternal", "Paternal", "Identical"))
+
 
 for (ch in c("TRV", "TRJ", "IGV")) {
 # for (ch in c("TRV", "TRJ", "IGV", "IGJ")) {
@@ -39,56 +41,10 @@ for (ch in c("TRV", "TRJ", "IGV")) {
     ggsave(fn, fig, width=5, height=4)
   }
 }
-
-# ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("TRV", "TRJ"))), aes(fill=variable, y=value, x=Sample)) +
-#   geom_bar(position="stack", stat="identity") +
-#   ggtitle("TR")+
-#   labs(x = "Sample", y = "Count", fill = "") +
-#   scale_fill_manual(values = mendelian_colors) + 
-#   theme_bw() +
-#   theme(legend.position = "bottom")
-# ggsave("figures/TR.pdf", width=5, height=4)
-# 
-# ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("TRV", "TRJ"))), aes(fill=variable, y=value, x=Sample)) +
-#   geom_bar(position="stack", stat="identity") +
-#   ggtitle("TR novel")+
-#   labs(x = "Sample", y = "Count", fill = "") +
-#   scale_fill_manual(values = mendelian_colors) + 
-#   theme_bw() +
-#   theme(legend.position = "bottom")
-# ggsave("figures/TR_novel.pdf", width=5, height=4)
-# 
-# ggplot(df.trio.all.melt %>% filter((Novelty == "known") & (Chain %in% c("TRV", "TRJ"))), aes(fill=variable, y=value, x=Sample)) +
-#   geom_bar(position="stack", stat="identity") +
-#   ggtitle("TR known")+
-#   labs(x = "Sample", y = "Count", fill = "") +
-#   scale_fill_manual(values = mendelian_colors) + 
-#   theme_bw() +
-#   theme(legend.position = "bottom")
-# ggsave("figures/TR_known.pdf", width=5, height=4)
-# 
-# ggplot(df.trio.all.melt %>% filter((Novelty == "novel") & (Chain %in% c("IGV", "IGJ"))), aes(fill=variable, y=value, x=Sample)) +
-#   geom_bar(position="stack", stat="identity") +
-#   ggtitle("IG novel")+
-#   labs(x = "Sample", y = "Count", fill = "") +
-#   scale_fill_manual(values = mendelian_colors) + 
-#   theme_bw() +
-#   theme(legend.position = "bottom")
-# ggsave("figures/IG_novel.pdf", width=5, height=4)
-# 
-# ggplot(df.trio.all.melt %>% filter((Novelty == "known") & (Chain %in% c("IGV", "IGJ"))), aes(fill=variable, y=value, x=Sample)) +
-#   geom_bar(position="stack", stat="identity") +
-#   ggtitle("IG known")+
-#   labs(x = "Sample", y = "Count", fill = "") +
-#   scale_fill_manual(values = mendelian_colors) + 
-#   theme_bw() +
-#   theme(legend.position = "bottom")
-# ggsave("figures/IG_known.pdf", width=5, height=4)
-
 ```
 
 ```{r check_mendelian_violation_tr_ig}
-ggplot(df.trio.all.melt %>% filter(Chain %in% c("TRV", "TRJ")), aes(fill=variable, y=value, x=Sample)) +
+fig.tr.mendelian.violation <- ggplot(df.trio.all.melt %>% filter(Chain %in% c("TRV", "TRJ")), aes(fill=variable, y=value, x=Sample)) +
   geom_bar(position="stack", stat="identity") +
   facet_grid(.~Novelty) +
   # ggtitle("TR") +
@@ -96,10 +52,10 @@ ggplot(df.trio.all.melt %>% filter(Chain %in% c("TRV", "TRJ")), aes(fill=variabl
   scale_fill_manual(values = mendelian_colors) + 
   theme_bw() +
   theme(legend.position = "none", strip.background = element_rect(color="white", fill="white", size=0.5, linetype="solid"), strip.text = element_text(face="bold"))
-ggsave("figures/TR.pdf", width=9, height=3)
+ggsave("figures/TR.pdf", fig.tr.mendelian.violation, width=9, height=3)
 
 # ggplot(df.trio.all.melt %>% filter(Chain %in% c("IGV", "IGJ")), aes(fill=variable, y=value, x=Sample)) +
-ggplot(df.trio.all.melt %>% filter(Chain %in% c("IGV")), aes(fill=variable, y=value, x=Sample)) +
+fig.ig.mendelian.violation <- ggplot(df.trio.all.melt %>% filter(Chain %in% c("IGV")), aes(fill=variable, y=value, x=Sample)) +
   geom_bar(position="stack", stat="identity") +
   facet_grid(.~Novelty) +
   # ggtitle("IG") +
@@ -107,7 +63,8 @@ ggplot(df.trio.all.melt %>% filter(Chain %in% c("IGV")), aes(fill=variable, y=va
   scale_fill_manual(values = mendelian_colors) + 
   theme_bw() +
   theme(legend.position = "none", strip.background = element_rect(color="white", fill="white", size=0.5, linetype="solid"), strip.text = element_text(face="bold"))
-ggsave("figures/IG.pdf", width=9, height=3)
+ggsave("figures/IG.pdf", fig.ig.mendelian.violation, width=9, height=3)
+ggsave("figures/IG-legend.pdf", fig.ig.mendelian.violation + theme(legend.position = "bottom"), width=9, height=3)
 
 ```
 
