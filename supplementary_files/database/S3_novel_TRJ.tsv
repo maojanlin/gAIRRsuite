@@ -1,30 +1,30 @@
-allele_name	number_of_found_in_database	samples_possessing_the_allele
-TRAJ1*01/n01	5	HG03065-v12-clr,HG03125-v12-ccs,HG03486-v12-ccs,NA19240-consensus,NA19238-consensus
-TRAJ16*01/n01	35	HG00096-v12-clr,HG00171-v12-clr,HG00864-v12-clr,HG01114-v12-clr,HG01505-v12-clr,HG01596-v12-clr,HG02011-v12-clr,HG02492-v12-clr,HG02587-v12-clr,HG02818-v12-ccs,HG03009-v12-clr,HG03065-v12-clr,HG03125-v12-ccs,HG03371-v12-clr,HG03486-v12-ccs,HG03683-v12-clr,HG03732-v12-clr,NA12329-v12-clr,NA18534-v12-clr,NA18939-v12-clr,NA19650-v12-clr,NA19983-v12-clr,NA20847-v12-clr,NA19239-consensus,HG00513-consensus,HG00732-consensus,HG001-consensus,HG00512-consensus,NA19238-consensus,HG00733-consensus,CHM13-consensus,NA19240-consensus,HG002-consensus,HG00731-consensus,HG00514-consensus
-TRAJ16*01/n02	1	NA20509-v12-clr
-TRAJ17*01/n01	5	NA18534-v12-clr,HG00513-consensus,HG00731-consensus,HG00733-consensus,HG00514-consensus
-TRAJ17*01/n02	1	HG03486-v12-ccs
-TRAJ19*01/n01	4	HG02587-v12-clr,HG03732-v12-clr,NA12329-v12-clr,HG00731-consensus
-TRAJ21*01/n01	2	HG03371-v12-clr,NA19983-v12-clr
-TRAJ24*01/n01	9	HG00096-v12-clr,HG00864-v12-clr,HG01596-v12-clr,HG03732-v12-clr,NA18534-v12-clr,NA18939-v12-clr,HG001-consensus,HG002-consensus,HG00513-consensus
-TRAJ24*02/n01	2	NA18939-v12-clr,HG00512-consensus
-TRAJ26*01/n01	2	NA18939-v12-clr,HG00512-consensus
-TRAJ29*01/n01	1	HG002-consensus
-TRAJ3*01/n01	5	HG02818-v12-ccs,NA18939-v12-clr,NA19239-consensus,NA19238-consensus,HG00512-consensus
-TRAJ38*01/n01	4	HG02011-v12-clr,HG02492-v12-clr,HG02818-v12-ccs,HG03486-v12-ccs
-TRAJ41*01/n01	2	NA19240-consensus,NA19239-consensus
-TRAJ5*01/n01	4	HG00513-consensus,HG00731-consensus,HG00733-consensus,HG00514-consensus
-TRAJ52*01/n01	1	HG00171-v12-clr
-TRAJ52*01/n02	1	NA18534-v12-clr
-TRAJ53*01/n01	2	NA19240-consensus,NA19239-consensus
-TRAJ57*01/n01	12	HG00864-v12-clr,HG01596-v12-clr,HG03371-v12-clr,HG03683-v12-clr,HG03732-v12-clr,NA18534-v12-clr,NA18939-v12-clr,NA20847-v12-clr,HG001-consensus,HG00512-consensus,HG00513-consensus,HG00514-consensus
-TRAJ9*01/n01	1	HG00864-v12-clr
-TRBJ1-4*01/n01	3	HG00864-v12-clr,HG03371-v12-clr,NA19650-v12-clr
-TRBJ1-5*01/n01	1	NA20509-v12-clr
-TRBJ2-3*01/n01	1	HG002-consensus
-TRBJ2-4*01/n01	1	NA19650-v12-clr
-TRDJ2*01/n01	1	HG01505-v12-clr
-TRDJ3*01/n01	1	HG03125-v12-ccs
-TRDJ4*01/n01	14	HG02011-v12-clr,HG02492-v12-clr,HG02587-v12-clr,HG03065-v12-clr,HG03125-v12-ccs,HG03371-v12-clr,HG03486-v12-ccs,NA19650-v12-clr,NA19983-v12-clr,NA19240-consensus,NA19239-consensus,HG002-consensus,NA19238-consensus,HG001-consensus
-TRGJP*01/n01	4	HG02818-v12-ccs,HG03486-v12-ccs,NA19240-consensus,NA19238-consensus
-TRGJP2*01/n01	5	HG00171-v12-clr,NA18939-v12-clr,HG00512-consensus,HG002-consensus,HG00514-consensus
+allele_name/id	functioanlity	carrier_number	sequence	carrier_list
+TRAJ1*01/n01	ORF	5	gtatgaaagtattacctcccagttgcaatttggcaaaggaaccagagtttccatttctcccc	HG03065-v12-clr,HG03125-v12-ccs,HG03486-v12-ccs,NA19240-consensus,NA19238-consensus
+TRAJ16*01/n01	F	35	ggttttcagatggccagaagctgctctttgcaagggggaccatgttaaaggtggatctta	HG00096-v12-clr,HG00171-v12-clr,HG00864-v12-clr,HG01114-v12-clr,HG01505-v12-clr,HG01596-v12-clr,HG02011-v12-clr,HG02492-v12-clr,HG02587-v12-clr,HG02818-v12-ccs,HG03009-v12-clr,HG03065-v12-clr,HG03125-v12-ccs,HG03371-v12-clr,HG03486-v12-ccs,HG03683-v12-clr,HG03732-v12-clr,NA12329-v12-clr,NA18534-v12-clr,NA18939-v12-clr,NA19650-v12-clr,NA19983-v12-clr,NA20847-v12-clr,NA19239-consensus,HG00513-consensus,HG00732-consensus,HG001-consensus,HG00512-consensus,NA19238-consensus,HG00733-consensus,CHM13-consensus,NA19240-consensus,HG002-consensus,HG00731-consensus,HG00514-consensus
+TRAJ16*01/n02	F	1	ggttttcagatggccagaagctgctctttgcaaggggggaccatgttaaaggtggatctta	NA20509-v12-clr
+TRAJ17*01/n01	F	5	tgatcaaagctgcaggcaacaagctaacttttggaggaggaaccagggtgctagttaaaccga	NA18534-v12-clr,HG00513-consensus,HG00731-consensus,HG00733-consensus,HG00514-consensus
+TRAJ17*01/n02	F	1	tgatcaaagctgcagtcaacaagctaacttttggaggaggaaccagggtgctagttaaaccaa	HG03486-v12-ccs
+TRAJ19*01/n01	ORF	4	gctatcaaagattttacaatttcacctttggaaagggatccaaacataatgtcacttcaa	HG02587-v12-clr,HG03732-v12-clr,NA12329-v12-clr,HG00731-consensus
+TRAJ21*01/n01	F	2	tacaacttcaacaaattttactttggacctgggaccaaactcaatgtaaaaccaa	HG03371-v12-clr,NA19983-v12-clr
+TRAJ24*01/n01	F	9	tgacaactgacagctgggggaaattccagtttggagcagggacccaggttgtggtcaccccag	HG00096-v12-clr,HG00864-v12-clr,HG01596-v12-clr,HG03732-v12-clr,NA18534-v12-clr,NA18939-v12-clr,HG001-consensus,HG002-consensus,HG00513-consensus
+TRAJ24*02/n01	F	2	tgacaactgacagctgggggaaattgcagtttggatcagggacccaggttgtggtcaccccag	NA18939-v12-clr,HG00512-consensus
+TRAJ26*01/n01	F	2	gggataactatggtcagaattttgtctttggtcccggaaccagattgtccgcgctgccct	NA18939-v12-clr,HG00512-consensus
+TRAJ29*01/n01	F	1	ggaatttcaggaaacacacctcttgtctttggaaagggcacaagactttctgtgattgcaa	HG002-consensus
+TRAJ3*01/n01	F	5	ggggtacagcaatgcttccaagataatctttggatcagggaccagactcagcatccagccaa	HG02818-v12-ccs,NA18939-v12-clr,NA19239-consensus,NA19238-consensus,HG00512-consensus
+TRAJ38*01/n01	F	4	taatgctggcaacaaccgtaagctgatttggggattgggaacaagcctgggagtaaatccga	HG02011-v12-clr,HG02492-v12-clr,HG02818-v12-ccs,HG03486-v12-ccs
+TRAJ41*01/n01	F	2	gaactcaaattccgggtatgaactcaacttcggcaaaggcacctcgctgttggtcacacccc	NA19240-consensus,NA19239-consensus
+TRAJ5*01/n01	F	4	tggacatgggcaggagagcacttacttttgggagtggaacaagactccaagtgcaaccaa	HG00513-consensus,HG00731-consensus,HG00733-consensus,HG00514-consensus
+TRAJ52*01/n01	F	1	ctaatgctggtggtactagctacggaaagctgacatttggacaagggaccatcttgactgtccatccaa	HG00171-v12-clr
+TRAJ52*01/n02	F	1	ctaatgctggtggtactagctatggaaagctgactttggacaagggaccatcttgactgtccatccaa	NA18534-v12-clr
+TRAJ53*01/n01	F	2	agaatagtggaggtagcaactgtaaactgacatttggaaaaggaactctcttaaccgtgaatccaa	NA19240-consensus,NA19239-consensus
+TRAJ57*01/n01	F	12	taactcagggcggatctgaaaagctggtctttggaaagggaatgaaactgacagtaaacccat	HG00864-v12-clr,HG01596-v12-clr,HG03371-v12-clr,HG03683-v12-clr,HG03732-v12-clr,NA18534-v12-clr,NA18939-v12-clr,NA20847-v12-clr,HG001-consensus,HG00512-consensus,HG00513-consensus,HG00514-consensus
+TRAJ9*01/n01	F	1	ggaaatactggaggcttcaaaactatctttggagcaggaacaagaccatttgttaaagcaa	HG00864-v12-clr
+TRBJ1-4*01/n01	F	3	caactaatgaaaaactgtttttttggcagtggaacccagctctctgtcttgg	HG00864-v12-clr,HG03371-v12-clr,NA19650-v12-clr
+TRBJ1-5*01/n01	F	1	tagcaatcagcccccagcattttggtgatgggactcgactctccatcctag	NA20509-v12-clr
+TRBJ2-3*01/n01	F	1	gacacagatacgcagtattttggcccaggcacccggctgacagtgctcg	HG002-consensus
+TRBJ2-4*01/n01	F	1	agccaaaaaacattcagtacttcggcgccgggacccggctctcagtgctgg	NA19650-v12-clr
+TRDJ2*01/n01	F	1	ctttgacagcacaactattctttggaaagggaacacaactcatcgtggaaccag	HG01505-v12-clr
+TRDJ3*01/n01	F	1	ctcctgggacacccgacagatgtttttcagaactggcatcaaactcttcgtggagcccc	HG03125-v12-ccs
+TRDJ4*01/n01	F	14	ccagacccctgatctttggcaaaggaacctatctggaggtacaacaat	HG02011-v12-clr,HG02492-v12-clr,HG02587-v12-clr,HG03065-v12-clr,HG03125-v12-ccs,HG03371-v12-clr,HG03486-v12-ccs,NA19650-v12-clr,NA19983-v12-clr,NA19240-consensus,NA19239-consensus,HG002-consensus,NA19238-consensus,HG001-consensus
+TRGJP*01/n01	F	4	tgggcaagagttgggcaaaaaaatcaaggtatttggtcccggaacaaagcttataattacag	HG02818-v12-ccs,HG03486-v12-ccs,NA19240-consensus,NA19238-consensus
+TRGJP2*01/n01	F	5	atagtagtgattggatcaagacgtttgcaaaagggactaagctcatagtaacttcgcctg	HG00171-v12-clr,NA18939-v12-clr,HG00512-consensus,HG002-consensus,HG00514-consensus
