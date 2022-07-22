@@ -10,11 +10,9 @@ IGK_chain = {'IGK'}
 
 
 
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-r', '--list_report', nargs='+', default=[], help='list of the report files of all the TR or IG')
+    parser.add_argument('-rl', '--list_report', nargs='+', default=[], help='list of the report files of all the TR or IG')
     parser.add_argument('-o', '--output', help='the output report file')
     args = parser.parse_args()
     
@@ -22,12 +20,14 @@ if __name__ == "__main__":
     fn_out      = args.output
 
     # read all the data files
-    list_data = []
+    list_data = [[],[]]
     for report_name in list_report:
+        idx = 0
         f = open(report_name, 'r')
         for line in f:
             fields = line.strip().split(',')
             if len(fields) < 2:
+                idx = (idx + 1)%2
                 continue
             elif len(fields) > 5:
                 allele_name = fields[0] + '(' + fields[4][3:] + ',h' + fields[5][4:] + ')'
@@ -35,43 +35,76 @@ if __name__ == "__main__":
                 allele_name = fields[0] + '(' + fields[4][3:] + ')'
             else:
                 allele_name = fields[0]
-            list_data.append((fields[1],int(fields[2]),int(fields[3]),allele_name))
+            list_data[idx].append((fields[1],int(fields[2]),int(fields[3]),allele_name))
 
     # sort the data files
-    dict_chain = {'TR/OR':[], 'IG/OR':[], 'TRA/D':[], 'TRB':[], 'TRG':[], 'IGH':[], 'IGL':[], 'IGK':[]}
-    for data in list_data:
-        allele_name = data[3]
-        if 'OR' in allele_name:
-            if 'TR' in allele_name:
-                dict_chain['TR/OR'].append(data)
+    dict_chain = [{},{}]
+    dict_chain[0] = {'TR/OR':[], 'IG/OR':[], 'TRA/D':[], 'TRB':[], 'TRG':[], 'IGH':[], 'IGL':[], 'IGK':[]}
+    dict_chain[1] = {'TR/OR':[], 'IG/OR':[], 'TRA/D':[], 'TRB':[], 'TRG':[], 'IGH':[], 'IGL':[], 'IGK':[]}
+    for idx, haplotype_data in enumerate(list_data):
+        for data in list_data[idx]:
+            allele_name = data[3]
+            if 'OR' in allele_name:
+                if 'TR' in allele_name:
+                    dict_chain[idx]['TR/OR'].append(data)
+                else:
+                    dict_chain[idx]['IG/OR'].append(data)
+            elif 'TRA' in allele_name or 'TRD' in allele_name:
+                dict_chain[idx]['TRA/D'].append(data)
+            elif 'TRB' in allele_name:
+                dict_chain[idx]['TRB'].append(data)
+            elif 'TRG' in allele_name:
+                dict_chain[idx]['TRG'].append(data)
+            elif 'IGH' in allele_name:
+                dict_chain[idx]['IGH'].append(data)
+            elif 'IGL' in allele_name:
+                dict_chain[idx]['IGL'].append(data)
+            elif 'IGK' in allele_name:
+                dict_chain[idx]['IGK'].append(data)
             else:
-                dict_chain['IG/OR'].append(data)
-        elif 'TRA' in allele_name or 'TRD' in allele_name:
-            dict_chain['TRA/D'].append(data)
-        elif 'TRB' in allele_name:
-            dict_chain['TRB'].append(data)
-        elif 'TRG' in allele_name:
-            dict_chain['TRG'].append(data)
-        elif 'IGH' in allele_name:
-            dict_chain['IGH'].append(data)
-        elif 'IGL' in allele_name:
-            dict_chain['IGL'].append(data)
-        elif 'IGK' in allele_name:
-            dict_chain['IGK'].append(data)
-        else:
-            print('Error Name:', allele_name)
+                print('Error Name:', allele_name)
 
     # output according to gene chain
-    for gene_chain, list_data in dict_chain.items():
-        print(gene_chain)
-        old_pos = -1
-        for item in sorted(list_data):
-            ref_name, start, length, allele_name = item
-            if old_pos == start:
-                print(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name + '\t*')
-            else:
-                print(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name)
-            old_pos = start
+    if fn_out == None:  # print out the result
+        for idx in range(2):
+            print("==================================haplotype " + str(idx+1) + "========================================")
+            for gene_chain, list_data in dict_chain[idx].items():
+                print(gene_chain)
+                old_pos = -1
+                if len(list_data) > 0:
+                    old_ref = sorted(list_data)[0][0]
+                for item in sorted(list_data):
+                    ref_name, start, length, allele_name = item
+                    if old_ref != ref_name:
+                        print()
+                
+                    if old_pos == start and old_ref == ref_name:
+                        print(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name + '\t*')
+                    else:
+                        print(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name)
+                    old_pos = start
+                    old_ref = ref_name
+    else:   # write to two haplotypes bed files
+        list_out_name = [fn_out+".1.bed", fn_out+".2.bed"]
+        for idx in range(2):
+            f = open(list_out_name[idx], 'w')
+            for gene_chain, list_data in dict_chain[idx].items():
+                f.write(gene_chain + '\n')
+                old_pos = -1
+                if len(list_data) > 0:
+                    old_ref = sorted(list_data)[0][0]
+                for item in sorted(list_data):
+                    ref_name, start, length, allele_name = item
+                    if old_ref != ref_name:
+                        f.write('\n')
+                
+                    if old_pos == start and old_ref == ref_name:
+                        f.write(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name + '\t*\n')
+                    else:
+                        f.write(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name + '\n')
+                    old_pos = start
+                    old_ref = ref_name
+            f.close()
 
 
 
