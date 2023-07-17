@@ -30,8 +30,8 @@ acaactggttcgactcctggggccaaggaaccctggtcaccgtctcctcag
 acaactggttcgacccctggggccagggaaccctggtcaccgtctcctcag
 >J00256|IGHJ6*01|Homo sapiens|F|J-REGION|2947..3009|63 nt|3| | | | |63+0=63| | |
 attactactactactacggtatggacgtctgggggcaagggaccacggtcaccgtctcctcag
->X86355|IGHJ6*02|Homo sapiens|F|J-REGION|2482..2543|62 nt|3| | | | |62+0=62|partial in 3'| |
-attactactactactacggtatggacgtctggggccaagggaccacggtcaccgtctcctca
+>M25625|IGHJ6*02|Homo sapiens|F|J-REGION|1480..1542|63 nt|3| | | | |63+0=63| | |
+attactactactactacggtatggacgtctggggccaagggaccacggtcaccgtctcctcag
 >X86356|IGHJ6*03|Homo sapiens|F|J-REGION|2482..2543|62 nt|3| | | | |62+0=62|partial in 3'| |
 attactactactactactacatggacgtctggggcaaagggaccacggtcaccgtctcctca
 >AJ879487|IGHJ6*04|Homo sapiens|F|J-REGION|39..101|63 nt|3| | | | |63+0=63| | |
@@ -40,18 +40,18 @@ attactactactactacggtatggacgtctggggcaaagggaccacggtcaccgtctcctcag
 gtggacgttcggccaagggaccaaggtggaaatcaaac
 >J00242|IGKJ2*01|Homo sapiens|F|J-REGION|612..650|39 nt|3| | | | |39+0=39| | |
 tgtacacttttggccaggggaccaagctggagatcaaac
->Z70260|IGKJ2*02|Homo sapiens|(F)|J-REGION|288..325,c|38 nt|2| |1|| |38+0=38| | |
-gtgcacttttggccaggggaccaagctggagatcaaac
->U95246|IGKJ2*03|Homo sapiens|(F)|J-REGION|281..319,c|39 nt|3| |1| | |39+0=39| | |
-tgtacagttttggccaggggaccaagctggagatcaaac
->Z46620|IGKJ2*04|Homo sapiens|(F)|J-REGION|302..340,c|39 nt|3| |1|| |39+0=39| | |
+>Z70260|IGKJ2*02|Homo sapiens|(F)|J-REGION|288..324|37 nt|2| | | | |37+0=37| | |
+gtgcacttttggccaggggaccaagctggagatcaaa
+>U95246|IGKJ2*03|Homo sapiens|(F)|J-REGION|281..318|38 nt|3| | | | |38+0=38| | |
+tgtacagttttggccaggggaccaagctggagatcaaa
+>IMGT000100|IGKJ2*04|Homo sapiens|F|J-REGION|1383806..1383844|39 nt|3| | | | |39+0=39| | |
 tgtgcagttttggccaggggaccaagctggagatcaaac
 >J00242|IGKJ3*01|Homo sapiens|F|J-REGION|918..955|38 nt|2| | | | |38+0=38| | |
 attcactttcggccctgggaccaaagtggatatcaaac
 >J00242|IGKJ4*01|Homo sapiens|F|J-REGION|1260..1297|38 nt|2| | | | |38+0=38| | |
 gctcactttcggcggagggaccaaggtggagatcaaac
->AF103571|IGKJ4*02|Homo sapiens|(F)|J-REGION|270..307,c|38 nt|2| |1| | |38+0=38| | |
-gctcacgttcggcggagggaccaaggtggagatcaaac
+>AF103571|IGKJ4*02|Homo sapiens|(F)|J-REGION|270..306|37 nt|2| | | | |37+0=37| | |
+gctcacgttcggcggagggaccaaggtggagatcaaa
 >J00242|IGKJ5*01|Homo sapiens|F|J-REGION|1575..1612|38 nt|2| | | | |38+0=38| | |
 gatcaccttcggccaagggacacgactggagattaaac
 >X04457|IGLJ1*01|Homo sapiens|F|J-REGION|30..67|38 nt|2| | | | |38+0=38| | |

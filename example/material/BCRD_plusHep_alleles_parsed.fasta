@@ -1,88 +1,94 @@
->J00232|IGHD2-2*01|Homo sapience|hep+DRegion+gep|
-cactgtgaggatattgtagtagtaccagctgctatgcccacagtg
->J00233|IGHD2-8*02|Homo sapience|hep+DRegion+gep|
-cactgtgaggatattgtactggtggtgtatgctatacccacagtg
->J00234|IGHD2-15*01|Homo sapience|hep+DRegion+gep|
-cactgtgaggatattgtagtggtggtagctgctactcccacagtg
->J00235|IGHD2-21*01|Homo sapience|hep+DRegion+gep|
-cactgtgagcatattgtggtggtgattgctattcccacagtg
->J00256|IGHD7-27*01|Homo sapience|hep+DRegion+gep|
-cactgtgctaactggggacacagtg
->M35648|IGHD2-2*03|Homo sapience|hep+DRegion+gep|
-cactgtgtggatattgtagtagtaccagctgctatgcccacagtg
->X13972|IGHD1-14*01|Homo sapience|hep+DRegion+gep|
-cacagcgggtataaccggaaccaccactgtc
->X13972|IGHD1-7*01|Homo sapience|hep+DRegion+gep|
-cacagtgggtataactggaactaccactgtg
->X13972|IGHD2-8*01|Homo sapience|hep+DRegion+gep|
-cactgtgaggatattgtactaatggtgtatgctatacccacagtg
->X13972|IGHD3-10*01|Homo sapience|hep+DRegion+gep|
-cactgtggtattactatggttcggggagttattataaccacagtg
->X13972|IGHD3-3*01|Homo sapience|hep+DRegion+gep|
-cactgtggtattacgatttttggagtggttattatacccacagtg
->X13972|IGHD3-9*01|Homo sapience|hep+DRegion+gep|
-cactgtggtattacgatattttgactggttattataaccacagtg
->X13972|IGHD4-11*01|Homo sapience|hep+DRegion+gep|
-tgctgtgtgactacagtaactaccatagtg
->X13972|IGHD4-4*01|Homo sapience|hep+DRegion+gep|
-tactgtgtgactacagtaactaccacagtg
->X13972|IGHD5-12*01|Homo sapience|hep+DRegion+gep|
-gactgtggtggatatagtggctacgattaccacagtg
->X13972|IGHD5-5*01|Homo sapience|hep+DRegion+gep|
-gactgtggtggatacagctatggttaccacagtg
->X13972|IGHD6-13*01|Homo sapience|hep+DRegion+gep|
-cacagtggggtatagcagcagctggtaccacagtg
->X13972|IGHD6-6*01|Homo sapience|hep+DRegion+gep|
-cacagtggagtatagcagctcgtcccacagtg
->X55575|IGHD1/OR15-1a*01|Homo sapience|hep+DRegion+gep|
-cacagtgggtataactggaacaaccactgtg
->X55576|IGHD1/OR15-1b*01|Homo sapience|hep+DRegion+gep|
-cacagtgggtataactggaacaaccactgtg
->X55577|IGHD2/OR15-2a*01|Homo sapience|hep+DRegion+gep|
-cactgtgagaatattgtaatagtactactttctatgcccacagtg
->X55578|IGHD2/OR15-2b*01|Homo sapience|hep+DRegion+gep|
-cactgtgagaatattgtaatagtactactttctatgcccacagtg
->X55579|IGHD3/OR15-3a*01|Homo sapience|hep+DRegion+gep|
-cactgtggtattatgatttttggactggttattatacccacagtg
->X55580|IGHD3/OR15-3b*01|Homo sapience|hep+DRegion+gep|
-cactgtggtattatgatttttggactggttattatacccacagtg
->X55581|IGHD4/OR15-4a*01|Homo sapience|hep+DRegion+gep|
-tgctatgtgactatggtgctaactaccacagtg
->X55582|IGHD4/OR15-4b*01|Homo sapience|hep+DRegion+gep|
-tgctatgtgactatggtgctaactaccacagtg
->X55583|IGHD5/OR15-5a*01|Homo sapience|hep+DRegion+gep|
-gattgtggtggatatagtgtctacgattaccacagtg
->X55584|IGHD5/OR15-5b*01|Homo sapience|hep+DRegion+gep|
-gactgtggtggatatagtgtctacgattaccacagtg
->X93614|IGHD3-16*01|Homo sapience|hep+DRegion+gep|
-cactgtggtattatgattacgtttgggggagttatgcttatacccacagca
->X93615|IGHD3-10*02|Homo sapience|hep+DRegion+gep|
-cactgtggtattactatgttcggggagttattataaccacagtg
->X93616|IGHD3-22*01|Homo sapience|hep+DRegion+gep|
-cactgtggtattactatgatagtagtggttattactaccacagtg
->X93618|IGHD3-3*02|Homo sapience|hep+DRegion+gep|
-cactgtggtattagcatttttggagtggttattatacccacagtg
->X97051|IGHD1-1*01|Homo sapience|hep+DRegion+gep|
+>X97051|IGHD1-1*01|Homo sapiens|F|hep+D-REGION+hep|
 cacggtgggtacaactggaacgaccaccgtg
->X97051|IGHD1-20*01|Homo sapience|hep+DRegion+gep|
+>X13972|IGHD1-14*01|Homo sapiens|ORF|hep+D-REGION+hep|
+cacagcgggtataaccggaaccaccactgtc
+>X97051|IGHD1-20*01|Homo sapiens|F|hep+D-REGION+hep|
 cacagtgggtataactggaacgaccaccgtg
->X97051|IGHD1-26*01|Homo sapience|hep+DRegion+gep|
+>X97051|IGHD1-26*01|Homo sapiens|F|hep+D-REGION+hep|
 cacggtgggtatagtgggagctactaccactgtg
->X97051|IGHD2-2*02|Homo sapience|hep+DRegion+gep|
+>X13972|IGHD1-7*01|Homo sapiens|F|hep+D-REGION+hep|
+cacagtgggtataactggaactaccactgtg
+>X55575|IGHD1/OR15-1a*01|Homo sapiens|ORF|hep+D-REGION+hep|
+cacagtgggtataactggaacaaccactgtg
+>X55576|IGHD1/OR15-1b*01|Homo sapiens|ORF|hep+D-REGION+hep|
+cacagtgggtataactggaacaaccactgtg
+>J00234|IGHD2-15*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtgaggatattgtagtggtggtagctgctactcccacagtg
+>J00232|IGHD2-2*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtgaggatattgtagtagtaccagctgctatgcccacagtg
+>X97051|IGHD2-2*02|Homo sapiens|F|hep+D-REGION+hep|
 cactgtgaggatattgtagtagtaccagctgctatacccacagtg
->X97051|IGHD2-21*02|Homo sapience|hep+DRegion+gep|
+>M35648|IGHD2-2*03|Homo sapiens|F|hep+D-REGION+hep|
+cactgtgtggatattgtagtagtaccagctgctatgcccacagtg
+>J00235|IGHD2-21*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtgagcatattgtggtggtgattgctattcccacagtg
+>X97051|IGHD2-21*02|Homo sapiens|F|hep+D-REGION+hep|
 cactgtgagcatattgtggtggtgactgctattcccacagtg
->X97051|IGHD3-16*02|Homo sapience|hep+DRegion+gep|
+>X13972|IGHD2-8*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtgaggatattgtactaatggtgtatgctatacccacagtg
+>J00233|IGHD2-8*02|Homo sapiens|F|hep+D-REGION+hep|
+cactgtgaggatattgtactggtggtgtatgctatacccacagtg
+>X55577|IGHD2/OR15-2a*01|Homo sapiens|ORF|hep+D-REGION+hep|
+cactgtgagaatattgtaatagtactactttctatgcccacagtg
+>X55578|IGHD2/OR15-2b*01|Homo sapiens|ORF|hep+D-REGION+hep|
+cactgtgagaatattgtaatagtactactttctatgcccacagtg
+>X13972|IGHD3-10*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattactatggttcggggagttattataaccacagtg
+>X93615|IGHD3-10*02|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattactatgttcggggagttattataaccacagtg
+>IMGT000110|IGHD3-10*03|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattactatggttcagggagttattataaccacagtg
+>X93614|IGHD3-16*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattatgattacgtttgggggagttatgcttatacccacagca
+>X97051|IGHD3-16*02|Homo sapiens|F|hep+D-REGION+hep|
 cactgtggtattatgattacgtttgggggagttatcgttatacccacagca
->X97051|IGHD4-17*01|Homo sapience|hep+DRegion+gep|
+>IMGT000110|IGHD3-16*03|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattatgattacatttgggggagttatcgttatacccacagca
+>X93616|IGHD3-22*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattactatgatagtagtggttattactaccacagtg
+>X13972|IGHD3-3*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattacgatttttggagtggttattatacccacagtg
+>X93618|IGHD3-3*02|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattagcatttttggagtggttattatacccacagtg
+>X13972|IGHD3-9*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtggtattacgatattttgactggttattataaccacagtg
+>X55579|IGHD3/OR15-3a*01|Homo sapiens|ORF|hep+D-REGION+hep|
+cactgtggtattatgatttttggactggttattatacccacagtg
+>X55580|IGHD3/OR15-3b*01|Homo sapiens|ORF|hep+D-REGION+hep|
+cactgtggtattatgatttttggactggttattatacccacagtg
+>X13972|IGHD4-11*01|Homo sapiens|ORF|hep+D-REGION+hep|
+tgctgtgtgactacagtaactaccatagtg
+>X97051|IGHD4-17*01|Homo sapiens|F|hep+D-REGION+hep|
 tactgtgtgactacggtgactaccacagtg
->X97051|IGHD4-23*01|Homo sapience|hep+DRegion+gep|
+>X97051|IGHD4-23*01|Homo sapiens|ORF|hep+D-REGION+hep|
 tgctgtgtgactacggtggtaactcccacagtg
->X97051|IGHD5-18*01|Homo sapience|hep+DRegion+gep|
+>X13972|IGHD4-4*01|Homo sapiens|F|hep+D-REGION+hep|
+tactgtgtgactacagtaactaccacagtg
+>X55581|IGHD4/OR15-4a*01|Homo sapiens|ORF|hep+D-REGION+hep|
+tgctatgtgactatggtgctaactaccacagtg
+>X55582|IGHD4/OR15-4b*01|Homo sapiens|ORF|hep+D-REGION+hep|
+tgctatgtgactatggtgctaactaccacagtg
+>X13972|IGHD5-12*01|Homo sapiens|F|hep+D-REGION+hep|
+gactgtggtggatatagtggctacgattaccacagtg
+>X97051|IGHD5-18*01|Homo sapiens|F|hep+D-REGION+hep|
 gactgtggtggatacagctatggttaccacagtg
->X97051|IGHD5-24*01|Homo sapience|hep+DRegion+gep|
+>IMGT000110|IGHD5-18*02|Homo sapiens|ORF|hep+D-REGION+hep|
+gactgtggtgaatatagtggctacgattaccacagtg
+>X97051|IGHD5-24*01|Homo sapiens|ORF|hep+D-REGION+hep|
 ggccgtggtagagatggctacaattaccacagtg
->X97051|IGHD6-19*01|Homo sapience|hep+DRegion+gep|
+>X13972|IGHD5-5*01|Homo sapiens|F|hep+D-REGION+hep|
+gactgtggtggatacagctatggttaccacagtg
+>X55583|IGHD5/OR15-5a*01|Homo sapiens|ORF|hep+D-REGION+hep|
+gattgtggtggatatagtgtctacgattaccacagtg
+>X55584|IGHD5/OR15-5b*01|Homo sapiens|ORF|hep+D-REGION+hep|
+gactgtggtggatatagtgtctacgattaccacagtg
+>X13972|IGHD6-13*01|Homo sapiens|F|hep+D-REGION+hep|
+cacagtggggtatagcagcagctggtaccacagtg
+>X97051|IGHD6-19*01|Homo sapiens|F|hep+D-REGION+hep|
 cacagtggggtatagcagtggctggtaccacagtg
->X97051|IGHD6-25*01|Homo sapience|hep+DRegion+gep|
+>X97051|IGHD6-25*01|Homo sapiens|F|hep+D-REGION+hep|
 cacagtcgggtatagcagcggctaccacaatg
+>X13972|IGHD6-6*01|Homo sapiens|F|hep+D-REGION+hep|
+cacagtggagtatagcagctcgtcccacagtg
+>J00256|IGHD7-27*01|Homo sapiens|F|hep+D-REGION+hep|
+cactgtgctaactggggacacagtg
