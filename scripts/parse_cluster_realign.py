@@ -437,7 +437,7 @@ if __name__ == '__main__':
             #output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, contig_name, corrected_contig_output_file)
             len_insert = 0
             for idx in range(len(haplotype_0)):
-                diff = abs(len(haplotype_0[idx][1])-len(haplotype_1[idx][1]))
+                diff = max(max(len(haplotype_0[idx][1]),len(haplotype_1[idx][1]))-1, 0)
                 len_insert += diff
             output_contig_correction(contig_SEQ, 0, len(contig_SEQ)+len_insert, haplotype_0, haplotype_1, contig_name, fo_corrected_alleles, "/novel")
         elif interest_edit_region != []:
