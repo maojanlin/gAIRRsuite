@@ -1,6 +1,7 @@
 #annotation_path="asm_annotation/annotation_NA12878_tcrv.txt"
 # path parameters
 outer_dir=$1/$4_$2/
+allele_name=$2
 allele_path=$3
 read_path_1=$5
 read_path_2=$6
@@ -9,7 +10,12 @@ coverage_thrsd=100
 # setting for the data
 mkdir -p ${outer_dir}
 bwa index ${allele_path}
-bwa mem -t 16 -a ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele_all.sam
+if [ ${allele_name} == "TCRD_plusHep" ] || [ ${allele_name} == "BCRD_plusHep" ]; then
+    echo "[AIRRCall] Adjust BWA parameters for shorter alleles..."
+    bwa mem -t 32 -a -T 10 ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele_all.sam
+else
+    bwa mem -t 32 -a ${allele_path} ${read_path_1} ${read_path_2} > ${outer_dir}bwa_read_to_allele_all.sam
+fi
 
 # start analysis
 echo "[AIRRCall] [ALLELE CALLING] Calling alleles..."
