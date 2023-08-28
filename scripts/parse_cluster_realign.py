@@ -436,9 +436,16 @@ if __name__ == '__main__':
             haplotype_0, haplotype_1 = haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, interest_region)
             #output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, contig_name, corrected_contig_output_file)
             len_insert = 0
-            for idx in range(len(haplotype_0)):
-                diff = max(max(len(haplotype_0[idx][1]),len(haplotype_1[idx][1]))-1, 0)
-                len_insert += diff
+            if len(haplotype_0) != len(haplotype_1):
+                eprint("@@@@@@@@@@@@@@@@@@@@@@@@ WARNING !!! different hap0 and hap1 length @@@@@@@@@@@@@@@@@@@@@@@@")
+                eprint(haplotype_0)
+                eprint(haplotype_1)
+            diff_0 = sum([max(len(ele[1])-1,0) for ele in haplotype_0 ])
+            diff_1 = sum([max(len(ele[1])-1,0) for ele in haplotype_1 ])
+            len_insert = max(diff_0, diff_1)
+            #for idx in range(len(haplotype_0)):
+            #    diff = max(max(len(haplotype_0[idx][1]),len(haplotype_1[idx][1]))-1, 0)
+            #    len_insert += diff
             output_contig_correction(contig_SEQ, 0, len(contig_SEQ)+len_insert, haplotype_0, haplotype_1, contig_name, fo_corrected_alleles, "/novel")
         elif interest_edit_region != []:
             eprint("DDeficient", contig_name.split('|')[1], min(cov_histogram[1:]), interest_edit_region)
