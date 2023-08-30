@@ -40,9 +40,11 @@ def call_report(
         if len(fields) < 4:
             continue
         allele_name = fields[3]
-        gene_name, allele_type = allele_name.split('*')
-        if dict_functional.get(gene_name):
-            dict_functional[gene_name][0].append(allele_type)
+        list_allele = allele_name.split(';')
+        for allele in list_allele:
+            gene_name, allele_type = allele.split('*')
+            if dict_functional.get(gene_name):
+                dict_functional[gene_name][0].append(allele_type)
     f.close()
 
     # take in haplotype 2 allele types
@@ -52,9 +54,11 @@ def call_report(
         if len(fields) < 4:
             continue
         allele_name = fields[3]
-        gene_name, allele_type = allele_name.split('*')
-        if dict_functional.get(gene_name):
-            dict_functional[gene_name][1].append(allele_type)
+        list_allele = allele_name.split(';')
+        for allele in list_allele:
+            gene_name, allele_type = allele.split('*')
+            if dict_functional.get(gene_name):
+                dict_functional[gene_name][0].append(allele_type)
     f.close()
 
     return dict_functional

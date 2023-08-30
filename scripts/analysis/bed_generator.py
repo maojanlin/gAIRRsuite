@@ -87,23 +87,39 @@ if __name__ == "__main__":
     else:   # write to two haplotypes bed files
         list_out_name = [fn_out+".1.bed", fn_out+".2.bed"]
         for idx in range(2):
-            f = open(list_out_name[idx], 'w')
+            output_string = ""
             for gene_chain, list_data in dict_chain[idx].items():
-                f.write(gene_chain + '\n')
-                old_pos = -1
+                output_string += (gene_chain + '\n')
                 if len(list_data) > 0:
                     old_ref = sorted(list_data)[0][0]
-                for item in sorted(list_data):
-                    ref_name, start, length, allele_name = item
-                    if old_ref != ref_name:
-                        f.write('\n')
-                
-                    if old_pos == start and old_ref == ref_name:
-                        f.write(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name + '\t*\n')
-                    else:
-                        f.write(ref_name + ' ' + str(start) + ' ' + str(start + length) + ' ' + allele_name + '\n')
-                    old_pos = start
-                    old_ref = ref_name
+                    old_name = []
+                    old_pos = -1
+                    old_len = -1
+                    for item in sorted(list_data):
+                        ref_name, start, length, allele_name = item
+                        if old_ref == ref_name:
+                            if old_pos + old_len >= start:
+                                old_name.append(allele_name)
+                                old_len = max(old_len, length)
+                            else:
+                                if old_pos != -1:
+                                    output_string += (ref_name + ' ' + str(old_pos) + ' ' + str(old_pos + old_len) + ' ' + ';'.join(sorted(old_name)) + '\n')
+                                
+                                old_name = [allele_name]
+                                old_pos = start
+                                old_len = length
+                        else:
+                            if old_pos != -1:
+                                output_string += (old_ref + ' ' + str(old_pos) + ' ' + str(old_pos + old_len) + ' ' + ';'.join(sorted(old_name)) + '\n')
+                                output_string += ('\n')
+                            old_name = [allele_name]
+                            old_pos = start
+                            old_len = length
+                        old_ref = ref_name
+                    if old_pos != -1:
+                        output_string += (old_ref + ' ' + str(old_pos) + ' ' + str(old_pos + old_len) + ' ' + ';'.join(sorted(old_name)) + '\n')
+            f = open(list_out_name[idx], 'w')
+            f.write(output_string)
             f.close()
 
 
