@@ -58,7 +58,7 @@ def call_report(
         for allele in list_allele:
             gene_name, allele_type = allele.split('*')
             if dict_functional.get(gene_name):
-                dict_functional[gene_name][0].append(allele_type)
+                dict_functional[gene_name][1].append(allele_type)
     f.close()
 
     return dict_functional
