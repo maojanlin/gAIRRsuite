@@ -5,8 +5,8 @@ TRAV_func="example/material/TRAV_functional.txt"
 TRBV_func="example/material/TRBV_functional.txt"
 TRGV_func="example/material/TRGV_functional.txt"
 
-collect="scripts/collect_gene_from_annotation.py"
-compare="scripts/compare_call_and_annotation.py"
+collect="scripts/analysis/collect_gene_from_annotation.py"
+compare="scripts/analysis/compare_call_and_annotation.py"
 
 # IGHV
 python3 ${collect} -r target_annotation/HG001-denovo/annotation_imperfect_HG001-denovo_BCRV.txt -l ${IGHV_func} > target_annotation/HG001-denovo/annotation_IGHV_functional.txt
