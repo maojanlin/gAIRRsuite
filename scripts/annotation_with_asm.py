@@ -7,7 +7,7 @@ from parse_contig_realign import parse_CIGAR
 from utils import get_reverse_complement
 import sys
 
-def parse_args():
+def parse_args(arguments):
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-fs1', '--fn_sam_H1',
@@ -58,7 +58,7 @@ def parse_args():
         '-fof', '--fo_flanking_fasta',
         help = 'output flanking sequence fasta file from asm'
     )
-    args = parser.parse_args()
+    args = parser.parse_args(arguments)
     return args
 
 def eprint(*args, **kwargs):
@@ -151,7 +151,7 @@ def output_dict_occupied(dict_occupied_place, f_o):
     return (novel_num, allele_num, contig_num)
 
 
-def occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_fields_1, list_fields_2, fo_annotation_report, dict_contig_H1, dict_contig_H2, fo_summary):
+def occupied_annotation(dict_occupied_place_1, dict_occupied_place_2, list_fields_1, list_fields_2, fo_annotation_report, dict_contig_H1, dict_contig_H2, fo_annotation_summary):
     # dict_occupied_place {}
     #  - key: contig_name
     #  - value: list_occupied_pair[ (pos_start, pos_end, NM:i), ... ]
@@ -274,8 +274,8 @@ def get_SEQ_from_sam_list(list_fields, dict_SEQ):
 
 
 
-if __name__ == "__main__":
-    args = parse_args()
+def main(arguments=None):
+    args = parse_args(arguments)
     fn_sam_H1 = args.fn_sam_H1
     fn_sam_H2 = args.fn_sam_H2
     fn_asm_H1 = args.fn_asm_H1
@@ -421,3 +421,7 @@ if __name__ == "__main__":
             else:
                 print("Corrected mismatched files not specified.")
             
+
+
+if __name__ == "__main__":
+    main()

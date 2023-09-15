@@ -10,11 +10,11 @@ IGK_chain = {'IGK'}
 
 
 
-if __name__ == "__main__":
+def main(arguments=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('-rl', '--list_report', nargs='+', default=[], help='list of the report files of all the TR or IG')
     parser.add_argument('-o', '--output', help='the output report file')
-    args = parser.parse_args()
+    args = parser.parse_args(arguments)
     
     list_report = args.list_report
     fn_out      = args.output
@@ -124,4 +124,6 @@ if __name__ == "__main__":
 
 
 
+if __name__ == "__main__":
+    main()
 

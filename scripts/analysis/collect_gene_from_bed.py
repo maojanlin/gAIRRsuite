@@ -73,15 +73,12 @@ def print_report(dict_genes, dict_functional):
 
 
 
-
-
-
-if __name__ == "__main__":
+def main(arguments=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('-b1', '--annotation_bed_1', help='gAIRR-annotate H1 bed file')
     parser.add_argument('-b2', '--annotation_bed_2', help='gAIRR-annotate H2 bed file')
     parser.add_argument('-fl', '--functional_list', nargs='+', default=[], help='functional gene list file')
-    args = parser.parse_args()
+    args = parser.parse_args(arguments)
 
     fn_bed_1 = args.annotation_bed_1
     fn_bed_2 = args.annotation_bed_2
@@ -91,3 +88,9 @@ if __name__ == "__main__":
     dict_functional = call_report(fn_bed_1, fn_bed_2, set_functional)
     print_report(dict_genes, dict_functional)
 
+
+
+
+
+if __name__ == "__main__":
+    main()
