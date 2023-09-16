@@ -5,6 +5,7 @@ flanking_result_path=$4
 allele_name=$5
 cluster_num=$6
 path_SPAdes=$7
+thread=$8
 
 mkdir -p ${contig_path} 
 echo "[AIRRCall] [FLANKING SEQUENCE] Denovo assemble the backbones..."
@@ -16,7 +17,7 @@ do
     echo "[SPAdes] group ${cluster_id} assembled..."
     spades.py -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
                            -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
-                           --only-assembler -t 8 \
+                           --only-assembler -t ${thread} \
                            -o ${contig_path}${allele_name}_${cluster_id} \
                            >> ${contig_path}spades_log.log
     python3 scripts/copy_1st_contig.py -fc ${contig_path}${allele_name}_${cluster_id}/contigs.fasta \
@@ -49,15 +50,15 @@ do
                   2>> ${contig_check_path}bwa_log.log
     if [ ${allele_name} == "TCRD_plusHep" ] || [ ${allele_name} == "BCRD_plusHep" ]; then
         echo "[AIRRCall] Adjust BWA parameters for shorter alleles..."
-        bwa mem -t 16 -T 10 ${contig_path}/${allele_name}_contig_${cluster_id}.fasta  \
-                            ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
-                            >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
-                            2>> ${contig_check_path}/bwa_log.log
+        bwa mem -t ${thread} -T 10 ${contig_path}/${allele_name}_contig_${cluster_id}.fasta  \
+                             ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
+                             >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
+                             2>> ${contig_check_path}/bwa_log.log
     else
-        bwa mem -t 16 ${contig_path}/${allele_name}_contig_${cluster_id}.fasta  \
-                      ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
-                      >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
-                      2>> ${contig_check_path}/bwa_log.log
+        bwa mem -t ${thread} ${contig_path}/${allele_name}_contig_${cluster_id}.fasta  \
+                             ${raw_seq_path}/${allele_name}_${cluster_id}_allele.fasta \
+                             >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
+                             2>> ${contig_check_path}/bwa_log.log
     fi
     python3 scripts/parse_bwa_sam.py -fs ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
                                      -fc ${contig_path}/${allele_name}_contig_${cluster_id}.fasta \
