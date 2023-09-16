@@ -34,7 +34,6 @@ def main():
     parser = argparse.ArgumentParser(description="gAIRR-annotate pipeline of gAIRR-suite.")
     parser.add_argument('-wd', '--work_dir', help="Path to output directory ['target_annotation/'].", default="target_annotation/")
     parser.add_argument('-lc', '--locus', help="Target Locus [TR IG]", nargs='+', default=['TR', 'IG'])
-    parser.add_argument('--annotate', help="Option to report functional IG genes", action='store_true')
     parser.add_argument('-id', '--sample_id', help="Sample ID ['sample']")
     parser.add_argument('-a1', '--assembly_1', help="Path to assembly haplotype 1.", required=True)
     parser.add_argument('-a2', '--assembly_2', help="Path to assembly haplotype 2.")
@@ -43,7 +42,6 @@ def main():
 
     outer_dir     = args.work_dir
     target_locus  = args.locus
-    flag_annotate = args.annotate
     person_name   = args.sample_id
     path_asm_1    = args.assembly_1
     path_asm_2    = args.assembly_2
@@ -108,6 +106,7 @@ def main():
                    '-fasm2',path_asm_2]
         annotation_with_asm.main(command)
     
+    ########## STEP 3: collecting the annotation results ##########
     path_report = [allele_info[0] for allele_info in list_allele_names]
     path_report = [outer_dir+'/'+person_name+'/annotation_imperfect_'+person_name+'_'+allele_name+'.txt' for allele_name in path_report]
     command = ['-rl'] + path_report + ['-o', outer_dir+'/'+person_name+'/group_genes']
@@ -132,46 +131,3 @@ if __name__ == "__main__":
     main()
 
 
-
-"""
-for allele_name in ${list_allele_name}; do
-    echo "[AIRRAnnotate] Align IMGT ${allele_name} alleles to assembly..."
-    if [ ${allele_name} == "TCRD_plusHep" ] || [ ${allele_name} == "BCRD_plusHep" ]; then
-        echo "[AIRRAnnotate] Adjust BWA parameters for shorter alleles..."
-        bwa mem -t 16 -a -T 10 ${asm_path_H1_index} ${allele_dir}${allele_name}${allele_suffix} > ${outer_dir}/${person_name}/bwa_${person_name}_${allele_name}_alleles_to_asm_H1.sam
-        bwa mem -t 16 -a -T 10 ${asm_path_H2_index} ${allele_dir}${allele_name}${allele_suffix} > ${outer_dir}/${person_name}/bwa_${person_name}_${allele_name}_alleles_to_asm_H2.sam
-    else
-        bwa mem -t 16 -a ${asm_path_H1_index} ${allele_dir}${allele_name}${allele_suffix} > ${outer_dir}/${person_name}/bwa_${person_name}_${allele_name}_alleles_to_asm_H1.sam
-        bwa mem -t 16 -a ${asm_path_H2_index} ${allele_dir}${allele_name}${allele_suffix} > ${outer_dir}/${person_name}/bwa_${person_name}_${allele_name}_alleles_to_asm_H2.sam
-    fi
-
-
-    echo "[AIRRAnnotate] Parse the ${allele_name} alleles sam files to annotation report..."
-    python3 scripts/annotation_with_asm.py -foa   ${outer_dir}/${person_name}/annotation_${person_name}_${allele_name}.txt \
-                                           -foma  ${outer_dir}/${person_name}/annotation_imperfect_${person_name}_${allele_name}.txt \
-                                           -fom   ${outer_dir}/${person_name}/novel_${person_name}_${allele_name}.fasta \
-                                           -fof   ${outer_dir}/${person_name}/flanking_${person_name}_${allele_name}.fasta \
-                                           -fos   ${outer_dir}/${person_name}/summary_${person_name}_${allele_name}.rpt \
-                                           -ext   200 \
-                                           -fs1   ${outer_dir}/${person_name}/bwa_${person_name}_${allele_name}_alleles_to_asm_H1.sam \
-                                           -fp1   ${outer_dir}/${person_name}/dict_${person_name}_asm_H1.pickle \
-                                           -fasm1 ${asm_path_H1} \
-                                           -fs2   ${outer_dir}/${person_name}/bwa_${person_name}_${allele_name}_alleles_to_asm_H2.sam \
-                                           -fp2   ${outer_dir}/${person_name}/dict_${person_name}_asm_H2.pickle \
-                                           -fasm2 ${asm_path_H2}
-done
-if ${flag_annotate}; then
-    python3 scripts/analysis/bed_generator.py -rl \
-        ${outer_dir}/${person_name}/annotation_imperfect_${person_name}_BCRV.txt \
-        ${outer_dir}/${person_name}/annotation_imperfect_${person_name}_BCRJ.txt \
-        ${outer_dir}/${person_name}/annotation_imperfect_${person_name}_BCRD_plusHep.txt \
-        -o ${outer_dir}/${person_name}/group_genes
-    python3 scripts/analysis/collect_gene_from_bed.py \
-        -b1 ${outer_dir}/${person_name}/group_genes.1.bed \
-        -b2 ${outer_dir}/${person_name}/group_genes.2.bed \
-        -fl ${allele_dir}/IGH_functional.txt \
-        > ${outer_dir}/${person_name}/IGH_functional.rpt
-    echo "[ANNOTATION WITH ASM] ${person_name} Finished!"
-fi
-echo "[ANNOTATION WITH ASM] Finished!"
-"""

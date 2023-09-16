@@ -276,6 +276,7 @@ def get_SEQ_from_sam_list(list_fields, dict_SEQ):
 
 def main(arguments=None):
     args = parse_args(arguments)
+    # input information
     fn_sam_H1 = args.fn_sam_H1
     fn_sam_H2 = args.fn_sam_H2
     fn_asm_H1 = args.fn_asm_H1
@@ -284,6 +285,7 @@ def main(arguments=None):
     fn_pickle_H2 = args.fn_pickle_H2
     len_extend = args.len_extend
 
+    # output files
     fo_annotation_summary = args.fo_annotation_summary
     fo_perfect_annotation_report = args.fo_perfect_annotation_report
     fo_mismatched_annotation_report = args.fo_mismatched_annotation_report
