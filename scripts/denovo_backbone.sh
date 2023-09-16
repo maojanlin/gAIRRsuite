@@ -7,6 +7,11 @@ cluster_num=$6
 path_SPAdes=$7
 thread=$8
 
+
+# get the script directory
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+
 mkdir -p ${contig_path} 
 echo "[AIRRCall] [FLANKING SEQUENCE] Denovo assemble the backbones..."
 if [ -f "${contig_path}spades_log.log" ] ; then
@@ -20,10 +25,10 @@ do
                            --only-assembler -t ${thread} \
                            -o ${contig_path}${allele_name}_${cluster_id} \
                            >> ${contig_path}spades_log.log
-    python3 scripts/copy_1st_contig.py -fc ${contig_path}${allele_name}_${cluster_id}/contigs.fasta \
-                                       -id ${cluster_id} \
-                                       -map ${raw_seq_path}/${allele_name}_group_allele_map.txt \
-                                       -fo ${contig_path}${allele_name}_contig_${cluster_id}.fasta
+    python3 ${script_dir}/copy_1st_contig.py -fc ${contig_path}${allele_name}_${cluster_id}/contigs.fasta \
+                                             -id ${cluster_id} \
+                                             -map ${raw_seq_path}/${allele_name}_group_allele_map.txt \
+                                             -fo ${contig_path}${allele_name}_contig_${cluster_id}.fasta
 done
 
 mkdir -p ${contig_check_path}
@@ -60,13 +65,13 @@ do
                              >   ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
                              2>> ${contig_check_path}/bwa_log.log
     fi
-    python3 scripts/parse_bwa_sam.py -fs ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
-                                     -fc ${contig_path}/${allele_name}_contig_${cluster_id}.fasta \
-                                     -td 0 \
-                                     -fo ${flanking_result_path}/assembly_call.txt \
-                                     -fr ${flanking_result_path}/flanking_contigs.fasta \
-                                     --cluster_id ${cluster_id} \
-                                     -fsize 200 \
-                                     -frs ${flanking_result_path}/flanking_size200.fasta \
-                                     >>   ${flanking_result_path}/flank_region.txt
+    python3 ${script_dir}/parse_bwa_sam.py -fs ${contig_check_path}/align_${allele_name}_${cluster_id}.sam \
+                                           -fc ${contig_path}/${allele_name}_contig_${cluster_id}.fasta \
+                                           -td 0 \
+                                           -fo ${flanking_result_path}/assembly_call.txt \
+                                           -fr ${flanking_result_path}/flanking_contigs.fasta \
+                                           --cluster_id ${cluster_id} \
+                                           -fsize 200 \
+                                           -frs ${flanking_result_path}/flanking_size200.fasta \
+                                           >>   ${flanking_result_path}/flank_region.txt
 done

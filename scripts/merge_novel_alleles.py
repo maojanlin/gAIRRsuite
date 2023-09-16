@@ -43,9 +43,12 @@ if __name__ == '__main__':
     for name in sorted(dict_original_allele.keys()):
         f_om.write(">" + name.split()[0] + "\n")
         f_om.write(dict_original_allele[name] + "\n")
-    for name in sorted(dict_novel_allele.keys()):
-        if ("extend" in name) == False:
-            f_om.write(">|" + name + "|\n")
-            f_om.write(dict_novel_allele[name] + "\n")
+    if dict_novel_allele == {'':''}: #empty novel results
+        pass
+    else:
+        for name in sorted(dict_novel_allele.keys()):
+            if ("extend" in name) == False:
+                f_om.write(">|" + name + "|\n")
+                f_om.write(dict_novel_allele[name] + "\n")
     f_om.close()
 

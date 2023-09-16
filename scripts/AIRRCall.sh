@@ -10,6 +10,8 @@ thread=16
 
 # environment settings
 mkdir -p ${workspace}
+mkdir -p ${workspace}/${person_name}
+workspace=${workspace}/${person_name}
 
 # call novel alleles
 for allele_name in ${list_allele_name}; do
