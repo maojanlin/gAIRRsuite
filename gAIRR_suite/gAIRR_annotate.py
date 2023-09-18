@@ -31,6 +31,11 @@ def get_max_thread():
     return int(result.stdout.strip())
 
 
+def is_tool(name):
+    """Check whether `name` is on PATH and marked as executable."""
+    return which(name) is not None
+
+
 def check_program_install(list_names):
     flag_violate = False
     for name in list_names:
