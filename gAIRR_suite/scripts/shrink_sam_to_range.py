@@ -2,6 +2,12 @@ import argparse
 import pickle
 import os
 import numpy as np
+import sys
+
+# make sure the package modules is in the path
+sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(__file__)+'/..')
+
 from utils import get_reverse_complement, eprint
 from filter_corrected_alleles import parse_fasta
 from parse_cluster_realign import cluster_separate, variant_link_graph, haplotyping_link_graph, haplotyping_link_graph, mark_edit_region, output_contig_correction

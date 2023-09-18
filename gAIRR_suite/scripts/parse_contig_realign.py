@@ -12,9 +12,10 @@ import argparse
 import pickle
 import os
 import numpy as np
-from parse_sam_haplotyping import parse_CIGAR
-from utils import get_reverse_complement
-from coverage_analysis import eprint
+
+from scripts.parse_sam_haplotyping import parse_CIGAR
+from scripts.utils import get_reverse_complement
+from scripts.coverage_analysis import eprint
 np.set_printoptions(threshold=5000)
 
 def parse_args():

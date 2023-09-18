@@ -2,8 +2,8 @@ import argparse
 import pickle
 import os
 import numpy as np
-from utils import get_hamming_dist
-from utils import get_reverse_complement
+from scripts.utils import get_hamming_dist
+from scripts.utils import get_reverse_complement
 import sys
 
 def parse_args():

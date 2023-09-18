@@ -7,9 +7,12 @@ from contextlib import redirect_stdout
 import argparse
 from shutil import which
 
-import annotation_with_asm
-import analysis.bed_generator
-import analysis.collect_gene_from_bed
+# make sure the package modules is in the path
+sys.path.append(os.path.dirname(__file__))
+
+import scripts.annotation_with_asm
+import scripts.analysis.bed_generator
+import scripts.analysis.collect_gene_from_bed
 
 
 
@@ -26,6 +29,16 @@ def get_max_thread():
     else:
         result = subprocess.run(["nproc"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
     return int(result.stdout.strip())
+
+
+def check_program_install(list_names):
+    flag_violate = False
+    for name in list_names:
+        if is_tool(name) == False:
+            print(name, "is a prerequisite program, please install it before running biastools")
+            flag_violate = True
+    if flag_violate:
+        exit(2)
 
 
 
@@ -48,8 +61,11 @@ def main():
     thread        = args.thread
     if thread == None:
         thread = get_max_thread()
-    path_module   = os.path.dirname(__file__) + '/'
-    path_material = path_module + '../example/material/'
+    
+    path_module   = os.path.dirname(__file__) + '/scripts/'
+    path_material = os.path.dirname(__file__) + '/material/'
+    
+    check_program_install(["bwa"])
 
     ########## STEP 1: indexing the personal assemblies ##########
     print("[gAIRR-annotate] Indexing the personal assembly", path_asm_1)
@@ -104,20 +120,20 @@ def main():
                    '-fs2',  outer_dir+'/'+person_name+'/bwa_'+person_name+'_'+allele_name+'_alleles_to_asm_2.sam', \
                    '-fp2',  outer_dir+'/'+person_name+'/dict_'+person_name+'_asm_2.pickle', \
                    '-fasm2',path_asm_2]
-        annotation_with_asm.main(command)
+        scripts.annotation_with_asm.main(command)
     
     ########## STEP 3: collecting the annotation results ##########
     path_report = [allele_info[0] for allele_info in list_allele_names]
     path_report = [outer_dir+'/'+person_name+'/annotation_imperfect_'+person_name+'_'+allele_name+'.txt' for allele_name in path_report]
     command = ['-rl'] + path_report + ['-o', outer_dir+'/'+person_name+'/group_genes']
-    analysis.bed_generator.main(command)
+    scripts.analysis.bed_generator.main(command)
 
     command = ['-b1', outer_dir+'/'+person_name+'/group_genes.1.bed', \
                '-b2', outer_dir+'/'+person_name+'/group_genes.2.bed', \
                '-fl', path_material+'/IGH_functional.txt']
     f = io.StringIO()
     with redirect_stdout(f):
-        analysis.collect_gene_from_bed.main(command)
+        scripts.analysis.collect_gene_from_bed.main(command)
     out = f.getvalue()
     f = open(outer_dir+'/'+person_name+'/IGH_functional.rpt', 'w')
     f.write(out)

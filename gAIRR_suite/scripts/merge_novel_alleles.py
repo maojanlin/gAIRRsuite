@@ -2,6 +2,12 @@ import argparse
 import pickle
 import os
 import numpy as np
+import sys
+
+# make sure the package modules is in the path
+sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(__file__)+'/..')
+
 from utils import get_reverse_complement
 from filter_corrected_alleles import parse_perfect_sam, parse_fasta
 from parse_contig_realign import parse_CIGAR

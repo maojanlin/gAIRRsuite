@@ -23,6 +23,16 @@ def get_max_thread():
     return int(result.stdout.strip())
 
 
+def check_program_install(list_names):
+    flag_violate = False
+    for name in list_names:
+        if is_tool(name) == False:
+            print(name, "is a prerequisite program, please install it before running biastools")
+            flag_violate = True
+    if flag_violate:
+        exit(2)
+
+
 
 
 def main():
@@ -47,8 +57,14 @@ def main():
     thread        = args.thread
     if thread == None:
         thread = get_max_thread()
-    path_module   = os.path.dirname(__file__) + '/'
-    path_material = path_module + '../example/material/'
+    
+    path_module   = os.path.dirname(__file__) + '/scripts/'
+    path_material = os.path.dirname(__file__) + '/material/'
+    
+    if flag_flanking:
+        check_program_install(["bwa", "spades.py"])
+    else:
+        check_program_install(["bwa"])
 
     
     dict_locus_map = {'TRV':'TCRV', 'TRJ':'TCRJ', 'TRD':'TCRD_plusHep', 'IGV':'BCRV', 'IGJ':'BCRJ', 'IGD':'BCRD_plusHep'}

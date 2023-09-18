@@ -2,9 +2,9 @@ import argparse
 import pickle
 import os
 import numpy as np
-from utils import get_reverse_complement
-from filter_corrected_alleles import parse_perfect_sam, parse_fasta
-from parse_contig_realign import parse_CIGAR
+from .utils import get_reverse_complement
+from .filter_corrected_alleles import parse_perfect_sam, parse_fasta
+from .parse_contig_realign import parse_CIGAR
 import sys
 
 def parse_args():
