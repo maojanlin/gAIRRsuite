@@ -10,6 +10,31 @@ gAIRR-call can genotype IG and TR genes for short read data sequenced from germl
 - SPAdes assembler (v3.13.0)
 
 
+## Installation
+pip install gAIRR-suite
+- [pip](https://pypi.org/project/gAIRR-suite/)
+```
+pip install gAIRR-suite
+```
+- [Github](https://github.com/maojanlin/gAIRRsuite.git)
+```
+git clone https://github.com/maojanlin/gAIRRsuite.git
+cd gAIRRsuite
+```
+Though optional, it is a good practice to install in a virtual environment to manage the dependancies:
+
+```
+python -m venv venv
+source venv/bin/activate
+```
+Now a virtual environment (named venv) is activated:
+
+```
+python setup.py install
+```
+
+
+
 ## gAIRR-annotate usage
 ```
 $ gAIRR_annotate -wd <work_dir> -id <sample_id> -a1 <assembly_h1.fa> -a2 <assembly_h2.fa> 
