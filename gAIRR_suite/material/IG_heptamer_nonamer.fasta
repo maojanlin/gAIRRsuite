@@ -1,0 +1,3322 @@
+>X97051|IGHD1-1*01|Homo_sapiens|F|3'D-HEPTAMER|33731..33737|7 nt|1| | | | |7+0=7| | |
+caccgtg
+>X97051|IGHD1-1*01|Homo_sapiens|F|3'D-NONAMER|33750..33758|9 nt|1| | | | |9+0=9| | |
+tccaaaact
+>X97051|IGHD1-1*01|Homo_sapiens|F|5'D-HEPTAMER|33707..33713|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>X97051|IGHD1-1*01|Homo_sapiens|F|5'D-NONAMER|33686..33694|9 nt|1| | | | |9+0=9| | |
+agattctga
+>X13972|IGHD1-14*01|Homo_sapiens|ORF|3'D-HEPTAMER|14535..14541|7 nt|1| | | | |7+0=7| | |
+cactgtc
+>X13972|IGHD1-14*01|Homo_sapiens|ORF|3'D-NONAMER|14554..14562|9 nt|1| | | | |9+0=9| | |
+tcaaaaact
+>X13972|IGHD1-14*01|Homo_sapiens|ORF|5'D-HEPTAMER|14511..14517|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>X13972|IGHD1-14*01|Homo_sapiens|ORF|5'D-NONAMER|14490..14498|9 nt|1| | | | |9+0=9| | |
+ggattccga
+>X97051|IGHD1-20*01|Homo_sapiens|F|3'D-HEPTAMER|62032..62038|7 nt|1| | | | |7+0=7| | |
+caccgtg
+>X97051|IGHD1-20*01|Homo_sapiens|F|3'D-NONAMER|62051..62059|9 nt|1| | | | |9+0=9| | |
+tccaaaact
+>X97051|IGHD1-20*01|Homo_sapiens|F|5'D-HEPTAMER|62008..62014|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD1-20*01|Homo_sapiens|F|5'D-NONAMER|61987..61995|9 nt|1| | | | |9+0=9| | |
+ggattctga
+>X97051|IGHD1-26*01|Homo_sapiens|F|3'D-HEPTAMER|72189..72195|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X97051|IGHD1-26*01|Homo_sapiens|F|3'D-NONAMER|72208..72216|9 nt|1| | | | |9+0=9| | |
+tccaaaact
+>X97051|IGHD1-26*01|Homo_sapiens|F|5'D-HEPTAMER|72162..72168|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>X97051|IGHD1-26*01|Homo_sapiens|F|5'D-NONAMER|72141..72149|9 nt|1| | | | |9+0=9| | |
+ggattctga
+>X13972|IGHD1-7*01|Homo_sapiens|F|3'D-HEPTAMER|5283..5289|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X13972|IGHD1-7*01|Homo_sapiens|F|3'D-NONAMER|5302..5310|9 nt|1| | | | |9+0=9| | |
+tccaaaacg
+>X13972|IGHD1-7*01|Homo_sapiens|F|5'D-HEPTAMER|5259..5265|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD1-7*01|Homo_sapiens|F|5'D-NONAMER|5238..5246|9 nt|1| | | | |9+0=9| | |
+ggattctga
+>X55575|IGHD1/OR15-1a*01|Homo_sapiens|ORF|3'D-HEPTAMER|80..86|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X55575|IGHD1/OR15-1a*01|Homo_sapiens|ORF|3'D-NONAMER|99..107|9 nt|1| | | | |9+0=9| | |
+tccaaaacc
+>X55575|IGHD1/OR15-1a*01|Homo_sapiens|ORF|5'D-HEPTAMER|56..62|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55575|IGHD1/OR15-1a*01|Homo_sapiens|ORF|5'D-NONAMER|35..43|9 nt|1| | | | |9+0=9| | |
+agattctga
+>X55576|IGHD1/OR15-1b*01|Homo_sapiens|ORF|3'D-HEPTAMER|80..86|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X55576|IGHD1/OR15-1b*01|Homo_sapiens|ORF|3'D-NONAMER|99..107|9 nt|1| | | | |9+0=9| | |
+tccaaaacc
+>X55576|IGHD1/OR15-1b*01|Homo_sapiens|ORF|5'D-HEPTAMER|56..62|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55576|IGHD1/OR15-1b*01|Homo_sapiens|ORF|5'D-NONAMER|35..43|9 nt|1| | | | |9+0=9| | |
+agattctga
+>J00234|IGHD2-15*01|Homo_sapiens|F|3'D-HEPTAMER|60..66|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00234|IGHD2-15*01|Homo_sapiens|F|3'D-NONAMER|79..87|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>J00234|IGHD2-15*01|Homo_sapiens|F|5'D-HEPTAMER|22..28|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00234|IGHD2-15*01|Homo_sapiens|F|5'D-NONAMER|1..9|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>J00232|IGHD2-2*01|Homo_sapiens|F|3'D-HEPTAMER|60..66|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00232|IGHD2-2*01|Homo_sapiens|F|3'D-NONAMER|79..87|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>J00232|IGHD2-2*01|Homo_sapiens|F|5'D-HEPTAMER|22..28|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00232|IGHD2-2*01|Homo_sapiens|F|5'D-NONAMER|1..9|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>X97051|IGHD2-2*02|Homo_sapiens|F|3'D-HEPTAMER|36398..36404|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD2-2*02|Homo_sapiens|F|3'D-NONAMER|36417..36425|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>X97051|IGHD2-2*02|Homo_sapiens|F|5'D-HEPTAMER|36360..36366|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X97051|IGHD2-2*02|Homo_sapiens|F|5'D-NONAMER|36339..36347|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>M35648|IGHD2-2*03|Homo_sapiens|F|3'D-HEPTAMER|101..107|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M35648|IGHD2-2*03|Homo_sapiens|F|3'D-NONAMER|120..128|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>M35648|IGHD2-2*03|Homo_sapiens|F|5'D-HEPTAMER|63..69|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>M35648|IGHD2-2*03|Homo_sapiens|F|5'D-NONAMER|42..50|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>J00235|IGHD2-21*01|Homo_sapiens|F|3'D-HEPTAMER|57..63|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00235|IGHD2-21*01|Homo_sapiens|F|3'D-NONAMER|76..84|9 nt|1| | | | |9+0=9| | |
+tcctaaagc
+>J00235|IGHD2-21*01|Homo_sapiens|F|5'D-HEPTAMER|22..28|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00235|IGHD2-21*01|Homo_sapiens|F|5'D-NONAMER|1..9|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>X97051|IGHD2-21*02|Homo_sapiens|F|3'D-HEPTAMER|64672..64678|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD2-21*02|Homo_sapiens|F|3'D-NONAMER|64691..64699|9 nt|1| | | | |9+0=9| | |
+tcctaaagc
+>X97051|IGHD2-21*02|Homo_sapiens|F|5'D-HEPTAMER|64637..64643|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X97051|IGHD2-21*02|Homo_sapiens|F|5'D-NONAMER|64616..64624|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>X13972|IGHD2-8*01|Homo_sapiens|F|3'D-HEPTAMER|7980..7986|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD2-8*01|Homo_sapiens|F|3'D-NONAMER|7999..8007|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>X13972|IGHD2-8*01|Homo_sapiens|F|5'D-HEPTAMER|7942..7948|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X13972|IGHD2-8*01|Homo_sapiens|F|5'D-NONAMER|7921..7929|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>J00233|IGHD2-8*02|Homo_sapiens|F|3'D-HEPTAMER|60..66|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00233|IGHD2-8*02|Homo_sapiens|F|3'D-NONAMER|79..87|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>J00233|IGHD2-8*02|Homo_sapiens|F|5'D-HEPTAMER|22..28|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00233|IGHD2-8*02|Homo_sapiens|F|5'D-NONAMER|1..9|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>X55577|IGHD2/OR15-2a*01|Homo_sapiens|ORF|3'D-HEPTAMER|99..105|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55577|IGHD2/OR15-2a*01|Homo_sapiens|ORF|3'D-NONAMER|118..126|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>X55577|IGHD2/OR15-2a*01|Homo_sapiens|ORF|5'D-HEPTAMER|61..67|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X55577|IGHD2/OR15-2a*01|Homo_sapiens|ORF|5'D-NONAMER|40..48|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>X55578|IGHD2/OR15-2b*01|Homo_sapiens|ORF|3'D-HEPTAMER|99..105|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55578|IGHD2/OR15-2b*01|Homo_sapiens|ORF|3'D-NONAMER|118..126|9 nt|1| | | | |9+0=9| | |
+tcccaaagc
+>X55578|IGHD2/OR15-2b*01|Homo_sapiens|ORF|5'D-HEPTAMER|61..67|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X55578|IGHD2/OR15-2b*01|Homo_sapiens|ORF|5'D-NONAMER|40..48|9 nt|1| | | | |9+0=9| | |
+ggattttgt
+>X13972|IGHD3-10*01|Homo_sapiens|F|3'D-HEPTAMER|10690..10696|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD3-10*01|Homo_sapiens|F|3'D-NONAMER|10709..10717|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X13972|IGHD3-10*01|Homo_sapiens|F|5'D-HEPTAMER|10652..10658|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X13972|IGHD3-10*01|Homo_sapiens|F|5'D-NONAMER|10631..10639|9 nt|1| | | | |9+0=9| | |
+ggtttgggg
+>X93615|IGHD3-10*02|Homo_sapiens|F|3'D-HEPTAMER|60..66|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X93615|IGHD3-10*02|Homo_sapiens|F|3'D-NONAMER|79..87|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X93615|IGHD3-10*02|Homo_sapiens|F|5'D-HEPTAMER|23..29|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X93615|IGHD3-10*02|Homo_sapiens|F|5'D-NONAMER|2..10|9 nt|1| | | | |9+0=9| | |
+ggtttgggg
+>IMGT000110|IGHD3-10*03|Homo_sapiens|F|3'D-HEPTAMER|985928..985934|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000110|IGHD3-10*03|Homo_sapiens|F|3'D-NONAMER|985947..985955|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>IMGT000110|IGHD3-10*03|Homo_sapiens|F|5'D-HEPTAMER|985890..985896|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>IMGT000110|IGHD3-10*03|Homo_sapiens|F|5'D-NONAMER|985869..985877|9 nt|1| | | | |9+0=9| | |
+ggtttgggg
+>X93614|IGHD3-16*01|Homo_sapiens|F|3'D-HEPTAMER|67..73|7 nt|1| | | | |7+0=7| | |
+cacagca
+>X93614|IGHD3-16*01|Homo_sapiens|F|3'D-NONAMER|86..94|9 nt|1| | | | |9+0=9| | |
+tcagaaaac
+>X93614|IGHD3-16*01|Homo_sapiens|F|5'D-HEPTAMER|23..29|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X93614|IGHD3-16*01|Homo_sapiens|F|5'D-NONAMER|2..10|9 nt|1| | | | |9+0=9| | |
+ggtttgaag
+>X97051|IGHD3-16*02|Homo_sapiens|F|3'D-HEPTAMER|57589..57595|7 nt|1| | | | |7+0=7| | |
+cacagca
+>X97051|IGHD3-16*02|Homo_sapiens|F|3'D-NONAMER|57608..57616|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>X97051|IGHD3-16*02|Homo_sapiens|F|5'D-HEPTAMER|57545..57551|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X97051|IGHD3-16*02|Homo_sapiens|F|5'D-NONAMER|57524..57532|9 nt|1| | | | |9+0=9| | |
+ggtttgaag
+>IMGT000110|IGHD3-16*03|Homo_sapiens|F|3'D-HEPTAMER|994791..994797|7 nt|1| | | | |7+0=7| | |
+cacagca
+>IMGT000110|IGHD3-16*03|Homo_sapiens|F|3'D-NONAMER|994810..994818|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>IMGT000110|IGHD3-16*03|Homo_sapiens|F|5'D-HEPTAMER|994747..994753|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>IMGT000110|IGHD3-16*03|Homo_sapiens|F|5'D-NONAMER|994726..994734|9 nt|1| | | | |9+0=9| | |
+ggtttgaag
+>X93616|IGHD3-22*01|Homo_sapiens|F|3'D-HEPTAMER|61..67|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X93616|IGHD3-22*01|Homo_sapiens|F|3'D-NONAMER|80..88|9 nt|1| | | | |9+0=9| | |
+tcaaaaact
+>X93616|IGHD3-22*01|Homo_sapiens|F|5'D-HEPTAMER|23..29|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X93616|IGHD3-22*01|Homo_sapiens|F|5'D-NONAMER|2..10|9 nt|1| | | | |9+0=9| | |
+ggtttgaag
+>X13972|IGHD3-3*01|Homo_sapiens|F|3'D-HEPTAMER|835..841|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD3-3*01|Homo_sapiens|F|3'D-NONAMER|854..862|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X13972|IGHD3-3*01|Homo_sapiens|F|5'D-HEPTAMER|797..803|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X13972|IGHD3-3*01|Homo_sapiens|F|5'D-NONAMER|776..784|9 nt|1| | | | |9+0=9| | |
+ggtttgggg
+>X93618|IGHD3-3*02|Homo_sapiens|F|3'D-HEPTAMER|61..67|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X93618|IGHD3-3*02|Homo_sapiens|F|3'D-NONAMER|80..88|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X93618|IGHD3-3*02|Homo_sapiens|F|5'D-HEPTAMER|23..29|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X93618|IGHD3-3*02|Homo_sapiens|F|5'D-NONAMER|2..10|9 nt|1| | | | |9+0=9| | |
+ggtttgggg
+>X13972|IGHD3-9*01|Homo_sapiens|F|3'D-HEPTAMER|10506..10512|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD3-9*01|Homo_sapiens|F|3'D-NONAMER|10525..10533|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X13972|IGHD3-9*01|Homo_sapiens|F|5'D-HEPTAMER|10468..10474|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X13972|IGHD3-9*01|Homo_sapiens|F|5'D-NONAMER|10447..10455|9 nt|1| | | | |9+0=9| | |
+ggtttagaa
+>X55579|IGHD3/OR15-3a*01|Homo_sapiens|ORF|3'D-HEPTAMER|241..247|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55579|IGHD3/OR15-3a*01|Homo_sapiens|ORF|3'D-NONAMER|260..268|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X55579|IGHD3/OR15-3a*01|Homo_sapiens|ORF|5'D-HEPTAMER|203..209|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X55579|IGHD3/OR15-3a*01|Homo_sapiens|ORF|5'D-NONAMER|182..190|9 nt|1| | | | |9+0=9| | |
+ggtttgggg
+>X55580|IGHD3/OR15-3b*01|Homo_sapiens|ORF|3'D-HEPTAMER|241..247|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55580|IGHD3/OR15-3b*01|Homo_sapiens|ORF|3'D-NONAMER|260..268|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X55580|IGHD3/OR15-3b*01|Homo_sapiens|ORF|5'D-HEPTAMER|203..209|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X55580|IGHD3/OR15-3b*01|Homo_sapiens|ORF|5'D-NONAMER|182..190|9 nt|1| | | | |9+0=9| | |
+ggtttgggg
+>X13972|IGHD4-11*01|Homo_sapiens|ORF|3'D-HEPTAMER|11566..11572|7 nt|1| | | | |7+0=7| | |
+catagtg
+>X13972|IGHD4-11*01|Homo_sapiens|ORF|3'D-NONAMER|11585..11593|9 nt|1| | | | |9+0=9| | |
+gcaaaaact
+>X13972|IGHD4-11*01|Homo_sapiens|ORF|5'D-HEPTAMER|11543..11549|7 nt|1| | | | |7+0=7| | |
+tgctgtg
+>X13972|IGHD4-11*01|Homo_sapiens|ORF|5'D-NONAMER|11522..11530|9 nt|1| | | | |9+0=9| | |
+gctttttgt
+>X97051|IGHD4-17*01|Homo_sapiens|F|3'D-HEPTAMER|58715..58721|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD4-17*01|Homo_sapiens|F|3'D-NONAMER|58734..58742|9 nt|1| | | | |9+0=9| | |
+gcaaaaact
+>X97051|IGHD4-17*01|Homo_sapiens|F|5'D-HEPTAMER|58692..58698|7 nt|1| | | | |7+0=7| | |
+tactgtg
+>X97051|IGHD4-17*01|Homo_sapiens|F|5'D-NONAMER|58671..58679|9 nt|1| | | | |9+0=9| | |
+gctttttgt
+>X97051|IGHD4-23*01|Homo_sapiens|ORF|3'D-HEPTAMER|68353..68359|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD4-23*01|Homo_sapiens|ORF|3'D-NONAMER|68372..68380|9 nt|1| | | | |9+0=9| | |
+gcaaaaact
+>X97051|IGHD4-23*01|Homo_sapiens|ORF|5'D-HEPTAMER|68327..68333|7 nt|1| | | | |7+0=7| | |
+tgctgtg
+>X97051|IGHD4-23*01|Homo_sapiens|ORF|5'D-NONAMER|68306..68314|9 nt|1| | | | |9+0=9| | |
+gctttttgt
+>X13972|IGHD4-4*01|Homo_sapiens|F|3'D-HEPTAMER|1968..1974|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD4-4*01|Homo_sapiens|F|3'D-NONAMER|1987..1995|9 nt|1| | | | |9+0=9| | |
+gcaaaaact
+>X13972|IGHD4-4*01|Homo_sapiens|F|5'D-HEPTAMER|1945..1951|7 nt|1| | | | |7+0=7| | |
+tactgtg
+>X13972|IGHD4-4*01|Homo_sapiens|F|5'D-NONAMER|1924..1932|9 nt|1| | | | |9+0=9| | |
+gctttttgt
+>X55581|IGHD4/OR15-4a*01|Homo_sapiens|ORF|3'D-HEPTAMER|102..108|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55581|IGHD4/OR15-4a*01|Homo_sapiens|ORF|3'D-NONAMER|121..129|9 nt|1| | | | |9+0=9| | |
+gcaaaaact
+>X55581|IGHD4/OR15-4a*01|Homo_sapiens|ORF|5'D-HEPTAMER|76..82|7 nt|1| | | | |7+0=7| | |
+tgctatg
+>X55581|IGHD4/OR15-4a*01|Homo_sapiens|ORF|5'D-NONAMER|55..63|9 nt|1| | | | |9+0=9| | |
+gctttttgt
+>X55582|IGHD4/OR15-4b*01|Homo_sapiens|ORF|3'D-HEPTAMER|101..107|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55582|IGHD4/OR15-4b*01|Homo_sapiens|ORF|3'D-NONAMER|120..128|9 nt|1| | | | |9+0=9| | |
+gcaaaaact
+>X55582|IGHD4/OR15-4b*01|Homo_sapiens|ORF|5'D-HEPTAMER|75..81|7 nt|1| | | | |7+0=7| | |
+tgctatg
+>X55582|IGHD4/OR15-4b*01|Homo_sapiens|ORF|5'D-NONAMER|55..63|9 nt|1| | | | |9+0=9| | |
+gctttttgt
+>X13972|IGHD5-12*01|Homo_sapiens|F|3'D-HEPTAMER|12529..12535|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD5-12*01|Homo_sapiens|F|3'D-NONAMER|12548..12556|9 nt|1| | | | |9+0=9| | |
+gcagcaacc
+>X13972|IGHD5-12*01|Homo_sapiens|F|5'D-HEPTAMER|12499..12505|7 nt|1| | | | |7+0=7| | |
+gactgtg
+>X13972|IGHD5-12*01|Homo_sapiens|F|5'D-NONAMER|12478..12486|9 nt|1| | | | |9+0=9| | |
+ggttattgt
+>X97051|IGHD5-18*01|Homo_sapiens|F|3'D-HEPTAMER|59681..59687|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD5-18*01|Homo_sapiens|F|3'D-NONAMER|59700..59708|9 nt|1| | | | |9+0=9| | |
+gcagcaacc
+>X97051|IGHD5-18*01|Homo_sapiens|F|5'D-HEPTAMER|59654..59660|7 nt|1| | | | |7+0=7| | |
+gactgtg
+>X97051|IGHD5-18*01|Homo_sapiens|F|5'D-NONAMER|59633..59641|9 nt|1| | | | |9+0=9| | |
+ggttattgt
+>IMGT000110|IGHD5-18*02|Homo_sapiens|ORF|3'D-HEPTAMER|996885..996891|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000110|IGHD5-18*02|Homo_sapiens|ORF|3'D-NONAMER|996904..996912|9 nt|1| | | | |9+0=9| | |
+gcagcaacc
+>IMGT000110|IGHD5-18*02|Homo_sapiens|ORF|5'D-HEPTAMER|996855..996861|7 nt|1| | | | |7+0=7| | |
+gactgtg
+>IMGT000110|IGHD5-18*02|Homo_sapiens|ORF|5'D-NONAMER|996834..996842|9 nt|1| | | | |9+0=9| | |
+ggttatcgt
+>X97051|IGHD5-24*01|Homo_sapiens|ORF|3'D-HEPTAMER|69320..69326|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD5-24*01|Homo_sapiens|ORF|3'D-NONAMER|69339..69347|9 nt|1| | | | |9+0=9| | |
+gcagcaacc
+>X97051|IGHD5-24*01|Homo_sapiens|ORF|5'D-HEPTAMER|69293..69299|7 nt|1| | | | |7+0=7| | |
+ggccgtg
+>X97051|IGHD5-24*01|Homo_sapiens|ORF|5'D-NONAMER|69272..69280|9 nt|1| | | | |9+0=9| | |
+ggttattgt
+>X13972|IGHD5-5*01|Homo_sapiens|F|3'D-HEPTAMER|2933..2939|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD5-5*01|Homo_sapiens|F|3'D-NONAMER|2952..2960|9 nt|1| | | | |9+0=9| | |
+gcagcaacc
+>X13972|IGHD5-5*01|Homo_sapiens|F|5'D-HEPTAMER|2906..2912|7 nt|1| | | | |7+0=7| | |
+gactgtg
+>X13972|IGHD5-5*01|Homo_sapiens|F|5'D-NONAMER|2885..2893|9 nt|1| | | | |9+0=9| | |
+ggttattgt
+>X55583|IGHD5/OR15-5a*01|Homo_sapiens|ORF|3'D-HEPTAMER|117..123|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55583|IGHD5/OR15-5a*01|Homo_sapiens|ORF|3'D-NONAMER|136..144|9 nt|1| | | | |9+0=9| | |
+gcagcaacc
+>X55583|IGHD5/OR15-5a*01|Homo_sapiens|ORF|5'D-HEPTAMER|87..93|7 nt|1| | | | |7+0=7| | |
+gattgtg
+>X55583|IGHD5/OR15-5a*01|Homo_sapiens|ORF|5'D-NONAMER|66..74|9 nt|1| | | | |9+0=9| | |
+ggttattgt
+>X55584|IGHD5/OR15-5b*01|Homo_sapiens|ORF|3'D-HEPTAMER|117..123|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X55584|IGHD5/OR15-5b*01|Homo_sapiens|ORF|3'D-NONAMER|136..144|9 nt|1| | | | |9+0=9| | |
+gcagcaacc
+>X55584|IGHD5/OR15-5b*01|Homo_sapiens|ORF|5'D-HEPTAMER|87..93|7 nt|1| | | | |7+0=7| | |
+gactgtg
+>X55584|IGHD5/OR15-5b*01|Homo_sapiens|ORF|5'D-NONAMER|66..74|9 nt|1| | | | |9+0=9| | |
+ggttattgt
+>X13972|IGHD6-13*01|Homo_sapiens|F|3'D-HEPTAMER|14032..14038|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD6-13*01|Homo_sapiens|F|3'D-NONAMER|14051..14059|9 nt|1| | | | |9+0=9| | |
+ccagaaacc
+>X13972|IGHD6-13*01|Homo_sapiens|F|5'D-HEPTAMER|14004..14010|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD6-13*01|Homo_sapiens|F|5'D-NONAMER|13983..13991|9 nt|1| | | | |9+0=9| | |
+ggtttctga
+>X97051|IGHD6-19*01|Homo_sapiens|F|3'D-HEPTAMER|61524..61530|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD6-19*01|Homo_sapiens|F|3'D-NONAMER|61543..61551|9 nt|1| | | | |9+0=9| | |
+ccagaaacc
+>X97051|IGHD6-19*01|Homo_sapiens|F|5'D-HEPTAMER|61496..61502|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X97051|IGHD6-19*01|Homo_sapiens|F|5'D-NONAMER|61475..61483|9 nt|1| | | | |9+0=9| | |
+ggtttctga
+>X97051|IGHD6-25*01|Homo_sapiens|F|3'D-HEPTAMER|71684..71690|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>X97051|IGHD6-25*01|Homo_sapiens|F|3'D-NONAMER|71703..71711|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X97051|IGHD6-25*01|Homo_sapiens|F|5'D-HEPTAMER|71659..71665|7 nt|1| | | | |7+0=7| | |
+cacagtc
+>X97051|IGHD6-25*01|Homo_sapiens|F|5'D-NONAMER|71638..71646|9 nt|1| | | | |9+0=9| | |
+ggtttctga
+>X13972|IGHD6-6*01|Homo_sapiens|F|3'D-HEPTAMER|4780..4786|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD6-6*01|Homo_sapiens|F|3'D-NONAMER|4799..4807|9 nt|1| | | | |9+0=9| | |
+ccagaaacc
+>X13972|IGHD6-6*01|Homo_sapiens|F|5'D-HEPTAMER|4755..4761|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X13972|IGHD6-6*01|Homo_sapiens|F|5'D-NONAMER|4734..4742|9 nt|1| | | | |9+0=9| | |
+cgtttctga
+>J00256|IGHD7-27*01|Homo_sapiens|F|3'D-HEPTAMER|632..638|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00256|IGHD7-27*01|Homo_sapiens|F|3'D-NONAMER|651..659|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>J00256|IGHD7-27*01|Homo_sapiens|F|5'D-HEPTAMER|614..620|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00256|IGHD7-27*01|Homo_sapiens|F|5'D-NONAMER|592..600|9 nt|1| | | | |9+0=9| | |
+ggtttttgg
+>J00256|IGHJ1*01|Homo_sapiens|F|J-HEPTAMER|716..722|7 nt|1| | | | |7+0=7| | |
+caccgtg
+>J00256|IGHJ1*01|Homo_sapiens|F|J-NONAMER|686..694|9 nt|1| | | | |9+0=9| | |
+ggtttctgt
+>J00256|IGHJ1P*01|Homo_sapiens|P|J-HEPTAMER|497..503|7 nt|1| | | | |7+0=7| | |
+cactggc
+>J00256|IGHJ1P*01|Homo_sapiens|P|J-NONAMER|467..475|9 nt|1| | | | |9+0=9| | |
+gtgttttgg
+>IMGT000035|IGHJ1P*02|Homo_sapiens|P|J-HEPTAMER|1014161..1014167|7 nt|1| | | | |7+0=7| | |
+cactggc
+>IMGT000035|IGHJ1P*02|Homo_sapiens|P|J-NONAMER|1014131..1014139|9 nt|1| | | | |9+0=9| | |
+gtgttttgg
+>J00256|IGHJ2*01|Homo_sapiens|F|J-HEPTAMER|925..931|7 nt|1| | | | |7+0=7| | |
+gactgtg
+>J00256|IGHJ2*01|Homo_sapiens|F|J-NONAMER|893..901|9 nt|1| | | | |9+0=9| | |
+tgtttttgt
+>J00256|IGHJ2P*01|Homo_sapiens|P|J-HEPTAMER|1313..1319|7 nt|1| | | | |7+0=7| | |
+tagtgtg
+>J00256|IGHJ2P*01|Homo_sapiens|P|J-NONAMER|1284..1292|9 nt|1| | | | |9+0=9| | |
+tgttcatgt
+>IMGT000035|IGHJ2P*02|Homo_sapiens|P|J-HEPTAMER|1014986..1014992|7 nt|1| | | | |7+0=7| | |
+tagtgtg
+>IMGT000035|IGHJ2P*02|Homo_sapiens|P|J-NONAMER|1014955..1014963|9 nt|1| | | | |9+0=9| | |
+tgttcatgt
+>J00256|IGHJ3*01|Homo_sapiens|F|J-HEPTAMER|1530..1536|7 nt|1| | | | |7+0=7| | |
+ccctgtg
+>J00256|IGHJ3*01|Homo_sapiens|F|J-NONAMER|1498..1506|9 nt|1| | | | |9+0=9| | |
+ggtttgtgt
+>X86355|IGHJ3*02|Homo_sapiens|F|J-HEPTAMER|1100..1106|7 nt|1| | | | |7+0=7| | |
+ccctgtg
+>X86355|IGHJ3*02|Homo_sapiens|F|J-NONAMER|1068..1076|9 nt|1| | | | |9+0=9| | |
+ggtttgtgt
+>J00256|IGHJ3P*01|Homo_sapiens|P|J-HEPTAMER|2739..2745|7 nt|1| | | | |7+0=7| | |
+ccgtctg
+>J00256|IGHJ3P*01|Homo_sapiens|P|J-NONAMER|2709..2717|9 nt|1| | | | |9+0=9| | |
+ggtttttgg
+>X86355|IGHJ3P*02|Homo_sapiens|P|J-HEPTAMER|2270..2276|7 nt|1| | | | |7+0=7| | |
+ccgtctg
+>X86355|IGHJ3P*02|Homo_sapiens|P|J-NONAMER|2239..2247|9 nt|1| | | | |9+0=9| | |
+ggtttttgg
+>J00256|IGHJ4*01|Homo_sapiens|F|J-HEPTAMER|1905..1911|7 nt|1| | | | |7+0=7| | |
+caatgtg
+>J00256|IGHJ4*01|Homo_sapiens|F|J-NONAMER|1873..1881|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>X86355|IGHJ4*02|Homo_sapiens|F|J-HEPTAMER|1473..1479|7 nt|1| | | | |7+0=7| | |
+caatgtg
+>X86355|IGHJ4*02|Homo_sapiens|F|J-NONAMER|1441..1449|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>M25625|IGHJ4*03|Homo_sapiens|F|J-HEPTAMER|439..445|7 nt|1| | | | |7+0=7| | |
+caatgtg
+>M25625|IGHJ4*03|Homo_sapiens|F|J-NONAMER|407..415|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>J00256|IGHJ5*01|Homo_sapiens|F|J-HEPTAMER|2347..2353|7 nt|1| | | | |7+0=7| | |
+caatgtg
+>J00256|IGHJ5*01|Homo_sapiens|F|J-NONAMER|2317..2325|9 nt|1| | | | |9+0=9| | |
+gttctttgt
+>X86355|IGHJ5*02|Homo_sapiens|F|J-HEPTAMER|1871..1877|7 nt|1| | | | |7+0=7| | |
+caatgtg
+>X86355|IGHJ5*02|Homo_sapiens|F|J-NONAMER|1840..1848|9 nt|1| | | | |9+0=9| | |
+gttcttgcc
+>J00256|IGHJ6*01|Homo_sapiens|F|J-HEPTAMER|2940..2946|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>J00256|IGHJ6*01|Homo_sapiens|F|J-NONAMER|2909..2917|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>M25625|IGHJ6*02|Homo_sapiens|F|J-HEPTAMER|1473..1479|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>M25625|IGHJ6*02|Homo_sapiens|F|J-NONAMER|1442..1450|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>IMGT000035|IGHJ6*03|Homo_sapiens|F|J-HEPTAMER|1016578..1016584|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>IMGT000035|IGHJ6*03|Homo_sapiens|F|J-NONAMER|1016547..1016555|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>AJ879487|IGHJ6*04|Homo_sapiens|F|J-HEPTAMER|32..38|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>AJ879487|IGHJ6*04|Homo_sapiens|F|J-NONAMER|1..9|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>AB019441|IGHV(II)-1-1*01|Homo_sapiens|P|V-HEPTAMER|78478..78484|7 nt|1| | | | |7+0=7| | |
+cagaatg
+>AB019441|IGHV(II)-1-1*01|Homo_sapiens|P|V-NONAMER|78506..78514|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000128|IGHV(II)-15-1*02|Homo_sapiens|P|V-HEPTAMER|729835..729841|7 nt|1| | | | |7+0=7| | |
+cacagaa
+>IMGT000128|IGHV(II)-15-1*02|Homo_sapiens|P|V-NONAMER|729864..729875|12 nt|1| | | | |12+0=12| | |
+acacaaacctcc
+>IMGT000129|IGHV(II)-15-1*03|Homo_sapiens|P|V-HEPTAMER|653908..653914|7 nt|1| | | | |7+0=7| | |
+cacagaa
+>IMGT000129|IGHV(II)-15-1*03|Homo_sapiens|P|V-NONAMER|653935..653943|9 nt|1| | | | |9+0=9| | |
+acacaacct
+>AC206018|IGHV(II)-22-1*02|Homo_sapiens|P|V-HEPTAMER|9510..9516|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>AC206018|IGHV(II)-22-1*02|Homo_sapiens|P|V-NONAMER|9539..9547|9 nt|1| | | | |9+0=9| | |
+gaacactct
+>AC244492|IGHV(II)-22-1D*01|Homo_sapiens|P|V-HEPTAMER|27337..27343|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>AC244492|IGHV(II)-22-1D*01|Homo_sapiens|P|V-NONAMER|27367..27375|9 nt|1| | | | |9+0=9| | |
+aacactcta
+>IMGT000111|IGHV(II)-22-1D*02|Homo_sapiens|P|V-HEPTAMER|641426..641432|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>IMGT000111|IGHV(II)-22-1D*02|Homo_sapiens|P|V-NONAMER|641457..641465|9 nt|1| | | | |9+0=9| | |
+acactctac
+>AC245166|IGHV(II)-26-2*01|Homo_sapiens|P|V-HEPTAMER|103610..103616|7 nt|1| | | | |7+0=7| | |
+ctcagtg
+>AC245166|IGHV(II)-26-2*01|Homo_sapiens|P|V-NONAMER|103640..103648|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV(II)-28-1*01|Homo_sapiens|P|V-HEPTAMER|103856..103862|7 nt|1| | | | |7+0=7| | |
+cgcaatg
+>AB019439|IGHV(II)-28-1*01|Homo_sapiens|P|V-NONAMER|103886..103894|9 nt|1| | | | |9+0=9| | |
+acacaaccc
+>KC162924|IGHV(II)-28-1*02|Homo_sapiens|P|V-HEPTAMER|14729..14735|7 nt|1| | | | |7+0=7| |rev-compl|
+cgcaatg
+>KC162924|IGHV(II)-28-1*02|Homo_sapiens|P|V-NONAMER|14697..14705|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaccc
+>AC245166|IGHV(II)-28-1*03|Homo_sapiens|P|V-HEPTAMER|88826..88832|7 nt|1| | | | |7+0=7| | |
+cgcaatg
+>AC245166|IGHV(II)-28-1*03|Homo_sapiens|P|V-NONAMER|88856..88864|9 nt|1| | | | |9+0=9| | |
+acacaaccc
+>AC279998|IGHV(II)-28-1*04|Homo_sapiens|P|V-HEPTAMER|25777..25783|7 nt|1| | | | |7+0=7| |rev-compl|
+cgcaatg
+>AC279998|IGHV(II)-28-1*04|Homo_sapiens|P|V-NONAMER|25745..25753|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaccc
+>AB019439|IGHV(II)-30-1*01|Homo_sapiens|P|V-HEPTAMER|90940..90946|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV(II)-30-1*01|Homo_sapiens|P|V-NONAMER|90970..90978|9 nt|1| | | | |9+0=9| | |
+acccaagcc
+>AC245166|IGHV(II)-30-1*02|Homo_sapiens|P|V-HEPTAMER|75578..75584|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC245166|IGHV(II)-30-1*02|Homo_sapiens|P|V-NONAMER|75608..75616|9 nt|1| | | | |9+0=9| | |
+acccaagcc
+>AC245166|IGHV(II)-30-21*01|Homo_sapiens|P|V-HEPTAMER|63794..63800|7 nt|1| | | | |7+0=7| | |
+tgcaatg
+>AC245166|IGHV(II)-30-21*01|Homo_sapiens|P|V-NONAMER|63824..63832|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC244456|IGHV(II)-30-32*01|Homo_sapiens|P|V-HEPTAMER|9716..9722|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC244456|IGHV(II)-30-32*01|Homo_sapiens|P|V-NONAMER|9684..9692|9 nt|1| | | | |9+0=9| |rev-compl|
+acccaagcc
+>AC244456|IGHV(II)-30-41*01|Homo_sapiens|P|V-HEPTAMER|21052..21058|7 nt|1| | | | |7+0=7| |rev-compl|
+cattgtg
+>AC244456|IGHV(II)-30-41*01|Homo_sapiens|P|V-NONAMER|21036..21044|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaccc
+>IMGT000128|IGHV(II)-30-41*02|Homo_sapiens|P|V-HEPTAMER|515052..515058|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>IMGT000128|IGHV(II)-30-41*02|Homo_sapiens|P|V-NONAMER|515066..515074|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC244456|IGHV(II)-30-51*01|Homo_sapiens|P|V-HEPTAMER|34297..34303|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC244456|IGHV(II)-30-51*01|Homo_sapiens|P|V-NONAMER|34265..34273|9 nt|1| | | | |9+0=9| |rev-compl|
+acccaagcc
+>AC245243|IGHV(II)-30-51*02|Homo_sapiens|P|V-HEPTAMER|10883..10889|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC245243|IGHV(II)-30-51*02|Homo_sapiens|P|V-NONAMER|10851..10859|9 nt|1| | | | |9+0=9| |rev-compl|
+acccaagcc
+>IMGT000128|IGHV(II)-30-51*03|Homo_sapiens|P|V-HEPTAMER|502112..502118|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV(II)-30-51*03|Homo_sapiens|P|V-NONAMER|502142..502150|9 nt|1| | | | |9+0=9| | |
+acccaagcc
+>AB019439|IGHV(II)-31-1*01|Homo_sapiens|P|V-HEPTAMER|79169..79175|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>AB019439|IGHV(II)-31-1*01|Homo_sapiens|P|V-NONAMER|79188..79196|9 nt|1| | | | |9+0=9| | |
+aacctccct
+>IMGT000130|IGHV(II)-31-1*02|Homo_sapiens|P|V-HEPTAMER|491083..491089|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>IMGT000130|IGHV(II)-31-1*02|Homo_sapiens|P|V-NONAMER|491102..491110|9 nt|1| | | | |9+0=9| | |
+aacctccct
+>AC245166|IGHV(II)-33-1*01|Homo_sapiens|P|V-HEPTAMER|50867..50873|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC245166|IGHV(II)-33-1*01|Homo_sapiens|P|V-NONAMER|50897..50905|9 nt|1| | | | |9+0=9| | |
+acccaagcc
+>AC279998|IGHV(II)-33-1*02|Homo_sapiens|P|V-HEPTAMER|38700..38706|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC279998|IGHV(II)-33-1*02|Homo_sapiens|P|V-NONAMER|38668..38676|9 nt|1| | | | |9+0=9| |rev-compl|
+acccaagcc
+>IMGT000035|IGHV(II)-4-2*01|Homo_sapiens|P|V-HEPTAMER|857913..857919|7 nt|1| | | | |7+0=7| | |
+ctcagtg
+>IMGT000035|IGHV(II)-4-2*01|Homo_sapiens|P|V-NONAMER|857943..857951|9 nt|1| | | | |9+0=9| | |
+acacaaaac
+>AB019438|IGHV(II)-49-1*01|Homo_sapiens|P|V-HEPTAMER|69226..69232|7 nt|1| | | | |7+0=7| | |
+tacagca
+>AB019438|IGHV(II)-49-1*01|Homo_sapiens|P|V-NONAMER|69256..69264|9 nt|1| | | | |9+0=9| | |
+aaacaaacc
+>AB019438|IGHV(II)-51-2*01|Homo_sapiens|P|V-HEPTAMER|48844..48850|7 nt|1| | | | |7+0=7| | |
+aacagaa
+>AB019438|IGHV(II)-51-2*01|Homo_sapiens|P|V-NONAMER|48872..48880|9 nt|1| | | | |9+0=9| | |
+acacaaact
+>IMGT000128|IGHV(II)-51-2*02|Homo_sapiens|P|V-HEPTAMER|259935..259941|7 nt|1| | | | |7+0=7| | |
+aacagaa
+>IMGT000128|IGHV(II)-51-2*02|Homo_sapiens|P|V-NONAMER|259963..259971|9 nt|1| | | | |9+0=9| | |
+acacaaact
+>AB019438|IGHV(II)-53-1*01|Homo_sapiens|P|V-HEPTAMER|33875..33881|7 nt|1| | | | |7+0=7| | |
+cacagta
+>AB019438|IGHV(II)-53-1*01|Homo_sapiens|P|V-NONAMER|33905..33913|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>IMGT000035|IGHV(II)-53-1*02|Homo_sapiens|P|V-HEPTAMER|280191..280197|7 nt|1| | | | |7+0=7| | |
+cacagta
+>IMGT000035|IGHV(II)-53-1*02|Homo_sapiens|P|V-NONAMER|280221..280229|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>IMGT000111|IGHV(II)-53-1*03|Homo_sapiens|P|V-HEPTAMER|244525..244531|7 nt|1| | | | |7+0=7| | |
+cacagta
+>IMGT000111|IGHV(II)-53-1*03|Homo_sapiens|P|V-NONAMER|244555..244563|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>IMGT000129|IGHV(II)-53-1*04|Homo_sapiens|P|V-HEPTAMER|243253..243259|7 nt|1| | | | |7+0=7| | |
+cacagta
+>IMGT000129|IGHV(II)-53-1*04|Homo_sapiens|P|V-NONAMER|243280..243288|9 nt|1| | | | |9+0=9| | |
+caacaaacc
+>AB019437|IGHV(II)-60-1*01|Homo_sapiens|P|V-HEPTAMER|195832..195838|7 nt|1| | | | |7+0=7| | |
+cagagtg
+>AB019437|IGHV(II)-60-1*01|Homo_sapiens|P|V-NONAMER|195861..195869|9 nt|1| | | | |9+0=9| | |
+cacccaaac
+>MK540647|IGHV(II)-60-1*02|Homo_sapiens|P|V-HEPTAMER|20547..20553|7 nt|1| | | | |7+0=7| | |
+cagagtg
+>MK540647|IGHV(II)-60-1*02|Homo_sapiens|P|V-NONAMER|20576..20584|9 nt|1| | | | |9+0=9| | |
+cacccaaac
+>IMGT000112|IGHV(II)-60-1*03|Homo_sapiens|P|V-HEPTAMER|200990..200996|7 nt|1| | | | |7+0=7| | |
+cagagtg
+>IMGT000112|IGHV(II)-60-1*03|Homo_sapiens|P|V-NONAMER|201020..201028|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>IMGT000128|IGHV(II)-60-1*04|Homo_sapiens|P|V-HEPTAMER|207025..207031|7 nt|1| | | | |7+0=7| | |
+cagagtg
+>IMGT000128|IGHV(II)-60-1*04|Homo_sapiens|P|V-NONAMER|207055..207063|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>AB019437|IGHV(II)-62-1*01|Homo_sapiens|P|V-HEPTAMER|183022..183028|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV(II)-62-1*01|Homo_sapiens|P|V-NONAMER|183053..183061|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>IMGT000035|IGHV(II)-62-1*02|Homo_sapiens|P|V-HEPTAMER|229330..229336|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV(II)-62-1*02|Homo_sapiens|P|V-NONAMER|229360..229368|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>MK540647|IGHV(II)-62-1*03|Homo_sapiens|P|V-HEPTAMER|7718..7724|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540647|IGHV(II)-62-1*03|Homo_sapiens|P|V-NONAMER|7748..7756|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>IMGT000112|IGHV(II)-62-1*04|Homo_sapiens|P|V-HEPTAMER|188163..188169|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000112|IGHV(II)-62-1*04|Homo_sapiens|P|V-NONAMER|188193..188201|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>IMGT000111|IGHV(II)-65-1*02|Homo_sapiens|P|V-HEPTAMER|172539..172545|7 nt|1| | | | |7+0=7| | |
+cacaacg
+>IMGT000111|IGHV(II)-65-1*02|Homo_sapiens|P|V-NONAMER|172569..172577|9 nt|1| | | | |9+0=9| | |
+atacaaacc
+>IMGT000112|IGHV(II)-65-1*03|Homo_sapiens|P|V-HEPTAMER|166900..166906|7 nt|1| | | | |7+0=7| | |
+cacaacg
+>IMGT000112|IGHV(II)-65-1*03|Homo_sapiens|P|V-NONAMER|166930..166938|9 nt|1| | | | |9+0=9| | |
+atacaaacc
+>IMGT000035|IGHV(II)-7-1*01|Homo_sapiens|P|V-HEPTAMER|798630..798636|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>IMGT000035|IGHV(II)-7-1*01|Homo_sapiens|P|V-NONAMER|798660..798668|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>AB019437|IGHV(II)-78-1*01|Homo_sapiens|P|V-HEPTAMER|15706..15712|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV(II)-78-1*01|Homo_sapiens|P|V-NONAMER|15736..15744|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>IMGT000035|IGHV(II)-78-1*02|Homo_sapiens|P|V-HEPTAMER|14225..14231|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV(II)-78-1*02|Homo_sapiens|P|V-NONAMER|14255..14263|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>IMGT000035|IGHV(III)-10-2*01|Homo_sapiens|P|V-HEPTAMER|784552..784558|7 nt|1| | | | |7+0=7| | |
+cacagtc
+>IMGT000035|IGHV(III)-10-2*01|Homo_sapiens|P|V-NONAMER|784585..784593|9 nt|1| | | | |9+0=9| | |
+acgcaaact
+>AB019440|IGHV(III)-13-1*01|Homo_sapiens|P|V-HEPTAMER|90548..90554|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019440|IGHV(III)-13-1*01|Homo_sapiens|P|V-NONAMER|90578..90586|9 nt|1| | | | |9+0=9| | |
+acaccaacc
+>IMGT000035|IGHV(III)-13-1*02|Homo_sapiens|P|V-HEPTAMER|737560..737566|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV(III)-13-1*02|Homo_sapiens|P|V-NONAMER|737590..737598|9 nt|1| | | | |9+0=9| | |
+acaccaacc
+>AB019440|IGHV(III)-16-1*01|Homo_sapiens|P|V-HEPTAMER|62106..62112|7 nt|1| | | | |7+0=7| | |
+cacagga
+>AB019440|IGHV(III)-16-1*01|Homo_sapiens|P|V-NONAMER|62137..62145|9 nt|1| | | | |9+0=9| | |
+acagaaaaa
+>IMGT000035|IGHV(III)-16-1*02|Homo_sapiens|P|V-HEPTAMER|709100..709106|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000035|IGHV(III)-16-1*02|Homo_sapiens|P|V-NONAMER|709131..709139|9 nt|1| | | | |9+0=9| | |
+acagaaaaa
+>IMGT000111|IGHV(III)-16-1*03|Homo_sapiens|P|V-HEPTAMER|745236..745242|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000111|IGHV(III)-16-1*03|Homo_sapiens|P|V-NONAMER|745267..745275|9 nt|1| | | | |9+0=9| | |
+acagaaaaa
+>IMGT000112|IGHV(III)-16-1*04|Homo_sapiens|P|V-HEPTAMER|769594..769600|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000112|IGHV(III)-16-1*04|Homo_sapiens|P|V-NONAMER|769625..769633|9 nt|1| | | | |9+0=9| | |
+acagaaaaa
+>AB019441|IGHV(III)-2-1*01|Homo_sapiens|P|V-HEPTAMER|21865..21871|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019441|IGHV(III)-2-1*01|Homo_sapiens|P|V-NONAMER|21895..21903|9 nt|1| | | | |9+0=9| | |
+acacaaagc
+>IMGT000035|IGHV(III)-2-1*02|Homo_sapiens|P|V-HEPTAMER|878312..878318|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV(III)-2-1*02|Homo_sapiens|P|V-NONAMER|878342..878350|9 nt|1| | | | |9+0=9| | |
+acacaaagc
+>IMGT000130|IGHV(III)-2-1*03|Homo_sapiens|P|V-HEPTAMER|843814..843820|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000130|IGHV(III)-2-1*03|Homo_sapiens|P|V-NONAMER|843844..843852|9 nt|1| | | | |9+0=9| | |
+acacaaagc
+>IMGT000112|IGHV(III)-25-1*04|Homo_sapiens|P|V-HEPTAMER|635901..635907|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>IMGT000112|IGHV(III)-25-1*04|Homo_sapiens|P|V-NONAMER|635932..635940|9 nt|1| | | | |9+0=9| | |
+acatttgtt
+>AB019439|IGHV(III)-26-1*01|Homo_sapiens|P|V-HEPTAMER|123875..123881|7 nt|1| | | | |7+0=7| | |
+cacaggg
+>AB019439|IGHV(III)-26-1*01|Homo_sapiens|P|V-NONAMER|123906..123914|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>AC245166|IGHV(III)-26-1*02|Homo_sapiens|P|V-HEPTAMER|108852..108858|7 nt|1| | | | |7+0=7| | |
+cacaggg
+>AC245166|IGHV(III)-26-1*02|Homo_sapiens|P|V-NONAMER|108883..108891|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>AB019439|IGHV(III)-38-1*01|Homo_sapiens|P|V-HEPTAMER|15607..15613|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV(III)-38-1*01|Homo_sapiens|P|V-NONAMER|15637..15645|9 nt|1| | | | |9+0=9| | |
+acacaaaag
+>KC162926|IGHV(III)-38-1*02|Homo_sapiens|P|V-HEPTAMER|14855..14861|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC162926|IGHV(III)-38-1*02|Homo_sapiens|P|V-NONAMER|14885..14893|9 nt|1| | | | |9+0=9| | |
+acacaaaag
+>AC280057|IGHV(III)-38-1*03|Homo_sapiens|P|V-HEPTAMER|31609..31615|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC280057|IGHV(III)-38-1*03|Homo_sapiens|P|V-NONAMER|31577..31585|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaaag
+>IMGT000111|IGHV(III)-38-1*04|Homo_sapiens|P|V-HEPTAMER|487345..487351|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV(III)-38-1*04|Homo_sapiens|P|V-NONAMER|487375..487383|9 nt|1| | | | |9+0=9| | |
+acacaaaag
+>AC241995|IGHV(III)-38-1D*01|Homo_sapiens|P|V-HEPTAMER|25116..25122|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC241995|IGHV(III)-38-1D*01|Homo_sapiens|P|V-NONAMER|25146..25154|9 nt|1| | | | |9+0=9| | |
+atacaaaac
+>IMGT000111|IGHV(III)-38-1D*02|Homo_sapiens|P|V-HEPTAMER|433626..433632|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV(III)-38-1D*02|Homo_sapiens|P|V-NONAMER|433656..433664|9 nt|1| | | | |9+0=9| | |
+atacaaaac
+>AB019438|IGHV(III)-47-1*01|Homo_sapiens|P|V-HEPTAMER|102407..102413|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>AB019438|IGHV(III)-47-1*01|Homo_sapiens|P|V-NONAMER|102437..102445|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019440|IGHV(III)-5-2*01|Homo_sapiens|P|V-HEPTAMER|187711..187717|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019440|IGHV(III)-5-2*01|Homo_sapiens|P|V-NONAMER|187741..187749|9 nt|1| | | | |9+0=9| | |
+cgcaaactt
+>IMGT000128|IGHV(III)-67-3*02|Homo_sapiens|P|V-HEPTAMER|152163..152169|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>IMGT000128|IGHV(III)-67-3*02|Homo_sapiens|P|V-NONAMER|152192..152200|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>IMGT000129|IGHV(III)-67-3*03|Homo_sapiens|P|V-HEPTAMER|151118..151124|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>IMGT000129|IGHV(III)-67-3*03|Homo_sapiens|P|V-NONAMER|151147..151155|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>IMGT000035|IGHV(III)-67-3D*02|Homo_sapiens|P|V-HEPTAMER|140725..140731|7 nt|1| | | | |7+0=7| | |
+tacagcg
+>IMGT000035|IGHV(III)-67-3D*02|Homo_sapiens|P|V-NONAMER|140754..140762|9 nt|1| | | | |9+0=9| | |
+acggaaacc
+>AB019437|IGHV(III)-67-4*01|Homo_sapiens|P|V-HEPTAMER|138433..138439|7 nt|1| | | | |7+0=7| | |
+cacagga
+>AB019437|IGHV(III)-67-4*01|Homo_sapiens|P|V-NONAMER|138464..138472|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>AC279908|IGHV(III)-67-4*02|Homo_sapiens|P|V-HEPTAMER|37596..37602|7 nt|1| | | | |7+0=7| | |
+cacagga
+>AC279908|IGHV(III)-67-4*02|Homo_sapiens|P|V-NONAMER|37626..37634|9 nt|1| | | | |9+0=9| | |
+gacacaaaa
+>IMGT000128|IGHV(III)-67-4*03|Homo_sapiens|P|V-HEPTAMER|149731..149737|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000128|IGHV(III)-67-4*03|Homo_sapiens|P|V-NONAMER|149762..149770|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>IMGT000035|IGHV(III)-67-4D*02|Homo_sapiens|P|V-HEPTAMER|138286..138292|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000035|IGHV(III)-67-4D*02|Homo_sapiens|P|V-NONAMER|138317..138325|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>AB019437|IGHV(III)-76-1*01|Homo_sapiens|P|V-HEPTAMER|49552..49558|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000069|IGHV(III)/OR16-25*01|Homo_sapiens|P|V-HEPTAMER|2011020..2011026|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagga
+>IMGT000069|IGHV(III)/OR16-25*01|Homo_sapiens|P|V-NONAMER|2010988..2010996|9 nt|1| | | | |9+0=9| |rev-compl|
+aacagaaaa
+>IMGT000069|IGHV(III)/OR16-27*01|Homo_sapiens|P|V-HEPTAMER|5038..5044|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000069|IGHV(III)/OR16-27*01|Homo_sapiens|P|V-NONAMER|5068..5076|9 nt|1| | | | |9+0=9| | |
+aacagaaaa
+>IMGT000069|IGHV(III)/OR16-28*01|Homo_sapiens|P|V-HEPTAMER|946582..946588|7 nt|1| | | | |7+0=7| | |
+cacagga
+>IMGT000069|IGHV(III)/OR16-28*01|Homo_sapiens|P|V-NONAMER|946612..946620|9 nt|1| | | | |9+0=9| | |
+aacagaaaa
+>AB019438|IGHV(IV)-44-1*01|Homo_sapiens|P|V-HEPTAMER|144193..144199|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>AB019438|IGHV(IV)-44-1*01|Homo_sapiens|P|V-NONAMER|144223..144231|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV(IV)-44-1*02|Homo_sapiens|P|V-HEPTAMER|390504..390510|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>IMGT000035|IGHV(IV)-44-1*02|Homo_sapiens|P|V-NONAMER|390534..390542|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019440|IGHV1-14*01|Homo_sapiens|P|V-HEPTAMER|86971..86977|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019440|IGHV1-14*01|Homo_sapiens|P|V-NONAMER|87002..87010|9 nt|1| | | | |9+0=9| | |
+cagaaatcc
+>IMGT000035|IGHV1-14*02|Homo_sapiens|P|V-HEPTAMER|733964..733970|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV1-14*02|Homo_sapiens|P|V-NONAMER|733994..734002|9 nt|1| | | | |9+0=9| | |
+tcagaaatc
+>IMGT000128|IGHV1-14*03|Homo_sapiens|P|V-HEPTAMER|747450..747456|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV1-14*03|Homo_sapiens|P|V-NONAMER|747480..747488|9 nt|1| | | | |9+0=9| | |
+tcagaaatc
+>M99640|IGHV1-17*01|Homo_sapiens|P|V-HEPTAMER|483..489|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99640|IGHV1-17*01|Homo_sapiens|P|V-NONAMER|513..521|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>AB019440|IGHV1-17*02|Homo_sapiens|P|V-HEPTAMER|58511..58517|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019440|IGHV1-17*02|Homo_sapiens|P|V-NONAMER|58541..58549|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>IMGT000128|IGHV1-17*03|Homo_sapiens|P|V-HEPTAMER|719029..719035|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV1-17*03|Homo_sapiens|P|V-NONAMER|719059..719067|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>M99641|IGHV1-18*01|Homo_sapiens|F|V-HEPTAMER|484..490|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99641|IGHV1-18*01|Homo_sapiens|F|V-NONAMER|514..522|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>HM855463|IGHV1-18*03|Homo_sapiens|F|V-HEPTAMER|317..323|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713938|IGHV1-18*04|Homo_sapiens|F|V-HEPTAMER|688..694|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713938|IGHV1-18*04|Homo_sapiens|F|V-NONAMER|718..726|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>X07448|IGHV1-2*01|Homo_sapiens|F|V-HEPTAMER|565..571|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X07448|IGHV1-2*01|Homo_sapiens|F|V-NONAMER|595..603|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>X62106|IGHV1-2*02|Homo_sapiens|F|V-HEPTAMER|459..465|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X62106|IGHV1-2*02|Homo_sapiens|F|V-NONAMER|489..497|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>X92208|IGHV1-2*03|Homo_sapiens|F|V-HEPTAMER|456..462|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92208|IGHV1-2*03|Homo_sapiens|F|V-NONAMER|486..494|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>KF698733|IGHV1-2*04|Homo_sapiens|F|V-HEPTAMER|689..695|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KF698733|IGHV1-2*04|Homo_sapiens|F|V-NONAMER|719..727|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>HM855674|IGHV1-2*05|Homo_sapiens|F|V-HEPTAMER|17..23|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>MH267285|IGHV1-2*06|Homo_sapiens|F|V-HEPTAMER|592..598|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MH267285|IGHV1-2*06|Homo_sapiens|F|V-NONAMER|622..630|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>MN337615|IGHV1-2*07|Homo_sapiens|F|V-HEPTAMER|720..726|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337615|IGHV1-2*07|Homo_sapiens|F|V-NONAMER|750..758|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>M99642|IGHV1-24*01|Homo_sapiens|F|V-HEPTAMER|506..512|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99642|IGHV1-24*01|Homo_sapiens|F|V-NONAMER|536..544|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>X62109|IGHV1-3*01|Homo_sapiens|F|V-HEPTAMER|459..465|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X62109|IGHV1-3*01|Homo_sapiens|F|V-NONAMER|489..497|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>X62107|IGHV1-3*02|Homo_sapiens|F|V-HEPTAMER|453..459|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X62107|IGHV1-3*02|Homo_sapiens|F|V-NONAMER|483..491|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>MK540645|IGHV1-3*03|Homo_sapiens|F|V-HEPTAMER|1461..1467|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540645|IGHV1-3*03|Homo_sapiens|F|V-NONAMER|1491..1499|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>MN337616|IGHV1-3*05|Homo_sapiens|F|V-HEPTAMER|690..696|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337616|IGHV1-3*05|Homo_sapiens|F|V-NONAMER|720..728|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>KF698736|IGHV1-38-4*01|Homo_sapiens|ORF|V-HEPTAMER|687..693|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KF698736|IGHV1-38-4*01|Homo_sapiens|ORF|V-NONAMER|717..725|9 nt|1| | | | |9+0=9| | |
+tcagaaagc
+>X92209|IGHV1-45*01|Homo_sapiens|F|V-HEPTAMER|440..446|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92209|IGHV1-45*01|Homo_sapiens|F|V-NONAMER|470..478|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>AB019438|IGHV1-45*02|Homo_sapiens|F|V-HEPTAMER|126613..126619|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019438|IGHV1-45*02|Homo_sapiens|F|V-NONAMER|126643..126651|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>IMGT000112|IGHV1-45*03|Homo_sapiens|F|V-HEPTAMER|330999..331005|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000112|IGHV1-45*03|Homo_sapiens|F|V-NONAMER|331029..331037|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>X92343|IGHV1-46*01|Homo_sapiens|F|V-HEPTAMER|591..597|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92343|IGHV1-46*01|Homo_sapiens|F|V-NONAMER|621..629|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>J00240|IGHV1-46*02|Homo_sapiens|F|V-HEPTAMER|698..704|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00240|IGHV1-46*02|Homo_sapiens|F|V-NONAMER|728..736|9 nt|1| | | | |9+0=9| | |
+cagaaaccc
+>L06612|IGHV1-46*03|Homo_sapiens|F|V-HEPTAMER|562..568|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L06612|IGHV1-46*03|Homo_sapiens|F|V-NONAMER|592..600|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>MK540650|IGHV1-46*04|Homo_sapiens|F|V-HEPTAMER|2597..2603|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540650|IGHV1-46*04|Homo_sapiens|F|V-NONAMER|2627..2635|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>M29809|IGHV1-58*01|Homo_sapiens|F|V-HEPTAMER|589..595|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M29809|IGHV1-58*01|Homo_sapiens|F|V-NONAMER|619..627|9 nt|1| | | | |9+0=9| | |
+tcagaaacg
+>AB019438|IGHV1-58*02|Homo_sapiens|F|V-HEPTAMER|11171..11177|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019438|IGHV1-58*02|Homo_sapiens|F|V-NONAMER|11201..11209|9 nt|1| | | | |9+0=9| | |
+tcagaaacg
+>AB019437|IGHV1-67*01|Homo_sapiens|P|V-HEPTAMER|152922..152928|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV1-67*01|Homo_sapiens|P|V-NONAMER|152952..152960|9 nt|1| | | | |9+0=9| | |
+tcagtaacc
+>IMGT000129|IGHV1-67*02|Homo_sapiens|P|V-HEPTAMER|163135..163141|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000129|IGHV1-67*02|Homo_sapiens|P|V-NONAMER|163165..163173|9 nt|1| | | | |9+0=9| | |
+tcagtaacc
+>AB019437|IGHV1-68*01|Homo_sapiens|P|V-HEPTAMER|129679..129685|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>AB019437|IGHV1-68*01|Homo_sapiens|P|V-NONAMER|129709..129717|9 nt|1| | | | |9+0=9| | |
+tcaggaacc
+>MK540648|IGHV1-68*02|Homo_sapiens|P|V-HEPTAMER|32040..32046|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>MK540648|IGHV1-68*02|Homo_sapiens|P|V-NONAMER|32070..32078|9 nt|1| | | | |9+0=9| | |
+tcaggaacc
+>AC279908|IGHV1-68*03|Homo_sapiens|P|V-HEPTAMER|28881..28887|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>AC279908|IGHV1-68*03|Homo_sapiens|P|V-NONAMER|28911..28919|9 nt|1| | | | |9+0=9| | |
+tcaggaacc
+>IMGT000128|IGHV1-68*04|Homo_sapiens|P|V-HEPTAMER|140971..140977|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>IMGT000128|IGHV1-68*04|Homo_sapiens|P|V-NONAMER|141001..141009|9 nt|1| | | | |9+0=9| | |
+tcaggaacc
+>IMGT000129|IGHV1-68*05|Homo_sapiens|P|V-HEPTAMER|139909..139915|7 nt|1| | | | |7+0=7| | |
+catggtg
+>IMGT000129|IGHV1-68*05|Homo_sapiens|P|V-NONAMER|139939..139947|9 nt|1| | | | |9+0=9| | |
+tcaggaacc
+>IMGT000035|IGHV1-68D*02|Homo_sapiens|P|V-HEPTAMER|129559..129565|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>IMGT000035|IGHV1-68D*02|Homo_sapiens|P|V-NONAMER|129589..129597|9 nt|1| | | | |9+0=9| | |
+tcaggaacc
+>L22582|IGHV1-69*01|Homo_sapiens|F|V-HEPTAMER|672..678|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L22582|IGHV1-69*01|Homo_sapiens|F|V-NONAMER|702..710|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>IMGT000129|IGHV1-69*02|Homo_sapiens|F|V-HEPTAMER|127487..127493|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000129|IGHV1-69*02|Homo_sapiens|F|V-NONAMER|127517..127525|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>M83132|IGHV1-69*04|Homo_sapiens|F|V-HEPTAMER|702..708|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M83132|IGHV1-69*04|Homo_sapiens|F|V-NONAMER|732..740|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>AC279908|IGHV1-69*05|Homo_sapiens|F|V-HEPTAMER|17992..17998|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279908|IGHV1-69*05|Homo_sapiens|F|V-NONAMER|18022..18030|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>L22583|IGHV1-69*06|Homo_sapiens|F|V-HEPTAMER|672..678|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L22583|IGHV1-69*06|Homo_sapiens|F|V-NONAMER|702..710|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>MK540648|IGHV1-69*12|Homo_sapiens|F|V-HEPTAMER|20988..20994|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540648|IGHV1-69*12|Homo_sapiens|F|V-NONAMER|21018..21026|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>KC713948|IGHV1-69*14|Homo_sapiens|F|V-HEPTAMER|690..696|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713948|IGHV1-69*14|Homo_sapiens|F|V-NONAMER|720..728|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>MG719326|IGHV1-69*15|Homo_sapiens|F|V-HEPTAMER|423..429|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MG719328|IGHV1-69*16|Homo_sapiens|F|V-HEPTAMER|423..429|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MH359407|IGHV1-69*17|Homo_sapiens|F|V-HEPTAMER|532..538|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337618|IGHV1-69*19|Homo_sapiens|F|V-HEPTAMER|442..448|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KF698734|IGHV1-69-2*01|Homo_sapiens|F|V-HEPTAMER|689..695|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KF698734|IGHV1-69-2*01|Homo_sapiens|F|V-NONAMER|719..727|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>KC713934|IGHV1-69D*01|Homo_sapiens|F|V-HEPTAMER|690..696|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713934|IGHV1-69D*01|Homo_sapiens|F|V-NONAMER|720..728|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>M99637|IGHV1-8*01|Homo_sapiens|F|V-HEPTAMER|497..503|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99637|IGHV1-8*01|Homo_sapiens|F|V-NONAMER|527..535|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>HM855457|IGHV1-8*02|Homo_sapiens|F|V-HEPTAMER|17..23|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000111|IGHV1-8*03|Homo_sapiens|F|V-HEPTAMER|833559..833565|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV1-8*03|Homo_sapiens|F|V-NONAMER|833589..833597|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>M13911|IGHV1-NL1*01|Homo_sapiens|P|V-HEPTAMER|421..427|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M13911|IGHV1-NL1*01|Homo_sapiens|P|V-NONAMER|451..459|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>HM855589|IGHV1/OR15-1*03|Homo_sapiens|ORF|V-HEPTAMER|16..22|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>HM855394|IGHV1/OR15-1*04|Homo_sapiens|ORF|V-HEPTAMER|17..23|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>L25543|IGHV1/OR15-2*01|Homo_sapiens|P|V-HEPTAMER|525..531|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L25543|IGHV1/OR15-2*01|Homo_sapiens|P|V-NONAMER|555..563|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>HM855297|IGHV1/OR15-2*02|Homo_sapiens|P|V-HEPTAMER|17..23|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>HM855556|IGHV1/OR15-2*03|Homo_sapiens|P|V-HEPTAMER|316..322|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>HM855458|IGHV1/OR15-3*02|Homo_sapiens|P|V-HEPTAMER|317..323|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00238|IGHV1/OR15-3*03|Homo_sapiens|P|V-HEPTAMER|671..677|7 nt|1| | | | |7+0=7| | |
+cacagag
+>J00238|IGHV1/OR15-3*03|Homo_sapiens|P|V-NONAMER|701..709|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>HM855943|IGHV1/OR15-6*01|Homo_sapiens|P|V-HEPTAMER|18..24|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>L25542|IGHV1/OR15-9*01|Homo_sapiens|ORF|V-HEPTAMER|484..490|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>L25542|IGHV1/OR15-9*01|Homo_sapiens|ORF|V-NONAMER|514..522|9 nt|1| | | | |9+0=9| | |
+tcagaaatt
+>IMGT000069|IGHV1/OR16-1*01|Homo_sapiens|P|V-HEPTAMER|84298..84304|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>IMGT000069|IGHV1/OR16-1*01|Homo_sapiens|P|V-NONAMER|84328..84336|9 nt|1| | | | |9+0=9| | |
+tcagcaatc
+>IMGT000069|IGHV1/OR16-2*01|Homo_sapiens|P|V-HEPTAMER|1027863..1027869|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>IMGT000069|IGHV1/OR16-2*01|Homo_sapiens|P|V-NONAMER|1027893..1027901|9 nt|1| | | | |9+0=9| | |
+tcagcaatc
+>IMGT000069|IGHV1/OR16-21*01|Homo_sapiens|P|V-HEPTAMER|1923999..1924005|7 nt|1| | | | |7+0=7| |rev-compl|
+cacaatg
+>IMGT000069|IGHV1/OR16-21*01|Homo_sapiens|P|V-NONAMER|1923967..1923975|9 nt|1| | | | |9+0=9| |rev-compl|
+tcagcaatc
+>IMGT000069|IGHV1/OR16-24*01|Homo_sapiens|P|V-HEPTAMER|2014617..2014623|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000069|IGHV1/OR16-24*01|Homo_sapiens|P|V-NONAMER|2014585..2014593|9 nt|1| | | | |9+0=9| |rev-compl|
+tcagaaacc
+>IMGT000069|IGHV1/OR16-26*01|Homo_sapiens|P|V-HEPTAMER|1438..1444|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV1/OR16-26*01|Homo_sapiens|P|V-NONAMER|1468..1476|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>AF254982|IGHV1/OR21-1*01|Homo_sapiens|ORF|V-HEPTAMER|165162..165168|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>AF254982|IGHV1/OR21-1*01|Homo_sapiens|ORF|V-NONAMER|165192..165200|9 nt|1| | | | |9+0=9| | |
+tcagaaact
+>M99647|IGHV2-10*01|Homo_sapiens|P|V-HEPTAMER|512..518|7 nt|1| | | | |7+0=7| | |
+cacagag
+>M99647|IGHV2-10*01|Homo_sapiens|P|V-NONAMER|542..550|9 nt|1| | | | |9+0=9| | |
+acaagaccc
+>IMGT000128|IGHV2-10*02|Homo_sapiens|P|V-HEPTAMER|790630..790636|7 nt|1| | | | |7+0=7| | |
+cacagag
+>IMGT000128|IGHV2-10*02|Homo_sapiens|P|V-NONAMER|790660..790668|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>M99648|IGHV2-26*01|Homo_sapiens|F|V-HEPTAMER|465..471|7 nt|1| | | | |7+0=7| | |
+cacagag
+>M99648|IGHV2-26*01|Homo_sapiens|F|V-NONAMER|495..503|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MG719335|IGHV2-26*02|Homo_sapiens|F|V-HEPTAMER|502..508|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MG719335|IGHV2-26*02|Homo_sapiens|F|V-NONAMER|532..540|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MG719336|IGHV2-26*03|Homo_sapiens|F|V-HEPTAMER|502..508|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MG719336|IGHV2-26*03|Homo_sapiens|F|V-NONAMER|532..540|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>AC280062|IGHV2-26*04|Homo_sapiens|F|V-HEPTAMER|23378..23384|7 nt|1| | | | |7+0=7| | |
+cacagag
+>AC280062|IGHV2-26*04|Homo_sapiens|F|V-NONAMER|23408..23416|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>IMGT000129|IGHV2-26*05|Homo_sapiens|F|V-HEPTAMER|516469..516475|7 nt|1| | | | |7+0=7| | |
+cacagag
+>IMGT000129|IGHV2-26*05|Homo_sapiens|F|V-NONAMER|516499..516507|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>X62111|IGHV2-5*01|Homo_sapiens|F|V-HEPTAMER|515..521|7 nt|1| | | | |7+0=7| | |
+cacaaag
+>X62111|IGHV2-5*01|Homo_sapiens|F|V-NONAMER|545..553|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KF698731|IGHV2-5*02|Homo_sapiens|F|V-HEPTAMER|695..701|7 nt|1| | | | |7+0=7| | |
+cacaaag
+>KF698731|IGHV2-5*02|Homo_sapiens|F|V-NONAMER|725..733|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>L21964|IGHV2-5*05|Homo_sapiens|F|V-HEPTAMER|445..451|7 nt|1| | | | |7+0=7| | |
+cacaaag
+>L21971|IGHV2-5*08|Homo_sapiens|F|V-HEPTAMER|445..451|7 nt|1| | | | |7+0=7| | |
+cacaaag
+>L21972|IGHV2-5*09|Homo_sapiens|F|V-HEPTAMER|445..451|7 nt|1| | | | |7+0=7| | |
+cacaaag
+>IMGT000035|IGHV2-70*01|Homo_sapiens|F|V-HEPTAMER|109269..109275|7 nt|1| | | | |7+0=7| | |
+cacagag
+>IMGT000035|IGHV2-70*01|Homo_sapiens|F|V-NONAMER|109299..109307|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MG719337|IGHV2-70*04|Homo_sapiens|F|V-HEPTAMER|502..508|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MG719337|IGHV2-70*04|Homo_sapiens|F|V-NONAMER|532..540|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>IMGT000129|IGHV2-70*05|Homo_sapiens|F|V-HEPTAMER|118861..118867|7 nt|1| | | | |7+0=7| | |
+cacagag
+>IMGT000129|IGHV2-70*05|Homo_sapiens|F|V-NONAMER|118891..118899|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>L21965|IGHV2-70*10|Homo_sapiens|F|V-HEPTAMER|445..451|7 nt|1| | | | |7+0=7| | |
+cacagag
+>AB019437|IGHV2-70*13|Homo_sapiens|F|V-HEPTAMER|110723..110729|7 nt|1| | | | |7+0=7| | |
+cacagag
+>AB019437|IGHV2-70*13|Homo_sapiens|F|V-NONAMER|110753..110761|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MG719338|IGHV2-70*15|Homo_sapiens|F|V-HEPTAMER|502..508|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MG719338|IGHV2-70*15|Homo_sapiens|F|V-NONAMER|532..540|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MG719340|IGHV2-70*16|Homo_sapiens|F|V-HEPTAMER|502..508|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MG719340|IGHV2-70*16|Homo_sapiens|F|V-NONAMER|532..540|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MG719342|IGHV2-70*17|Homo_sapiens|F|V-HEPTAMER|502..508|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MG719342|IGHV2-70*17|Homo_sapiens|F|V-NONAMER|532..540|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MK540648|IGHV2-70*18|Homo_sapiens|F|V-HEPTAMER|12503..12509|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MK540648|IGHV2-70*18|Homo_sapiens|F|V-NONAMER|12533..12541|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MK540649|IGHV2-70*19|Homo_sapiens|F|V-HEPTAMER|10036..10042|7 nt|1| | | | |7+0=7| | |
+cacagag
+>MK540649|IGHV2-70*19|Homo_sapiens|F|V-NONAMER|10066..10074|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>AC279908|IGHV2-70*20|Homo_sapiens|F|V-HEPTAMER|9507..9513|7 nt|1| | | | |7+0=7| | |
+cacagag
+>AC279908|IGHV2-70*20|Homo_sapiens|F|V-NONAMER|9537..9545|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>KC713935|IGHV2-70D*04|Homo_sapiens|F|V-HEPTAMER|695..701|7 nt|1| | | | |7+0=7| | |
+cacagag
+>KC713935|IGHV2-70D*04|Homo_sapiens|F|V-NONAMER|725..733|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>KC713949|IGHV2-70D*14|Homo_sapiens|F|V-HEPTAMER|695..701|7 nt|1| | | | |7+0=7| | |
+cacagag
+>KC713949|IGHV2-70D*14|Homo_sapiens|F|V-NONAMER|725..733|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>IMGT000069|IGHV2/OR16-23*01|Homo_sapiens|P|V-HEPTAMER|2062349..2062355|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagag
+>IMGT000069|IGHV2/OR16-23*01|Homo_sapiens|P|V-NONAMER|2062317..2062325|9 nt|1| | | | |9+0=9| |rev-compl|
+acaagaacc
+>L25544|IGHV2/OR16-5*01|Homo_sapiens|ORF|V-HEPTAMER|471..477|7 nt|1| | | | |7+0=7| | |
+cacagag
+>L25544|IGHV2/OR16-5*01|Homo_sapiens|ORF|V-NONAMER|501..509|9 nt|1| | | | |9+0=9| | |
+acaagaccc
+>M99652|IGHV3-11*01|Homo_sapiens|F|V-HEPTAMER|498..504|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99652|IGHV3-11*01|Homo_sapiens|F|V-NONAMER|528..536|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M15496|IGHV3-11*02|Homo_sapiens|P|V-HEPTAMER|473..479|7 nt|1| | | | |7+0=7| | |
+cacagtc
+>IMGT000128|IGHV3-11*04|Homo_sapiens|F|V-HEPTAMER|776934..776940|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV3-11*04|Homo_sapiens|F|V-NONAMER|776964..776972|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000129|IGHV3-11*05|Homo_sapiens|F|V-HEPTAMER|700808..700814|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000129|IGHV3-11*05|Homo_sapiens|F|V-NONAMER|700838..700846|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>KC713940|IGHV3-11*06|Homo_sapiens|F|V-HEPTAMER|701..707|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713940|IGHV3-11*06|Homo_sapiens|F|V-NONAMER|731..739|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92217|IGHV3-13*01|Homo_sapiens|F|V-HEPTAMER|455..461|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92217|IGHV3-13*01|Homo_sapiens|F|V-NONAMER|485..493|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99653|IGHV3-13*02|Homo_sapiens|F|V-HEPTAMER|760..766|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99653|IGHV3-13*02|Homo_sapiens|F|V-NONAMER|790..798|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000128|IGHV3-13*03|Homo_sapiens|F|V-HEPTAMER|764029..764035|7 nt|1| | | | |7+0=7| | |
+gacacag
+>IMGT000128|IGHV3-13*03|Homo_sapiens|F|V-NONAMER|764061..764069|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000129|IGHV3-13*04|Homo_sapiens|F|V-HEPTAMER|687904..687910|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000129|IGHV3-13*04|Homo_sapiens|F|V-NONAMER|687934..687942|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>KC713939|IGHV3-13*05|Homo_sapiens|F|V-HEPTAMER|704..710|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713939|IGHV3-13*05|Homo_sapiens|F|V-NONAMER|734..742|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92216|IGHV3-15*01|Homo_sapiens|F|V-HEPTAMER|464..470|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92216|IGHV3-15*01|Homo_sapiens|F|V-NONAMER|494..502|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99654|IGHV3-15*02|Homo_sapiens|F|V-HEPTAMER|478..484|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99654|IGHV3-15*02|Homo_sapiens|F|V-NONAMER|508..516|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99408|IGHV3-15*03|Homo_sapiens|F|V-HEPTAMER|430..434|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M99402|IGHV3-15*04|Homo_sapiens|F|V-HEPTAMER|430..434|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M99403|IGHV3-15*05|Homo_sapiens|F|V-HEPTAMER|430..434|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M99404|IGHV3-15*06|Homo_sapiens|F|V-HEPTAMER|430..434|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M99406|IGHV3-15*07|Homo_sapiens|F|V-HEPTAMER|430..434|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M99400|IGHV3-15*08|Homo_sapiens|F|V-HEPTAMER|430..434|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>IMGT000112|IGHV3-15*09|Homo_sapiens|F|V-HEPTAMER|786717..786723|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000112|IGHV3-15*09|Homo_sapiens|F|V-NONAMER|786747..786755|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99655|IGHV3-16*01|Homo_sapiens|ORF|V-HEPTAMER|484..490|7 nt|1| | | | |7+0=7| | |
+tcctgtg
+>M99655|IGHV3-16*01|Homo_sapiens|ORF|V-NONAMER|514..522|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019440|IGHV3-16*02|Homo_sapiens|ORF|V-HEPTAMER|67650..67656|7 nt|1| | | | |7+0=7| | |
+tcctgtg
+>AB019440|IGHV3-16*02|Homo_sapiens|ORF|V-NONAMER|67680..67688|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000112|IGHV3-16*03|Homo_sapiens|ORF|V-HEPTAMER|775136..775142|7 nt|1| | | | |7+0=7| | |
+tcctgtg
+>IMGT000112|IGHV3-16*03|Homo_sapiens|ORF|V-NONAMER|775166..775174|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000128|IGHV3-16*04|Homo_sapiens|ORF|V-HEPTAMER|728167..728173|7 nt|1| | | | |7+0=7| | |
+tcctgtg
+>IMGT000128|IGHV3-16*04|Homo_sapiens|ORF|V-NONAMER|728197..728205|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99656|IGHV3-19*01|Homo_sapiens|P|V-HEPTAMER|592..598|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>M99656|IGHV3-19*01|Homo_sapiens|P|V-NONAMER|622..630|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000111|IGHV3-19*02|Homo_sapiens|P|V-HEPTAMER|719286..719292|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>IMGT000111|IGHV3-19*02|Homo_sapiens|P|V-NONAMER|719316..719324|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99657|IGHV3-20*01|Homo_sapiens|F|V-HEPTAMER|466..472|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99657|IGHV3-20*01|Homo_sapiens|F|V-NONAMER|496..504|9 nt|1| | | | |9+0=9| | |
+acacaaacg
+>KC713937|IGHV3-20*02|Homo_sapiens|ORF|V-HEPTAMER|707..713|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713937|IGHV3-20*02|Homo_sapiens|ORF|V-NONAMER|737..745|9 nt|1| | | | |9+0=9| | |
+acacaaacg
+>MH332884|IGHV3-20*03|Homo_sapiens|ORF|V-HEPTAMER|523..529|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540646|IGHV3-20*04|Homo_sapiens|F|V-HEPTAMER|38067..38073|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540646|IGHV3-20*04|Homo_sapiens|F|V-NONAMER|38097..38105|9 nt|1| | | | |9+0=9| | |
+acacaaacg
+>AB019439|IGHV3-21*01|Homo_sapiens|F|V-HEPTAMER|197871..197877|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV3-21*01|Homo_sapiens|F|V-NONAMER|197901..197909|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99658|IGHV3-21*02|Homo_sapiens|F|V-HEPTAMER|465..471|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99658|IGHV3-21*02|Homo_sapiens|F|V-NONAMER|495..503|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MK540646|IGHV3-21*03|Homo_sapiens|F|V-HEPTAMER|13996..14002|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540646|IGHV3-21*03|Homo_sapiens|F|V-NONAMER|14026..14034|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>HM855688|IGHV3-21*04|Homo_sapiens|F|V-HEPTAMER|15..21|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>MN337623|IGHV3-21*06|Homo_sapiens|F|V-HEPTAMER|603..609|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337623|IGHV3-21*06|Homo_sapiens|F|V-NONAMER|633..641|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99659|IGHV3-22*01|Homo_sapiens|P|V-HEPTAMER|547..553|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99659|IGHV3-22*01|Homo_sapiens|P|V-NONAMER|577..585|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV3-22*02|Homo_sapiens|P|V-HEPTAMER|175182..175188|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV3-22*02|Homo_sapiens|P|V-NONAMER|175212..175220|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99660|IGHV3-23*01|Homo_sapiens|F|V-HEPTAMER|466..472|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99660|IGHV3-23*01|Homo_sapiens|F|V-NONAMER|496..504|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M35415|IGHV3-23*02|Homo_sapiens|F|V-HEPTAMER|486..492|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M35415|IGHV3-23*02|Homo_sapiens|F|V-NONAMER|515..523|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC245166|IGHV3-23*04|Homo_sapiens|F|V-HEPTAMER|149652..149658|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC245166|IGHV3-23*04|Homo_sapiens|F|V-NONAMER|149682..149690|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC244492|IGHV3-23D*01|Homo_sapiens|F|V-HEPTAMER|22091..22097|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC244492|IGHV3-23D*01|Homo_sapiens|F|V-NONAMER|22121..22129|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99661|IGHV3-25*01|Homo_sapiens|P|V-HEPTAMER|532..538|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99661|IGHV3-25*01|Homo_sapiens|P|V-NONAMER|562..570|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV3-25*02|Homo_sapiens|P|V-HEPTAMER|143922..143928|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV3-25*02|Homo_sapiens|P|V-NONAMER|143952..143960|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC245166|IGHV3-25*03|Homo_sapiens|P|V-HEPTAMER|129232..129238|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC245166|IGHV3-25*03|Homo_sapiens|P|V-NONAMER|129262..129270|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>HM855898|IGHV3-25*04|Homo_sapiens|ORF|V-HEPTAMER|318..324|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>HM855413|IGHV3-25*05|Homo_sapiens|P|V-HEPTAMER|15..21|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AB019439|IGHV3-29*01|Homo_sapiens|P|V-HEPTAMER|102184..102190|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>AB019439|IGHV3-29*01|Homo_sapiens|P|V-NONAMER|102214..102222|9 nt|1| | | | |9+0=9| | |
+acacaaaat
+>IMGT000110|IGHV3-29*02|Homo_sapiens|P|V-HEPTAMER|558903..558909|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>IMGT000110|IGHV3-29*02|Homo_sapiens|P|V-NONAMER|558933..558941|9 nt|1| | | | |9+0=9| | |
+acacaaaat
+>M83134|IGHV3-30*01|Homo_sapiens|F|V-HEPTAMER|2236..2242|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M83134|IGHV3-30*01|Homo_sapiens|F|V-NONAMER|2266..2274|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>L26401|IGHV3-30*02|Homo_sapiens|F|V-HEPTAMER|400..404|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M99663|IGHV3-30*03|Homo_sapiens|F|V-HEPTAMER|464..470|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99663|IGHV3-30*03|Homo_sapiens|F|V-NONAMER|494..502|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>L06615|IGHV3-30*04|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77323|IGHV3-30*05|Homo_sapiens|F|V-HEPTAMER|407..411|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>L06617|IGHV3-30*06|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>L06614|IGHV3-30*07|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77300|IGHV3-30*09|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77326|IGHV3-30*10|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77331|IGHV3-30*11|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77338|IGHV3-30*12|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77339|IGHV3-30*13|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77324|IGHV3-30*14|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77327|IGHV3-30*15|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77328|IGHV3-30*16|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77329|IGHV3-30*17|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>X92214|IGHV3-30*18|Homo_sapiens|F|V-HEPTAMER|456..462|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92214|IGHV3-30*18|Homo_sapiens|F|V-NONAMER|486..494|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>L06616|IGHV3-30*19|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>AB019439|IGHV3-30-2*01|Homo_sapiens|P|V-HEPTAMER|89233..89239|7 nt|1| | | | |7+0=7| | |
+ccaggta
+>AB019439|IGHV3-30-2*01|Homo_sapiens|P|V-NONAMER|89263..89271|9 nt|1| | | | |9+0=9| | |
+acacagatt
+>KC162924|IGHV3-30-22*01|Homo_sapiens|P|V-HEPTAMER|41470..41476|7 nt|1| | | | |7+0=7| |rev-compl|
+ccaagtg
+>KC162924|IGHV3-30-22*01|Homo_sapiens|P|V-NONAMER|41438..41446|9 nt|1| | | | |9+0=9| |rev-compl|
+tggctgtac
+>AC244456|IGHV3-30-3*01|Homo_sapiens|F|V-HEPTAMER|2127..2133|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC244456|IGHV3-30-3*01|Homo_sapiens|F|V-NONAMER|2095..2103|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>M77302|IGHV3-30-3*02|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>KC713945|IGHV3-30-3*03|Homo_sapiens|F|V-HEPTAMER|705..711|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713945|IGHV3-30-3*03|Homo_sapiens|F|V-NONAMER|735..743|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC244456|IGHV3-30-42*01|Homo_sapiens|P|V-HEPTAMER|22742..22748|7 nt|1| | | | |7+0=7| |rev-compl|
+ccaagtg
+>AC244456|IGHV3-30-42*01|Homo_sapiens|P|V-NONAMER|22710..22718|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaaat
+>IMGT000128|IGHV3-30-42*02|Homo_sapiens|P|V-HEPTAMER|513356..513362|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>IMGT000128|IGHV3-30-42*02|Homo_sapiens|P|V-NONAMER|513386..513394|9 nt|1| | | | |9+0=9| | |
+acacaacat
+>AC244456|IGHV3-30-5*01|Homo_sapiens|F|V-HEPTAMER|26699..26705|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC244456|IGHV3-30-5*01|Homo_sapiens|F|V-NONAMER|26667..26675|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>AC245243|IGHV3-30-5*02|Homo_sapiens|F|V-HEPTAMER|3291..3297|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC245243|IGHV3-30-5*02|Homo_sapiens|F|V-NONAMER|3259..3267|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>IMGT000128|IGHV3-30-5*03|Homo_sapiens|F|V-HEPTAMER|509710..509716|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV3-30-5*03|Homo_sapiens|F|V-NONAMER|509740..509748|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV3-32*01|Homo_sapiens|P|V-HEPTAMER|77471..77477|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>AB019439|IGHV3-32*01|Homo_sapiens|P|V-NONAMER|77501..77509|9 nt|1| | | | |9+0=9| | |
+acacaacat
+>AB019439|IGHV3-33*01|Homo_sapiens|F|V-HEPTAMER|73822..73828|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV3-33*01|Homo_sapiens|F|V-NONAMER|73852..73860|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99665|IGHV3-33*02|Homo_sapiens|F|V-HEPTAMER|475..481|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99665|IGHV3-33*02|Homo_sapiens|F|V-NONAMER|505..513|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M77305|IGHV3-33*03|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77335|IGHV3-33*04|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77334|IGHV3-33*05|Homo_sapiens|F|V-HEPTAMER|337..341|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>HM855436|IGHV3-33*06|Homo_sapiens|F|V-HEPTAMER|318..324|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000056|IGHV3-33*07|Homo_sapiens|F|V-HEPTAMER|36842..36848|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000056|IGHV3-33*07|Homo_sapiens|F|V-NONAMER|36872..36880|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC279998|IGHV3-33*08|Homo_sapiens|F|V-HEPTAMER|31100..31106|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC279998|IGHV3-33*08|Homo_sapiens|F|V-NONAMER|31068..31076|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>IMGT000130|IGHV3-33*10|Homo_sapiens|P|V-HEPTAMER|485733..485739|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000130|IGHV3-33*10|Homo_sapiens|P|V-NONAMER|485764..485772|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99666|IGHV3-35*01|Homo_sapiens|ORF|V-HEPTAMER|594..600|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>M99666|IGHV3-35*01|Homo_sapiens|ORF|V-NONAMER|624..632|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC280057|IGHV3-35*02|Homo_sapiens|F|V-HEPTAMER|3010..3016|7 nt|1| | | | |7+0=7| |rev-compl|
+cactgtg
+>AC280057|IGHV3-35*02|Homo_sapiens|F|V-NONAMER|2978..2986|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>M99668|IGHV3-37*01|Homo_sapiens|P|V-HEPTAMER|451..457|7 nt|1| | | | |7+0=7| | |
+catggtg
+>M99668|IGHV3-37*01|Homo_sapiens|P|V-NONAMER|481..489|9 nt|1| | | | |9+0=9| | |
+gccagaact
+>X92277|IGHV3-37*02|Homo_sapiens|P|V-HEPTAMER|451..457|7 nt|1| | | | |7+0=7| | |
+catggtg
+>X92277|IGHV3-37*02|Homo_sapiens|P|V-NONAMER|481..489|9 nt|1| | | | |9+0=9| | |
+ccagaaacc
+>M99669|IGHV3-38*01|Homo_sapiens|ORF|V-HEPTAMER|461..467|7 nt|1| | | | |7+0=7| | |
+cacagag
+>M99669|IGHV3-38*01|Homo_sapiens|ORF|V-NONAMER|489..497|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV3-38*02|Homo_sapiens|ORF|V-HEPTAMER|23137..23143|7 nt|1| | | | |7+0=7| | |
+cacagag
+>AB019439|IGHV3-38*02|Homo_sapiens|ORF|V-NONAMER|23167..23175|9 nt|1| | | | |9+0=9| | |
+acaaacctc
+>KC713943|IGHV3-38*03|Homo_sapiens|ORF|V-HEPTAMER|703..709|7 nt|1| | | | |7+0=7| | |
+cacagag
+>KC713943|IGHV3-38*03|Homo_sapiens|ORF|V-NONAMER|731..739|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>KF698732|IGHV3-38-3*01|Homo_sapiens|ORF|V-HEPTAMER|701..707|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KF698732|IGHV3-38-3*01|Homo_sapiens|ORF|V-NONAMER|731..739|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000111|IGHV3-38-3*02|Homo_sapiens|ORF|V-HEPTAMER|447133..447139|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV3-38-3*02|Homo_sapiens|ORF|V-NONAMER|447163..447171|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99670|IGHV3-41*01|Homo_sapiens|P|V-HEPTAMER|642..648|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99670|IGHV3-41*01|Homo_sapiens|P|V-NONAMER|672..680|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-41*02|Homo_sapiens|P|V-HEPTAMER|436715..436721|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV3-41*02|Homo_sapiens|P|V-NONAMER|436745..436753|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99671|IGHV3-42*01|Homo_sapiens|P|V-HEPTAMER|422..428|7 nt|1| | | | |7+0=7| | |
+gacagtg
+>M99671|IGHV3-42*01|Homo_sapiens|P|V-NONAMER|453..461|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>M12072|IGHV3-42*02|Homo_sapiens|P|V-HEPTAMER|348..354|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M12072|IGHV3-42*02|Homo_sapiens|P|V-NONAMER|378..386|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>AB019438|IGHV3-42*03|Homo_sapiens|P|V-HEPTAMER|170361..170367|7 nt|1| | | | |7+0=7| | |
+gacagtg
+>AB019438|IGHV3-42*03|Homo_sapiens|P|V-NONAMER|170392..170400|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>IMGT000128|IGHV3-42*04|Homo_sapiens|P|V-HEPTAMER|381524..381532|9 nt|1| | | | |9+0=9| | |
+gacagtgag
+>IMGT000128|IGHV3-42*04|Homo_sapiens|P|V-NONAMER|381555..381563|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>AC233755|IGHV3-42D*01|Homo_sapiens|P|V-HEPTAMER|33421..33427|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC233755|IGHV3-42D*01|Homo_sapiens|P|V-NONAMER|33451..33459|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>AC242184|IGHV3-42D*04|Homo_sapiens|P|V-HEPTAMER|20739..20745|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC242184|IGHV3-42D*04|Homo_sapiens|P|V-NONAMER|20707..20715|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaatc
+>M99672|IGHV3-43*01|Homo_sapiens|F|V-HEPTAMER|628..634|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99672|IGHV3-43*01|Homo_sapiens|F|V-NONAMER|658..666|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>IMGT000128|IGHV3-43*02|Homo_sapiens|F|V-HEPTAMER|374518..374524|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV3-43*02|Homo_sapiens|F|V-NONAMER|374548..374556|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KC713950|IGHV3-43D*03|Homo_sapiens|F|V-HEPTAMER|709..715|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713950|IGHV3-43D*03|Homo_sapiens|F|V-NONAMER|739..747|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>AC242184|IGHV3-43D*04|Homo_sapiens|F|V-HEPTAMER|27622..27628|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC242184|IGHV3-43D*04|Homo_sapiens|F|V-NONAMER|27590..27598|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>IMGT000035|IGHV3-47*01|Homo_sapiens|P|V-HEPTAMER|361267..361273|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV3-47*01|Homo_sapiens|P|V-NONAMER|361297..361305|9 nt|1| | | | |9+0=9| | |
+atacaaact
+>AB019438|IGHV3-47*02|Homo_sapiens|P|V-HEPTAMER|115036..115042|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019438|IGHV3-47*02|Homo_sapiens|P|V-NONAMER|115066..115074|9 nt|1| | | | |9+0=9| | |
+atacaaact
+>IMGT000112|IGHV3-47*04|Homo_sapiens|P|V-HEPTAMER|319423..319429|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000112|IGHV3-47*04|Homo_sapiens|P|V-NONAMER|319453..319461|9 nt|1| | | | |9+0=9| | |
+atacaaact
+>M99675|IGHV3-48*01|Homo_sapiens|F|V-HEPTAMER|630..636|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99675|IGHV3-48*01|Homo_sapiens|F|V-NONAMER|660..668|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019438|IGHV3-48*02|Homo_sapiens|F|V-HEPTAMER|95730..95736|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019438|IGHV3-48*02|Homo_sapiens|F|V-NONAMER|95760..95768|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-48*03|Homo_sapiens|F|V-HEPTAMER|342036..342042|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV3-48*03|Homo_sapiens|F|V-NONAMER|342066..342074|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>HM855336|IGHV3-48*04|Homo_sapiens|F|V-HEPTAMER|15..21|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>M99676|IGHV3-49*01|Homo_sapiens|F|V-HEPTAMER|686..692|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99676|IGHV3-49*01|Homo_sapiens|F|V-NONAMER|716..724|9 nt|1| | | | |9+0=9| | |
+acacagacc
+>M99401|IGHV3-49*02|Homo_sapiens|F|V-HEPTAMER|430..434|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>AB019438|IGHV3-49*03|Homo_sapiens|F|V-HEPTAMER|76606..76612|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019438|IGHV3-49*03|Homo_sapiens|F|V-NONAMER|76636..76644|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-49*04|Homo_sapiens|F|V-HEPTAMER|322910..322916|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV3-49*04|Homo_sapiens|F|V-NONAMER|322940..322948|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000130|IGHV3-49*05|Homo_sapiens|F|V-HEPTAMER|288550..288556|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000130|IGHV3-49*05|Homo_sapiens|F|V-NONAMER|288580..288588|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019438|IGHV3-50*01|Homo_sapiens|P|V-HEPTAMER|67454..67460|7 nt|1| | | | |7+0=7| | |
+ccaaatg
+>AB019438|IGHV3-50*01|Homo_sapiens|P|V-NONAMER|67484..67492|9 nt|1| | | | |9+0=9| | |
+acacaaaat
+>M99678|IGHV3-52*01|Homo_sapiens|P|V-HEPTAMER|663..669|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99678|IGHV3-52*01|Homo_sapiens|P|V-NONAMER|693..701|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC279961|IGHV3-52*02|Homo_sapiens|P|V-HEPTAMER|23113..23119|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC279961|IGHV3-52*02|Homo_sapiens|P|V-NONAMER|23081..23089|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>J00237|IGHV3-52*03|Homo_sapiens|P|V-HEPTAMER|473..479|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00237|IGHV3-52*03|Homo_sapiens|P|V-NONAMER|502..510|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99679|IGHV3-53*01|Homo_sapiens|F|V-HEPTAMER|489..495|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99679|IGHV3-53*01|Homo_sapiens|F|V-NONAMER|519..527|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>KF698735|IGHV3-53*02|Homo_sapiens|F|V-HEPTAMER|702..708|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KF698735|IGHV3-53*02|Homo_sapiens|F|V-NONAMER|732..740|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>J03617|IGHV3-53*03|Homo_sapiens|F|V-HEPTAMER|972..978|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J03617|IGHV3-53*03|Homo_sapiens|F|V-NONAMER|1002..1010|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000128|IGHV3-53*04|Homo_sapiens|F|V-HEPTAMER|251965..251971|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV3-53*04|Homo_sapiens|F|V-NONAMER|251995..252003|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000112|IGHV3-53*06|Homo_sapiens|F|V-HEPTAMER|245287..245293|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000112|IGHV3-53*06|Homo_sapiens|F|V-NONAMER|245317..245325|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99680|IGHV3-54*01|Homo_sapiens|P|V-HEPTAMER|593..599|7 nt|1| | | | |7+0=7| | |
+caccagg
+>M99680|IGHV3-54*01|Homo_sapiens|P|V-NONAMER|623..631|9 nt|1| | | | |9+0=9| | |
+agacacaga
+>X92215|IGHV3-54*02|Homo_sapiens|P|V-HEPTAMER|642..648|7 nt|1| | | | |7+0=7| | |
+cactagg
+>X92215|IGHV3-54*02|Homo_sapiens|P|V-NONAMER|674..682|9 nt|1| | | | |9+0=9| | |
+acacagaat
+>IMGT000035|IGHV3-54*03|Homo_sapiens|P|V-HEPTAMER|278508..278514|7 nt|1| | | | |7+0=7| | |
+caccagg
+>IMGT000035|IGHV3-54*03|Homo_sapiens|P|V-NONAMER|278540..278548|9 nt|1| | | | |9+0=9| | |
+acacagaat
+>AB019438|IGHV3-54*04|Homo_sapiens|P|V-HEPTAMER|32192..32198|7 nt|1| | | | |7+0=7| | |
+caccagg
+>AB019438|IGHV3-54*04|Homo_sapiens|P|V-NONAMER|32224..32232|9 nt|1| | | | |9+0=9| | |
+acacagaat
+>IMGT000129|IGHV3-54*05|Homo_sapiens|P|V-HEPTAMER|241591..241597|7 nt|1| | | | |7+0=7| | |
+caccagg
+>IMGT000129|IGHV3-54*05|Homo_sapiens|P|V-NONAMER|241621..241629|9 nt|1| | | | |9+0=9| | |
+agacacaga
+>M29815|IGHV3-57*01|Homo_sapiens|P|V-HEPTAMER|533..539|7 nt|1| | | | |7+0=7| | |
+cacagga
+>M29815|IGHV3-57*01|Homo_sapiens|P|V-NONAMER|560..568|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>AB019438|IGHV3-57*02|Homo_sapiens|P|V-HEPTAMER|14620..14626|7 nt|1| | | | |7+0=7| | |
+cacagga
+>AB019438|IGHV3-57*02|Homo_sapiens|P|V-NONAMER|14651..14659|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>MK540647|IGHV3-57*03|Homo_sapiens|P|V-HEPTAMER|39325..39331|7 nt|1| | | | |7+0=7| | |
+cacagga
+>MK540647|IGHV3-57*03|Homo_sapiens|P|V-NONAMER|39356..39364|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>M99650|IGHV3-6*01|Homo_sapiens|P|V-HEPTAMER|468..474|7 nt|1| | | | |7+0=7| | |
+tacggta
+>M99650|IGHV3-6*01|Homo_sapiens|P|V-NONAMER|498..506|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-6*02|Homo_sapiens|P|V-HEPTAMER|824302..824308|7 nt|1| | | | |7+0=7| | |
+tacggta
+>IMGT000035|IGHV3-6*02|Homo_sapiens|P|V-NONAMER|824332..824340|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019438|IGHV3-60*01|Homo_sapiens|P|V-HEPTAMER|2340..2346|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>AB019438|IGHV3-60*01|Homo_sapiens|P|V-NONAMER|2367..2375|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-60*02|Homo_sapiens|P|V-HEPTAMER|248649..248655|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>IMGT000035|IGHV3-60*02|Homo_sapiens|P|V-NONAMER|248676..248684|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MK540647|IGHV3-60*03|Homo_sapiens|P|V-HEPTAMER|26954..26960|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>MK540647|IGHV3-60*03|Homo_sapiens|P|V-NONAMER|26981..26989|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000112|IGHV3-60*04|Homo_sapiens|P|V-HEPTAMER|206761..206767|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>IMGT000112|IGHV3-60*04|Homo_sapiens|P|V-NONAMER|206788..206796|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019437|IGHV3-62*01|Homo_sapiens|P|V-HEPTAMER|190409..190415|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>AB019437|IGHV3-62*01|Homo_sapiens|P|V-NONAMER|190436..190444|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000112|IGHV3-62*02|Homo_sapiens|P|V-HEPTAMER|195547..195553|7 nt|1| | | | |7+0=7| | |
+tgcagtg
+>IMGT000112|IGHV3-62*02|Homo_sapiens|P|V-NONAMER|195574..195582|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-62*03|Homo_sapiens|P|V-HEPTAMER|236716..236722|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>IMGT000035|IGHV3-62*03|Homo_sapiens|P|V-NONAMER|236743..236751|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MK540647|IGHV3-62*04|Homo_sapiens|F|V-HEPTAMER|15106..15112|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>MK540647|IGHV3-62*04|Homo_sapiens|F|V-NONAMER|15133..15141|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000111|IGHV3-62*05|Homo_sapiens|P|V-HEPTAMER|201114..201120|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>IMGT000111|IGHV3-62*05|Homo_sapiens|P|V-NONAMER|201141..201149|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000128|IGHV3-62*06|Homo_sapiens|ORF|V-HEPTAMER|201616..201622|7 nt|1| | | | |7+0=7| | |
+tgcagtg
+>IMGT000128|IGHV3-62*06|Homo_sapiens|ORF|V-NONAMER|201643..201651|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99681|IGHV3-63*01|Homo_sapiens|P|V-HEPTAMER|468..474|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>M99681|IGHV3-63*01|Homo_sapiens|P|V-NONAMER|498..506|9 nt|1| | | | |9+0=9| | |
+accaaaatt
+>IMGT000058|IGHV3-63*02|Homo_sapiens|P|V-HEPTAMER|8963..8969|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>IMGT000058|IGHV3-63*02|Homo_sapiens|P|V-NONAMER|8993..9001|9 nt|1| | | | |9+0=9| | |
+acacaaaat
+>IMGT000128|IGHV3-63*03|Homo_sapiens|P|V-HEPTAMER|192523..192529|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>IMGT000128|IGHV3-63*03|Homo_sapiens|P|V-NONAMER|192553..192561|9 nt|1| | | | |9+0=9| | |
+acacaaaat
+>M99682|IGHV3-64*01|Homo_sapiens|F|V-HEPTAMER|537..543|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99682|IGHV3-64*01|Homo_sapiens|F|V-NONAMER|567..575|9 nt|1| | | | |9+0=9| | |
+gcagaaacc
+>AB019437|IGHV3-64*02|Homo_sapiens|F|V-HEPTAMER|175803..175809|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV3-64*02|Homo_sapiens|F|V-NONAMER|175833..175841|9 nt|1| | | | |9+0=9| | |
+gcagaaacc
+>M77298|IGHV3-64*03|Homo_sapiens|F|V-HEPTAMER|410..414|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77299|IGHV3-64*04|Homo_sapiens|F|V-HEPTAMER|408..412|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>M77301|IGHV3-64*05|Homo_sapiens|F|V-HEPTAMER|410..414|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>MK540647|IGHV3-64*07|Homo_sapiens|F|V-HEPTAMER|511..517|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540647|IGHV3-64*07|Homo_sapiens|F|V-NONAMER|541..549|9 nt|1| | | | |9+0=9| | |
+gcagaaacc
+>KC713941|IGHV3-64D*06|Homo_sapiens|F|V-HEPTAMER|703..709|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713941|IGHV3-64D*06|Homo_sapiens|F|V-NONAMER|733..741|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MN337624|IGHV3-64D*08|Homo_sapiens|F|V-HEPTAMER|644..650|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337624|IGHV3-64D*08|Homo_sapiens|F|V-NONAMER|674..682|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MN337625|IGHV3-64D*09|Homo_sapiens|F|V-HEPTAMER|644..650|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337625|IGHV3-64D*09|Homo_sapiens|F|V-NONAMER|674..682|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000111|IGHV3-65*01|Homo_sapiens|P|V-HEPTAMER|178234..178240|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV3-65*01|Homo_sapiens|P|V-NONAMER|178264..178272|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-65*02|Homo_sapiens|P|V-HEPTAMER|213769..213775|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV3-65*02|Homo_sapiens|P|V-NONAMER|213799..213807|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019437|IGHV3-65*03|Homo_sapiens|P|V-HEPTAMER|167449..167455|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV3-65*03|Homo_sapiens|P|V-NONAMER|167479..167487|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92218|IGHV3-66*01|Homo_sapiens|F|V-HEPTAMER|453..459|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92218|IGHV3-66*01|Homo_sapiens|F|V-NONAMER|483..491|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000111|IGHV3-66*02|Homo_sapiens|F|V-HEPTAMER|169296..169302|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV3-66*02|Homo_sapiens|F|V-NONAMER|169326..169334|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019437|IGHV3-66*03|Homo_sapiens|F|V-HEPTAMER|158511..158517|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV3-66*03|Homo_sapiens|F|V-NONAMER|158541..158549|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X70208|IGHV3-66*04|Homo_sapiens|F|V-HEPTAMER|743..749|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X70208|IGHV3-66*04|Homo_sapiens|F|V-NONAMER|773..781|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AJ879484|IGHV3-69-1*01|Homo_sapiens|P|V-HEPTAMER|462..468|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AJ879484|IGHV3-69-1*01|Homo_sapiens|P|V-NONAMER|492..500|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AJ879485|IGHV3-69-1*02|Homo_sapiens|P|V-HEPTAMER|462..468|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AJ879485|IGHV3-69-1*02|Homo_sapiens|P|V-NONAMER|492..500|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99649|IGHV3-7*01|Homo_sapiens|F|V-HEPTAMER|640..646|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99649|IGHV3-7*01|Homo_sapiens|F|V-NONAMER|670..678|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>HM855666|IGHV3-7*03|Homo_sapiens|F|V-HEPTAMER|15..21|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>MN337620|IGHV3-7*04|Homo_sapiens|F|V-HEPTAMER|621..627|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337620|IGHV3-7*04|Homo_sapiens|F|V-NONAMER|651..659|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MN337619|IGHV3-7*05|Homo_sapiens|F|V-HEPTAMER|621..627|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MN337619|IGHV3-7*05|Homo_sapiens|F|V-NONAMER|651..659|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV3-7-2*01|Homo_sapiens|P|V-HEPTAMER|796965..796971|7 nt|1| | | | |7+0=7| | |
+ccaagtg
+>IMGT000035|IGHV3-7-2*01|Homo_sapiens|P|V-NONAMER|796995..797003|9 nt|1| | | | |9+0=9| | |
+acacaaaat
+>AB019437|IGHV3-71*01|Homo_sapiens|P|V-HEPTAMER|106146..106152|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV3-71*01|Homo_sapiens|P|V-NONAMER|106176..106184|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>HM855875|IGHV3-71*02|Homo_sapiens|P|V-HEPTAMER|15..21|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000128|IGHV3-71*03|Homo_sapiens|P|V-HEPTAMER|114726..114732|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV3-71*03|Homo_sapiens|P|V-NONAMER|114756..114764|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MK540648|IGHV3-71*04|Homo_sapiens|P|V-HEPTAMER|7923..7929|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540648|IGHV3-71*04|Homo_sapiens|P|V-NONAMER|7953..7961|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92206|IGHV3-72*01|Homo_sapiens|F|V-HEPTAMER|549..555|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>X92206|IGHV3-72*01|Homo_sapiens|F|V-NONAMER|579..587|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X70197|IGHV3-73*01|Homo_sapiens|F|V-HEPTAMER|986..992|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X70197|IGHV3-73*01|Homo_sapiens|F|V-NONAMER|1016..1024|9 nt|1| | | | |9+0=9| | |
+acacaaact
+>AB019437|IGHV3-73*02|Homo_sapiens|F|V-HEPTAMER|78612..78618|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV3-73*02|Homo_sapiens|F|V-NONAMER|78642..78650|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019437|IGHV3-74*01|Homo_sapiens|F|V-HEPTAMER|70868..70874|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV3-74*01|Homo_sapiens|F|V-NONAMER|70898..70906|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>J00239|IGHV3-74*03|Homo_sapiens|F|V-HEPTAMER|475..481|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00239|IGHV3-74*03|Homo_sapiens|F|V-NONAMER|504..512|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019437|IGHV3-75*01|Homo_sapiens|P|V-HEPTAMER|57634..57640|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>AB019437|IGHV3-75*01|Homo_sapiens|P|V-NONAMER|57664..57672|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000111|IGHV3-75*02|Homo_sapiens|P|V-HEPTAMER|66175..66181|7 nt|1| | | | |7+0=7| | |
+cgcagtg
+>IMGT000111|IGHV3-75*02|Homo_sapiens|P|V-NONAMER|66205..66213|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019437|IGHV3-76*01|Homo_sapiens|P|V-HEPTAMER|53453..53459|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV3-76*01|Homo_sapiens|P|V-NONAMER|53484..53492|9 nt|1| | | | |9+0=9| | |
+cacaaacct
+>IMGT000111|IGHV3-76*03|Homo_sapiens|P|V-HEPTAMER|61999..62005|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV3-76*03|Homo_sapiens|P|V-NONAMER|62029..62037|9 nt|1| | | | |9+0=9| | |
+tcacaaacc
+>AB019437|IGHV3-79*01|Homo_sapiens|P|V-HEPTAMER|13681..13687|7 nt|1| | | | |7+0=7| | |
+accaggt
+>AB019437|IGHV3-79*01|Homo_sapiens|P|V-NONAMER|13710..13718|9 nt|1| | | | |9+0=9| | |
+agacacaga
+>IMGT000035|IGHV3-79*02|Homo_sapiens|P|V-HEPTAMER|12198..12204|7 nt|1| | | | |7+0=7| | |
+accaggt
+>IMGT000035|IGHV3-79*02|Homo_sapiens|P|V-NONAMER|12227..12235|9 nt|1| | | | |9+0=9| | |
+agacacaga
+>IMGT000112|IGHV3-79*03|Homo_sapiens|P|V-HEPTAMER|16218..16224|7 nt|1| | | | |7+0=7| | |
+ccaggta
+>IMGT000112|IGHV3-79*03|Homo_sapiens|P|V-NONAMER|16248..16256|9 nt|1| | | | |9+0=9| | |
+acacagagg
+>M99651|IGHV3-9*01|Homo_sapiens|F|V-HEPTAMER|578..584|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99651|IGHV3-9*01|Homo_sapiens|F|V-NONAMER|608..616|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>HM855577|IGHV3-9*02|Homo_sapiens|F|V-HEPTAMER|320..326|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713947|IGHV3-9*03|Homo_sapiens|F|V-HEPTAMER|697..703|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713947|IGHV3-9*03|Homo_sapiens|F|V-NONAMER|727..735|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>MN337621|IGHV3-9*04|Homo_sapiens|F|V-HEPTAMER|376..382|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>HM855939|IGHV3-NL1*01|Homo_sapiens|F|V-HEPTAMER|318..324|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M36530|IGHV3/OR15-7*02|Homo_sapiens|ORF|V-HEPTAMER|549..555|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M36530|IGHV3/OR15-7*02|Homo_sapiens|ORF|V-NONAMER|579..587|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X07449|IGHV3/OR15-7*04|Homo_sapiens|P|V-HEPTAMER|489..495|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X07449|IGHV3/OR15-7*04|Homo_sapiens|P|V-NONAMER|518..526|9 nt|1| | | | |9+0=9| | |
+acacaacct
+>HM855865|IGHV3/OR15-7*05|Homo_sapiens|ORF|V-HEPTAMER|324..330|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV3/OR16-10*01|Homo_sapiens|ORF|V-HEPTAMER|1044475..1044481|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV3/OR16-10*01|Homo_sapiens|ORF|V-NONAMER|1044505..1044513|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>HM855718|IGHV3/OR16-10*03|Homo_sapiens|ORF|V-HEPTAMER|15..21|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000069|IGHV3/OR16-11*01|Homo_sapiens|P|V-HEPTAMER|1907858..1907864|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000069|IGHV3/OR16-11*01|Homo_sapiens|P|V-NONAMER|1907826..1907834|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>IMGT000069|IGHV3/OR16-12*01|Homo_sapiens|ORF|V-HEPTAMER|1852187..1852193|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV3/OR16-12*01|Homo_sapiens|ORF|V-NONAMER|1852217..1852225|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>IMGT000069|IGHV3/OR16-13*01|Homo_sapiens|ORF|V-HEPTAMER|1876631..1876637|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV3/OR16-13*01|Homo_sapiens|ORF|V-NONAMER|1876661..1876669|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>L25546|IGHV3/OR16-15*01|Homo_sapiens|P|V-HEPTAMER|500..506|7 nt|1| | | | |7+0=7| | |
+tcctgtg
+>L25546|IGHV3/OR16-15*01|Homo_sapiens|P|V-NONAMER|530..538|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000069|IGHV3/OR16-16*01|Homo_sapiens|P|V-HEPTAMER|1998928..1998934|7 nt|1| | | | |7+0=7| |rev-compl|
+tcctgtg
+>IMGT000069|IGHV3/OR16-16*01|Homo_sapiens|P|V-NONAMER|1998896..1998904|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>IMGT000069|IGHV3/OR16-17*01|Homo_sapiens|ORF|V-HEPTAMER|1893742..1893748|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagcg
+>IMGT000069|IGHV3/OR16-17*01|Homo_sapiens|ORF|V-NONAMER|1893710..1893718|9 nt|1| | | | |9+0=9| |rev-compl|
+gcacaaacc
+>IMGT000069|IGHV3/OR16-18*01|Homo_sapiens|P|V-HEPTAMER|11353..11359|7 nt|1| | | | |7+0=7| | |
+tcctgtg
+>IMGT000069|IGHV3/OR16-18*01|Homo_sapiens|P|V-NONAMER|11383..11391|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000069|IGHV3/OR16-19*01|Homo_sapiens|P|V-HEPTAMER|23339..23345|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV3/OR16-19*01|Homo_sapiens|P|V-NONAMER|23369..23377|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000069|IGHV3/OR16-20*01|Homo_sapiens|ORF|V-HEPTAMER|101252..101258|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV3/OR16-20*01|Homo_sapiens|ORF|V-NONAMER|101282..101290|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>L25545|IGHV3/OR16-6*01|Homo_sapiens|P|V-HEPTAMER|629..635|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L25545|IGHV3/OR16-6*01|Homo_sapiens|P|V-NONAMER|659..667|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>HM855668|IGHV3/OR16-6*02|Homo_sapiens|ORF|V-HEPTAMER|324..330|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000069|IGHV3/OR16-7*01|Homo_sapiens|P|V-HEPTAMER|1987299..1987305|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000069|IGHV3/OR16-7*01|Homo_sapiens|P|V-NONAMER|1987267..1987275|9 nt|1| | | | |9+0=9| |rev-compl|
+acagaaacc
+>HM855309|IGHV3/OR16-7*02|Homo_sapiens|P|V-HEPTAMER|318..324|7 nt|1| | | | |7+0=7| | |
+ccacaga
+>IMGT000069|IGHV3/OR16-8*01|Homo_sapiens|ORF|V-HEPTAMER|1058594..1058600|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>IMGT000069|IGHV3/OR16-8*01|Homo_sapiens|ORF|V-NONAMER|1058624..1058632|9 nt|1| | | | |9+0=9| | |
+gcacaaacc
+>HM855427|IGHV3/OR16-8*02|Homo_sapiens|ORF|V-HEPTAMER|15..21|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000069|IGHV3/OR16-9*01|Homo_sapiens|ORF|V-HEPTAMER|115330..115336|7 nt|1| | | | |7+0=7| | |
+cagagtg
+>IMGT000069|IGHV3/OR16-9*01|Homo_sapiens|ORF|V-NONAMER|115360..115368|9 nt|1| | | | |9+0=9| | |
+gcacaaacc
+>X05714|IGHV4-28*01|Homo_sapiens|F|V-HEPTAMER|586..592|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05714|IGHV4-28*01|Homo_sapiens|F|V-NONAMER|616..624|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M83133|IGHV4-28*02|Homo_sapiens|F|V-HEPTAMER|1107..1113|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M83133|IGHV4-28*02|Homo_sapiens|F|V-NONAMER|1137..1145|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92233|IGHV4-28*03|Homo_sapiens|F|V-HEPTAMER|436..442|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>HM855339|IGHV4-28*05|Homo_sapiens|F|V-HEPTAMER|19..25|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>HM855782|IGHV4-28*06|Homo_sapiens|F|V-HEPTAMER|19..25|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>KC713936|IGHV4-28*07|Homo_sapiens|F|V-HEPTAMER|686..692|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713936|IGHV4-28*07|Homo_sapiens|F|V-NONAMER|716..724|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC245166|IGHV4-30-2*01|Homo_sapiens|F|V-HEPTAMER|68975..68981|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>AC245166|IGHV4-30-2*01|Homo_sapiens|F|V-NONAMER|69005..69013|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92229|IGHV4-30-2*03|Homo_sapiens|F|V-HEPTAMER|439..445|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z75351|IGHV4-30-2*04|Homo_sapiens|F|V-HEPTAMER|228..234|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>HM855593|IGHV4-30-2*05|Homo_sapiens|F|V-HEPTAMER|339..345|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>KC713944|IGHV4-30-2*06|Homo_sapiens|F|V-HEPTAMER|689..695|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>KC713944|IGHV4-30-2*06|Homo_sapiens|F|V-NONAMER|719..727|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC244456|IGHV4-30-4*01|Homo_sapiens|F|V-HEPTAMER|15898..15904|7 nt|1| | | | |7+0=7| |rev-compl|
+cacaatg
+>AC244456|IGHV4-30-4*01|Homo_sapiens|F|V-NONAMER|15866..15874|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>Z14239|IGHV4-30-4*02|Homo_sapiens|F|V-HEPTAMER|439..445|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>Z75353|IGHV4-30-4*05|Homo_sapiens|F|V-HEPTAMER|229..235|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>Z75360|IGHV4-30-4*06|Homo_sapiens|F|V-HEPTAMER|228..234|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>KC713946|IGHV4-30-4*07|Homo_sapiens|F|V-HEPTAMER|689..695|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>KC713946|IGHV4-30-4*07|Homo_sapiens|F|V-NONAMER|719..727|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000128|IGHV4-30-4*09|Homo_sapiens|F|V-HEPTAMER|520217..520223|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>IMGT000128|IGHV4-30-4*09|Homo_sapiens|F|V-NONAMER|520247..520255|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99683|IGHV4-31*02|Homo_sapiens|F|V-HEPTAMER|589..595|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99683|IGHV4-31*02|Homo_sapiens|F|V-NONAMER|619..627|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>KC162925|IGHV4-31*03|Homo_sapiens|F|V-HEPTAMER|19668..19674|7 nt|1| | | | |7+0=7| |rev-compl|
+cacaatg
+>KC162925|IGHV4-31*03|Homo_sapiens|F|V-NONAMER|19636..19644|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>Z14235|IGHV4-31*10|Homo_sapiens|F|V-HEPTAMER|439..445|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>IMGT000130|IGHV4-31*13|Homo_sapiens|F|V-HEPTAMER|496251..496257|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>IMGT000130|IGHV4-31*13|Homo_sapiens|F|V-NONAMER|496281..496289|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV4-34*01|Homo_sapiens|F|V-HEPTAMER|59950..59956|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV4-34*01|Homo_sapiens|F|V-NONAMER|59980..59988|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>M99684|IGHV4-34*02|Homo_sapiens|F|V-HEPTAMER|604..610|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99684|IGHV4-34*02|Homo_sapiens|F|V-NONAMER|634..642|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X92236|IGHV4-34*04|Homo_sapiens|F|V-HEPTAMER|434..440|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92237|IGHV4-34*05|Homo_sapiens|F|V-HEPTAMER|434..440|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z14241|IGHV4-34*09|Homo_sapiens|F|V-HEPTAMER|433..439|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>Z14242|IGHV4-34*10|Homo_sapiens|F|V-HEPTAMER|434..440|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05716|IGHV4-34*11|Homo_sapiens|F|V-HEPTAMER|585..591|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05716|IGHV4-34*11|Homo_sapiens|F|V-NONAMER|615..623|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>Z75356|IGHV4-34*13|Homo_sapiens|F|V-HEPTAMER|222..228|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC242184|IGHV4-38-2*01|Homo_sapiens|F|V-HEPTAMER|12294..12300|7 nt|1| | | | |7+0=7| |rev-compl|
+cacacag
+>AC242184|IGHV4-38-2*01|Homo_sapiens|F|V-NONAMER|12260..12268|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>AC233755|IGHV4-38-2*02|Homo_sapiens|F|V-HEPTAMER|41879..41885|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC233755|IGHV4-38-2*02|Homo_sapiens|F|V-NONAMER|41909..41917|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV4-39*01|Homo_sapiens|F|V-HEPTAMER|11925..11931|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV4-39*01|Homo_sapiens|F|V-NONAMER|11955..11963|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X05715|IGHV4-39*02|Homo_sapiens|F|V-HEPTAMER|590..596|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05715|IGHV4-39*02|Homo_sapiens|F|V-NONAMER|620..628|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>Z14236|IGHV4-39*06|Homo_sapiens|F|V-HEPTAMER|439..445|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05713|IGHV4-4*01|Homo_sapiens|F|V-HEPTAMER|588..594|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05713|IGHV4-4*01|Homo_sapiens|F|V-NONAMER|618..626|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000035|IGHV4-4*02|Homo_sapiens|F|V-HEPTAMER|867924..867930|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV4-4*02|Homo_sapiens|F|V-NONAMER|867954..867962|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>Z75355|IGHV4-4*06|Homo_sapiens|F|V-HEPTAMER|225..229|5 nt|1| | | | |5+0=5|partial in 3'| |
+cacag
+>X62112|IGHV4-4*07|Homo_sapiens|F|V-HEPTAMER|522..528|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X62112|IGHV4-4*07|Homo_sapiens|F|V-NONAMER|552..560|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>KC713942|IGHV4-4*08|Homo_sapiens|F|V-HEPTAMER|683..689|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KC713942|IGHV4-4*08|Homo_sapiens|F|V-NONAMER|713..721|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000111|IGHV4-4*11|Homo_sapiens|P|V-HEPTAMER|904487..904493|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV4-4*11|Homo_sapiens|P|V-NONAMER|904517..904525|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000128|IGHV4-4*12|Homo_sapiens|F|V-HEPTAMER|881708..881714|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000128|IGHV4-4*12|Homo_sapiens|F|V-NONAMER|881738..881746|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>M99685|IGHV4-55*01|Homo_sapiens|P|V-HEPTAMER|666..672|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99685|IGHV4-55*01|Homo_sapiens|P|V-NONAMER|696..704|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92223|IGHV4-55*02|Homo_sapiens|P|V-HEPTAMER|645..651|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92223|IGHV4-55*02|Homo_sapiens|P|V-NONAMER|675..683|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X92234|IGHV4-55*08|Homo_sapiens|P|V-HEPTAMER|437..443|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92235|IGHV4-55*09|Homo_sapiens|P|V-HEPTAMER|436..442|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019438|IGHV4-59*01|Homo_sapiens|F|V-HEPTAMER|6288..6294|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019438|IGHV4-59*01|Homo_sapiens|F|V-NONAMER|6318..6326|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>M29812|IGHV4-59*02|Homo_sapiens|F|V-HEPTAMER|583..589|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M29812|IGHV4-59*02|Homo_sapiens|F|V-NONAMER|613..621|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>HM855471|IGHV4-59*08|Homo_sapiens|F|V-HEPTAMER|333..339|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z14243|IGHV4-59*10|Homo_sapiens|F|V-HEPTAMER|434..440|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540647|IGHV4-59*11|Homo_sapiens|F|V-HEPTAMER|30901..30907|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540647|IGHV4-59*11|Homo_sapiens|F|V-NONAMER|30931..30939|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>IMGT000058|IGHV4-59*13|Homo_sapiens|F|V-HEPTAMER|33937..33943|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000058|IGHV4-59*13|Homo_sapiens|F|V-NONAMER|33967..33975|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>M29811|IGHV4-61*01|Homo_sapiens|F|V-HEPTAMER|589..595|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M29811|IGHV4-61*01|Homo_sapiens|F|V-NONAMER|620..628|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000112|IGHV4-61*02|Homo_sapiens|F|V-HEPTAMER|199555..199561|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000112|IGHV4-61*02|Homo_sapiens|F|V-NONAMER|199585..199593|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X92230|IGHV4-61*03|Homo_sapiens|F|V-HEPTAMER|439..445|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z75347|IGHV4-61*06|Homo_sapiens|ORF|V-HEPTAMER|228..234|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>AB019437|IGHV4-61*08|Homo_sapiens|F|V-HEPTAMER|194418..194424|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019437|IGHV4-61*08|Homo_sapiens|F|V-NONAMER|194448..194456|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MK540647|IGHV4-61*09|Homo_sapiens|F|V-HEPTAMER|19131..19137|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MK540647|IGHV4-61*09|Homo_sapiens|F|V-NONAMER|19161..19169|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X05712|IGHV4/OR15-8*02|Homo_sapiens|ORF|V-NONAMER|586..594|9 nt|1| | | | |9+0=9|partial in 3'| |
+acacaaacc
+>HM855418|IGHV4/OR15-8*03|Homo_sapiens|ORF|V-HEPTAMER|19..25|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000129|IGHV5-10-1*01|Homo_sapiens|F|V-HEPTAMER|709471..709477|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000129|IGHV5-10-1*01|Homo_sapiens|F|V-NONAMER|709500..709508|9 nt|1| | | | |9+0=9| | |
+tctaaaacc
+>X92279|IGHV5-10-1*02|Homo_sapiens|F|V-HEPTAMER|547..553|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X92279|IGHV5-10-1*02|Homo_sapiens|F|V-NONAMER|576..584|9 nt|1| | | | |9+0=9| | |
+tctaaaacc
+>IMGT000035|IGHV5-10-1*03|Homo_sapiens|F|V-HEPTAMER|771874..771880|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV5-10-1*03|Homo_sapiens|F|V-NONAMER|771903..771911|9 nt|1| | | | |9+0=9| | |
+tctaaaacc
+>M99686|IGHV5-51*01|Homo_sapiens|F|V-HEPTAMER|604..610|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M99686|IGHV5-51*01|Homo_sapiens|F|V-NONAMER|633..641|9 nt|1| | | | |9+0=9| | |
+tctaaaacc
+>M18806|IGHV5-51*02|Homo_sapiens|F|V-HEPTAMER|547..553|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M18806|IGHV5-51*02|Homo_sapiens|F|V-NONAMER|576..584|9 nt|1| | | | |9+0=9| | |
+tctaaaacc
+>AC279961|IGHV5-51*03|Homo_sapiens|F|V-HEPTAMER|15475..15481|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC279961|IGHV5-51*03|Homo_sapiens|F|V-NONAMER|15444..15452|9 nt|1| | | | |9+0=9| |rev-compl|
+tctaaaacc
+>IMGT000055|IGHV5-51*07|Homo_sapiens|F|V-HEPTAMER|25407..25413|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000055|IGHV5-51*07|Homo_sapiens|F|V-NONAMER|25437..25445|9 nt|1| | | | |9+0=9| | |
+ctaaaaccc
+>IMGT000111|IGHV5-51*08|Homo_sapiens|P|V-HEPTAMER|265448..265454|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV5-51*08|Homo_sapiens|P|V-NONAMER|265478..265486|9 nt|1| | | | |9+0=9| | |
+ctaaaaccc
+>X92213|IGHV5-78*01|Homo_sapiens|P|V-NONAMER|1035..1043|9 nt|1| | | | |9+0=9| | |
+tctaaaacc
+>X92281|IGHV5-78*02|Homo_sapiens|P|V-NONAMER|551..559|9 nt|1| | | | |9+0=9| | |
+tctaaaacc
+>J04097|IGHV6-1*01|Homo_sapiens|F|V-HEPTAMER|785..791|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J04097|IGHV6-1*01|Homo_sapiens|F|V-NONAMER|815..823|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>Z14223|IGHV6-1*02|Homo_sapiens|F|V-HEPTAMER|447..453|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000054|IGHV6-1*03|Homo_sapiens|P|V-HEPTAMER|15496..15502|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000054|IGHV6-1*03|Homo_sapiens|P|V-NONAMER|15526..15534|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AB019439|IGHV7-34-1*01|Homo_sapiens|P|V-HEPTAMER|56311..56317|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV7-34-1*01|Homo_sapiens|P|V-NONAMER|56341..56349|9 nt|1| | | | |9+0=9| | |
+tcagaaagc
+>HM855644|IGHV7-34-1*02|Homo_sapiens|P|V-HEPTAMER|17..23|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000056|IGHV7-34-1*03|Homo_sapiens|P|V-HEPTAMER|19333..19339|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000056|IGHV7-34-1*03|Homo_sapiens|P|V-NONAMER|19363..19371|9 nt|1| | | | |9+0=9| | |
+tcagaaagc
+>IMGT000111|IGHV7-34-1*04|Homo_sapiens|P|V-HEPTAMER|528060..528066|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000111|IGHV7-34-1*04|Homo_sapiens|P|V-NONAMER|528090..528098|9 nt|1| | | | |9+0=9| | |
+tcagaaagc
+>IMGT000035|IGHV7-4-1*01|Homo_sapiens|F|V-HEPTAMER|854701..854707|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000035|IGHV7-4-1*01|Homo_sapiens|F|V-NONAMER|854731..854739|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>X62110|IGHV7-4-1*02|Homo_sapiens|F|V-HEPTAMER|454..460|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X62110|IGHV7-4-1*02|Homo_sapiens|F|V-NONAMER|484..492|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>HM855485|IGHV7-4-1*04|Homo_sapiens|F|V-HEPTAMER|17..23|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>HM855361|IGHV7-4-1*05|Homo_sapiens|F|V-HEPTAMER|17..23|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>M99644|IGHV7-40*01|Homo_sapiens|P|V-HEPTAMER|459..465|7 nt|1| | | | |7+0=7| | |
+cacaggg
+>M99644|IGHV7-40*01|Homo_sapiens|P|V-NONAMER|489..497|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>AC241995|IGHV7-40*03|Homo_sapiens|P|V-HEPTAMER|10397..10403|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC241995|IGHV7-40*03|Homo_sapiens|P|V-NONAMER|10427..10435|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>AB019439|IGHV7-40*04|Homo_sapiens|P|V-HEPTAMER|8278..8284|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AB019439|IGHV7-40*04|Homo_sapiens|P|V-NONAMER|8308..8316|9 nt|1| | | | |9+0=9| | |
+tcagaaacc
+>AC233755|IGHV7-40D*01|Homo_sapiens|P|V-HEPTAMER|38612..38618|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC233755|IGHV7-40D*01|Homo_sapiens|P|V-NONAMER|38642..38650|9 nt|1| | | | |9+0=9| | |
+tcaaaaacc
+>AB019438|IGHV7-56*02|Homo_sapiens|P|V-HEPTAMER|23770..23776|7 nt|1| | | | |7+0=7| | |
+caccgtg
+>AB019438|IGHV7-56*02|Homo_sapiens|P|V-NONAMER|23800..23808|9 nt|1| | | | |9+0=9| | |
+ttagaaacc
+>AB019437|IGHV7-81*01|Homo_sapiens|ORF|V-HEPTAMER|6752..6758|7 nt|1| | | | |7+0=7| | |
+caccatg
+>AB019437|IGHV7-81*01|Homo_sapiens|ORF|V-NONAMER|6782..6790|9 nt|1| | | | |9+0=9| | |
+tcagaaatc
+>AB019438|IGHV8-51-1*01|Homo_sapiens|P|V-HEPTAMER|50054..50060|7 nt|1| | | | |7+0=7| | |
+catcgtg
+>AB019438|IGHV8-51-1*01|Homo_sapiens|P|V-NONAMER|50084..50092|9 nt|1| | | | |9+0=9| | |
+agacagact
+>IMGT000035|IGHV8-51-1*02|Homo_sapiens|ORF|V-HEPTAMER|296345..296351|7 nt|1| | | | |7+0=7| | |
+catcgtg
+>IMGT000035|IGHV8-51-1*02|Homo_sapiens|ORF|V-NONAMER|296375..296383|9 nt|1| | | | |9+0=9| | |
+agacagact
+>IMGT000055|IGHV8-51-1*03|Homo_sapiens|P|V-HEPTAMER|20647..20653|7 nt|1| | | | |7+0=7| | |
+catcgtg
+>IMGT000055|IGHV8-51-1*03|Homo_sapiens|P|V-NONAMER|20677..20685|9 nt|1| | | | |9+0=9| | |
+agacagact
+>AC279961|IGHV8-51-1*04|Homo_sapiens|ORF|V-HEPTAMER|20235..20241|7 nt|1| | | | |7+0=7| |rev-compl|
+catcgtg
+>AC279961|IGHV8-51-1*04|Homo_sapiens|ORF|V-NONAMER|20203..20211|9 nt|1| | | | |9+0=9| |rev-compl|
+agacagact
+>IMGT000128|IGHV8-51-1*05|Homo_sapiens|P|V-HEPTAMER|261146..261152|7 nt|1| | | | |7+0=7| | |
+catcgtg
+>IMGT000128|IGHV8-51-1*05|Homo_sapiens|P|V-NONAMER|261176..261184|9 nt|1| | | | |9+0=9| | |
+agacagact
+>J00242|IGKJ1*01|Homo_sapiens|F|J-HEPTAMER|244..250|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00242|IGKJ1*01|Homo_sapiens|F|J-NONAMER|212..220|9 nt|1| | | | |9+0=9| | |
+ggtttctgt
+>J00242|IGKJ2*01|Homo_sapiens|F|J-HEPTAMER|605..611|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>J00242|IGKJ2*01|Homo_sapiens|F|J-NONAMER|573..581|9 nt|1| | | | |9+0=9| | |
+agtttttgt
+>IMGT000100|IGKJ2*04|Homo_sapiens|F|J-HEPTAMER|1383799..1383805|7 nt|1| | | | |7+0=7| | |
+cattgtg
+>IMGT000100|IGKJ2*04|Homo_sapiens|F|J-NONAMER|1383767..1383775|9 nt|1| | | | |9+0=9| | |
+agtttttgt
+>J00242|IGKJ3*01|Homo_sapiens|F|J-HEPTAMER|911..917|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00242|IGKJ3*01|Homo_sapiens|F|J-NONAMER|880..888|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>J00242|IGKJ4*01|Homo_sapiens|F|J-HEPTAMER|1253..1259|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00242|IGKJ4*01|Homo_sapiens|F|J-NONAMER|1221..1229|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>J00242|IGKJ5*01|Homo_sapiens|F|J-HEPTAMER|1568..1574|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>J00242|IGKJ5*01|Homo_sapiens|F|J-NONAMER|1536..1544|9 nt|1| | | | |9+0=9| | |
+gatttttgt
+>V01577|IGKV1-12*01|Homo_sapiens|F|V-HEPTAMER|1647..1653|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>V01577|IGKV1-12*01|Homo_sapiens|F|V-NONAMER|1666..1674|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>V01576|IGKV1-12*02|Homo_sapiens|F|V-HEPTAMER|1648..1654|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>V01576|IGKV1-12*02|Homo_sapiens|F|V-NONAMER|1667..1675|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>Z00010|IGKV1-13*01|Homo_sapiens|P|V-HEPTAMER|906..912|7 nt|1| | | | |7+0=7| | |
+catagtg
+>Z00010|IGKV1-13*01|Homo_sapiens|P|V-NONAMER|925..933|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>Z00006|IGKV1-13*02|Homo_sapiens|F|V-HEPTAMER|1226..1232|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00006|IGKV1-13*02|Homo_sapiens|F|V-NONAMER|1245..1253|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>J00248|IGKV1-16*01|Homo_sapiens|F|V-HEPTAMER|609..615|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>J00248|IGKV1-16*01|Homo_sapiens|F|V-NONAMER|628..636|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X72808|IGKV1-17*01|Homo_sapiens|F|V-HEPTAMER|875..881|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X72808|IGKV1-17*01|Homo_sapiens|F|V-NONAMER|894..902|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>D88255|IGKV1-17*02|Homo_sapiens|F|V-HEPTAMER|1129..1135|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D88255|IGKV1-17*02|Homo_sapiens|F|V-NONAMER|1148..1157|10 nt|1| | | | |10+0=10| | |
+acataaaacc
+>KM455566|IGKV1-17*03|Homo_sapiens|F|V-HEPTAMER|473..479|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455566|IGKV1-17*03|Homo_sapiens|F|V-NONAMER|492..500|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X71885|IGKV1-22*01|Homo_sapiens|P|V-HEPTAMER|3135..3141|7 nt|1| | | | |7+0=7| | |
+tagagtg
+>X71885|IGKV1-22*01|Homo_sapiens|P|V-NONAMER|3154..3162|9 nt|1| | | | |9+0=9| | |
+aaataaacc
+>X63398|IGKV1-27*01|Homo_sapiens|F|V-HEPTAMER|800..806|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X63398|IGKV1-27*01|Homo_sapiens|F|V-NONAMER|819..827|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>OL352710|IGKV1-27*02|Homo_sapiens|F|V-HEPTAMER|6981..6987|7 nt|1| | | | |7+0=7| |rev-compl|
+cactgtg
+>OL352710|IGKV1-27*02|Homo_sapiens|F|V-NONAMER|6960..6968|9 nt|1| | | | |9+0=9| |rev-compl|
+acataaacc
+>OL352716|IGKV1-27*03|Homo_sapiens|F|V-HEPTAMER|13280..13286|7 nt|1| | | | |7+0=7| |rev-compl|
+cactgtg
+>OL352716|IGKV1-27*03|Homo_sapiens|F|V-NONAMER|13259..13267|9 nt|1| | | | |9+0=9| |rev-compl|
+acataaacc
+>X71883|IGKV1-32*01|Homo_sapiens|P|V-HEPTAMER|1037..1043|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71883|IGKV1-32*01|Homo_sapiens|P|V-NONAMER|1046..1054|9 nt|1| | | | |9+0=9| | |
+acaaaccca
+>M64856|IGKV1-33*01|Homo_sapiens|F|V-HEPTAMER|608..614|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M64856|IGKV1-33*01|Homo_sapiens|F|V-NONAMER|627..635|9 nt|1| | | | |9+0=9| | |
+acataaatc
+>X71890|IGKV1-35*01|Homo_sapiens|P|V-HEPTAMER|933..939|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71890|IGKV1-35*01|Homo_sapiens|P|V-NONAMER|951..959|9 nt|1| | | | |9+0=9| | |
+aacaaaccc
+>Z00005|IGKV1-35*02|Homo_sapiens|P|V-HEPTAMER|450..456|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00005|IGKV1-35*02|Homo_sapiens|P|V-NONAMER|469..477|9 nt|1| | | | |9+0=9| | |
+acaaacccc
+>X59316|IGKV1-37*01|Homo_sapiens|ORF|V-HEPTAMER|833..839|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X59316|IGKV1-37*01|Homo_sapiens|ORF|V-NONAMER|852..860|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X59315|IGKV1-39*01|Homo_sapiens|F|V-HEPTAMER|611..617|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X59315|IGKV1-39*01|Homo_sapiens|F|V-NONAMER|630..638|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X59318|IGKV1-39*02|Homo_sapiens|P|V-HEPTAMER|1128..1134|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X59318|IGKV1-39*02|Homo_sapiens|P|V-NONAMER|1147..1155|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>Z00001|IGKV1-5*01|Homo_sapiens|F|V-HEPTAMER|775..781|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00001|IGKV1-5*01|Homo_sapiens|F|V-NONAMER|794..802|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>M23851|IGKV1-5*02|Homo_sapiens|F|V-HEPTAMER|770..776|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M23851|IGKV1-5*02|Homo_sapiens|F|V-NONAMER|789..797|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X72813|IGKV1-5*03|Homo_sapiens|F|V-HEPTAMER|332..338|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X72813|IGKV1-5*03|Homo_sapiens|F|V-NONAMER|351..359|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>MW316670|IGKV1-5*04|Homo_sapiens|F|V-HEPTAMER|551..557|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316670|IGKV1-5*04|Homo_sapiens|F|V-NONAMER|570..578|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>MW316676|IGKV1-5*05|Homo_sapiens|F|V-HEPTAMER|551..557|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316676|IGKV1-5*05|Homo_sapiens|F|V-NONAMER|570..578|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>M64858|IGKV1-6*01|Homo_sapiens|F|V-HEPTAMER|610..616|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M64858|IGKV1-6*01|Homo_sapiens|F|V-NONAMER|629..637|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>KM455558|IGKV1-6*02|Homo_sapiens|F|V-HEPTAMER|474..480|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455558|IGKV1-6*02|Homo_sapiens|F|V-NONAMER|493..501|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>Z00014|IGKV1-8*01|Homo_sapiens|F|V-HEPTAMER|1429..1435|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00014|IGKV1-8*01|Homo_sapiens|F|V-NONAMER|1448..1456|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>MW316669|IGKV1-8*02|Homo_sapiens|F|V-HEPTAMER|800..806|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316669|IGKV1-8*02|Homo_sapiens|F|V-NONAMER|819..827|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>MW316671|IGKV1-8*03|Homo_sapiens|F|V-HEPTAMER|800..806|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316671|IGKV1-8*03|Homo_sapiens|F|V-NONAMER|819..827|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352720|IGKV1-8*04|Homo_sapiens|F|V-HEPTAMER|26598..26604|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352720|IGKV1-8*04|Homo_sapiens|F|V-NONAMER|26577..26585|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>Z00013|IGKV1-9*01|Homo_sapiens|F|V-HEPTAMER|1168..1174|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00013|IGKV1-9*01|Homo_sapiens|F|V-NONAMER|1187..1195|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>OL352717|IGKV1-9*02|Homo_sapiens|F|V-HEPTAMER|35340..35346|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352717|IGKV1-9*02|Homo_sapiens|F|V-NONAMER|35319..35327|9 nt|1| | | | |9+0=9| |rev-compl|
+acataaacc
+>OL352723|IGKV1-9*03|Homo_sapiens|F|V-HEPTAMER|9703..9709|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352723|IGKV1-9*03|Homo_sapiens|F|V-NONAMER|9682..9690|9 nt|1| | | | |9+0=9| |rev-compl|
+acataaacc
+>Y14865|IGKV1-NL1*01|Homo_sapiens|F|V-HEPTAMER|638..644|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X64640|IGKV1/OR-2*01|Homo_sapiens|P|V-HEPTAMER|654..660|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X64640|IGKV1/OR-2*01|Homo_sapiens|P|V-NONAMER|673..681|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X64641|IGKV1/OR-3*01|Homo_sapiens|P|V-HEPTAMER|912..918|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X64641|IGKV1/OR-3*01|Homo_sapiens|P|V-NONAMER|931..939|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X64642|IGKV1/OR-4*01|Homo_sapiens|P|V-HEPTAMER|660..666|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X64642|IGKV1/OR-4*01|Homo_sapiens|P|V-NONAMER|679..687|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>M20809|IGKV1/OR1-1*01|Homo_sapiens|P|V-HEPTAMER|590..596|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>M20809|IGKV1/OR1-1*01|Homo_sapiens|P|V-NONAMER|609..617|9 nt|1| | | | |9+0=9| | |
+acataatcc
+>AL031601|IGKV1/OR10-1*01|Homo_sapiens|P|V-HEPTAMER|84553..84559|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AL031601|IGKV1/OR10-1*01|Homo_sapiens|P|V-NONAMER|84572..84580|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>M20812|IGKV1/OR15-118*01|Homo_sapiens|P|V-HEPTAMER|597..603|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>M20812|IGKV1/OR15-118*01|Homo_sapiens|P|V-NONAMER|616..624|9 nt|1| | | | |9+0=9| | |
+acataatcc
+>Y08392|IGKV1/OR2-0*01|Homo_sapiens|ORF|V-HEPTAMER|607..613|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>Y08392|IGKV1/OR2-0*01|Homo_sapiens|ORF|V-NONAMER|626..634|9 nt|1| | | | |9+0=9| | |
+acataatcc
+>M20813|IGKV1/OR2-1*01|Homo_sapiens|P|V-HEPTAMER|607..613|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M20813|IGKV1/OR2-1*01|Homo_sapiens|P|V-NONAMER|626..634|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X51887|IGKV1/OR2-108*01|Homo_sapiens|ORF|V-HEPTAMER|609..615|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X51887|IGKV1/OR2-108*01|Homo_sapiens|ORF|V-NONAMER|628..636|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X51885|IGKV1/OR2-11*01|Homo_sapiens|P|V-HEPTAMER|646..652|7 nt|1| | | | |7+0=7| | |
+cccagtg
+>X51885|IGKV1/OR2-11*01|Homo_sapiens|P|V-NONAMER|665..673|9 nt|1| | | | |9+0=9| | |
+acatcaact
+>AC018696|IGKV1/OR2-118*01|Homo_sapiens|P|V-HEPTAMER|110719..110725|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagcg
+>AC018696|IGKV1/OR2-118*01|Homo_sapiens|P|V-NONAMER|110698..110706|9 nt|1| | | | |9+0=9| |rev-compl|
+acataatcc
+>AC128677|IGKV1/OR2-2*01|Homo_sapiens|P|V-HEPTAMER|125236..125242|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC128677|IGKV1/OR2-2*01|Homo_sapiens|P|V-NONAMER|125215..125223|9 nt|1| | | | |9+0=9| |rev-compl|
+acataaacc
+>X05102|IGKV1/OR2-3*01|Homo_sapiens|P|V-HEPTAMER|1077..1083|7 nt|1| | | | |7+0=7| | |
+cccagtg
+>X05102|IGKV1/OR2-3*01|Homo_sapiens|P|V-NONAMER|1096..1104|9 nt|1| | | | |9+0=9| | |
+acatcaacc
+>X05103|IGKV1/OR2-6*01|Homo_sapiens|P|V-HEPTAMER|597..603|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05103|IGKV1/OR2-6*01|Homo_sapiens|P|V-NONAMER|616..624|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X51879|IGKV1/OR2-9*01|Homo_sapiens|P|V-HEPTAMER|771..777|7 nt|1| | | | |7+0=7| | |
+cccagtg
+>X51879|IGKV1/OR2-9*01|Homo_sapiens|P|V-NONAMER|790..798|9 nt|1| | | | |9+0=9| | |
+acatcaact
+>Z00040|IGKV1/OR22-1*01|Homo_sapiens|P|V-HEPTAMER|1147..1153|7 nt|1| | | | |7+0=7| | |
+tactgtg
+>Z00040|IGKV1/OR22-1*01|Homo_sapiens|P|V-NONAMER|1166..1174|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>Z00003|IGKV1/OR22-5*01|Homo_sapiens|P|V-HEPTAMER|607..613|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00003|IGKV1/OR22-5*01|Homo_sapiens|P|V-NONAMER|626..634|9 nt|1| | | | |9+0=9| | |
+atataaacc
+>Z00002|IGKV1/OR22-5*02|Homo_sapiens|P|V-HEPTAMER|696..702|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00002|IGKV1/OR22-5*02|Homo_sapiens|P|V-NONAMER|715..723|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>AL512605|IGKV1/OR9-1*01|Homo_sapiens|P|V-HEPTAMER|83584..83590|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AL512605|IGKV1/OR9-1*01|Homo_sapiens|P|V-NONAMER|83563..83571|9 nt|1| | | | |9+0=9| |rev-compl|
+acataaacc
+>AC129778|IGKV1/OR9-2*01|Homo_sapiens|P|V-HEPTAMER|148106..148112|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>AC129778|IGKV1/OR9-2*01|Homo_sapiens|P|V-NONAMER|148085..148093|9 nt|1| | | | |9+0=9| |rev-compl|
+acataaacc
+>AC134879|IGKV1/ORY-1*01|Homo_sapiens|P|V-HEPTAMER|119142..119148|7 nt|1| | | | |7+0=7| | |
+catagtg
+>AC134879|IGKV1/ORY-1*01|Homo_sapiens|P|V-NONAMER|119161..119169|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X17263|IGKV1D-12*01|Homo_sapiens|F|V-HEPTAMER|608..614|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>V01576|IGKV1D-12*02|Homo_sapiens|F|V-HEPTAMER|1648..1654|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>V01576|IGKV1D-12*02|Homo_sapiens|F|V-NONAMER|1667..1675|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X17262|IGKV1D-13*01|Homo_sapiens|F|V-HEPTAMER|609..615|7 nt|1| | | | |7+0=7| | |
+catagtg
+>X17262|IGKV1D-13*01|Homo_sapiens|F|V-NONAMER|628..636|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>KM455562|IGKV1D-13*02|Homo_sapiens|F|V-HEPTAMER|474..480|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455562|IGKV1D-13*02|Homo_sapiens|F|V-NONAMER|493..501|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>K01323|IGKV1D-16*01|Homo_sapiens|F|V-HEPTAMER|609..615|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>K01323|IGKV1D-16*01|Homo_sapiens|F|V-NONAMER|628..636|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>V00558|IGKV1D-16*02|Homo_sapiens|F|V-HEPTAMER|609..615|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>V00558|IGKV1D-16*02|Homo_sapiens|F|V-NONAMER|628..636|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X63392|IGKV1D-17*01|Homo_sapiens|F|V-HEPTAMER|1464..1470|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63392|IGKV1D-17*01|Homo_sapiens|F|V-NONAMER|1483..1491|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X71887|IGKV1D-22*01|Homo_sapiens|P|V-HEPTAMER|3134..3140|7 nt|1| | | | |7+0=7| | |
+tagagtg
+>X71887|IGKV1D-22*01|Homo_sapiens|P|V-NONAMER|3153..3161|9 nt|1| | | | |9+0=9| | |
+aaataaacc
+>Z00004|IGKV1D-27*01|Homo_sapiens|P|V-HEPTAMER|1003..1009|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>Z00004|IGKV1D-27*01|Homo_sapiens|P|V-NONAMER|1022..1030|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X71896|IGKV1D-32*01|Homo_sapiens|P|V-HEPTAMER|1055..1061|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71896|IGKV1D-32*01|Homo_sapiens|P|V-NONAMER|1064..1072|9 nt|1| | | | |9+0=9| | |
+acaaaccca
+>M64855|IGKV1D-33*01|Homo_sapiens|F|V-HEPTAMER|608..614|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M64855|IGKV1D-33*01|Homo_sapiens|F|V-NONAMER|627..635|9 nt|1| | | | |9+0=9| | |
+acataaatc
+>X71894|IGKV1D-35*01|Homo_sapiens|P|V-HEPTAMER|598..604|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71894|IGKV1D-35*01|Homo_sapiens|P|V-NONAMER|616..624|9 nt|1| | | | |9+0=9| | |
+aacaaaccc
+>Z00005|IGKV1D-35*02|Homo_sapiens|P|V-HEPTAMER|450..456|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00005|IGKV1D-35*02|Homo_sapiens|P|V-NONAMER|469..477|9 nt|1| | | | |9+0=9| | |
+acaaacccc
+>X71893|IGKV1D-37*01|Homo_sapiens|ORF|V-HEPTAMER|914..920|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71893|IGKV1D-37*01|Homo_sapiens|ORF|V-NONAMER|933..941|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X59312|IGKV1D-39*01|Homo_sapiens|F|V-HEPTAMER|611..617|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X59312|IGKV1D-39*01|Homo_sapiens|F|V-NONAMER|630..638|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>X72816|IGKV1D-42*01|Homo_sapiens|ORF|V-HEPTAMER|678..684|7 nt|1| | | | |7+0=7| | |
+cacaggg
+>X72816|IGKV1D-42*01|Homo_sapiens|ORF|V-NONAMER|697..705|9 nt|1| | | | |9+0=9| | |
+acataagcc
+>KM455560|IGKV1D-42*02|Homo_sapiens|ORF|V-HEPTAMER|464..470|7 nt|1| | | | |7+0=7| | |
+cacaggg
+>KM455560|IGKV1D-42*02|Homo_sapiens|ORF|V-NONAMER|483..491|9 nt|1| | | | |9+0=9| | |
+acataagcc
+>X72817|IGKV1D-43*01|Homo_sapiens|F|V-HEPTAMER|628..634|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X72817|IGKV1D-43*01|Homo_sapiens|F|V-NONAMER|647..655|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>Z00008|IGKV1D-8*01|Homo_sapiens|F|V-HEPTAMER|782..788|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00008|IGKV1D-8*01|Homo_sapiens|F|V-NONAMER|801..809|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KM455563|IGKV1D-8*02|Homo_sapiens|F|V-HEPTAMER|472..478|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455563|IGKV1D-8*02|Homo_sapiens|F|V-NONAMER|491..499|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KM455567|IGKV1D-8*03|Homo_sapiens|F|V-HEPTAMER|478..484|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455567|IGKV1D-8*03|Homo_sapiens|F|V-NONAMER|497..505|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>Z00012|IGKV2-10*01|Homo_sapiens|P|V-HEPTAMER|815..821|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>Z00012|IGKV2-10*01|Homo_sapiens|P|V-NONAMER|834..842|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>OL352723|IGKV2-10*02|Homo_sapiens|P|V-HEPTAMER|19690..19696|7 nt|1| | | | |7+0=7| |rev-compl|
+cacaatg
+>OL352723|IGKV2-10*02|Homo_sapiens|P|V-NONAMER|19669..19677|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>X72810|IGKV2-14*01|Homo_sapiens|P|V-HEPTAMER|957..963|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>X72810|IGKV2-14*01|Homo_sapiens|P|V-NONAMER|976..984|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X63400|IGKV2-18*01|Homo_sapiens|P|V-HEPTAMER|1120..1126|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63400|IGKV2-18*01|Homo_sapiens|P|V-NONAMER|1139..1147|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X12692|IGKV2-19*01|Homo_sapiens|P|V-HEPTAMER|1083..1089|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X12692|IGKV2-19*01|Homo_sapiens|P|V-NONAMER|1102..1110|9 nt|1| | | | |9+0=9| | |
+atacaaacc
+>X71885|IGKV2-23*01|Homo_sapiens|P|V-HEPTAMER|1843..1849|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>X71885|IGKV2-23*01|Homo_sapiens|P|V-NONAMER|1862..1870|9 nt|1| | | | |9+0=9| | |
+acaaaagcc
+>X12684|IGKV2-24*01|Homo_sapiens|F|V-HEPTAMER|959..965|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X12684|IGKV2-24*01|Homo_sapiens|F|V-NONAMER|978..986|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352729|IGKV2-24*02|Homo_sapiens|F|V-HEPTAMER|22169..22175|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352729|IGKV2-24*02|Homo_sapiens|F|V-NONAMER|22148..22156|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>X71884|IGKV2-26*01|Homo_sapiens|P|V-HEPTAMER|1258..1264|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71884|IGKV2-26*01|Homo_sapiens|P|V-NONAMER|1277..1285|9 nt|1| | | | |9+0=9| | |
+gcacaaacc
+>X63397|IGKV2-28*01|Homo_sapiens|F|V-HEPTAMER|1041..1047|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63397|IGKV2-28*01|Homo_sapiens|F|V-NONAMER|1060..1068|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X63396|IGKV2-29*01|Homo_sapiens|P|V-HEPTAMER|1051..1057|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63396|IGKV2-29*01|Homo_sapiens|P|V-NONAMER|1070..1078|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>U41645|IGKV2-29*02|Homo_sapiens|F|V-HEPTAMER|889..895|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>U41645|IGKV2-29*02|Homo_sapiens|F|V-NONAMER|908..916|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X63403|IGKV2-30*01|Homo_sapiens|F|V-HEPTAMER|1686..1692|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63403|IGKV2-30*01|Homo_sapiens|F|V-NONAMER|1705..1713|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X71888|IGKV2-38*01|Homo_sapiens|P|V-HEPTAMER|822..828|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71888|IGKV2-38*01|Homo_sapiens|P|V-NONAMER|841..849|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>IMGT000100|IGKV2-38*02|Homo_sapiens|P|V-HEPTAMER|935469..935475|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000100|IGKV2-38*02|Homo_sapiens|P|V-NONAMER|935488..935496|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X72814|IGKV2-4*01|Homo_sapiens|P|V-HEPTAMER|1299..1305|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X72814|IGKV2-4*01|Homo_sapiens|P|V-NONAMER|1318..1326|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>OL352712|IGKV2-4*02|Homo_sapiens|P|V-HEPTAMER|4516..4522|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352712|IGKV2-4*02|Homo_sapiens|P|V-NONAMER|4495..4503|9 nt|1| | | | |9+0=9| |rev-compl|
+acacaaacc
+>X59314|IGKV2-40*01|Homo_sapiens|F|V-HEPTAMER|1625..1631|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X59314|IGKV2-40*01|Homo_sapiens|F|V-NONAMER|1644..1652|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X59317|IGKV2-40*02|Homo_sapiens|F|V-HEPTAMER|252..258|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X59317|IGKV2-40*02|Homo_sapiens|F|V-NONAMER|271..279|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X05101|IGKV2/OR2-1*01|Homo_sapiens|P|V-HEPTAMER|1128..1134|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X05101|IGKV2/OR2-1*01|Homo_sapiens|P|V-NONAMER|1147..1155|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X51886|IGKV2/OR2-10*01|Homo_sapiens|P|V-HEPTAMER|987..993|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X51886|IGKV2/OR2-10*01|Homo_sapiens|P|V-NONAMER|1006..1014|9 nt|1| | | | |9+0=9| | |
+agagaaacc
+>X51884|IGKV2/OR2-2*01|Homo_sapiens|P|V-HEPTAMER|983..989|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X51884|IGKV2/OR2-2*01|Homo_sapiens|P|V-NONAMER|1002..1010|9 nt|1| | | | |9+0=9| | |
+agagaaacc
+>X51883|IGKV2/OR2-4*01|Homo_sapiens|P|V-HEPTAMER|1079..1085|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X51883|IGKV2/OR2-4*01|Homo_sapiens|P|V-NONAMER|1098..1106|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X51881|IGKV2/OR2-7*01|Homo_sapiens|P|V-HEPTAMER|990..996|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X51881|IGKV2/OR2-7*01|Homo_sapiens|P|V-NONAMER|1009..1017|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>AC092683|IGKV2/OR2-7D*01|Homo_sapiens|P|V-HEPTAMER|103949..103955|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC092683|IGKV2/OR2-7D*01|Homo_sapiens|P|V-NONAMER|103968..103976|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X51880|IGKV2/OR2-8*01|Homo_sapiens|P|V-HEPTAMER|974..980|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X51880|IGKV2/OR2-8*01|Homo_sapiens|P|V-NONAMER|993..1001|9 nt|1| | | | |9+0=9| | |
+agagaaacc
+>Z00041|IGKV2/OR22-3*01|Homo_sapiens|P|V-HEPTAMER|500..506|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00041|IGKV2/OR22-3*01|Homo_sapiens|P|V-NONAMER|519..527|9 nt|1| | | | |9+0=9| | |
+aaagaaacc
+>M20707|IGKV2/OR22-4*01|Homo_sapiens|P|V-HEPTAMER|946..952|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M20707|IGKV2/OR22-4*01|Homo_sapiens|P|V-NONAMER|965..973|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X17265|IGKV2D-10*01|Homo_sapiens|P|V-HEPTAMER|888..894|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>X17265|IGKV2D-10*01|Homo_sapiens|P|V-NONAMER|907..915|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X72811|IGKV2D-14*01|Homo_sapiens|P|V-HEPTAMER|987..993|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>X72811|IGKV2D-14*01|Homo_sapiens|P|V-NONAMER|1006..1014|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X63395|IGKV2D-18*01|Homo_sapiens|P|V-HEPTAMER|1087..1093|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63395|IGKV2D-18*01|Homo_sapiens|P|V-NONAMER|1106..1114|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X71882|IGKV2D-19*01|Homo_sapiens|P|V-HEPTAMER|702..708|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71882|IGKV2D-19*01|Homo_sapiens|P|V-NONAMER|721..729|9 nt|1| | | | |9+0=9| | |
+atacaaacc
+>X71887|IGKV2D-23*01|Homo_sapiens|P|V-HEPTAMER|1842..1848|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>X63401|IGKV2D-24*01|Homo_sapiens|ORF|V-HEPTAMER|990..996|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63401|IGKV2D-24*01|Homo_sapiens|ORF|V-NONAMER|1009..1017|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>AP001216|IGKV2D-26*01|Homo_sapiens|F|V-HEPTAMER|31079..31085|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AP001216|IGKV2D-26*01|Homo_sapiens|F|V-NONAMER|31098..31106|9 nt|1| | | | |9+0=9| | |
+gcacaaacc
+>KM455565|IGKV2D-26*03|Homo_sapiens|F|V-HEPTAMER|754..760|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455565|IGKV2D-26*03|Homo_sapiens|F|V-NONAMER|773..781|9 nt|1| | | | |9+0=9| | |
+gcacaaacc
+>X12691|IGKV2D-28*01|Homo_sapiens|F|V-HEPTAMER|1040..1046|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X12691|IGKV2D-28*01|Homo_sapiens|F|V-NONAMER|1059..1067|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>M31952|IGKV2D-29*01|Homo_sapiens|F|V-HEPTAMER|1054..1060|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M31952|IGKV2D-29*01|Homo_sapiens|F|V-NONAMER|1073..1081|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>U41644|IGKV2D-29*02|Homo_sapiens|F|V-HEPTAMER|887..893|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>U41644|IGKV2D-29*02|Homo_sapiens|F|V-NONAMER|906..914|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X63402|IGKV2D-30*01|Homo_sapiens|F|V-HEPTAMER|1295..1301|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X63402|IGKV2D-30*01|Homo_sapiens|F|V-NONAMER|1314..1322|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X71892|IGKV2D-38*01|Homo_sapiens|P|V-HEPTAMER|1114..1120|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71892|IGKV2D-38*01|Homo_sapiens|P|V-NONAMER|1133..1141|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X59311|IGKV2D-40*01|Homo_sapiens|F|V-HEPTAMER|882..888|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X59311|IGKV2D-40*01|Homo_sapiens|F|V-NONAMER|901..909|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X01668|IGKV3-11*01|Homo_sapiens|F|V-HEPTAMER|650..656|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X01668|IGKV3-11*01|Homo_sapiens|F|V-NONAMER|669..677|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>K02768|IGKV3-11*02|Homo_sapiens|F|V-HEPTAMER|650..656|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>K02768|IGKV3-11*02|Homo_sapiens|F|V-NONAMER|669..677|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>M23090|IGKV3-15*01|Homo_sapiens|F|V-HEPTAMER|1192..1198|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M23090|IGKV3-15*01|Homo_sapiens|F|V-NONAMER|1211..1219|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352711|IGKV3-15*02|Homo_sapiens|F|V-HEPTAMER|30796..30802|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352711|IGKV3-15*02|Homo_sapiens|F|V-NONAMER|30775..30783|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>X12686|IGKV3-20*01|Homo_sapiens|F|V-HEPTAMER|645..651|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X12686|IGKV3-20*01|Homo_sapiens|F|V-NONAMER|664..672|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X06583|IGKV3-25*01|Homo_sapiens|P|V-HEPTAMER|2412..2418|7 nt|1| | | | |7+0=7| | |
+catactg
+>X06583|IGKV3-25*01|Homo_sapiens|P|V-NONAMER|2431..2439|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X71883|IGKV3-31*01|Homo_sapiens|P|V-HEPTAMER|2379..2385|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71883|IGKV3-31*01|Homo_sapiens|P|V-NONAMER|2397..2405|9 nt|1| | | | |9+0=9| | |
+aaccaaacc
+>X71891|IGKV3-34*01|Homo_sapiens|P|V-HEPTAMER|1121..1127|7 nt|1| | | | |7+0=7| | |
+cacagta
+>X71891|IGKV3-34*01|Homo_sapiens|P|V-NONAMER|1140..1148|9 nt|1| | | | |9+0=9| | |
+acaaaaact
+>X02725|IGKV3-7*01|Homo_sapiens|ORF|V-HEPTAMER|653..659|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X02725|IGKV3-7*01|Homo_sapiens|ORF|V-NONAMER|672..680|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X72812|IGKV3-7*02|Homo_sapiens|ORF|V-HEPTAMER|653..659|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X72812|IGKV3-7*02|Homo_sapiens|ORF|V-NONAMER|672..680|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>K02769|IGKV3-7*03|Homo_sapiens|ORF|V-HEPTAMER|653..659|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>K02769|IGKV3-7*03|Homo_sapiens|ORF|V-NONAMER|672..680|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352715|IGKV3-7*05|Homo_sapiens|ORF|V-HEPTAMER|9620..9626|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352715|IGKV3-7*05|Homo_sapiens|ORF|V-NONAMER|9599..9607|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>OL352720|IGKV3-7*06|Homo_sapiens|ORF|V-HEPTAMER|12643..12649|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352720|IGKV3-7*06|Homo_sapiens|ORF|V-NONAMER|12622..12630|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>X74459|IGKV3/OR2-268*01|Homo_sapiens|ORF|V-HEPTAMER|660..666|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X74459|IGKV3/OR2-268*01|Homo_sapiens|ORF|V-NONAMER|679..687|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X74460|IGKV3/OR2-268*02|Homo_sapiens|ORF|V-HEPTAMER|660..666|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X74460|IGKV3/OR2-268*02|Homo_sapiens|ORF|V-NONAMER|679..687|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X51882|IGKV3/OR2-5*01|Homo_sapiens|P|V-HEPTAMER|1014..1020|7 nt|1| | | | |7+0=7| | |
+cacagtt
+>X51882|IGKV3/OR2-5*01|Homo_sapiens|P|V-NONAMER|1033..1041|9 nt|1| | | | |9+0=9| | |
+acaaaacct
+>X17264|IGKV3D-11*01|Homo_sapiens|F|V-HEPTAMER|599..605|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X17264|IGKV3D-11*01|Homo_sapiens|F|V-NONAMER|618..626|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KM455561|IGKV3D-11*02|Homo_sapiens|F|V-HEPTAMER|517..523|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455561|IGKV3D-11*02|Homo_sapiens|F|V-NONAMER|536..544|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>L19271|IGKV3D-11*03|Homo_sapiens|F|V-HEPTAMER|492..498|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L19271|IGKV3D-11*03|Homo_sapiens|F|V-NONAMER|511..519|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X72815|IGKV3D-15*01|Homo_sapiens|F|V-HEPTAMER|587..593|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X72815|IGKV3D-15*01|Homo_sapiens|F|V-NONAMER|606..614|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>M23091|IGKV3D-15*02|Homo_sapiens|P|V-HEPTAMER|1192..1198|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M23091|IGKV3D-15*02|Homo_sapiens|P|V-NONAMER|1211..1219|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KM455564|IGKV3D-15*03|Homo_sapiens|F|V-HEPTAMER|517..523|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455564|IGKV3D-15*03|Homo_sapiens|F|V-NONAMER|536..544|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X12687|IGKV3D-20*01|Homo_sapiens|F|V-HEPTAMER|645..651|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X12687|IGKV3D-20*01|Homo_sapiens|F|V-NONAMER|664..672|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>L19272|IGKV3D-20*02|Homo_sapiens|ORF|V-HEPTAMER|513..519|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L19272|IGKV3D-20*02|Homo_sapiens|ORF|V-NONAMER|532..540|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X71886|IGKV3D-25*01|Homo_sapiens|P|V-HEPTAMER|2385..2391|7 nt|1| | | | |7+0=7| | |
+catactg
+>X71886|IGKV3D-25*01|Homo_sapiens|P|V-NONAMER|2404..2412|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X71896|IGKV3D-31*01|Homo_sapiens|P|V-HEPTAMER|2397..2403|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71896|IGKV3D-31*01|Homo_sapiens|P|V-NONAMER|2416..2424|9 nt|1| | | | |9+0=9| | |
+accaaacct
+>IMGT000100|IGKV3D-31*02|Homo_sapiens|P|V-HEPTAMER|315121..315127|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>IMGT000100|IGKV3D-31*02|Homo_sapiens|P|V-NONAMER|315100..315108|9 nt|1| | | | |9+0=9| |rev-compl|
+accaaacct
+>X71895|IGKV3D-34*01|Homo_sapiens|P|V-HEPTAMER|1121..1127|7 nt|1| | | | |7+0=7| | |
+cacagta
+>X71895|IGKV3D-34*01|Homo_sapiens|P|V-NONAMER|1140..1148|9 nt|1| | | | |9+0=9| | |
+acaaaaact
+>X72820|IGKV3D-7*01|Homo_sapiens|F|V-HEPTAMER|975..981|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X72820|IGKV3D-7*01|Homo_sapiens|F|V-NONAMER|994..1002|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>Z00023|IGKV4-1*01|Homo_sapiens|F|V-HEPTAMER|682..688|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>Z00023|IGKV4-1*01|Homo_sapiens|F|V-NONAMER|701..709|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>MW316673|IGKV4-1*02|Homo_sapiens|F|V-HEPTAMER|893..899|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316673|IGKV4-1*02|Homo_sapiens|F|V-NONAMER|912..920|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>OL352714|IGKV4-1*03|Homo_sapiens|F|V-HEPTAMER|21695..21701|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352714|IGKV4-1*03|Homo_sapiens|F|V-NONAMER|21714..21722|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X02485|IGKV5-2*01|Homo_sapiens|F|V-HEPTAMER|796..802|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X02485|IGKV5-2*01|Homo_sapiens|F|V-NONAMER|814..822|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352726|IGKV5-2*02|Homo_sapiens|F|V-HEPTAMER|21986..21992|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352726|IGKV5-2*02|Homo_sapiens|F|V-NONAMER|22005..22013|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>X63399|IGKV6-21*01|Homo_sapiens|F|V-HEPTAMER|1061..1067|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X63399|IGKV6-21*01|Homo_sapiens|F|V-NONAMER|1080..1088|9 nt|1| | | | |9+0=9| | |
+acaaaaact
+>KM455568|IGKV6-21*02|Homo_sapiens|F|V-HEPTAMER|555..561|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>KM455568|IGKV6-21*02|Homo_sapiens|F|V-NONAMER|574..582|9 nt|1| | | | |9+0=9| | |
+acaaaaact
+>X12683|IGKV6D-21*01|Homo_sapiens|F|V-HEPTAMER|932..938|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X12683|IGKV6D-21*01|Homo_sapiens|F|V-NONAMER|951..959|9 nt|1| | | | |9+0=9| | |
+acaaaaact
+>KM455569|IGKV6D-21*02|Homo_sapiens|F|V-HEPTAMER|586..592|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>KM455569|IGKV6D-21*02|Homo_sapiens|F|V-NONAMER|605..613|9 nt|1| | | | |9+0=9| | |
+acaaaaact
+>M27751|IGKV6D-41*01|Homo_sapiens|ORF|V-HEPTAMER|773..779|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>M27751|IGKV6D-41*01|Homo_sapiens|ORF|V-NONAMER|792..800|9 nt|1| | | | |9+0=9| | |
+acaaaaatt
+>X12682|IGKV7-3*01|Homo_sapiens|P|V-HEPTAMER|1284..1290|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X12682|IGKV7-3*01|Homo_sapiens|P|V-NONAMER|1303..1311|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352726|IGKV7-3*02|Homo_sapiens|P|V-HEPTAMER|39266..39272|7 nt|1| | | | |7+0=7| |rev-compl|
+cacagtg
+>OL352726|IGKV7-3*02|Homo_sapiens|P|V-NONAMER|39245..39253|9 nt|1| | | | |9+0=9| |rev-compl|
+acaaaaacc
+>X04457|IGLJ1*01|Homo_sapiens|F|J-HEPTAMER|23..29|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X04457|IGLJ1*01|Homo_sapiens|F|J-NONAMER|2..10|9 nt|1| | | | |9+0=9| | |
+ggttttggt
+>M15641|IGLJ2*01|Homo_sapiens|F|J-HEPTAMER|22..28|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M15641|IGLJ2*01|Homo_sapiens|F|J-NONAMER|1..9|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>M15642|IGLJ3*01|Homo_sapiens|F|J-HEPTAMER|22..28|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M15642|IGLJ3*01|Homo_sapiens|F|J-NONAMER|1..9|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>D87023|IGLJ3*02|Homo_sapiens|F|J-HEPTAMER|30580..30586|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87023|IGLJ3*02|Homo_sapiens|F|J-NONAMER|30559..30567|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>X51755|IGLJ4*01|Homo_sapiens|ORF|J-HEPTAMER|19202..19208|7 nt|1| | | | |7+0=7| | |
+caccgca
+>X51755|IGLJ4*01|Homo_sapiens|ORF|J-NONAMER|19181..19189|9 nt|1| | | | |9+0=9| | |
+agtttttgt
+>X51755|IGLJ5*01|Homo_sapiens|ORF|J-HEPTAMER|22911..22917|7 nt|1| | | | |7+0=7| | |
+cacagca
+>X51755|IGLJ5*01|Homo_sapiens|ORF|J-NONAMER|22890..22898|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>D87017|IGLJ5*02|Homo_sapiens|ORF|J-HEPTAMER|11379..11385|7 nt|1| | | | |7+0=7| | |
+cacagca
+>D87017|IGLJ5*02|Homo_sapiens|ORF|J-NONAMER|11358..11366|9 nt|1| | | | |9+0=9| | |
+ggtttttgt
+>M18338|IGLJ6*01|Homo_sapiens|F|J-HEPTAMER|23..29|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M18338|IGLJ6*01|Homo_sapiens|F|J-NONAMER|2..10|9 nt|1| | | | |9+0=9| | |
+ggtttgtgt
+>X51755|IGLJ7*01|Homo_sapiens|F|J-HEPTAMER|30010..30016|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>X51755|IGLJ7*01|Homo_sapiens|F|J-NONAMER|29989..29997|9 nt|1| | | | |9+0=9| | |
+ggtttgtgt
+>D87017|IGLJ7*02|Homo_sapiens|F|J-HEPTAMER|18506..18512|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>D87017|IGLJ7*02|Homo_sapiens|F|J-NONAMER|18485..18493|9 nt|1| | | | |9+0=9| | |
+ggtttgtgt
+>AC279423|IGLV(I)-11-1*01|Homo_sapiens|P|V-HEPTAMER|22621..22627|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279423|IGLV(I)-11-1*01|Homo_sapiens|P|V-NONAMER|22651..22659|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>D87007|IGLV(I)-20*01|Homo_sapiens|P|V-HEPTAMER|15859..15865|7 nt|1| | | | |7+0=7| | |
+caccgtg
+>D87007|IGLV(I)-20*01|Homo_sapiens|P|V-NONAMER|15889..15897|9 nt|1| | | | |9+0=9| | |
+acccaaacc
+>AC279208|IGLV(I)-20*02|Homo_sapiens|P|V-HEPTAMER|20229..20235|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279208|IGLV(I)-20*02|Homo_sapiens|P|V-NONAMER|20259..20267|9 nt|1| | | | |9+0=9| | |
+acccaaata
+>D87022|IGLV(I)-63*01|Homo_sapiens|P|V-HEPTAMER|13837..13843|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87022|IGLV(I)-63*01|Homo_sapiens|P|V-NONAMER|13865..13873|9 nt|1| | | | |9+0=9| | |
+accaaaaca
+>D86993|IGLV(I)-70*01|Homo_sapiens|P|V-HEPTAMER|12100..12106|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86993|IGLV(I)-70*01|Homo_sapiens|P|V-NONAMER|12130..12138|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>D87000|IGLV(III)-59-1*01|Homo_sapiens|P|V-HEPTAMER|19226..19232|7 nt|1| | | | |7+0=7| | |
+tgcagtg
+>AC279317|IGLV(III)-59-1*02|Homo_sapiens|P|V-HEPTAMER|13573..13579|7 nt|1| | | | |7+0=7| | |
+tgcagtg
+>AC279317|IGLV(III)-59-1*02|Homo_sapiens|P|V-NONAMER|13664..13672|9 nt|1| | | | |9+0=9| | |
+ccagaaacc
+>D87000|IGLV(III)-60-1*01|Homo_sapiens|P|V-HEPTAMER|8248..8254|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87000|IGLV(III)-60-1*01|Homo_sapiens|P|V-NONAMER|8278..8289|12 nt|1| | | | |12+0=12| | |
+acatgaacgagc
+>AC279317|IGLV(III)-60-1*02|Homo_sapiens|P|V-HEPTAMER|2600..2606|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279317|IGLV(III)-60-1*02|Homo_sapiens|P|V-NONAMER|2630..2638|9 nt|1| | | | |9+0=9| | |
+acatgaacg
+>D86996|IGLV(IV)-53*01|Homo_sapiens|P|V-HEPTAMER|33678..33684|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>D86996|IGLV(IV)-53*01|Homo_sapiens|P|V-NONAMER|33708..33716|9 nt|1| | | | |9+0=9| | |
+ctctgcttg
+>AC279220|IGLV(IV)-53*02|Homo_sapiens|P|V-HEPTAMER|24543..24549|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>OL352713|IGLV(IV)-53*03|Homo_sapiens|P|V-HEPTAMER|40647..40653|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>D86996|IGLV(IV)-55-1*01|Homo_sapiens|P|V-HEPTAMER|12877..12883|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87022|IGLV(IV)-64*01|Homo_sapiens|P|V-HEPTAMER|9287..9293|7 nt|1| | | | |7+0=7| | |
+cacaggt
+>D87022|IGLV(IV)-64*01|Homo_sapiens|P|V-NONAMER|9317..9325|9 nt|1| | | | |9+0=9| | |
+cctgctcag
+>D87022|IGLV(IV)-65*01|Homo_sapiens|P|V-HEPTAMER|4316..4322|7 nt|1| | | | |7+0=7| | |
+cagcact
+>D87022|IGLV(IV)-65*01|Homo_sapiens|P|V-NONAMER|4342..4350|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>D87004|IGLV(IV)-66-1*01|Homo_sapiens|P|V-HEPTAMER|5416..5422|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>D87004|IGLV(IV)-66-1*01|Homo_sapiens|P|V-NONAMER|5446..5454|9 nt|1| | | | |9+0=9| | |
+attagaacc
+>D87004|IGLV(V)-66*01|Homo_sapiens|P|V-HEPTAMER|8168..8174|7 nt|1| | | | |7+0=7| | |
+ccgtttg
+>D87004|IGLV(V)-66*01|Homo_sapiens|P|V-NONAMER|8198..8206|9 nt|1| | | | |9+0=9| | |
+aatgaggca
+>M94116|IGLV1-40*01|Homo_sapiens|F|V-HEPTAMER|541..547|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X53936|IGLV1-40*02|Homo_sapiens|F|V-HEPTAMER|488..494|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X53936|IGLV1-40*02|Homo_sapiens|F|V-NONAMER|518..526|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>M94118|IGLV1-41*01|Homo_sapiens|ORF|V-HEPTAMER|697..703|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M94118|IGLV1-41*01|Homo_sapiens|ORF|V-NONAMER|727..735|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>D87010|IGLV1-41*02|Homo_sapiens|P|V-HEPTAMER|3456..3462|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87010|IGLV1-41*02|Homo_sapiens|P|V-NONAMER|3486..3494|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MW316667|IGLV1-44*02|Homo_sapiens|F|V-HEPTAMER|557..563|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316667|IGLV1-44*02|Homo_sapiens|F|V-NONAMER|586..594|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>MW316668|IGLV1-44*03|Homo_sapiens|F|V-HEPTAMER|555..561|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316668|IGLV1-44*03|Homo_sapiens|F|V-NONAMER|585..593|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>OL352719|IGLV1-44*04|Homo_sapiens|F|V-HEPTAMER|38864..38870|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352719|IGLV1-44*04|Homo_sapiens|F|V-NONAMER|38894..38902|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>D87016|IGLV1-47*02|Homo_sapiens|F|V-HEPTAMER|28286..28292|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87016|IGLV1-47*02|Homo_sapiens|F|V-NONAMER|28316..28324|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>AC279207|IGLV1-47*03|Homo_sapiens|F|V-HEPTAMER|16102..16108|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279207|IGLV1-47*03|Homo_sapiens|F|V-NONAMER|16132..16140|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>M94112|IGLV1-50*01|Homo_sapiens|ORF|V-HEPTAMER|586..592|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M94112|IGLV1-50*01|Homo_sapiens|ORF|V-NONAMER|616..624|9 nt|1| | | | |9+0=9| | |
+agaagaacc
+>M30446|IGLV1-51*02|Homo_sapiens|F|V-HEPTAMER|351..357|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>M30446|IGLV1-51*02|Homo_sapiens|F|V-NONAMER|381..389|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>D87022|IGLV1-62*01|Homo_sapiens|P|V-HEPTAMER|20629..20635|7 nt|1| | | | |7+0=7| | |
+tacagtg
+>D87022|IGLV1-62*01|Homo_sapiens|P|V-NONAMER|20659..20667|9 nt|1| | | | |9+0=9| | |
+acaagaacc
+>D86996|IGLV10-54*02|Homo_sapiens|F|V-HEPTAMER|28814..28820|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86996|IGLV10-54*02|Homo_sapiens|F|V-NONAMER|28844..28852|9 nt|1| | | | |9+0=9| | |
+ataaaaact
+>S70116|IGLV10-54*03|Homo_sapiens|P|V-HEPTAMER|600..606|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>S70116|IGLV10-54*03|Homo_sapiens|P|V-NONAMER|630..638|9 nt|1| | | | |9+0=9| | |
+ataaaaact
+>MW316678|IGLV10-54*04|Homo_sapiens|F|V-HEPTAMER|613..619|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316678|IGLV10-54*04|Homo_sapiens|F|V-NONAMER|643..651|9 nt|1| | | | |9+0=9| | |
+ataaaaact
+>OL352713|IGLV10-54*05|Homo_sapiens|F|V-HEPTAMER|35801..35807|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352713|IGLV10-54*05|Homo_sapiens|F|V-NONAMER|35831..35839|9 nt|1| | | | |9+0=9| | |
+ataaaaact
+>OL352724|IGLV10-54*06|Homo_sapiens|F|V-HEPTAMER|30753..30759|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352724|IGLV10-54*06|Homo_sapiens|F|V-NONAMER|30783..30791|9 nt|1| | | | |9+0=9| | |
+ataaaaact
+>X92335|IGLV10-67*02|Homo_sapiens|P|V-HEPTAMER|589..595|7 nt|1| | | | |7+0=7| | |
+cacagcg
+>X92335|IGLV10-67*02|Homo_sapiens|P|V-NONAMER|619..627|9 nt|1| | | | |9+0=9| | |
+ctcaggagc
+>D86996|IGLV11-55*01|Homo_sapiens|ORF|V-HEPTAMER|15708..15714|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86996|IGLV11-55*01|Homo_sapiens|ORF|V-NONAMER|15738..15746|9 nt|1| | | | |9+0=9| | |
+aaaccaagg
+>KM455555|IGLV11-55*02|Homo_sapiens|ORF|V-HEPTAMER|488..494|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455555|IGLV11-55*02|Homo_sapiens|ORF|V-NONAMER|514..522|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352713|IGLV11-55*03|Homo_sapiens|P|V-HEPTAMER|22716..22722|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352713|IGLV11-55*03|Homo_sapiens|P|V-NONAMER|22742..22750|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>AC279423|IGLV2-11*01|Homo_sapiens|F|V-HEPTAMER|40915..40921|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279423|IGLV2-11*01|Homo_sapiens|F|V-NONAMER|40945..40953|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>L27822|IGLV2-14*02|Homo_sapiens|F|V-HEPTAMER|472..478|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L27822|IGLV2-14*02|Homo_sapiens|F|V-NONAMER|502..510|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>AC279423|IGLV2-14*03|Homo_sapiens|F|V-HEPTAMER|7230..7236|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279423|IGLV2-14*03|Homo_sapiens|F|V-NONAMER|7260..7268|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>MW316674|IGLV2-14*05|Homo_sapiens|F|V-HEPTAMER|640..646|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316674|IGLV2-14*05|Homo_sapiens|F|V-NONAMER|670..678|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>L27697|IGLV2-18*02|Homo_sapiens|F|V-HEPTAMER|385..391|7 nt|1| | | | |7+0=7| | |
+cacagag
+>L27697|IGLV2-18*02|Homo_sapiens|F|V-NONAMER|415..423|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>L27694|IGLV2-18*03|Homo_sapiens|F|V-HEPTAMER|474..480|7 nt|1| | | | |7+0=7| | |
+cacagag
+>L27694|IGLV2-18*03|Homo_sapiens|F|V-NONAMER|504..512|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>L27692|IGLV2-18*04|Homo_sapiens|F|V-HEPTAMER|471..477|7 nt|1| | | | |7+0=7| | |
+cacagag
+>L27692|IGLV2-18*04|Homo_sapiens|F|V-NONAMER|501..509|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>X14616|IGLV2-23*01|Homo_sapiens|F|V-HEPTAMER|574..580|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X14616|IGLV2-23*01|Homo_sapiens|F|V-NONAMER|604..612|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>D86994|IGLV2-23*03|Homo_sapiens|F|V-HEPTAMER|35898..35904|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86994|IGLV2-23*03|Homo_sapiens|F|V-NONAMER|35928..35936|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>OL352727|IGLV2-23*04|Homo_sapiens|F|V-HEPTAMER|22593..22599|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352727|IGLV2-23*04|Homo_sapiens|F|V-NONAMER|22623..22631|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>AC279318|IGLV2-28*01|Homo_sapiens|P|V-HEPTAMER|10020..10026|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279318|IGLV2-28*01|Homo_sapiens|P|V-NONAMER|10050..10058|9 nt|1| | | | |9+0=9| | |
+ccaagtctg
+>L27823|IGLV2-33*02|Homo_sapiens|ORF|V-HEPTAMER|472..478|7 nt|1| | | | |7+0=7| | |
+catagtg
+>L27823|IGLV2-33*02|Homo_sapiens|ORF|V-NONAMER|502..510|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>L27691|IGLV2-33*03|Homo_sapiens|ORF|V-HEPTAMER|477..483|7 nt|1| | | | |7+0=7| | |
+catagtg
+>L27691|IGLV2-33*03|Homo_sapiens|ORF|V-NONAMER|507..515|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>D87013|IGLV2-34*01|Homo_sapiens|P|V-HEPTAMER|30620..30626|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87013|IGLV2-34*01|Homo_sapiens|P|V-NONAMER|30649..30657|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>X57825|IGLV2-5*02|Homo_sapiens|P|V-HEPTAMER|657..663|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X57825|IGLV2-5*02|Homo_sapiens|P|V-NONAMER|687..695|9 nt|1| | | | |9+0=9| | |
+acgaaaacc
+>L27695|IGLV2-8*02|Homo_sapiens|F|V-HEPTAMER|470..476|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>L27695|IGLV2-8*02|Homo_sapiens|F|V-NONAMER|500..508|9 nt|1| | | | |9+0=9| | |
+accaaaacc
+>OL352721|IGLV2-8*04|Homo_sapiens|F|V-HEPTAMER|39349..39355|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352721|IGLV2-8*04|Homo_sapiens|F|V-NONAMER|39379..39387|9 nt|1| | | | |9+0=9| | |
+atcaaaacc
+>X57826|IGLV3-1*01|Homo_sapiens|F|V-HEPTAMER|2541..2547|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X57826|IGLV3-1*01|Homo_sapiens|F|V-NONAMER|2571..2579|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>OL352728|IGLV3-1*02|Homo_sapiens|F|V-HEPTAMER|13570..13576|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352728|IGLV3-1*02|Homo_sapiens|F|V-NONAMER|13600..13608|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>AC279221|IGLV3-10*03|Homo_sapiens|F|V-HEPTAMER|21500..21506|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279221|IGLV3-10*03|Homo_sapiens|F|V-NONAMER|21530..21538|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC279423|IGLV3-12*01|Homo_sapiens|P|V-HEPTAMER|20519..20525|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>AC279423|IGLV3-12*01|Homo_sapiens|P|V-NONAMER|20549..20557|9 nt|1| | | | |9+0=9| | |
+acaaaaaca
+>D86998|IGLV3-12*02|Homo_sapiens|F|V-HEPTAMER|10419..10425|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>D86998|IGLV3-12*02|Homo_sapiens|F|V-NONAMER|10449..10457|9 nt|1| | | | |9+0=9| | |
+acaaaaaca
+>AC279423|IGLV3-13*02|Homo_sapiens|P|V-HEPTAMER|10509..10515|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279423|IGLV3-13*02|Homo_sapiens|P|V-NONAMER|10539..10547|9 nt|1| | | | |9+0=9| | |
+acacaaatc
+>D87015|IGLV3-15*01|Homo_sapiens|P|V-HEPTAMER|25686..25692|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87015|IGLV3-15*01|Homo_sapiens|P|V-NONAMER|25716..25724|9 nt|1| | | | |9+0=9| | |
+acacaaaaa
+>X56178|IGLV3-19*01|Homo_sapiens|F|V-HEPTAMER|491..497|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X56178|IGLV3-19*01|Homo_sapiens|F|V-NONAMER|521..529|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>AC279208|IGLV3-19*02|Homo_sapiens|F|V-HEPTAMER|25937..25943|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279208|IGLV3-19*02|Homo_sapiens|F|V-NONAMER|25967..25975|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>X57828|IGLV3-2*02|Homo_sapiens|P|V-HEPTAMER|2122..2128|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X57828|IGLV3-2*02|Homo_sapiens|P|V-NONAMER|2152..2160|9 nt|1| | | | |9+0=9| | |
+tgcaaaccc
+>OL352728|IGLV3-2*03|Homo_sapiens|P|V-HEPTAMER|5640..5646|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352728|IGLV3-2*03|Homo_sapiens|P|V-NONAMER|5670..5678|9 nt|1| | | | |9+0=9| | |
+tgcaaaccc
+>X71966|IGLV3-21*01|Homo_sapiens|F|V-HEPTAMER|978..984|7 nt|1| | | | |7+0=7| | |
+cacggta
+>X71966|IGLV3-21*01|Homo_sapiens|F|V-NONAMER|1008..1016|9 nt|1| | | | |9+0=9| | |
+acaaaaaca
+>D87007|IGLV3-21*02|Homo_sapiens|F|V-HEPTAMER|13615..13621|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>D87007|IGLV3-21*02|Homo_sapiens|F|V-NONAMER|13645..13653|9 nt|1| | | | |9+0=9| | |
+acaaaaaca
+>M94115|IGLV3-21*03|Homo_sapiens|F|V-HEPTAMER|927..933|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>M94115|IGLV3-21*03|Homo_sapiens|F|V-NONAMER|957..965|9 nt|1| | | | |9+0=9| | |
+acaaaaaca
+>AC279208|IGLV3-21*04|Homo_sapiens|F|V-HEPTAMER|17986..17992|7 nt|1| | | | |7+0=7| | |
+cacggtg
+>AC279208|IGLV3-21*04|Homo_sapiens|F|V-NONAMER|18016..18024|9 nt|1| | | | |9+0=9| | |
+acaaaaaca
+>X71967|IGLV3-22*02|Homo_sapiens|P|V-HEPTAMER|544..550|7 nt|1| | | | |7+0=7| | |
+ctcagtg
+>X71967|IGLV3-22*02|Homo_sapiens|P|V-NONAMER|574..582|9 nt|1| | | | |9+0=9| | |
+acacaaact
+>AC279208|IGLV3-22*03|Homo_sapiens|F|V-HEPTAMER|9611..9617|7 nt|1| | | | |7+0=7| | |
+ctcagtg
+>AC279208|IGLV3-22*03|Homo_sapiens|F|V-NONAMER|9641..9649|9 nt|1| | | | |9+0=9| | |
+acacaaact
+>X71968|IGLV3-24*01|Homo_sapiens|P|V-HEPTAMER|630..636|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X71968|IGLV3-24*01|Homo_sapiens|P|V-NONAMER|660..668|9 nt|1| | | | |9+0=9| | |
+cacaaaccc
+>D86994|IGLV3-24*02|Homo_sapiens|P|V-HEPTAMER|32547..32553|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86994|IGLV3-24*02|Homo_sapiens|P|V-NONAMER|32577..32585|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC279213|IGLV3-24*03|Homo_sapiens|P|V-HEPTAMER|24413..24419|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279213|IGLV3-24*03|Homo_sapiens|P|V-NONAMER|24443..24451|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>OL352727|IGLV3-24*04|Homo_sapiens|P|V-HEPTAMER|19245..19251|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352727|IGLV3-24*04|Homo_sapiens|P|V-NONAMER|19275..19283|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>D86994|IGLV3-25*02|Homo_sapiens|F|V-HEPTAMER|24737..24743|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86994|IGLV3-25*02|Homo_sapiens|F|V-NONAMER|24767..24775|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>AC279213|IGLV3-25*03|Homo_sapiens|F|V-HEPTAMER|16634..16640|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279213|IGLV3-25*03|Homo_sapiens|F|V-NONAMER|16664..16672|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>AC279318|IGLV3-26*01|Homo_sapiens|P|V-HEPTAMER|18724..18730|7 nt|1| | | | |7+0=7| | |
+cacaatg
+>D86994|IGLV3-27*01|Homo_sapiens|F|V-HEPTAMER|6270..6276|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86994|IGLV3-27*01|Homo_sapiens|F|V-NONAMER|6300..6308|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>AC279318|IGLV3-29*01|Homo_sapiens|P|V-HEPTAMER|6670..6676|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279318|IGLV3-29*01|Homo_sapiens|P|V-NONAMER|6700..6708|9 nt|1| | | | |9+0=9| | |
+acacagacc
+>D87014|IGLV3-30*02|Homo_sapiens|P|V-HEPTAMER|36643..36649|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87014|IGLV3-30*02|Homo_sapiens|P|V-NONAMER|36673..36681|9 nt|1| | | | |9+0=9| | |
+acaggaacc
+>Z22203|IGLV3-31*02|Homo_sapiens|P|V-HEPTAMER|291..297|7 nt|1| | | | |7+0=7| | |
+cgcggtg
+>D87014|IGLV3-32*01|Homo_sapiens|ORF|V-HEPTAMER|12488..12494|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87014|IGLV3-32*01|Homo_sapiens|ORF|V-NONAMER|12518..12526|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>D87024|IGLV3-4*01|Homo_sapiens|P|V-HEPTAMER|25565..25571|7 nt|1| | | | |7+0=7| | |
+catagtg
+>D87024|IGLV3-4*01|Homo_sapiens|P|V-NONAMER|25597..25605|9 nt|1| | | | |9+0=9| | |
+acaaacccc
+>X57827|IGLV3-6*02|Homo_sapiens|P|V-HEPTAMER|967..973|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X57827|IGLV3-6*02|Homo_sapiens|P|V-NONAMER|997..1005|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X74288|IGLV3-9*02|Homo_sapiens|F|V-HEPTAMER|644..650|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X74288|IGLV3-9*02|Homo_sapiens|F|V-NONAMER|674..682|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X51754|IGLV3-9*03|Homo_sapiens|P|V-HEPTAMER|2198..2204|7 nt|1| | | | |7+0=7| | |
+cacagta
+>X51754|IGLV3-9*03|Homo_sapiens|P|V-NONAMER|2228..2236|9 nt|1| | | | |9+0=9| | |
+acacaaacc
+>X57828|IGLV4-3*01|Homo_sapiens|F|V-HEPTAMER|670..676|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X57828|IGLV4-3*01|Homo_sapiens|F|V-NONAMER|700..708|9 nt|1| | | | |9+0=9| | |
+ccaaaactc
+>D87000|IGLV4-60*02|Homo_sapiens|F|V-HEPTAMER|13267..13273|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87000|IGLV4-60*02|Homo_sapiens|F|V-NONAMER|13297..13305|9 nt|1| | | | |9+0=9| | |
+acaaaatcc
+>AC279317|IGLV4-60*03|Homo_sapiens|F|V-HEPTAMER|7614..7620|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279317|IGLV4-60*03|Homo_sapiens|F|V-NONAMER|7644..7652|9 nt|1| | | | |9+0=9| | |
+acaaaatcc
+>AC279212|IGLV4-60*04|Homo_sapiens|P|V-HEPTAMER|14385..14391|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279212|IGLV4-60*04|Homo_sapiens|P|V-NONAMER|14415..14423|9 nt|1| | | | |9+0=9| | |
+acaaaatcc
+>U03868|IGLV4-69*02|Homo_sapiens|F|V-HEPTAMER|460..466|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352722|IGLV5-37*02|Homo_sapiens|F|V-HEPTAMER|28612..28618|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352722|IGLV5-37*02|Homo_sapiens|F|V-NONAMER|28642..28650|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352725|IGLV5-37*03|Homo_sapiens|F|V-HEPTAMER|22751..22757|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352725|IGLV5-37*03|Homo_sapiens|F|V-NONAMER|22780..22788|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>AF216776|IGLV5-39*02|Homo_sapiens|F|V-HEPTAMER|493..499|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AF216776|IGLV5-39*02|Homo_sapiens|F|V-NONAMER|522..530|9 nt|1| | | | |9+0=9| | |
+acagaaacc
+>D86999|IGLV5-45*03|Homo_sapiens|F|V-HEPTAMER|16012..16018|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86999|IGLV5-45*03|Homo_sapiens|F|V-NONAMER|16042..16050|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KM455553|IGLV5-45*04|Homo_sapiens|F|V-HEPTAMER|493..499|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455553|IGLV5-45*04|Homo_sapiens|F|V-NONAMER|523..531|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>OL352719|IGLV5-45*05|Homo_sapiens|F|V-HEPTAMER|34024..34030|7 nt|1| | | | |7+0=7| | |
+ctcacag
+>OL352719|IGLV5-45*05|Homo_sapiens|F|V-NONAMER|34056..34064|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>KM455554|IGLV5-48*02|Homo_sapiens|P|V-HEPTAMER|495..501|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455554|IGLV5-48*02|Homo_sapiens|P|V-NONAMER|525..533|9 nt|1| | | | |9+0=9| | |
+acgaaaacc
+>KM455556|IGLV6-57*02|Homo_sapiens|F|V-HEPTAMER|479..485|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>KM455556|IGLV6-57*02|Homo_sapiens|F|V-NONAMER|509..517|9 nt|1| | | | |9+0=9| | |
+acagaaact
+>AC279220|IGLV6-57*03|Homo_sapiens|F|V-HEPTAMER|692..698|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>AC279220|IGLV6-57*03|Homo_sapiens|F|V-NONAMER|722..730|9 nt|1| | | | |9+0=9| | |
+acagaaact
+>MW316677|IGLV6-57*04|Homo_sapiens|F|V-HEPTAMER|359..365|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316677|IGLV6-57*04|Homo_sapiens|F|V-NONAMER|389..397|9 nt|1| | | | |9+0=9| | |
+acagaaact
+>OL352713|IGLV6-57*05|Homo_sapiens|P|V-HEPTAMER|16860..16866|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352713|IGLV6-57*05|Homo_sapiens|P|V-NONAMER|16890..16898|9 nt|1| | | | |9+0=9| | |
+acagaaact
+>X14614|IGLV7-43*01|Homo_sapiens|F|V-HEPTAMER|708..714|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>X14614|IGLV7-43*01|Homo_sapiens|F|V-NONAMER|738..746|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>D86999|IGLV7-46*02|Homo_sapiens|F|V-HEPTAMER|9593..9599|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D86999|IGLV7-46*02|Homo_sapiens|F|V-NONAMER|9623..9631|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>MW316675|IGLV7-46*04|Homo_sapiens|F|V-HEPTAMER|649..655|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>MW316675|IGLV7-46*04|Homo_sapiens|F|V-NONAMER|679..687|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>OL352719|IGLV7-46*05|Homo_sapiens|F|V-HEPTAMER|27606..27612|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352719|IGLV7-46*05|Homo_sapiens|F|V-NONAMER|27636..27644|9 nt|1| | | | |9+0=9| | |
+acataaacc
+>U03637|IGLV8-61*02|Homo_sapiens|F|V-HEPTAMER|750..756|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>U03637|IGLV8-61*02|Homo_sapiens|F|V-NONAMER|780..788|9 nt|1| | | | |9+0=9| | |
+actaaaacc
+>U03636|IGLV8/OR8-1*02|Homo_sapiens|ORF|V-HEPTAMER|547..553|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>U03636|IGLV8/OR8-1*02|Homo_sapiens|ORF|V-NONAMER|577..585|9 nt|1| | | | |9+0=9| | |
+actaaaacc
+>D87016|IGLV9-49*02|Homo_sapiens|F|V-HEPTAMER|13762..13768|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>D87016|IGLV9-49*02|Homo_sapiens|F|V-NONAMER|13791..13799|9 nt|1| | | | |9+0=9| | |
+acaaaaacc
+>U03869|IGLV9-49*03|Homo_sapiens|F|V-HEPTAMER|523..529|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352719|IGLV9-49*04|Homo_sapiens|P|V-HEPTAMER|1284..1290|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>OL352719|IGLV9-49*04|Homo_sapiens|P|V-NONAMER|1313..1321|9 nt|1| | | | |9+0=9| | |
+acaaaaacc

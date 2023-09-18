@@ -714,6 +714,10 @@ acataaagg
 cacagtg
 >L36092|TRBV10-2*01|Homo_sapiens|F|V-NONAMER|240184..240192|9 nt|1| | | | |9+0=9| | |
 acggaaacg
+>IMGT000021|TRBV10-2*02|Homo_sapiens|F|V-HEPTAMER|194121..194127|7 nt|1| | | | |7+0=7| | |
+cacagtg
+>IMGT000021|TRBV10-2*02|Homo_sapiens|F|V-NONAMER|194151..194159|9 nt|1| | | | |9+0=9| | |
+acggaaacg
 >U03115|TRBV10-3*01|Homo_sapiens|F|V-HEPTAMER|15167..15173|7 nt|1| | | | |7+0=7| | |
 cacagtg
 >U03115|TRBV10-3*01|Homo_sapiens|F|V-NONAMER|15198..15206|9 nt|1| | | | |9+0=9| | |
@@ -769,6 +773,10 @@ gcaaaacca
 >U03115|TRBV15*01|Homo_sapiens|F|V-HEPTAMER|63968..63974|7 nt|1| | | | |7+0=7| | |
 cacagag
 >U03115|TRBV15*01|Homo_sapiens|F|V-NONAMER|63998..64006|9 nt|1| | | | |9+0=9| | |
+tcataaacc
+>IMGT000021|TRBV15*02|Homo_sapiens|F|V-HEPTAMER|362129..362135|7 nt|1| | | | |7+0=7| | |
+cacagag
+>IMGT000021|TRBV15*02|Homo_sapiens|F|V-NONAMER|362159..362167|9 nt|1| | | | |9+0=9| | |
 tcataaacc
 >L26231|TRBV16*01|Homo_sapiens|F|V-HEPTAMER|709..715|7 nt|1| | | | |7+0=7| | |
 cacagtg
@@ -1183,6 +1191,10 @@ aacacaaac
 >M12960|TRGJ1*01|Homo_sapiens|F|J-HEPTAMER|150..156|7 nt|1| | | | |7+0=7| | |
 cactgtg
 >M12960|TRGJ1*01|Homo_sapiens|F|J-NONAMER|129..137|9 nt|1| | | | |9+0=9| | |
+agtttttga
+>IMGT000011|TRGJ1*02|Homo_sapiens|F|J-HEPTAMER|118509..118515|7 nt|1| | | | |7+0=7| | |
+cactgtg
+>IMGT000011|TRGJ1*02|Homo_sapiens|F|J-NONAMER|118488..118496|9 nt|1| | | | |9+0=9| | |
 agtttttga
 >M12961|TRGJ2*01|Homo_sapiens|F|J-HEPTAMER|150..156|7 nt|1| | | | |7+0=7| | |
 cactgtg
