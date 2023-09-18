@@ -3,6 +3,13 @@ import pickle
 import os
 import numpy as np
 #from parse_contig_realign import mark_edit_region, variant_link_graph, haplotyping_link_graph, output_contig_correction
+
+import sys
+
+# make sure the package modules is in the path
+sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(__file__)+'/..')
+
 from parse_contig_realign import variant_link_graph, output_contig_correction, parse_CIGAR, parse_MD, trim_dict, find_double_pos, get_farthest_ext
 from utils import get_reverse_complement
 import sys

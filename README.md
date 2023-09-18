@@ -1,121 +1,71 @@
-_Updated: May 5, 2022_
-## gAIRR-call
+_Updated: Sep 18, 2023_
+# gAIRR-suite: Profiling genes encoding the adaptive immune receptor repertoire
+gAIRR-annotate provides annotations of IG and TR genes on personal assembly data
 
-Usage:
+gAIRR-call can genotype IG and TR genes for short read data sequenced from germline cell. It is designed for probe captured gAIRR-seq data, but it can also be applied to other type of short read enriched from IG and TR regions.
+
+
+## Prerequisite programs:
+- BWA aligner (0.7.17) 
+- SPAdes assembler (v3.13.0)
+
+
+## Installation
+pip install gAIRR-suite
+- [pip](https://pypi.org/project/gAIRR-suite/)
 ```
-./scripts/AIRRCall.sh
+pip install gAIRR-suite
 ```
-
-The `AIRRCall.sh` pipeline uses the capture-based short reads and the alleles downloaded from IMGT database to
-- Find **novel alleles**
-- **Call alleles** (including both known and novel alleles)
-- Assemble and haplotype **flanking sequences**
-
-To run the `AIRRCall.sh` pipeline, BWA aligner (0.7.17) and SPAdes assembler (v3.13.0) should be installed.
-Python3 (3.7.13) module numpy (1.17.0) and pyfastx (0.8.4) also needs to be installed.
-
-The path parameters in `AIRRCall.sh` should be specified:
-- workspace: the directory all results and intermediate data be stored (e.g. "./target_call/").
-- path_SPAdes: the path to the spades.py installed (e.g. "../SPAdes-3.11.1-Linux/bin/spades.py")
-
-The below three parameters indicate the interested allele reference (IMGT) fasta files.
-- list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV BCRJ")
-- allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
-- allele_suffix: the suffix of allele fasta file, should agree with the real file name ( e.g."\_alleles.fasta")
-
-The final three parameters indicate the target sequencing fasta files.
-- person_name: person's id (e.g. "NA12878").
-- read_path_1: capture-based short reads R1 fasta file (e.g. "NA12878_S46_R1.fasta").
-- read_path_2: capture-based short reads R2 fasta file (e.g. "NA12878_S46_R2.fasta").
-
-Below paths in the README.md use `NA24385` and `TCRV` as examples.
-
-### Find novel alleles
-
-Shell script:
+- [Github](https://github.com/maojanlin/gAIRRsuite.git)
 ```
-./scripts/novel_allele.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+git clone https://github.com/maojanlin/gAIRRsuite.git
+cd gAIRRsuite
+```
+Though optional, it is a good practice to install in a virtual environment to manage the dependancies:
+
+```
+python -m venv venv
+source venv/bin/activate
+```
+Now a virtual environment (named venv) is activated:
+
+```
+python setup.py install
 ```
 
-The `novel_allele.sh` pipeline aligns capture-based short reads to IMGT alleles with BWA MEM. Then the program `parse_cluster_realign.py` finds the variant in each alleles. If threre are variants, the program haplotypes the allele and call the haplotypes not in the IMGT database as novel allele candidates.
 
-Since the correction is done on each allele separately, two alleles may generate the same novel allele candidate. It is also possible that the generated novel allele is infact another known allele. For example, the corrected TRAV21\*01_corrected is the same as TRAV21\*02. To deal with duplication problems, `filter_corrected_alleles.py` filters the `corrected_alleles_raw.fasta` to `corrected_alleles_filtered.fasta`. Those duplicated sequence are elimitated. 
 
-Generated files:
-
-`target_call/NA24385_TCRV_novel/corrected_alleles_filtered.fasta` is all the novel allele candidates fasta file.
-`target_call/NA24385_TCRV_novel/TCRV_with_novel.fasta` is the merged allele file containing IMGT alleles and haplotyped novel allele candidates.
-
-### Call alleles
-
-Shell script:
+## gAIRR-annotate usage
 ```
-allele_path=target_call/NA24385_TCRV_novel/TCRV_with_novel.fasta
-./scripts/allele_calling.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2}
+$ gAIRR_annotate -wd <work_dir> -id <sample_id> -a1 <assembly_h1.fa> -a2 <assembly_h2.fa> 
 ```
 
-The pipeline finds if the alleles in the merged fasta file (containing both IMGT and novel alleles) are positive (possessed by the person).
-In `allele_calling.sh`, the capture-based short reads are aligned to the merged allele fasta file with BWA MEM again. This time the "-a" option of BWA is used to ensure that the alleles can be reached by any potential reads. Afterward, `analyze_read_depth_with_bwa.py` filters out reads with edit-distance (mismatches or indels) and reads with coverage length below a threshold (minimum between 100 or allele length in the code). 
+The `-a2` argument is optional for diploid personal assemblies.
 
-For each allele, a histogram on all positions of the allele is built. The read-depth of all filtered alleles are accumulated in the histogram. The minimum value in the histogram (the mimnum filtered read depth of the allele) is the calling score of the allele.
-Empirically, the scores (minimum read-depth) of the true alleles are way larger than those of false alleles.
+The final annotation report is `work_dir/sample_id/group_genes.1.bed`, and `work_dir/sample_id/group_genes.2.bed` if the second haplotype of the assembly is provided.
 
-Generated files:
+The novel alleles in the annotation will be maked with parentheses, indicating the edit distance of the novel allele to the documented genes. For example, `TRAV8-3*01(i:1)` means the annotated gene has $1$ edit-distance to TRAV8-3*01, `TRAV19*01(i:0,h:17)` has no edit-distance to original allele, but has $17$ bases being clipped.
 
-`target_call/NA24385_TCRV/read_depth_calling_by_bwa.rpt` reports all the alleles sorted by their scores (minimum read-depth).
-`target_call/NA24385_TCRV/gAIRR-call_report.rpt` reports the positive alleles with the adaptive threshold.
-`target_call/NA24385_TCRV/allele_support_reads.pickle` is a pickle file containing a dictionary. The dictionary indicates the names of the read supporting each alleles. The dictionary key is the allele name and the dictionary value is a set containing all reads support (perfectly match with enough length coverage) the allele.
+The novel allele sequence can be found in `work_dir/sample_id/novel_sample_ID_geneLocus.fasta.1/2.bed`
 
-### Assemble and haplotype flanking sequences
+If only IG or TR genes are prefered, option `-lc IG` or `-lc TR` can be specified.
 
-Shell script:
+
+## gAIRR-call usage
 ```
-./scripts/flanking_sequence.sh ${workspace} ${allele_name} ${allele_path} ${person_name} ${read_path_1} ${read_path_2} ${path_SPAdes}
+$ gAIRR_call -wd <work_dir> -id <sample_ID> -rd1 <read.R1.fastq.gz> -rd2 <read.R2.fastq.gz> -lc <TRV TRJ TRD IGV IGJ IGD>
 ```
 
-The `flanking_sequence.sh` first groups pair-end read sequences and allele sequences in the directory `target_call/NA24385_TCRV_flanking/group_allele_reads/` according to `target_call/NA24385_TCRV/allele_support_reads.pickle`. Then the sub-pipeline `denovo_backbone.sh` uses SPAdes to assemble each short reads group into an unphased flanking contig (backbone). Afterward, each allele has a backbone in the `target_call/NA24385_TCRV_flanking/asm_contigs/` directory.
+The prefered IG/TR locus and V/D/J genes can be specified with `-lc` option.
 
-The `denovo_backbone.sh` sub-pipeline also use BWA MEM to align alleles to the backbone to check the correctness of the backbone. Those backbones do not contain perfectly matched contig are discarded. The the start and end positions of the allele in qualified backbones are marked by `parse_bwa_sam.py`.
+The final calling report is `work_dir/sample_ID/gene-locus/gAIRR-call_report.rpt`, `gene-locus` is the targeted gene set, like TCRV, TCRJ, etc.
 
-`target_call/NA24385_TCRV_flanking/flanking_result/flank_region.txt` is the start-end report and
-`target_call/NA24385_TCRV_flanking/flanking_result/flanking_contigs.fasta` is the backbone collections.
+The novel allele sequence from the `gAIRR-call_report.rpt` can be found in `work_dir/sample_ID/gene-locus_novel/gene-locus_with_novel.fasta`
 
-Finally the `flanking_sequence.sh` align all the capture-based reads to the backbones `target_call/NA24385_TCRV_flanking/flanking_result/flanking_contigs.fasta`, the sam file is haplotyped by `shrink_sam_to_range.py`. The region extending 200 bps from two ends of the original allele is cropped and reported as the flanking sequences.
+`--flanking` option can be specified to run the flanking sequence assembly algorithm. The flanking sequnece information can be found in `work_dir/sample_ID/gene-locus_flanking/flanking_result/flanking_haplotypes.fasta`
 
-Generated file:
+Note that the seriel numbers provided by the `gAIRR_call` and `gAIRR_annotate` are not necessary corresponding. When there are multiple novel alleles, the seril number starting from $0$ can be in different order.
 
-`target_call/NA24385_TCRV_flanking/flanking_result/flanking_haplotypes.fasta` is the final called flanking sequences.
-
-
-## gAIRR-annotate
-
-Usage:
-```
-./scripts/AIRRAnnotate.sh
-```
-
-The `AIRRAnnotate.sh` pipeline uses the personal assembly contigs and the alleles downloaded from IMGT database to
-- **Call alleles** (novel alleles are marked)
-- **Call flanking sequences**
-
-To run the `AIRRAnnotate.sh` pipeline, BWA aligner should be installed.
-
-The path parameters in `AIRRAnnotate.sh` should be specified:
-- outer_dir: the directory all results and intermediate data be stored (e.g. "./target_annotation/")
-- list_allele_name: target allele types (e.g. "TCRV TCRJ BCRV")
-- allele_dir: the directory IMGT allele fasta file store (e.g. "../IMGT_alleles/")
-- allele_suffix: the suffix of allele fasta file, should agree with the real file name ( e.g."\_alleles.fasta")
-- person_name: person's id (e.g. "NA12878")
-- asm_path_H1: personal assembly H1 contig fasta file (e.g. "../asm_NA12878/NA12878-H1.fa")
-- asm_path_H2: personal assembly H2 contig fasta file (e.g. "../asm_NA12878/NA12878-H2.fa")
-
-The `AIRRAnnotate.sh` pipeline first indexes the personalized assembly and aligns IMGT alleles to the assembly with BWT. Afterward, `annotation_with_asm.py` analyzes the alignment sam file. The perfectly matched alleles are kept and aligned alleles with edit-distance are seen as novel alleles. Finally `get_asm_flanking.py` utilize the previous alignment sam file and crop the flanking sequence from the personal assembly fasta file.
-
-Generated files:
-
-`target_annotation/annotation_imperfect_NA12878_TCRV.txt` is the report showing the aligned allele, aligned contig, contig position, and alignment length. If there are edit-distance in the alignment, the report shows additional tag the same as sam format.
-`target_annotation/novel_NA12878_TCRV.fasta` is the collection of novel alleles.
-`target_annotation/flanking_NA12878_TCRV.fasta` is the collection of flanking sequence (including novel alleles).
 
 
 ### checking RSS
@@ -153,14 +103,21 @@ In `./example/samples/consensus_name_HGSVC.log`, terms are separated by space. T
 
 ## Example
 
-The `example/material/` directory contains IMGT allele sequences and RSS information.
+The `gAIRR_suite/material/` directory contains IMGT allele sequences and RSS information.
 The `example/samples/` containts two miniature samples. `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta` are a small part of the pair-end gAIRR-seq reads sequenced from HG002. `HG002-S22-H1-000000F_1900000-2900000.fasta` is a genome assembly sequence extracted from (Garg, S. *et al*, 2021). The genome sequence is the 1900000:2900000 segment from the contig HG002-S22-H1 of HG002's maternal haplotype assembly.
 
 In the example settings. Running 
-```./scripts/AIRRCall.sh```
+```
+$ gAIRR_call -wd target_call -id HG002-part -rd1 gAIRR_suite/example/samples/HG002_part_gAIRR-seq_R1.fastq.gz -rd2 gAIRR_suite/example/samples/HG002_part_gAIRR-seq_R2.fastq.gz
+```
+or ```./scripts/AIRRCall.sh```
 will gAIRR-call the HG002's AIRR alleles based on `HG002_part_gAIRR-seq_R1.fasta` and `HG002_part_gAIRR-seq_R2.fasta`.
+
 Running 
-```./scripts/AIRRAnnotate.sh``` 
+```
+$ gAIRR_annotate -wd target_annotate -id HG002-part -a1 gAIRR_suite/example/samples/HG002-S22-H1-000000F_1900000-2900000.fasta
+```
+or ```./scripts/AIRRAnnotate.sh``` 
 will gAIRR-annotate part of the HG002's genome assembly `HG002-S22-H1-000000F_1900000-2900000.fasta`. In `./scripts/AIRRAnnotate.sh` , several shell script commands are commented. The commented commands are the settings to gAIRR-annotate two phased assemblies while in the example is to gAIRR-annotate single strend genome assembly.
 
 

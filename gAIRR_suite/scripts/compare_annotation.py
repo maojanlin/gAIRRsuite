@@ -2,8 +2,8 @@ import argparse
 import pickle
 import os
 import numpy as np
-from utils import eprint, get_reverse_complement
-from filter_corrected_alleles import parse_fasta
+from .utils import eprint, get_reverse_complement
+from .filter_corrected_alleles import parse_fasta
 
 def parse_args():
     parser = argparse.ArgumentParser()

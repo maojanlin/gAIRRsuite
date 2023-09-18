@@ -2,6 +2,12 @@ import argparse
 import pickle
 import os
 import numpy as np
+import sys
+
+# make sure the package modules is in the path
+sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(__file__)+'/..')
+
 from utils import get_reverse_complement
 from filter_corrected_alleles import parse_perfect_sam, parse_fasta
 from parse_contig_realign import parse_CIGAR
@@ -43,9 +49,12 @@ if __name__ == '__main__':
     for name in sorted(dict_original_allele.keys()):
         f_om.write(">" + name.split()[0] + "\n")
         f_om.write(dict_original_allele[name] + "\n")
-    for name in sorted(dict_novel_allele.keys()):
-        if ("extend" in name) == False:
-            f_om.write(">|" + name + "|\n")
-            f_om.write(dict_novel_allele[name] + "\n")
+    if dict_novel_allele == {'':''}: #empty novel results
+        pass
+    else:
+        for name in sorted(dict_novel_allele.keys()):
+            if ("extend" in name) == False:
+                f_om.write(">|" + name + "|\n")
+                f_om.write(dict_novel_allele[name] + "\n")
     f_om.close()
 

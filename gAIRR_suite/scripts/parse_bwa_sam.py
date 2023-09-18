@@ -9,6 +9,11 @@ import argparse
 import pickle
 import os
 import numpy as np
+import sys
+
+# make sure the package modules is in the path
+sys.path.append(os.path.dirname(__file__))
+
 from parse_sam_haplotyping import parse_CIGAR
 from utils import eprint, get_reverse_complement
 
