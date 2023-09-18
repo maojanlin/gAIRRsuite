@@ -172,6 +172,8 @@ cacagtgctgcacagctgcctcctctctgcacataaagg
 cacagtgctgcacagctgcctcctctctgcacataaagg
 >TRBV10-2*01_RSS
 cacagtgctgcacagctgcctcctctctgcacggaaacg
+>TRBV10-2*02_RSS
+cacagtgctgcacagctgcctcctctctgcacggaaacg
 >TRBV10-3*01_RSS
 cacagtgctgcatggctgcctcctctctgcacgtaaacag
 >TRBV10-3*02_RSS
@@ -199,6 +201,8 @@ cacagaccctggagaattactggctttctgtacccaaacc
 >TRBV14*01_RSS
 cacagtgcttcacagtcgtgcccttgctgtgcaaaacca
 >TRBV15*01_RSS
+cacagagctgcagtgcttcctgctctctgttcataaacc
+>TRBV15*02_RSS
 cacagagctgcagtgcttcctgctctctgttcataaacc
 >TRBV16*01_RSS
 cacagtgttaaatattagctaatcttaggacacagactc
@@ -309,7 +313,7 @@ cacagtgctgcacggctgtctcctctctgcacagaaagg
 >TRBV6-4*01_RSS
 cacagtgctgcacagccatctcctctctgtacataaatg
 >TRBV6-4*02_RSS
-cacagtggctgcacagccatctcctctctgtacataaatg
+cacagtgctgcacagccatctcctctctgtacataaatg
 >TRBV6-5*01_RSS
 cacagcgctacaaggccgtctcctctctgcacataaagg
 >TRBV6-6*01_RSS
@@ -613,6 +617,8 @@ ggtttttcgtaatgacgcctgtggtagtg
 >TRDJ3*01_RSS
 gttacctgtgaggcactgtcataatgtg
 >TRGJ1*01_RSS
+agtttttgatatggactgaatcactgtg
+>TRGJ1*02_RSS
 agtttttgatatggactgaatcactgtg
 >TRGJ2*01_RSS
 agtttttgatatggactgaatcactgtg
