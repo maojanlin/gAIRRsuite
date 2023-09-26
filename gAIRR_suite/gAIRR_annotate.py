@@ -110,7 +110,7 @@ def main():
             command = (command_prefix, str(thread), path_asm_2_idx, path_allele, '>', outer_dir+'/'+person_name+'/'+'bwa_'+person_name+'_'+allele_name+'_alleles_to_asm_2.sam')
             subprocess.call(' '.join(command), shell=True)
 
-        print("[gAIRR-annotate] Parse the ${allele_name} alleles sam files to annotation report...")
+        print("[gAIRR-annotate] Parse the", allele_name," alleles sam files to annotation report...")
         command = ['-foa',  outer_dir+'/'+person_name+'/annotation_'+person_name+'_'+allele_name+'.txt', \
                    '-foma', outer_dir+'/'+person_name+'/annotation_imperfect_'+person_name+'_'+allele_name+'.txt', \
                    '-fom',  outer_dir+'/'+person_name+'/novel_'+person_name+'_'+allele_name+'.fasta', \
