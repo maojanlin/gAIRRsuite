@@ -36,13 +36,13 @@ cactgtgagaatattgtaatagtactactttctatgcccacagtg
 cactgtggtattactatggttcggggagttattataaccacagtg
 >X93615|IGHD3-10*02|Homo sapiens|F|hep+D-REGION+hep|
 cactgtggtattactatgttcggggagttattataaccacagtg
->IMGT000110|IGHD3-10*03|Homo sapiens|F|hep+D-REGION+hep|
+>BK063800|IGHD3-10*03|Homo sapiens|F|hep+D-REGION+hep|
 cactgtggtattactatggttcagggagttattataaccacagtg
 >X93614|IGHD3-16*01|Homo sapiens|F|hep+D-REGION+hep|
 cactgtggtattatgattacgtttgggggagttatgcttatacccacagca
 >X97051|IGHD3-16*02|Homo sapiens|F|hep+D-REGION+hep|
 cactgtggtattatgattacgtttgggggagttatcgttatacccacagca
->IMGT000110|IGHD3-16*03|Homo sapiens|F|hep+D-REGION+hep|
+>BK063800|IGHD3-16*03|Homo sapiens|F|hep+D-REGION+hep|
 cactgtggtattatgattacatttgggggagttatcgttatacccacagca
 >X93616|IGHD3-22*01|Homo sapiens|F|hep+D-REGION+hep|
 cactgtggtattactatgatagtagtggttattactaccacagtg
@@ -72,7 +72,7 @@ tgctatgtgactatggtgctaactaccacagtg
 gactgtggtggatatagtggctacgattaccacagtg
 >X97051|IGHD5-18*01|Homo sapiens|F|hep+D-REGION+hep|
 gactgtggtggatacagctatggttaccacagtg
->IMGT000110|IGHD5-18*02|Homo sapiens|ORF|hep+D-REGION+hep|
+>BK063800|IGHD5-18*02|Homo sapiens|ORF|hep+D-REGION+hep|
 gactgtggtgaatatagtggctacgattaccacagtg
 >X97051|IGHD5-24*01|Homo sapiens|ORF|hep+D-REGION+hep|
 ggccgtggtagagatggctacaattaccacagtg

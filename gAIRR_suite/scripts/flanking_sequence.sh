@@ -22,12 +22,20 @@ flanking_result_path=${outer_dir}flanking_result/
 mkdir -p ${flanking_result_path}
 mkdir -p ${raw_seq_path}
 echo "[AIRRCall] [FLANKING SEQUENCE] Grouping alleles and reads..."
-cluster_num=$( python3 ${script_dir}/group_allele_reads.py -fp  $1/$4_$2/allele_support_reads.pickle \
-                                                           -fa  ${allele_path} \
-                                                           -fr1 ${read_path_1} \
-                                                           -fr2 ${read_path_2} \
-                                                           -name ${allele_name} \
-                                                           -fod ${raw_seq_path} )
+if [[ "$read_path_2" == " " ]]; then
+    cluster_num=$( python3 ${script_dir}/group_allele_reads.py -fp  $1/$4_$2/allele_support_reads.pickle \
+                                                               -fa  ${allele_path} \
+                                                               -fr1 ${read_path_1} \
+                                                               -name ${allele_name} \
+                                                               -fod ${raw_seq_path} )
+else
+    cluster_num=$( python3 ${script_dir}/group_allele_reads.py -fp  $1/$4_$2/allele_support_reads.pickle \
+                                                               -fa  ${allele_path} \
+                                                               -fr1 ${read_path_1} \
+                                                               -fr2 ${read_path_2} \
+                                                               -name ${allele_name} \
+                                                               -fod ${raw_seq_path} )
+fi
 
 echo "[AIRRCall] [FLANKING SEQUENCE] Get the backbone flanking sequences..."
 ${script_dir}/denovo_backbone.sh ${raw_seq_path} ${contig_path} ${contig_check_path} ${flanking_result_path} ${allele_name} ${cluster_num} ${path_SPAdes} ${thread}
