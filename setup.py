@@ -1,8 +1,8 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 setup(
   name = 'gAIRR_suite',
   packages = ['gAIRR_suite', 'gAIRR_suite.scripts', 'gAIRR_suite.scripts.analysis', 'gAIRR_suite.material'],
-  version = '0.2.0',
+  version = '0.3.0',
   license='MIT',
   description = 'Profiling genes encoding the adaptive immune receptor repertoire with gAIRR Suite.',
   author = 'Mao-Jan Lin',
