@@ -46,7 +46,7 @@ def main():
     parser.add_argument('-lc', '--locus', help="Target Locus [TRV TRJ TRD IGV IGJ IGD]", nargs='+', default=['TRV', 'TRJ', 'TRD', 'IGV', 'IGJ', 'IGD'])
     parser.add_argument('-id', '--sample_id', help="Sample ID ['sample']")
     parser.add_argument('-rd1', '--read1', help="Path to gAIRR-seq. Pair-end 1", required=True)
-    parser.add_argument('-rd2', '--read2', help="Path to gAIRR-seq. Pair-end 2", required=True)
+    parser.add_argument('-rd2', '--read2', help="Path to gAIRR-seq. Pair-end 2", default="\" \"")
     parser.add_argument('--flanking', help="Option to do flanking sequence analysis.", action='store_true')
     parser.add_argument('--keep', help="Option specify to keep to sam files", action='store_true')
     parser.add_argument('-t', '--thread', help="Number of threads to use [max].", type=int)

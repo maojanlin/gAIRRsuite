@@ -20,11 +20,18 @@ fi
 for ((cluster_id=0; cluster_id <${cluster_num}; cluster_id++ ))
 do
     echo "[SPAdes] group ${cluster_id} assembled..."
-    spades.py -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
-                           -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
-                           --only-assembler -t ${thread} \
-                           -o ${contig_path}${allele_name}_${cluster_id} \
-                           >> ${contig_path}spades_log.log
+    if [[ -f ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta ]]; then
+        spades.py -1 ${raw_seq_path}${allele_name}_${cluster_id}_read_R1.fasta \
+                  -2 ${raw_seq_path}${allele_name}_${cluster_id}_read_R2.fasta \
+                  --only-assembler -t ${thread} \
+                  -o ${contig_path}${allele_name}_${cluster_id} \
+                  >> ${contig_path}spades_log.log
+    else
+        spades.py -s ${raw_seq_path}${allele_name}_${cluster_id}_read.fasta \
+                  --only-assembler -t ${thread} \
+                  -o ${contig_path}${allele_name}_${cluster_id} \
+                  >> ${contig_path}spades_log.log
+    fi
     python3 ${script_dir}/copy_1st_contig.py -fc ${contig_path}${allele_name}_${cluster_id}/contigs.fasta \
                                              -id ${cluster_id} \
                                              -map ${raw_seq_path}/${allele_name}_group_allele_map.txt \
