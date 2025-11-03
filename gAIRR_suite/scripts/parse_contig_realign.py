@@ -390,6 +390,68 @@ def variant_link_graph(edit_region, list_read_info):
 
     return dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward
 
+def variant_link_graph_single(edit_region, list_read_info):
+
+    dict_link_graph = {}
+    dict_var_weight = { pos:{} for pos in edit_region }
+    dict_link_outward = {}
+    dict_link_inward  = {}
+   
+    list_idx = -1
+    len_list_read_info = len(list_read_info)-1
+    while list_idx < len_list_read_info:
+        list_idx += 1
+        start_pos, end_pos, read_name, even_odd_flag, mis_region, cigar, read_SEQ = list_read_info[list_idx]
+
+        covered_edit_region = []
+        for spot in edit_region:
+            # if match cover the edit spot
+            if start_pos <= spot <= end_pos:
+                covered_edit_region.append(spot)
+
+        # if the read pairs cover any interested spot, record the base information in dict_var_weight
+        if len(covered_edit_region) > 0:
+            list_var_pair = report_variant_base(start_pos, cigar, covered_edit_region, read_SEQ)
+            haplotype_frag = tuple(sorted(list_var_pair))
+            # record all the variant proportions at every variant position
+            for var_pair in haplotype_frag:
+                if dict_var_weight[var_pair[0]].get(var_pair[1]):
+                    dict_var_weight[var_pair[0]][var_pair[1]] += 1
+                else:
+                    dict_var_weight[var_pair[0]][var_pair[1]] = 1
+            
+            # if there are long range coverage between mate pairs, then record the links in dict_link_graph
+            if len(haplotype_frag) > 1:
+                for node_idx, var_pair in enumerate(haplotype_frag):
+                    # dict_link_graph
+                    if dict_link_graph.get(var_pair):
+                        if dict_link_graph[var_pair].get((node_idx, haplotype_frag)):
+                            dict_link_graph[var_pair][(node_idx, haplotype_frag)] += 1
+                        else:
+                            dict_link_graph[var_pair][(node_idx, haplotype_frag)] = 1
+                    else:
+                        dict_link_graph[var_pair] = {(node_idx, haplotype_frag):1}
+                    # dict_link_outward
+                    if node_idx < len(haplotype_frag)-1:
+                        if dict_link_outward.get(var_pair):
+                            if dict_link_outward[var_pair].get((var_pair, haplotype_frag[node_idx+1])):
+                                dict_link_outward[var_pair][(var_pair, haplotype_frag[node_idx+1])] += 1
+                            else:
+                                dict_link_outward[var_pair][(var_pair, haplotype_frag[node_idx+1])] = 1
+                        else:
+                            dict_link_outward[var_pair] = {(var_pair, haplotype_frag[node_idx+1]):1}
+                    # dict_link_inward
+                    if node_idx > 0:
+                        if dict_link_inward.get(var_pair):
+                            if dict_link_inward[var_pair].get((haplotype_frag[node_idx-1], var_pair)):
+                                dict_link_inward[var_pair][(haplotype_frag[node_idx-1], var_pair)] += 1
+                            else:
+                                dict_link_inward[var_pair][(haplotype_frag[node_idx-1], var_pair)] = 1
+                        else:
+                            dict_link_inward[var_pair] = {(haplotype_frag[node_idx-1], var_pair):1}
+
+    return dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward
+
 
 def find_double_pos(pos_start_idx, list_pos_weight, haplotype_0, haplotype_1, hap_cursor_0, hap_cursor_1):
     while pos_start_idx < len(list_pos_weight):
