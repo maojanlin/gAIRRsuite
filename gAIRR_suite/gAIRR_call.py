@@ -5,6 +5,10 @@ import os
 import argparse
 from shutil import which
 
+# make sure the package modules is in the path
+sys.path.append(os.path.dirname(__file__))
+
+import scripts.utils
 
 
 
@@ -41,7 +45,7 @@ def check_program_install(list_names):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="gAIRR-call pipeline of gAIRR-suite.")
+    parser = argparse.ArgumentParser(description=f"gAIRR-call pipeline of gAIRR-suite ({scripts.utils.get_version()}).")
     parser.add_argument('-wd', '--work_dir', help="Path to output directory ['target_call/'].", default="target_call/")
     parser.add_argument('-lc', '--locus', help="Target Locus [TRV TRJ TRD IGV IGJ IGD]", nargs='+', default=['TRV', 'TRJ', 'TRD', 'IGV', 'IGJ', 'IGD'])
     parser.add_argument('-id', '--sample_id', help="Sample ID ['sample']")

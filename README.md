@@ -1,8 +1,11 @@
-_Updated: Sep 18, 2023_
+_Updated: Nov 02, 2025_
 # gAIRR-suite: Profiling genes encoding the adaptive immune receptor repertoire
 gAIRR-annotate provides annotations of IG and TR genes on personal assembly data
 
 gAIRR-call can genotype IG and TR genes for short read data sequenced from germline cell. It is designed for probe captured gAIRR-seq data, but it can also be applied to other type of short read enriched from IG and TR regions.
+
+- The database materials are updated to the latest (by 2025/11/02) IMGT/GENE-DB.
+- Single-end read input is allowed in this version
 
 
 ## Prerequisite programs:
