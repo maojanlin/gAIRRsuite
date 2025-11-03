@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(os.path.dirname(__file__)+'/..')
 
-from parse_contig_realign import variant_link_graph, output_contig_correction, parse_CIGAR, parse_MD, trim_dict, find_double_pos, get_farthest_ext
+from parse_contig_realign import variant_link_graph, variant_link_graph_single, output_contig_correction, parse_CIGAR, parse_MD, trim_dict, find_double_pos, get_farthest_ext
 from utils import get_reverse_complement
 import sys
 
@@ -82,7 +82,7 @@ def mark_edit_region(contig_name, contig_info, ignore_S=False):
     cov_histogram  = contig_info[1]
     # list_read_info: [ (start_pos, end_pos, read_name, even_odd_flag, mis_region) ]
     list_read_info = []
-    even_odd_flag = 1
+    #even_odd_flag = 1
     list_read_field = contig_info[3]
     for fields in list_read_field:
         read_name = fields[0]
@@ -107,11 +107,13 @@ def mark_edit_region(contig_name, contig_info, ignore_S=False):
         # if the read align to incorrect contigs, pass
         if cigar == '*' or contig_name != fields[2] or S_flag:
             # list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region))
-            list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
-            if even_odd_flag == 1:
+            if sam_flag & 64 == 64:
+                even_odd_flag = 1
+            elif sam_flag & 128 == 128:
                 even_odd_flag = 2
             else:
-                even_odd_flag = 1
+                even_odd_flag = 0
+            list_read_info.append((0, 0, read_name, even_odd_flag, [], "", read_SEQ))
             continue
 
         edit_dist = int(fields[11].split(':')[2])  # NM:i:2 tag
@@ -180,11 +182,13 @@ def mark_edit_region(contig_name, contig_info, ignore_S=False):
         edit_histogram[mis_region] += 1
         
         # record the reads information
-        list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region, cigar, read_SEQ))
-        if even_odd_flag == 1:
+        if sam_flag & 64 == 64:
+            even_odd_flag = 1
+        elif sam_flag & 128 == 128:
             even_odd_flag = 2
         else:
-            even_odd_flag = 1
+            even_odd_flag = 0
+        list_read_info.append((start_pos, end_pos, read_name, even_odd_flag, mis_region, cigar, read_SEQ))
 
     return edit_histogram, cov_histogram, list_read_info
 
@@ -439,7 +443,10 @@ if __name__ == '__main__':
         if interest_edit_region != [] and min(cov_histogram[1:]) > 20:
             print("=========== allele correction ==============")
             eprint("CORRECT", contig_name.split('|')[1], min(cov_histogram[1:]), interest_edit_region)
-            dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph(interest_edit_region, list_read_info)
+            if 0 in [ele[3] for ele in list_read_info]:
+                dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph_single(interest_edit_region, list_read_info)
+            else:
+                dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward = variant_link_graph(interest_edit_region, list_read_info)
             haplotype_0, haplotype_1 = haplotyping_link_graph(dict_link_graph, dict_var_weight, dict_link_outward, dict_link_inward, interest_region)
             #output_contig_correction(contig_SEQ, region_st, region_ed, haplotype_0, haplotype_1, contig_name, corrected_contig_output_file)
             diff_0 = sum([max(len(ele[1])-1,0) for ele in haplotype_0 ])
