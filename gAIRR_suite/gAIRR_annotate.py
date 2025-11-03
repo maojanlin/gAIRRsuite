@@ -10,6 +10,7 @@ from shutil import which
 # make sure the package modules is in the path
 sys.path.append(os.path.dirname(__file__))
 
+import scripts.utils
 import scripts.annotation_with_asm
 import scripts.analysis.bed_generator
 import scripts.analysis.collect_gene_from_bed
@@ -49,7 +50,7 @@ def check_program_install(list_names):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="gAIRR-annotate pipeline of gAIRR-suite.")
+    parser = argparse.ArgumentParser(description=f"gAIRR-annotate pipeline of gAIRR-suite ({scripts.utils.get_version()}).")
     parser.add_argument('-wd', '--work_dir', help="Path to output directory ['target_annotation/'].", default="target_annotation/")
     parser.add_argument('-lc', '--locus', help="Target Locus [TR IG]", nargs='+', default=['TR', 'IG'])
     parser.add_argument('-id', '--sample_id', help="Sample ID ['sample']")

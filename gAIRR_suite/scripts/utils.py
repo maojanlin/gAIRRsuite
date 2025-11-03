@@ -1,4 +1,7 @@
 import sys
+def get_version():
+    return "0.3.2"
+
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
