@@ -6,7 +6,7 @@ gAIRR-call can genotype IG and TR genes for short read data sequenced from germl
 
 - The database materials are updated to the latest (by 2025/11/02) IMGT/GENE-DB.
 - Single-end read input is allowed in this version
-- Option to use the novel alleles called from HPRC year 1 release assembles by gAIRR-annotate
+- Beta option: use the novel alleles called from HPRC year 1 released assembles by gAIRR-annotate.  Since in this callset, some allele's core region is substring of another allele's, gAIRR suite may call both while only one of them is real. 
 
 
 ## Prerequisite programs:
