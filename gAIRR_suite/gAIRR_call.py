@@ -54,6 +54,7 @@ def main():
     parser.add_argument('--flanking', help="Option to do flanking sequence analysis.", action='store_true')
     parser.add_argument('--keep', help="Option specify to keep to sam files", action='store_true')
     parser.add_argument('-t', '--thread', help="Number of threads to use [max].", type=int)
+    parser.add_argument('-hprc', '--HPRCy1', help="Use the gAIRR-annotate called alleles from HPRC year 1 release [False].", action='store_true')
     args = parser.parse_args()
 
     workspace     = args.work_dir
@@ -66,9 +67,12 @@ def main():
     thread        = args.thread
     if thread == None:
         thread = get_max_thread()
+    flag_hprc     = args.HPRCy1
     
     path_module   = os.path.dirname(__file__) + '/scripts/'
     path_material = os.path.dirname(__file__) + '/material/'
+    if flag_hprc:
+        path_material = os.path.dirname(__file__) + '/material/HPRCv1_plus/'
     
     if flag_flanking:
         check_program_install(["bwa", "spades.py"])

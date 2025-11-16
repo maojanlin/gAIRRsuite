@@ -57,6 +57,7 @@ def main():
     parser.add_argument('-a1', '--assembly_1', help="Path to assembly haplotype 1.", required=True)
     parser.add_argument('-a2', '--assembly_2', help="Path to assembly haplotype 2.")
     parser.add_argument('-t', '--thread', help="Number of threads to use [max].", type=int)
+    parser.add_argument('-hprc', '--HPRCy1', help="Use the gAIRR-annotate called alleles from HPRC year 1 release [False].", action='store_true')
     args = parser.parse_args()
 
     outer_dir     = args.work_dir
@@ -67,9 +68,12 @@ def main():
     thread        = args.thread
     if thread == None:
         thread = get_max_thread()
+    flag_hprc     = args.HPRCy1
     
     path_module   = os.path.dirname(__file__) + '/scripts/'
     path_material = os.path.dirname(__file__) + '/material/'
+    if flag_hprc:
+        path_material = os.path.dirname(__file__) + '/material/HPRCv1_plus/'
     
     check_program_install(["bwa"])
 
