@@ -1,4 +1,4 @@
-_Updated: Nov 02, 2025_
+_Updated: Nov 16, 2025_
 # gAIRR-suite: Profiling genes encoding the adaptive immune receptor repertoire
 gAIRR-annotate provides annotations of IG and TR genes on personal assembly data
 
@@ -6,6 +6,7 @@ gAIRR-call can genotype IG and TR genes for short read data sequenced from germl
 
 - The database materials are updated to the latest (by 2025/11/02) IMGT/GENE-DB.
 - Single-end read input is allowed in this version
+- Option to use the novel alleles called from HPRC year 1 release assembles by gAIRR-annotate
 
 
 ## Prerequisite programs:
@@ -53,6 +54,8 @@ The novel allele sequence can be found in `work_dir/sample_id/novel_sample_ID_ge
 
 If only IG or TR genes are prefered, option `-lc IG` or `-lc TR` can be specified.
 
+Use `-hprc` argument to use the additional novel alleles from HPRC year 1 release samples.
+
 
 ## gAIRR-call usage
 ```
@@ -69,6 +72,7 @@ The novel allele sequence from the `gAIRR-call_report.rpt` can be found in `work
 
 Note that the seriel numbers provided by the `gAIRR_call` and `gAIRR_annotate` are not necessary corresponding. When there are multiple novel alleles, the seril number starting from $0$ can be in different order.
 
+Use `-hprc` argument to use the additional novel alleles from HPRC year 1 release samples.
 
 
 ### checking RSS
