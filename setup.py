@@ -7,7 +7,13 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
   name = 'gAIRR_suite',
-  packages = ['gAIRR_suite', 'gAIRR_suite.scripts', 'gAIRR_suite.scripts.analysis', 'gAIRR_suite.material'],
+  packages = ['gAIRR_suite', 'gAIRR_suite.scripts', 'gAIRR_suite.scripts.analysis', 'gAIRR_suite.material', 'gAIRR_suite.material.HPRCv1_plus'],
+  package_data={
+    "gAIRR_suite": [
+        "material/*",
+        "material/HPRCv1_plus/*",
+        "scripts/*",
+    ]},
   version = get_version(),
   license='MIT',
   description = 'Profiling genes encoding the adaptive immune receptor repertoire with gAIRR Suite.',
